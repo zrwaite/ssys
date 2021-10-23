@@ -1,0 +1,17 @@
+{
+	"id": 1,
+	"first_name": "Janet",
+	"last_name": "Doette",
+	"num_students": 9,
+	"image_link": "johndoe.jpg",
+	"school": "Twin Lakes Secondary School",
+	"shirt_size": "L",
+	"shirt_ordered": true,
+	"city": "Orillia",
+	"diet": "I can't eat green grapes, only red",
+	"video_link": "https://youtu.be/iik25wqIuFo",
+	"bio": "Roses are grey. Violets are a different shade of grey. I am colour blind.",
+	"additional_info": "Field trips are a day off for me",
+	
+	"workshop_choices": "Yo weiqi do teachers get workshop choices?"
+}

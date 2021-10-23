@@ -1,0 +1,9 @@
+{
+	"id": 1,
+	"email_confirmed": true,
+	"image_approved": true,
+	"shirt_ordered": true,
+	"workshop_order": null,
+	"video_approved": false,
+	"account_enabled": true
+}

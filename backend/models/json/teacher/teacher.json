@@ -1,0 +1,23 @@
+{
+	"id": 1,
+	"first_name": "Janet",
+	"last_name": "Doette",
+	"email": "jannetdoette@scdsb.on.ca",
+	"email_confirmed": true,
+	"confirmation_code": 123456,
+	"num_students": 9,
+	"image_link": "johndoe.jpg",
+	"school": "Twin Lakes Secondary School",
+	"shirt_size": "L",
+	"shirt_ordered": true,
+	"city": "Orillia",
+	"diet": "I can't eat green grapes, only red",
+	"video_link": "https://youtu.be/iik25wqIuFo",
+	"video_approved": false,
+	"bio": "Roses are grey. Violets are a different shade of grey. I am colour blind.",
+	"additional_info": "Field trips are a day off for me",
+	"account_enabled": true,
+	
+	"workshop_choices": "Yo weiqi do teachers get workshop choices?",
+	"workshop_order": null
+}

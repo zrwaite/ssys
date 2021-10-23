@@ -1,0 +1,18 @@
+{
+	"id": 1,
+	"first_name": "John",
+	"last_name": "Doe",
+	"grade": 9,
+	"image_link": "johndoe.jpg",
+	"school": "Twin Lakes Secondary School",
+	"shirt_size": "L",
+	"shirt_ordered": true,
+	"city": "Orillia",
+	"workshop_choices": "ABDECFHGJI",
+	"instagram": "@johnny_dough",
+	"diet": "I am a full freagin vegan",
+	"video_link": "https://youtu.be/iik25wqIuFo",
+	"bio": "I like bees, I like trees, and I like the seas",
+	"additional_info": "I don't like wombats so please don't give me any activities with wombats plz",
+	"emergency_contact": "janedoe@gmail.com"
+}
