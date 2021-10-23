@@ -1,6 +1,6 @@
 <?php
-require './modules/database.php';
-require './modules/response.php';
+require './database.php';
+require '../models/response.php';
 $res = new Response;
 // Check connection
 if($conn->connect_error) {

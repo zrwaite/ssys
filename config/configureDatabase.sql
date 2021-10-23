@@ -1,5 +1,5 @@
 CREATE DATABASE sustaina_db;
-CREATE TABLE sustaina_db.ssyc22_attendees (
+CREATE TABLE sustaina_db.ssyc22_students (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	first_name CHAR(20) NOT NULL,
     last_name CHAR(20) NOT NULL,
@@ -44,12 +44,14 @@ CREATE TABLE sustaina_db.ssyc22_teachers (
 	shirt_size CHAR(5),
 	shirts_ordered INT,
 	city CHAR(40),
+	workshop_choices CHAR(10),
 	diet CHAR(200),
+	workshop_order CHAR(4),
 	video_link CHAR(100),
 	video_approved BOOLEAN,
 	bio CHAR(250),
 	additional_info CHAR(250),
-	account_enabled BOOLEAN
+	account_enabled BOOLEAN DEFAULT 1
 ) ENGINE = InnoDB;
 
 CREATE TABLE sustaina_db.ssyc22_admin (
