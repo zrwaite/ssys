@@ -49,18 +49,23 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 
 	if (count($res->errors)==0){
 		$student->createHash();
-		// DB::insert('ssys22_students', array(
-		// 	'email' => $student->email,
-		// 	'fname' => $student->fname,
-		// 	'lname' => $student->lname,
-		// 	'password_hash' => $student->hash,
-		// 	'teacher_email' => $student->teacher_email,
-		// 	'teacher_id' => $student->teacher_id
-		// ));
-		// $res->status = 200;
-		// $res->success = true;
+		try {
+			DB::insert('ssys22_students', array(
+				'email' => $student->email,
+				'fname' => $student->fname,
+				'lname' => $student->lname,
+				'password_hash' => $student->hash,
+				'teacher_email' => $student->teacher_email,
+				'teacher_id' => $student->teacher_id
+			));
+			$res->status = 200;
+			$res->success = true;
+		} catch (Exception $e) {
+			echo 'Message: ' .$e->getMessage();
+		}
+
+		
 	}
-	echo json_encode($student);
 	echo json_encode($res);
 } else {echo "Import error";}
 ?>
