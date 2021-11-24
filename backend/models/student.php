@@ -31,7 +31,6 @@ class GetStudent {
     public $lname;
 	public $email;
 	public $email_confirmed;
-	public $confirmation_code;
 	public $teacher_email;
 	public $teacher_id;
 	public $password_set;
@@ -61,7 +60,6 @@ class GetStudent {
 		$this->lname = $result['lname'];
 		$this->email = $result['email'];
 		$this->email_confirmed = boolval($result['email_confirmed']);
-		$this->confirmation_code = intval($result['confirmation_code']);
 		$this->teacher_email = $result['teacher_email'];
 		$this->teacher_id = intval($result['teacher_id']);
 		$this->password_set = boolval($result['password_set']);
