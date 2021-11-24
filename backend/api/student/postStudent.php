@@ -66,8 +66,6 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 		} catch (Exception $e) {
 			echo 'Message: ' .$e->getMessage();
 		}
-
-		
 	}
 	echo json_encode($res);
 } else {echo "Import error";}

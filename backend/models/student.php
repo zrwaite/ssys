@@ -42,7 +42,7 @@ class GetStudent {
 	public $shirt_size;
 	public $shirts_ordered;
 	public $city;
-	public $workship_choices;
+	public $workshop_choices;
 	public $instagram;
 	public $diet;
 	public $workshop_order;
@@ -54,5 +54,33 @@ class GetStudent {
 	public $account_enabled;
     public function __construct(){
     }
+	public function parseResult($result){
+		$this->id = intval($result['id']);
+		$this->fname = $result['fname'];
+		$this->lname = $result['lname'];
+		$this->email = $result['email'];
+		$this->email_confirmed = boolval($result['email_confirmed']);
+		$this->confirmation_code = intval($result['confirmation_code']);
+		$this->teacher_email = $result['teacher_email'];
+		$this->teacher_id = intval($result['teacher_id']);
+		$this->password_set = boolval($result['password_set']);
+		$this->grade = intval($result['grade']);
+		$this->image_link = $result['image_link'];
+		$this->image_approved = boolval($result['image_approved']);
+		$this->school = $result['school'];
+		$this->shirt_size = $result['shirt_size'];
+		$this->shirts_ordered = intval($result['shirts_ordered']);
+		$this->city = $result['city'];
+		$this->workshop_choices = $result['workshop_choices'];
+		$this->instagram = $result['instagram'];
+		$this->diet = $result['diet'];
+		$this->workshop_order = $result['workshop_order'];
+		$this->video_link = $result['video_link'];
+		$this->video_approved = boolval($result['video_approved']);
+		$this->bio = $result['bio'];
+		$this->additional_info = $result['additional_info'];
+		$this->emergency_contact = $result['emergency_contact'];
+		$this->account_enabled = boolval($result['account_enabled']);
+	}
 }
 ?>
