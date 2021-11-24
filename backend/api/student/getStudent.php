@@ -27,10 +27,14 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 	if (count($res->errors)==0){
 		$query = "id, fname, lname, email, email_confirmed, confirmation_code, teacher_email, teacher_id, password_set, grade, image_link, image_approved ,school ,shirt_size ,shirts_ordered ,city ,workshop_choices ,instagram ,diet ,workshop_order ,video_link ,video_approved ,bio ,additional_info ,emergency_contact ,account_enabled";
 		$result = DB::queryFirstRow("SELECT ".$query." FROM ssys22_students WHERE email=%s LIMIT 1", $email);
-		$student->parseResult($result);
-		$res->status = 200;
-		$res->success = true;
-		$res->objects = $student;
+		if($student->parseResult($result)){
+			$res->status = 200;
+			$res->success = true;
+			$res->objects = $student;
+		} else {
+			$res->status = 404;
+			array_push($res->errors, "Student not found");
+		}
 	}
 	echo json_encode($res);
 } else {echo "Import error";}
