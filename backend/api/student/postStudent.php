@@ -82,18 +82,23 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 	if (count($res->errors)==0){
 		$student->createHash();
 		try {
-			DB::insert('ssys22_students', array(
-				'email' => $student->email,
-				'fname' => $student->fname,
-				'lname' => $student->lname,
-				'password_hash' => $student->hash,
-				'teacher_email' => $student->teacher_email,
-				'teacher_id' => $student->teacher_id,
-				'confirmation_code' => $student->confirmation_code,
-				'registration_type' => $student->registration_type
-			));
-			$res->status = 200;
-			$res->success = true;
+			$result = DB::queryFirstRow("SELECT id FROM ssys22_students WHERE email=%s LIMIT 1", $email);
+			if (!$result){
+				DB::insert('ssys22_students', array(
+					'email' => $student->email,
+					'fname' => $student->fname,
+					'lname' => $student->lname,
+					'password_hash' => $student->hash,
+					'teacher_email' => $student->teacher_email,
+					'teacher_id' => $student->teacher_id,
+					'confirmation_code' => $student->confirmation_code,
+					'registration_type' => $student->registration_type
+				));
+				$res->status = 200;
+				$res->success = true;
+			} else {
+				array_push($res->errors, "Email already in use");
+			}
 		} catch (Exception $e) {
 			echo 'Message: ' .$e->getMessage();
 		}

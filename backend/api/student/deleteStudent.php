@@ -1,3 +1,3 @@
 <?php
-echo 'Hello ' . htmlspecialchars($_GET["name"]) . '!';
+echo "Zac hasn't implemented delete yet, deal with it";
 ?>
