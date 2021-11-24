@@ -7,12 +7,14 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 && file_exists(__DIR__."/../../modules/database.php")
 && file_exists(__DIR__."/../../modules/env/.env")
 && file_exists(__DIR__."/../../models/response.php")
-&& file_exists(__DIR__."/../../models/student/postStudent.php")){
+&& file_exists(__DIR__."/../../modules/readParams.php")
+&& file_exists(__DIR__."/../../models/student.php")){
 	//Imports
 	require_once __DIR__."/../../vendor/autoload.php";
 	require_once __DIR__."/../../models/response.php";
 	require_once __DIR__."/../../modules/database.php"; //Connect to database
-	require_once __DIR__."/../../models/student/postStudent.php";
+	require_once __DIR__."/../../modules/readParams.php";
+	require_once __DIR__."/../../models/student.php";
 
 	$dotenv = new Dotenv();
 	$dotenv->load(__DIR__."/../../modules/env/.env");
@@ -23,27 +25,27 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 	$student = new PostStudent();
 
 	#get post queries
-	$email = getPost("email");
+	$email = getBody("email");
 	if($email) $student->email = $email;
 	else array_push($res->errors, "Must include email");
 
-	$fname = getPost("fname");
+	$fname = getBody("fname");
 	if ($fname) $student->fname = $fname;
 	else $student->fname = "Person";
 
-	$lname = getPost("lname");
+	$lname = getBody("lname");
 	if ($lname) $student->lname = $lname;
 	else $student->lname = "Smith";
 
-	$password = getPost("password");
+	$password = getBody("password");
 	if ($password) $student->password = $password;
 	else $student->createPassword();
 
-	$teacher_email = getPost("teacher_email");
+	$teacher_email = getBody("teacher_email");
 	if ($teacher_email) $student->teacher_email = $teacher_email;
 	else $student->teacher_email = null;
 
-	$teacher_id = getPost("teacher_id");
+	$teacher_id = getBody("teacher_id");
 	if($teacher_id) $student->teacher_id = $teacher_id;
 	else $student->teacher_id = null;
 
@@ -56,7 +58,8 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 				'lname' => $student->lname,
 				'password_hash' => $student->hash,
 				'teacher_email' => $student->teacher_email,
-				'teacher_id' => $student->teacher_id
+				'teacher_id' => $student->teacher_id,
+				'confirmation_code' => $student->confirmation_code
 			));
 			$res->status = 200;
 			$res->success = true;

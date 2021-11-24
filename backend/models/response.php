@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type:application/json; charset=utf-8');
 class Response { //Class for json response 
     public $success;
     public $status;
