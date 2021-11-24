@@ -10,7 +10,7 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
 	$dotenv->load(__DIR__.'/env/.env');
 
 	//Main
-
+	DB::$logfile = __DIR__."/../modules/logs/database.txt";
 	DB::$user = $_ENV['USERNAME'];
 	DB::$password = $_ENV['PASSWORD'];
 	DB::$dbName = $_ENV['DBNAME'];

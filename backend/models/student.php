@@ -55,6 +55,7 @@ class GetStudent {
     public function __construct(){
     }
 	public function parseResult($result){
+		if (!boolval($result['id'])) {return false;}
 		$this->id = intval($result['id']);
 		$this->fname = $result['fname'];
 		$this->lname = $result['lname'];
@@ -81,6 +82,7 @@ class GetStudent {
 		$this->additional_info = $result['additional_info'];
 		$this->emergency_contact = $result['emergency_contact'];
 		$this->account_enabled = boolval($result['account_enabled']);
+		return true;
 	}
 }
 ?>

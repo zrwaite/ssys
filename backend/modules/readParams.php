@@ -1,7 +1,11 @@
 <?php
 function getBody($param){
 	if (isset($_POST[$param])) return htmlspecialchars(stripslashes(trim($_POST[$param])));
-	else return false;
+	else {
+		$req = json_decode(file_get_contents('php://input'), true);
+		if ($req[$param]) return htmlspecialchars(stripslashes(trim($req[$param])));
+	}
+	return false;
 }
 function getQuery($param){
 	if (isset($_GET[$param])) return htmlspecialchars(stripslashes(trim($_GET[$param])));
