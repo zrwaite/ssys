@@ -11,7 +11,13 @@ if (file_exists(__DIR__."/registrant.php")){
 		public $teacher_email;
 		public $teacher_id;
 		public $confirmation_code;
+		public $password_set;
 		public function __construct(){
+			$this->password_set = false;
+			$this->teacher_email = null;
+			$this->teacher_id = null;
+			$this->fname = "Person";
+			$this->lname = "Smith";
 			$this->createConfirmationCode();
 		}
 	}

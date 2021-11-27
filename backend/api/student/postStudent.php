@@ -49,19 +49,15 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 				if ($password) $student->password = $password;
 				else array_push($res->errors, "Must include password");
 				$res->errors = array_merge($res->errors, $student->checkPassword());
-
-				$student->teacher_email = null;
-				$student->teacher_id = null;
+				$student->password_set = true;
 
 				break;
 			case "student":
 				$fname = getBody("fname");
 				if ($fname) $student->fname = $fname;
-				else $student->fname = "Person";
 			
 				$lname = getBody("lname");
 				if ($lname) $student->lname = $lname;
-				else $student->lname = "Smith";
 
 				$password = getBody("password");
 				if ($password) $student->password = $password;
