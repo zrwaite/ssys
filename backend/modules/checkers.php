@@ -1,9 +1,9 @@
 <?php
-function checkEmail($email){
+function checkEmail(string $email):bool {
 	if (filter_var($email, FILTER_VALIDATE_EMAIL)) return true;
 	else return false;
 }
-function checkPassword($password){
+function checkPassword(string $password): array{
 	$errors = array();
 	if (strlen($password)<8) array_push($errors, "password too short");
 	if (!preg_match('/[a-z]/', $password)) array_push($errors, "password must contain lower-case letter");

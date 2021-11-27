@@ -12,7 +12,7 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
 	$dotenv = new Dotenv();
 	$dotenv->load(__DIR__.'/env/.env');
 	//Main
-    function mailConstants($mailvar) {
+    function mailConstants(object $mailvar):object {
         $mailvar->SMTPDebug = 0;
         $mailvar->isSMTP();
         $mailvar->Host = 'smtp.gmail.com';
@@ -29,7 +29,7 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
         // $mail->AddEmbeddedImage('../../files/images/longSoLogo.jpeg', 'soLogo');
         return $mailvar;
     }
-    function sendMail($emails, $subject, $html, $text) {
+    function sendMail(array $emails, string $subject, string $html, string $text): bool{
         $mail = mailConstants(new PHPMailer(true));
         try {
             for ($i=0; $i<count($emails); $i++){
