@@ -4,10 +4,10 @@ if (file_exists(__DIR__."/../modules/checkers.php")){
 	require_once __DIR__."/../modules/checkers.php";
 
 	class PostRegistrant { //Class for json response 
-		public $email;
-		public $password;
-		public $hash;
-		public $confirmation_code;
+		public string $email;
+		public string $password;
+		public string $hash;
+		public string $confirmation_code;
 		public function __construct(){
 			$this->createConfirmationCode();
 		}

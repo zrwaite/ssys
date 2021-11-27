@@ -3,38 +3,38 @@ if (file_exists(__DIR__."/registrant.php")){
 	//Imports
 	require_once __DIR__."/registrant.php";
 	class PostTeacher extends PostRegistrant{ //Class for json response 
-		public $email;
-		public $fname;
-		public $lname;
-		public $password;
-		public $hash;
-		public $confirmation_code;
+		public string $email;
+		public string $fname;
+		public string $lname;
+		public string $password;
+		public string $hash;
+		public int $confirmation_code;
 		public function __construct(){
 			$this->createConfirmationCode();
 		}
 	}
 	class GetTeacher {
 		public $id;
-		public $fname;
-		public $lname;
-		public $email;
-		public $email_confirmed;
-		public $image_link;
-		public $school;
-		public $shirt_size;
-		public $shirts_ordered;
-		public $city;
-		public $workshop_choices;
-		public $diet;
-		public $workshop_order;
-		public $video_link;
-		public $video_approved;
-		public $bio;
-		public $additional_info;
-		public $account_enabled;
+		public string $fname;
+		public string $lname;
+		public string $email;
+		public bool $email_confirmed;
+		public string $image_link;
+		public string $school;
+		public string $shirt_size;
+		public int $shirts_ordered;
+		public string $city;
+		public string $workshop_choices;
+		public string $diet;
+		public string $workshop_order;
+		public string $video_link;
+		public bool $video_approved;
+		public string $bio;
+		public string $additional_info;
+		public string $account_enabled;
 		public function __construct(){
 		}
-		public function parseResult($result){
+		public function parseResult(object $result):bool{
 			if (!boolval($result['id'])) {return false;}
 			$this->id = intval($result['id']);
 			$this->fname = $result['fname'];

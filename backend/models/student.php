@@ -3,15 +3,15 @@ if (file_exists(__DIR__."/registrant.php")){
 	//Imports
 	require_once __DIR__."/registrant.php";
 	class PostStudent extends PostRegistrant { //Class for json response 
-		public $email;
-		public $fname;
-		public $lname;
-		public $password;
-		public $hash;
-		public $teacher_email;
-		public $teacher_id;
-		public $confirmation_code;
-		public $password_set;
+		public string $email;
+		public string $fname;
+		public string $lname;
+		public string $password;
+		public string $hash;
+		public string $teacher_email;
+		public int $teacher_id;
+		public int $confirmation_code;
+		public bool $password_set;
 		public function __construct(){
 			$this->password_set = false;
 			$this->teacher_email = null;
@@ -22,34 +22,34 @@ if (file_exists(__DIR__."/registrant.php")){
 		}
 	}
 	class GetStudent {
-		public $id;
-		public $fname;
-		public $lname;
-		public $email;
-		public $email_confirmed;
-		public $teacher_email;
-		public $teacher_id;
-		public $password_set;
-		public $grade;
-		public $image_link;
-		public $image_approved;
-		public $school;
-		public $shirt_size;
-		public $shirts_ordered;
-		public $city;
-		public $workshop_choices;
-		public $instagram;
-		public $diet;
-		public $workshop_order;
-		public $video_link;
-		public $video_approved;
-		public $bio;
-		public $additional_info;
-		public $emergency_contact;
-		public $account_enabled;
+		public int $id;
+		public string $fname;
+		public string $lname;
+		public string $email;
+		public bool $email_confirmed;
+		public string $teacher_email;
+		public int $teacher_id;
+		public bool $password_set;
+		public int $grade;
+		public string $image_link;
+		public bool $image_approved;
+		public string $school;
+		public string $shirt_size;
+		public int $shirts_ordered;
+		public string $city;
+		public string $workshop_choices;
+		public string $instagram;
+		public string $diet;
+		public string $workshop_order;
+		public string $video_link;
+		public bool $video_approved;
+		public string $bio;
+		public string $additional_info;
+		public string $emergency_contact;
+		public string $account_enabled;
 		public function __construct(){
 		}
-		public function parseResult($result){
+		public function parseResult(object $result): bool {
 			if (!boolval($result['id'])) {return false;}
 			$this->id = intval($result['id']);
 			$this->fname = $result['fname'];
