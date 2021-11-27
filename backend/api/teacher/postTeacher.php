@@ -26,21 +26,22 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 
 	//get post queries
 	$email = getBody("email");
-	if(!$email) array_push($res->errors, "Must include email");
-	else {
-		$teacher->email = $email;
-		$fname = getBody("fname");
-		if ($fname) $teacher->fname = $fname;
-		else array_push($res->errors, "Must include fname");
+	if($email) $teacher->email = $email;
+	else array_push($res->errors, "Must include email");
+	if(!$teacher->checkEmail()) array_push($res->errors, "Invalid email");
 	
-		$lname = getBody("lname");
-		if ($lname) $teacher->lname = $lname;
-		else array_push($res->errors, "Must include lname");
+	$fname = getBody("fname");
+	if ($fname) $teacher->fname = $fname;
+	else array_push($res->errors, "Must include fname");
 
-		$password = getBody("password");
-		if ($password) $teacher->password = $password;
-		else array_push($res->errors, "Must include password");
-	}
+	$lname = getBody("lname");
+	if ($lname) $teacher->lname = $lname;
+	else array_push($res->errors, "Must include lname");
+
+	$password = getBody("password");
+	if ($password) $teacher->password = $password;
+	else array_push($res->errors, "Must include password");
+	$res->errors = array_merge($res->errors, $teacher->checkPassword());
 	if (count($res->errors)==0){
 		$teacher->createHash();
 		try {
@@ -55,6 +56,7 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 				));
 				$res->status = 200;
 				$res->success = true;
+				//send email with link to confirm email page with confirmation_code
 			} else {
 				array_push($res->errors, "Email already in use");
 			}

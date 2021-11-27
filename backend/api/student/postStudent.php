@@ -28,6 +28,7 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 	$email = getBody("email");
 	if($email) $student->email = $email;
 	else array_push($res->errors, "Must include email");
+	if(!$student->checkEmail()) array_push($res->errors, "Invalid email");
 
 	$registration_type = getBody("registration_type");
 	if ($registration_type) $student->registration_type = $registration_type;
@@ -47,6 +48,7 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 				$password = getBody("password");
 				if ($password) $student->password = $password;
 				else array_push($res->errors, "Must include password");
+				$res->errors = array_merge($res->errors, $student->checkPassword());
 
 				$student->teacher_email = null;
 				$student->teacher_id = null;
@@ -96,6 +98,7 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 				));
 				$res->status = 200;
 				$res->success = true;
+				//send email with link to confirm email page with confirmation_code
 			} else {
 				array_push($res->errors, "Email already in use");
 			}
