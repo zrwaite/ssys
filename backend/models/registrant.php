@@ -7,14 +7,14 @@ if (file_exists(__DIR__."/../modules/checkers.php")){
 		public string $email;
 		public string $password;
 		public string $hash;
-		public string $confirmation_code;
+		public int $confirmation_code;
 		public function __construct(){
 			$this->createConfirmationCode();
 		}
 		public function createConfirmationCode(){
 			$chars = 6;
 			$data = '123456789';
-			$this->confirmation_code =  substr(str_shuffle($data), 0, $chars);
+			$this->confirmation_code =  intval(substr(str_shuffle($data), 0, $chars));
 		}
 		public function checkEmail() {
 			checkEmail($this->email);

@@ -8,8 +8,8 @@ if (file_exists(__DIR__."/registrant.php")){
 		public string $lname;
 		public string $password;
 		public string $hash;
-		public string $teacher_email;
-		public int $teacher_id;
+		public string|null $teacher_email;
+		public int|null $teacher_id;
 		public int $confirmation_code;
 		public bool $password_set;
 		public function __construct(){
