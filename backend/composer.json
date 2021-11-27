@@ -13,5 +13,9 @@
             "name": "Zac Waite",
             "email": "129032699zw@gmail.com"
         }
-    ]
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "guzzlehttp/guzzle": "^7.0"
+    }
 }
