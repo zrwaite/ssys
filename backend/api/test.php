@@ -18,6 +18,7 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
 		$res->status = 200;
 		$res->success = true;
 	}
+	http_response_code($res->status);
 	echo json_encode($res);
 } else {echo "Import error";}
 ?>

@@ -58,6 +58,7 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
 			array_push($res->errors, "confirmation failed");
 		}
 	}
+	http_response_code($res->status);
 	echo json_encode($res);
 } else {echo "Import error";}
 ?>

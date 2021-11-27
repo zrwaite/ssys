@@ -49,6 +49,7 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
 			array_push($res->errors, "signin failed");
 		}
 	}
+	http_response_code($res->status);
 	echo json_encode($res);
 } else {echo "Import error";}
 ?>

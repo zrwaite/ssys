@@ -70,6 +70,7 @@ if (file_exists(__DIR__."/../../vendor/autoload.php")
 			echo 'Message: ' .$e->getMessage();
 		}
 	}
+	http_response_code($res->status);
 	echo json_encode($res);
 } else {echo "Import error";}
 ?>
