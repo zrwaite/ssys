@@ -4,7 +4,7 @@ class Response { //Class for json response
     public bool $success;
     public int $status;
     public array $errors;
-    public object $objects;
+    public mixed $objects;
     public function __construct(){
         $this->success = false;
         $this->status = 400;

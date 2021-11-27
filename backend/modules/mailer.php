@@ -12,7 +12,7 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
 	$dotenv = new Dotenv();
 	$dotenv->load(__DIR__.'/env/.env');
 	//Main
-    function mailConstants(object $mailvar):object {
+    function mailConstants(object|array $mailvar):object|array {
         $mailvar->SMTPDebug = 0;
         $mailvar->isSMTP();
         $mailvar->Host = 'smtp.gmail.com';

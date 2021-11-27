@@ -27,29 +27,29 @@ if (file_exists(__DIR__."/registrant.php")){
 		public string $lname;
 		public string $email;
 		public bool $email_confirmed;
-		public string $teacher_email;
-		public int $teacher_id;
+		public string|null $teacher_email;
+		public int|null $teacher_id;
 		public bool $password_set;
-		public int $grade;
-		public string $image_link;
+		public int|null $grade;
+		public string|null $image_link;
 		public bool $image_approved;
-		public string $school;
-		public string $shirt_size;
+		public string|null $school;
+		public string|null $shirt_size;
 		public int $shirts_ordered;
-		public string $city;
-		public string $workshop_choices;
-		public string $instagram;
-		public string $diet;
-		public string $workshop_order;
-		public string $video_link;
+		public string|null $city;
+		public string|null $workshop_choices;
+		public string|null $instagram;
+		public string|null $diet;
+		public string|null $workshop_order;
+		public string|null $video_link;
 		public bool $video_approved;
-		public string $bio;
-		public string $additional_info;
-		public string $emergency_contact;
+		public string|null $bio;
+		public string|null $additional_info;
+		public string|null $emergency_contact;
 		public string $account_enabled;
 		public function __construct(){
 		}
-		public function parseResult(object $result): bool {
+		public function parseResult(object|array $result): bool {
 			if (!boolval($result['id'])) {return false;}
 			$this->id = intval($result['id']);
 			$this->fname = $result['fname'];
