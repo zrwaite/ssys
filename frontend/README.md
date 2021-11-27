@@ -1,4 +1,12 @@
 # Frontend SSYS
+
+## Pages:
+* Homepage
+* User page
+* Register page
+* Sign in page
+* Email confirmation page
+* 
 ## Attendee User Page:
 * User is prompted to change:
     * Grade
