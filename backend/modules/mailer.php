@@ -20,9 +20,9 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
         $mailvar->Port = 587; 
         $mailvar->SMTPSecure = 'tls';
         $mailvar->isHTML(true);
-        $mailvar->Username = 'friends@sustainableorillia.ca';
+        $mailvar->Username = 'ssysmailer@sustainableorillia.ca';
         $mailvar->Password = $_ENV['EMAIL_PASSWORD'];
-        $mailvar->setFrom('friends@sustainableorillia.ca', 'Sustainable Simcoe Youth Summit');
+        $mailvar->setFrom('ssysmailer@sustainableorillia.ca', 'Sustainable Simcoe Youth Summit');
         $mailvar->addReplyTo('ssyscontact@sustainableorillia.ca', 'SSYS');
         // Attachments
         // $mail->addAttachment('../../files/AGM/Notice-of-AGM.docx', 'Notice-ofAGM.docx');  
