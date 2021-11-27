@@ -10,7 +10,11 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
 	require_once __DIR__."/../vendor/autoload.php";
 	$dotenv = new Dotenv();
 	$dotenv->load(__DIR__."/../modules/env/.env");
-
+	class tokenBody  {
+		function __construct($email) {
+			$this->email = $email;
+		}
+	}
 	function createToken ($body) {
 		$key = $_ENV['JWT_KEY'];
 		$token = JWT::encode($body, $key, 'HS256');

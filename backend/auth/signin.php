@@ -1,53 +1,56 @@
 <?php
-//check for username and password
-//query user for id, hash
-//if user, compare password to hash
-//else 404
-//if success, create token
-//otherwise password fail
-/*
-import {Request, Response, NextFunction} from "express"; //Typescript types
-import response from "../models/response"; //Created pre-formatted uniform response
-import {createToken} from "./tokenFunctions";
-import bcrypt from "bcrypt";
-import axios from "axios";
 
-const signInController = async (req: Request, res: Response, next: NextFunction) => {
-	let result = new response();
-	//Get home data, confirming it exists
-	let password = req.body.password;
-	let username = req.body.username;
-	//The following statements should be refactored to push all missing params
-	if (username==undefined) result.errors.push("Missing username");
-	else if (password==undefined) result.errors.push("Missing password");
-	else {
-		try{
-			let token = await createToken({username: username, authorized: true})
-			const userData: any = await axios.get("/api/user?username="+username,
-			{headers: {
-				Authorization: "Bearer "+token
-			}});
-			let userResult: any = userData.data;
-			let passwordCheck = false;
-			if (userResult.success && userResult.response.result.hash!==undefined) {
-				passwordCheck = bcrypt.compareSync(password, userResult.response.result.hash);
-			}
-			if (passwordCheck) {
-				let home_id = userResult.response.result.home_id;
-				token = await createToken({home_id: home_id, username: username, authorized: true})
-				result.response = {token: token};
-				result.status = 201;
-				result.success = true;
-			} else {
-				result.errors.push("password check failed");
-			}
-		} catch (e:any) {
-			result.errors.push("Error creating home request", e);
+use Symfony\Component\Dotenv\Dotenv;
+
+if (file_exists(__DIR__."/../vendor/autoload.php")
+&& file_exists(__DIR__."/../modules/database.php")
+&& file_exists(__DIR__."/../modules/env/.env")
+&& file_exists(__DIR__."/../models/response.php")
+&& file_exists(__DIR__."/../modules/readParams.php")
+&& file_exists(__DIR__."/tokens.php")){
+	//Imports
+	require_once __DIR__."/../vendor/autoload.php";
+	require_once __DIR__."/../models/response.php";
+	require_once __DIR__."/../modules/database.php"; //Connect to database
+	require_once __DIR__."/../modules/readParams.php";
+	require_once __DIR__."/tokens.php";
+
+	$dotenv = new Dotenv();
+	$dotenv->load(__DIR__."/../modules/env/.env");
+
+	//Main
+	#Object declaraion
+	$res = new Response();
+
+	$email = getBody("email");
+	$password = getBody("password");
+	if(!$email) array_push($res->errors, "missing email query");
+	if(!$password) array_push($res->errors, "missing password query");
+	if (count($res->errors)==0){
+		$query = "id, password_hash";
+		$teacherResult = DB::queryFirstRow("SELECT ".$query." FROM ssys22_teachers WHERE email=%s LIMIT 1", $email);
+		$studentResult = DB::queryFirstRow("SELECT ".$query." FROM ssys22_students WHERE email=%s LIMIT 1", $email);
+		$success = false;
+		if (boolval($teacherResult['id'])) {
+			$hash = $teacherResult['password_hash'];
+			$success = password_verify($password, $hash);
+		} else if (boolval($studentResult['id'])){
+			$hash = $studentResult['password_hash'];
+			$success = password_verify($password, $hash);
+		} else {
+			$res->status = 404;
+			array_push($res->errors, "account not found");
+		}
+		if ($success) {
+			$tokenBody = new tokenBody($email);
+			$token = createToken($tokenBody);
+			$res->status = 200;
+			$res->success = true;
+			$res->objects = $token;
+		} else {
+			array_push($res->errors, "signin failed");
 		}
 	}
-	res.status(result.status).json(result);
-};
-
-export default signInController;
-*/
+	echo json_encode($res);
+} else {echo "Import error";}
 ?>
