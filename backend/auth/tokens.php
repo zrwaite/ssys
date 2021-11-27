@@ -11,16 +11,17 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
 	$dotenv = new Dotenv();
 	$dotenv->load(__DIR__."/../modules/env/.env");
 	class tokenBody  {
+		public string $email;
 		function __construct($email) {
 			$this->email = $email;
 		}
 	}
-	function createToken ($body) {
+	function createToken (object $body): string{
 		$key = $_ENV['JWT_KEY'];
 		$token = JWT::encode($body, $key, 'HS256');
 		return $token;
 	}
-	function verifyToken ($token) {
+	function verifyToken (string $token): bool|object {
 		$key = $_ENV['JWT_KEY'];
 		try {
 			$decoded = JWT::decode($token, new Key($key, 'HS256'));
@@ -29,7 +30,7 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
 			return false;
 		}
 	}
-	function getToken (){
+	function getToken (): bool|string{
 		$auth = getallheaders()["Authorization"];
 		$token = explode(" ", $auth)[1]; //Got to love php's string split being EXPLODE
 		$token = str_replace("\"", "",$token);
