@@ -1,8 +1,6 @@
 # SSYC
 Code for the Sustainable Simcoe Youth Summit Website.
 
-Zac: [![wakatime](https://wakatime.com/badge/user/6c7c91d4-47e9-422d-a269-f30643615ab6/project/2cbeaeb5-4428-4844-9a61-866f39775926.svg)](https://wakatime.com/badge/user/6c7c91d4-47e9-422d-a269-f30643615ab6/project/2cbeaeb5-4428-4844-9a61-866f39775926)
-
 ## Version:
 2.0: October 21
 
