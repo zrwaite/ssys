@@ -16,12 +16,12 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
 			$this->email = $email;
 		}
 	}
-	function createToken (object $body): string{
+	function createToken (object|array $body): string{
 		$key = $_ENV['JWT_KEY'];
 		$token = JWT::encode($body, $key, 'HS256');
 		return $token;
 	}
-	function verifyToken (string $token): bool|object {
+	function verifyToken (string $token): bool|object|array {
 		$key = $_ENV['JWT_KEY'];
 		try {
 			$decoded = JWT::decode($token, new Key($key, 'HS256'));
