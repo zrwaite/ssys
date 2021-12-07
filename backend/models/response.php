@@ -1,5 +1,6 @@
 <?php
 header('Content-Type:application/json; charset=utf-8');
+ini_set('error_log', __DIR__."/../modules/logs/errors.txt");
 class Response { //Class for json response 
     public bool $success;
     public int $status;
