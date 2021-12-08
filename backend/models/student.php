@@ -3,60 +3,47 @@ if (file_exists(__DIR__."/registrant.php")){
 	//Imports
 	require_once __DIR__."/registrant.php";
 	class PostStudent extends PostRegistrant { //Class for json response 
-		public string $email;
-		public string $fname;
-		public string $lname;
-		public string $password;
-		public string $hash;
-		public string|null $teacher_email;
+		public string $email, $fname, $lname, $password, $hash;
+        public string|null $teacher_email;
 		public int|null $teacher_id;
 		public int $confirmation_code;
 		public bool $password_set;
 		public function __construct(){
-			$this->password_set = false;
-			$this->teacher_email = null;
-			$this->teacher_id = null;
-			$this->fname = "Person";
-			$this->lname = "Smith";
-			$this->createConfirmationCode();
-		}
-	}
-	class GetStudent {
-		public int $id;
-		public string $fname;
-		public string $lname;
-		public string $email;
-		public bool $email_confirmed;
-		public string|null $teacher_email;
-		public int|null $teacher_id;
-		public bool $password_set;
-		public int|null $grade;
-		public string|null $image_link;
-		public bool $image_approved;
-		public string|null $school;
-		public string|null $shirt_size;
-		public int $shirts_ordered;
-		public string|null $city;
-		public string|null $workshop_choices;
-		public string|null $instagram;
-		public string|null $diet;
-		public string|null $workshop_order;
-		public string|null $video_link;
-		public bool $video_approved;
-		public string|null $bio;
-		public string|null $additional_info;
-		public string|null $emergency_contact;
-		public string $account_enabled;
-		public function __construct(){
-		}
-		public function parseResult(object|array $result): bool {
-			if (!boolval($result['id'])) {return false;}
-			$this->id = intval($result['id']);
-			$this->fname = $result['fname'];
-			$this->lname = $result['lname'];
-			$this->email = $result['email'];
-			$this->email_confirmed = boolval($result['email_confirmed']);
-			$this->teacher_email = $result['teacher_email'];
+            parent::__construct();
+            $this->password_set = false;
+            $this->teacher_email = null;
+            $this->teacher_id = null;
+            $this->fname = "Person";
+            $this->lname = "Smith";
+            $this->createConfirmationCode();
+        }
+    }
+
+    class GetStudent
+    {
+        public int $id, $shirts_ordered;
+        public string $fname, $lname, $email;
+        public int|null $teacher_id, $grade;
+        public bool $email_confirmed, $password_set, $image_approved, $video_approved, $account_enabled;
+        public string|null $teacher_email, $image_link, $school, $shirt_size, $city, $workshop_choices;
+        public string|null $instagram, $diet, $workshop_order, $video_link;
+        public string|null $bio, $additional_info, $emergency_contact;
+
+        public function __construct()
+        {
+        }
+
+        public function parseResult(object|array $result): bool
+        {
+            if (!boolval($result['id'])) {
+                return false;
+            }
+            $this->id = intval($result['id']);
+            $this->fname = $result['fname'];
+            $this->lname = $result['lname'];
+            $this->email = $result['email'];
+            $this->email_confirmed = boolval($result['email_confirmed']);
+            $this->teacher_email = $result['teacher_email'];
 			$this->teacher_id = intval($result['teacher_id']);
 			$this->password_set = boolval($result['password_set']);
 			$this->grade = intval($result['grade']);
