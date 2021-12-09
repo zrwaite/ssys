@@ -15,5 +15,3 @@ class Response { //Class for json response
         $this->request_type = null;
     }
 }
-
-?>

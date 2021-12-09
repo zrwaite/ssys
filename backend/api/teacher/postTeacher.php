@@ -36,15 +36,20 @@ $password = getBody("password");
 if ($password) $teacher->password = $password;
 else array_push($res->errors, "Must include password");
 $res->errors = array_merge($res->errors, $teacher->checkPassword());
-if (count($res->errors)==0){
-	$teacher->createHash();
-	try {
-		$result = DB::queryFirstRow("SELECT id FROM ssys22_teachers WHERE email=%s LIMIT 1", $email);
-		if (!$result){
-			DB::insert('ssys22_teachers', array(
-				'email' => $teacher->email,
-				'fname' => $teacher->fname,
-				'lname' => $teacher->lname,
+
+$registrant_type = getBody("registration_type");
+if ($registrant_type) $teacher->registrant_type = $registrant_type;
+else array_push($res->errors, "Must include registrant_type");
+
+if (count($res->errors) == 0) {
+    $teacher->createHash();
+    try {
+        $result = DB::queryFirstRow("SELECT id FROM ssys22_teachers WHERE email=%s LIMIT 1", $email);
+        if (!$result) {
+            DB::insert('ssys22_teachers', array(
+                'email' => $teacher->email,
+                'fname' => $teacher->fname,
+                'lname' => $teacher->lname,
 				'password_hash' => $teacher->hash,
 				'confirmation_code' => $teacher->confirmation_code
 			));
@@ -60,4 +65,3 @@ if (count($res->errors)==0){
 }
 http_response_code($res->status);
 echo json_encode($res);
-?>

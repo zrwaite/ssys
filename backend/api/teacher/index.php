@@ -14,4 +14,4 @@ switch ($requestType){
 		require __DIR__."/./deleteTeacher.php";
 		break;
 }
-?>
+//TODO add request_type to teacher responses

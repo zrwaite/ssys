@@ -22,6 +22,7 @@ $res->request_type = "PUT";
 #get post queries
 $email = getBody("email");
 $puts = array();
+//TODO refactor put switch case to exist on registrant class, inherited by student and teacher class.
 if(!$email) array_push($res->errors, "Must include email");
 else {
     $params = ["fname", "lname", "teacher_email", "teacher_id", "password", "grade", "image_link" ,"school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "instagram", "diet", "workshop_order", "video_link", "bio", "additional_info", "emergency_contact", "registration_type"];

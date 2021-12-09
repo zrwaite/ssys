@@ -98,4 +98,3 @@ if (count($res->errors)==0){
 }
 http_response_code($res->status);
 echo json_encode($res);
-?>

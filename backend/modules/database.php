@@ -18,4 +18,3 @@ if (file_exists(__DIR__."/../vendor/autoload.php")
 
 } else {echo "Import error";}
 //https://stackoverflow.com/questions/5371828/relative-path-in-require-once-doesnt-work
-?>

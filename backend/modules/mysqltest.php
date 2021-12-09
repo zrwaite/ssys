@@ -8,4 +8,3 @@ foreach ($accounts as $account) {
     echo $account['id'] . "\n";
 }
 echo "Connected successfully";
-?>

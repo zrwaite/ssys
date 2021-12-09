@@ -12,4 +12,3 @@ function checkPassword(string $password): array{
 	if (!preg_match('/[^a-zA-Z\d]/', $password)) array_push($errors, "password must contain special character");
 	return ($errors);
 }
-?>

@@ -173,3 +173,56 @@ QUERY: SELECT id, password_hash FROM ssys22_students WHERE email='superzrw@gmail
 RUNTIME: 0.350952 ms
 RETURNED ROWS: 1
 
+[2021-12-09 04:53:40]
+QUERY: SELECT id, fname, lname, email, email_confirmed, teacher_email, teacher_id, password_set, grade, image_link, image_approved ,school ,shirt_size ,shirts_ordered ,city ,workshop_choices ,instagram ,diet ,workshop_order ,video_link ,video_approved ,bio ,additional_info ,emergency_contact ,account_enabled FROM ssys22_students WHERE email='superzrw@gmail.com' LIMIT 1
+RUNTIME: 9.857893 ms
+RETURNED ROWS: 1
+
+[2021-12-09 04:53:44]
+QUERY: SELECT id, fname, lname, email, email_confirmed, teacher_email, teacher_id, password_set, grade, image_link, image_approved ,school ,shirt_size ,shirts_ordered ,city ,workshop_choices ,instagram ,diet ,workshop_order ,video_link ,video_approved ,bio ,additional_info ,emergency_contact ,account_enabled FROM ssys22_students WHERE email='superzrw@gmail.com' LIMIT 1
+RUNTIME: 0.823975 ms
+RETURNED ROWS: 1
+
+[2021-12-09 04:53:46]
+QUERY: SELECT id, fname, lname, email, email_confirmed, teacher_email, teacher_id, password_set, grade, image_link, image_approved ,school ,shirt_size ,shirts_ordered ,city ,workshop_choices ,instagram ,diet ,workshop_order ,video_link ,video_approved ,bio ,additional_info ,emergency_contact ,account_enabled FROM ssys22_students WHERE email='superzrw@gmail.com' LIMIT 1
+RUNTIME: 0.355005 ms
+RETURNED ROWS: 1
+
+[2021-12-09 04:54:04]
+QUERY: SELECT id, fname, lname, email, email_confirmed, teacher_email, teacher_id, password_set, grade, image_link, image_approved ,school ,shirt_size ,shirts_ordered ,city ,workshop_choices ,instagram ,diet ,workshop_order ,video_link ,video_approved ,bio ,additional_info ,emergency_contact ,account_enabled FROM ssys22_students WHERE email='superzrw@gmail.com' LIMIT 1
+RUNTIME: 0.382900 ms
+RETURNED ROWS: 1
+
+[2021-12-09 05:02:27]
+QUERY: SELECT id FROM ssys22_students WHERE email='superzrr@gmail.com' LIMIT 1
+RUNTIME: 1.302004 ms
+
+[2021-12-09 05:02:32]
+QUERY: SELECT id FROM ssys22_students WHERE email='superzrw@gmail.com' LIMIT 1
+RUNTIME: 0.368118 ms
+RETURNED ROWS: 1
+
+[2021-12-09 05:02:32]
+QUERY: UPDATE `ssys22_students` SET `fname`='Zoc', `lname`='White' WHERE email='superzrw@gmail.com'
+RUNTIME: 1.055956 ms
+
+[2021-12-09 05:02:36]
+QUERY: SELECT id FROM ssys22_students WHERE email='superzrw@gmail.com' LIMIT 1
+RUNTIME: 0.303030 ms
+RETURNED ROWS: 1
+
+[2021-12-09 05:02:36]
+QUERY: UPDATE `ssys22_students` SET `fname`='Zac', `lname`='White' WHERE email='superzrw@gmail.com'
+RUNTIME: 0.915051 ms
+AFFECTED ROWS: 1
+
+[2021-12-09 05:03:05]
+QUERY: SELECT id FROM ssys22_students WHERE email='superzrw@gmail.com' LIMIT 1
+RUNTIME: 0.303030 ms
+RETURNED ROWS: 1
+
+[2021-12-09 05:03:05]
+QUERY: UPDATE `ssys22_students` SET `fname`='Billy', `lname`='White' WHERE email='superzrw@gmail.com'
+RUNTIME: 0.401974 ms
+AFFECTED ROWS: 1
+

@@ -16,10 +16,10 @@ $res = new Response();
 
 #get post queries
 $email = getBody("email");
+$puts = array();
 if(!$email) array_push($res->errors, "Must include email");
 else {
     $params = ["fname", "lname", "password", "image_link" ,"school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "workshop_order", "video_link", "bio", "additional_info"];
-    $puts = array();
     for ($i=0; $i<count($params); $i++){
         $param = getBody($params[$i]);
         if ($param) $puts[$params[$i]] = $param;
@@ -43,4 +43,3 @@ if (count($res->errors)==0){
 }
 http_response_code($res->status);
 echo json_encode($res);
-?>

@@ -5,7 +5,7 @@ require_once __DIR__."/../modules/checkers.php";
 
 class PostRegistrant
 { //Class for json response
-    public string $email, $fname, $lname, $password, $hash;
+    public string $email, $fname, $lname, $password, $hash, $registrant_type;
     //TODO add registrant type everywhere
     public int $confirmation_code;
 
@@ -54,7 +54,7 @@ class PostRegistrant
 class GetRegistrant
 {
     public int $id, $shirts_ordered;
-    public string $fname, $lname, $email; //Primary information
+    public string $fname, $lname, $email, $registrant_type; //Primary information
     public bool $email_confirmed, $video_approved, $account_enabled;
     public string|null $image_link, $school, $city, $video_link; //Display Information
     public string|null $workshop_order, $shirt_size, $workshop_choices; //Conference Information
@@ -81,6 +81,7 @@ class GetRegistrant
         $this->bio = $result['bio'];
         $this->additional_info = $result['additional_info'];
         $this->account_enabled = boolval($result['account_enabled']);
+        $this->registrant_type = $result['registrant_type'];
         return true;
     }
 }
