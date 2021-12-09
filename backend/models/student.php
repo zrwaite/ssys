@@ -1,4 +1,9 @@
 <?php
+
+use JetBrains\PhpStorm\ArrayShape;
+
+//dev array shape import
+
 if (file_exists(__DIR__ . "/registrant.php")) {
     //Imports
     require_once __DIR__ . "/registrant.php";
@@ -8,6 +13,7 @@ if (file_exists(__DIR__ . "/registrant.php")) {
         public string|null $teacher_email;
         public int|null $teacher_id;
         public bool $password_set;
+        public string $registrant_type;
 
         public function __construct()
         {
@@ -17,6 +23,50 @@ if (file_exists(__DIR__ . "/registrant.php")) {
             $this->teacher_id = null;
             $this->fname = "Person";
             $this->lname = "Smith";
+        }
+    }
+
+    class PutStudent extends PutRegistrant
+    {
+        public array $student_params = ["teacher_email", "teacher_id", "grade", "instagram", "emergency_contact"];
+
+        #[ArrayShape(["errors" => "array", "puts" => "array"])] //dev array shape
+        public function getPutArray(): array
+        {
+            $errors = array(); //Stores errors
+            $puts = array(); //Stores put array
+            for ($i = 0; $i < count($this->student_params); $i++) { //Go through each parameter unique to students
+                $current_param = $this->student_params[$i];
+                $error = false;
+                $param = getBody($current_param);
+                if (!$param) continue; //If the parameter isn't defined continue, otherwise check the switch for special cases
+                switch ($current_param) {
+                    case "teacher_email":
+                        if (!checkEmail($param)) {
+                            $error = true;
+                            array_push($errors, "teacher_email is invalid");
+                        }
+                        break;
+                    case "grade":
+                        if (!is_numeric($param)) {
+                            $error = true;
+                            array_push($errors, "grade must be a number");
+                        } else  $param = intval($param);
+                        break;
+                    default:
+                        $error = true;
+                        array_push($errors, "Zac you forgot to implement the put switch for $current_param");
+                    //TODO implement all put request switch cases
+                }
+                if (!$error) $puts[$current_param] = $param;
+            }
+            $parent_errors_and_puts = parent::getPutArray();
+            if (count($parent_errors_and_puts["errors"]) != 0) $errors = array_merge($errors, $parent_errors_and_puts["errors"]);
+            if (count($parent_errors_and_puts["puts"]) != 0) $puts = array_merge($puts, $parent_errors_and_puts["puts"]);
+            return [
+                "errors" => $errors,
+                "puts" => $puts,
+            ];
         }
     }
 

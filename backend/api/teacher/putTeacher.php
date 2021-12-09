@@ -1,30 +1,30 @@
 <?php
-
-use Symfony\Component\Dotenv\Dotenv;
 //Imports
-require_once __DIR__."/../../vendor/autoload.php";
-require_once __DIR__."/../../models/response.php";
-require_once __DIR__."/../../modules/database.php"; //Connect to database
-require_once __DIR__."/../../modules/readParams.php";
-require_once __DIR__."/../../models/teacher.php";
+use Symfony\Component\Dotenv\Dotenv;
+
+require_once __DIR__ . "/../../vendor/autoload.php";
+require_once __DIR__ . "/../../models/response.php"; //Standardized response
+require_once __DIR__ . "/../../modules/database.php"; //Connect to database
+require_once __DIR__ . "/../../modules/readParams.php"; //Read body and query parameters as form data and json
+require_once __DIR__ . "/../../models/teacher.php"; //Teacher api class
 
 $dotenv = new Dotenv();
-$dotenv->load(__DIR__."/../../modules/env/.env");
+$dotenv->load(__DIR__ . "/../../modules/env/.env");
 
 //Main
 $res = new Response();
+$res->request_type = "PUT";
+$teacher = new PutTeacher();
 
 #get post queries
 $email = getBody("email");
 $puts = array();
-if(!$email) array_push($res->errors, "Must include email");
+if (!$email) array_push($res->errors, "Must include email");
 else {
-    $params = ["fname", "lname", "password", "image_link" ,"school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "workshop_order", "video_link", "bio", "additional_info"];
-    for ($i=0; $i<count($params); $i++){
-        $param = getBody($params[$i]);
-        if ($param) $puts[$params[$i]] = $param;
-    }
-    if (count($puts)==0) array_push($res->errors, "You didn't send anything to update");
+    $teacher_puts_and_errors = $teacher->getPutArray();
+    $res->errors = $teacher_puts_and_errors["errors"];
+    $puts = $teacher_puts_and_errors["puts"];
+    if (count($puts) == 0 && count($res->errors) == 0) array_push($res->errors, "You didn't send anything to update ");
 }
 if (count($res->errors)==0){
     try {

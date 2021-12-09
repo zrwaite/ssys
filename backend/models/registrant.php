@@ -1,17 +1,20 @@
 <?php
 //Imports
 
-require_once __DIR__."/../modules/checkers.php";
+use JetBrains\PhpStorm\ArrayShape;
+
+//dev array shape import
+
+require_once __DIR__ . "/../modules/checkers.php";
 
 class PostRegistrant
 { //Class for json response
-    public string $email, $fname, $lname, $password, $hash, $registrant_type;
-    //TODO add registrant type everywhere
+    public string $email = "";
+    public string $fname, $lname, $password, $hash;
     public int $confirmation_code;
 
     public function __construct()
     {
-        $this->email = "";
         $this->createConfirmationCode();
     }
 
@@ -48,6 +51,45 @@ class PostRegistrant
     public function createHash()
     {
         $this->hash = password_hash($this->password, PASSWORD_DEFAULT);
+    }
+}
+
+class PutRegistrant
+{
+    public array $params = ["fname", "lname", "password", "image_link", "school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "video_link", "bio", "additional_info"];
+
+    #[ArrayShape(["errors" => "array", "puts" => "array"])] //dev Array Shape reference
+    public function getPutArray(): array
+    {
+        $errors = array();
+        $puts = array();
+        for ($i = 0; $i < count($this->params); $i++) {
+            $current_param = $this->params[$i];
+            $error = false;
+            $param = getBody($current_param);
+            if (!$param) continue; //If the parameter isn't defined continue, otherwise check the switch for special cases
+            switch ($current_param) {
+                case "fname":
+                case "lname": //These do not have a special case right now.
+                    break;
+                case "password":
+                    $password_errors = checkPassword($param);
+                    if (count($password_errors) != 0) {
+                        $errors = array_merge($errors, $password_errors);
+                        $error = true;
+                    }
+                    break;
+                default:
+                    $error = true;
+                    array_push($errors, "Zac you forgot to implement put switch for $current_param");
+                    break;
+            }
+            if (!$error) $puts[$current_param] = $param;
+        } //End of for loop
+        return [
+            "errors" => $errors,
+            "puts" => $puts,
+        ];
     }
 }
 
