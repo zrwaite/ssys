@@ -1,49 +1,49 @@
 <?php
 
-assert($_SERVER['REQUEST_METHOD']=="POST");
+assert($_SERVER['REQUEST_METHOD'] == "POST");
 
 use Symfony\Component\Dotenv\Dotenv;
 
 //Imports
-require_once __DIR__."/../../vendor/autoload.php";
-require_once __DIR__."/../../models/response.php";
-require_once __DIR__."/../../modules/database.php"; //Connect to database
-require_once __DIR__."/../../modules/readParams.php";
-require_once __DIR__."/../../models/student.php";
+require_once __DIR__ . "/../../vendor/autoload.php";
+require_once __DIR__ . "/../../models/response.php";
+require_once __DIR__ . "/../../modules/database.php"; //Connect to database
+require_once __DIR__ . "/../../modules/readParams.php";
+require_once __DIR__ . "/../../models/student.php";
 
 $dotenv = new Dotenv();
-$dotenv->load(__DIR__."/../../modules/env/.env");
+$dotenv->load(__DIR__ . "/../../modules/env/.env");
 
 //Main
 //Object declaraion
 $res = new Response();
+$res->request_type = "POST";
+
 $student = new PostStudent();
-$res->response = json_decode(file_get_contents('php://input'), true);
+$res->objects = json_decode(file_get_contents('php://input'), true);
 //get post queries
 $email = getBody("email");
-if($email) {
+if ($email) {
 	$student->email = $email;
-	if(!$student->checkEmail()) array_push($res->errors, "Invalid email");
-}
-else array_push($res->errors, "Must include email");
+	if (!$student->checkEmail()) array_push($res->errors, "Invalid email");
+} else array_push($res->errors, "Must include email");
 
+$registrant_type = getBody("registration_type");
+if ($registrant_type) $student->registrant_type = $registrant_type;
+else array_push($res->errors, "Must include registrant_type");
 
-$registration_type = getBody("registration_type");
-if ($registration_type) $student->registration_type = $registration_type;
-else array_push($res->errors, "Must include registration type");
-
-if (count($res->errors)==0){
-	switch ($registration_type) {
+if (count($res->errors) == 0) {
+	$fname = getBody("fname");
+	$lname = getBody("lname");
+	$password = getBody("password");
+	switch ($registrant_type) {
 		case "individual":
-			$fname = getBody("fname");
 			if ($fname) $student->fname = $fname;
 			else array_push($res->errors, "Must include fname");
 
-			$lname = getBody("lname");
 			if ($lname) $student->lname = $lname;
 			else array_push($res->errors, "Must include lname");
 
-			$password = getBody("password");
 			if ($password) $student->password = $password;
 			else array_push($res->errors, "Must include password");
 			$res->errors = array_merge($res->errors, $student->checkPassword());
@@ -51,13 +51,9 @@ if (count($res->errors)==0){
 
 			break;
 		case "student":
-			$fname = getBody("fname");
 			if ($fname) $student->fname = $fname;
-
-			$lname = getBody("lname");
 			if ($lname) $student->lname = $lname;
 
-			$password = getBody("password");
 			if ($password) $student->password = $password;
 			else $student->createPassword();
 
@@ -88,7 +84,7 @@ if (count($res->errors)==0){
 				'teacher_email' => $student->teacher_email,
 				'teacher_id' => $student->teacher_id,
 				'confirmation_code' => $student->confirmation_code,
-				'registration_type' => $student->registration_type
+				'registrant_type' => $student->registrant_type //TODO change name of registration type in sql
 			));
 			$res->status = 200;
 			$res->success = true;

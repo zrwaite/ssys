@@ -6,11 +6,13 @@ class Response { //Class for json response
     public int $status;
     public array $errors;
     public mixed $objects;
+    public string|null $request_type;
     public function __construct(){
         $this->success = false;
         $this->status = 400;
         $this->errors = array();
         $this->objects = array();
+        $this->request_type = null;
     }
 }
 
