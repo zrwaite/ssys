@@ -1,18 +1,20 @@
 <?php
-
+//Imports
 use Symfony\Component\Dotenv\Dotenv;
-require_once __DIR__."/../../vendor/autoload.php";
-require_once __DIR__."/../../models/response.php";
-require_once __DIR__."/../../modules/database.php"; //Connect to database
-require_once __DIR__."/../../modules/readParams.php";
-require_once __DIR__."/../../models/teacher.php";
+
+require_once __DIR__ . "/../../vendor/autoload.php";
+require_once __DIR__ . "/../../models/response.php"; //Standardized response
+require_once __DIR__ . "/../../modules/database.php"; //Connect to database
+require_once __DIR__ . "/../../modules/readParams.php"; //Read body and query parameters as form data and json
+require_once __DIR__ . "/../../models/teacher.php"; //Teacher api class
 
 $dotenv = new Dotenv();
-$dotenv->load(__DIR__."/../../modules/env/.env");
+$dotenv->load(__DIR__ . "/../../modules/env/.env");
 
 //Main
 #Object declaraion
 $res = new Response();
+$res->request_type = "GET";
 $teacher = new GetTeacher();
 $email = getQuery("email");
 if(!$email) array_push($res->errors, "missing email query");

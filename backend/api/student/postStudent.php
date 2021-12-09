@@ -84,7 +84,7 @@ if (count($res->errors)==0){
 				'teacher_email' => $student->teacher_email,
 				'teacher_id' => $student->teacher_id,
 				'confirmation_code' => $student->confirmation_code,
-				'registrant_type' => $student->registrant_type //TODO change name of registration type in sql
+				'registrant_type' => $student->registrant_type
 			));
 			$res->status = 200;
 			$res->success = true;

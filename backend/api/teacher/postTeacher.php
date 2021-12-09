@@ -1,19 +1,20 @@
 <?php
-
-use Symfony\Component\Dotenv\Dotenv;
 //Imports
-require_once __DIR__."/../../vendor/autoload.php";
-require_once __DIR__."/../../models/response.php";
-require_once __DIR__."/../../modules/database.php"; //Connect to database
-require_once __DIR__."/../../modules/readParams.php";
-require_once __DIR__."/../../models/teacher.php";
+use Symfony\Component\Dotenv\Dotenv;
+
+require_once __DIR__ . "/../../vendor/autoload.php";
+require_once __DIR__ . "/../../models/response.php"; //Standardized response
+require_once __DIR__ . "/../../modules/database.php"; //Connect to database
+require_once __DIR__ . "/../../modules/readParams.php"; //Read body and query parameters as form data and json
+require_once __DIR__ . "/../../models/teacher.php"; //Teacher api class
 
 $dotenv = new Dotenv();
-$dotenv->load(__DIR__."/../../modules/env/.env");
+$dotenv->load(__DIR__ . "/../../modules/env/.env");
 
 //Main
 //Object declaraion
 $res = new Response();
+$res->request_type = "POST";
 $teacher = new PostTeacher();
 
 //get post queries
@@ -36,10 +37,6 @@ $password = getBody("password");
 if ($password) $teacher->password = $password;
 else array_push($res->errors, "Must include password");
 $res->errors = array_merge($res->errors, $teacher->checkPassword());
-
-$registrant_type = getBody("registration_type");
-if ($registrant_type) $teacher->registrant_type = $registrant_type;
-else array_push($res->errors, "Must include registrant_type");
 
 if (count($res->errors) == 0) {
     $teacher->createHash();
