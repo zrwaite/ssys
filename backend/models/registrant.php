@@ -24,21 +24,27 @@ class PostRegistrant
         $data = '123456789';
         $this->confirmation_code = intval(substr(str_shuffle($data), 0, $chars));
     }
-    public function checkEmail(): bool {
+
+    public function checkEmail(): bool
+    {
         return checkEmail($this->email);
     }
-    public function checkPassword():array {
+
+    public function checkPassword(): array
+    {
         return checkPassword($this->password);
     }
-    public function createPassword(){
+
+    public function createPassword()
+    {
         $allNums = "1234567890";
         $allUppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $allLowers = "abcdefghijklmnopqrstuvwxyz";
         $allSpecial = "!@#$%^&*?";
-        $numNums = mt_rand(2,5);
-        $numUppers = mt_rand(2,5);
-        $numLowers = mt_rand(2,5);
-        $numSpecials = mt_rand(2,5);
+        $numNums = mt_rand(2, 5);
+        $numUppers = mt_rand(2, 5);
+        $numLowers = mt_rand(2, 5);
+        $numSpecials = mt_rand(2, 5);
         $nums = substr(str_shuffle($allNums), 0, $numNums);
         $uppers = substr(str_shuffle($allUppers), 0, $numUppers);
         $lowers = substr(str_shuffle($allLowers), 0, $numLowers);

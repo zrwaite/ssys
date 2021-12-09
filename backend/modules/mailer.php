@@ -1,10 +1,10 @@
 <?php
 
-use Symfony\Component\Dotenv\Dotenv;
+use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
+use Symfony\Component\Dotenv\Dotenv;
 
 //use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 //Imports
 require_once __DIR__ . "/../vendor/autoload.php";

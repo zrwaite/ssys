@@ -17,8 +17,8 @@ $res->request_type = "PUT";
 $teacher = new PutTeacher();
 
 #get post queries
-$email = getBody("email");
 $puts = array();
+$email = getBody("email");
 if (!$email) array_push($res->errors, "Must include email");
 else {
     $teacher_puts_and_errors = $teacher->getPutArray();
