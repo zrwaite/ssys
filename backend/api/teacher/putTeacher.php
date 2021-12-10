@@ -21,7 +21,7 @@ $puts = array();
 $email = getBody("email");
 if (!$email) array_push($res->errors, "Must include email");
 else {
-    $teacher_puts_and_errors = $teacher->getPutArray();
+    $teacher_puts_and_errors = $teacher->getPutArray($email);
     $res->errors = $teacher_puts_and_errors["errors"];
     $puts = $teacher_puts_and_errors["puts"];
     if (count($puts) == 0 && count($res->errors) == 0) array_push($res->errors, "You didn't send anything to update ");

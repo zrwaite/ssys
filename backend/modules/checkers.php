@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . "/database.php";
+
 function checkEmail(string $email): bool
 {
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) return true;
@@ -14,4 +16,12 @@ function checkPassword(string $password): array
     if (!preg_match('/\d/', $password)) array_push($errors, "password must contain number");
     if (!preg_match('/[^a-zA-Z\d]/', $password)) array_push($errors, "password must contain special character");
     return ($errors);
+}
+
+function validatePassword(string $password, string $email): int
+{
+    $query = "ssys22_teachers.id, ssys22_teachers.password_hash, ssys22_students.id, ssys22_students.password_hash";
+    $result = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_teachers, ssys22_students WHERE ssys22_students.email=%s OR ssys22_students.email=%s LIMIT 1", $email, $email);
+    if ($result['id']) return (password_verify($password, $result['password_hash'])) ? 200 : 400;
+    else return 404;
 }

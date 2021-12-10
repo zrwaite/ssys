@@ -65,7 +65,7 @@ class PutRegistrant
     public array $params = ["fname", "lname", "password", "image_link", "school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "video_link", "bio", "additional_info"];
 
     #[ArrayShape(["errors" => "array", "puts" => "array"])] //dev Array Shape reference
-    public function getPutArray(): array
+    public function getPutArray($email): array
     {
         $errors = array();
         $puts = array();
@@ -79,10 +79,23 @@ class PutRegistrant
                 case "lname": //These do not have a special case right now.
                     break;
                 case "password":
-                    $password_errors = checkPassword($param);
+                    $old_password = getBody("old_password");
+                    if (!$old_password) {
+                        array_push($errors, "old_password not defined");
+                    } else {
+                        $password_status = validatePassword($old_password, $email);
+                        if ($password_status == 400 || $password_status == 404) $error = true;
+                        if ($password_status == 400) array_push($errors, "invalid password"); //Check for failed password
+                        else if ($password_status == 404) array_push($errors, "account not found"); //Check for failed account
+                    }
+                    $password_errors = checkPassword($param); //Check that new password is valid
                     if (count($password_errors) != 0) {
                         $errors = array_merge($errors, $password_errors);
                         $error = true;
+                    }
+                    if (!$error) {
+                        $puts["password_hash"] = password_hash($param, PASSWORD_DEFAULT);
+                        $error = true; //Set to true to avoid adding password to database instead of hash
                     }
                     break;
                 default:

@@ -17,7 +17,7 @@ class PutTeacher extends PutRegistrant
     public array $teacher_params = [];
 
     #[ArrayShape(["errors" => "array", "puts" => "array"])] //dev array shape
-    public function getPutArray(): array
+    public function getPutArray($email): array
     {
         $errors = array(); //Stores errors
         $puts = array(); //Stores put array
@@ -34,7 +34,7 @@ class PutTeacher extends PutRegistrant
 //            }
 //            if (!$error) $puts[$current_param] = $param;
 //        }
-        $parent_errors_and_puts = parent::getPutArray();
+        $parent_errors_and_puts = parent::getPutArray($email);
         if (count($parent_errors_and_puts["errors"]) != 0) $errors = array_merge($errors, $parent_errors_and_puts["errors"]);
         if (count($parent_errors_and_puts["puts"]) != 0) $puts = array_merge($puts, $parent_errors_and_puts["puts"]);
         return [
