@@ -51,6 +51,7 @@ if (count($res->errors) == 0) {
             ));
             $res->status = 200;
             $res->success = true;
+            $res->objects = $teacher->createResponse();
             //send email with link to confirm email page with confirmation_code
         } else {
             array_push($res->errors, "Email already in use");

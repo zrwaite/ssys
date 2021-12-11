@@ -6,6 +6,7 @@ use JetBrains\PhpStorm\ArrayShape;
 //dev array shape import
 
 require_once __DIR__ . "/../modules/checkers.php";
+require_once __DIR__ . "/../auth/tokens.php";
 
 class PostRegistrant
 { //Class for json response
@@ -57,6 +58,22 @@ class PostRegistrant
     public function createHash()
     {
         $this->hash = password_hash($this->password, PASSWORD_DEFAULT);
+    }
+
+    #[ArrayShape(["request" => "mixed", "token" => "string"])] //Dev Array shape implementation
+    public function createResponse(): array
+    {
+        return [
+            "request" => json_decode(file_get_contents('php://input'), true),
+            "token" => $this->createSetToken()
+        ];
+    }
+
+    public function createSetToken(): string
+    {
+        $token = createToken(new tokenBody($this->email));
+        setcookie("token", $token, time() + (86400 * 30), "/");
+        return $token;
     }
 }
 

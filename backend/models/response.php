@@ -16,6 +16,6 @@ class Response
         $this->status = 400;
         $this->errors = array();
         $this->objects = array();
-        $this->request_type = null;
+        $this->request_type = $_SERVER['REQUEST_METHOD'];
     }
 }
