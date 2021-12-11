@@ -62,7 +62,7 @@ class PostRegistrant
 
 class PutRegistrant
 {
-    public array $params = ["fname", "lname", "password", "image_link", "school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "video_link", "bio", "additional_info"];
+    public array $params = ["fname", "lname", "password", "school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "video_link", "bio", "additional_info"];
 
     #[ArrayShape(["errors" => "array", "puts" => "array"])] //dev Array Shape reference
     public function getPutArray($email): array
