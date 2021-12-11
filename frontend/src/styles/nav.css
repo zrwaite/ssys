@@ -1,0 +1,19 @@
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-item {
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.nav-link {
+    text-decoration: none;
+}
