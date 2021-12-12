@@ -16,16 +16,17 @@ $password = getBody("password");
 if (!$email) array_push($res->errors, "missing email query");
 if (!$password) array_push($res->errors, "missing password query");
 if (count($res->errors) == 0) {
-    $res->status = validatePassword($password, $email); //Validate password, get response status
+    $query = "ssys22_teachers.registrant_type, ssys22_students.registrant_type, ssys22_teachers.id, ssys22_teachers.password_hash, ssys22_students.id, ssys22_students.password_hash";
+    $result = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_teachers, ssys22_students WHERE ssys22_students.email=%s OR ssys22_students.email=%s LIMIT 1", $email, $email);
+    if ($result['id']) $res->status = (password_verify($password, $result['password_hash'])) ? 200 : 400;
+    else $res->status = 404;
+
     if ($res->status == 200) {
         $tokenBody = new tokenBody($email);
         $token = createToken($tokenBody);
         $res->status = 200;
         $res->success = true;
-        $res->objects = $token;
-        $cookie_name = "token";
-        $cookie_value = $token;
-        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+        $res->objects = ["token" => $token, "registrant_type" => $result['registrant_type']];
     } else if ($res->status == 404) array_push($res->errors, "account not found");
     else array_push($res->errors, "signin failed");
 }
