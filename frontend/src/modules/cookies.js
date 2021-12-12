@@ -1,5 +1,5 @@
 const createCookie = (name, value) => {
-    document.cookie = name + "=" + value + "; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+    document.cookie = name + "=" + value + "; path=/";
 }
 const deleteCookie = (name) => {
     document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";

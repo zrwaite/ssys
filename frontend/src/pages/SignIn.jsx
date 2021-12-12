@@ -22,7 +22,6 @@ function SignIn() {
     }
     handleInputChange = handleInputChange.bind(this);
     const sendForm = async () => {
-        console.log(state);
         let json = await httpReq("/ssys/backend/auth/signin.php", "POST", {
             email: state.email,
             password: state.password
@@ -31,32 +30,34 @@ function SignIn() {
         let elements = [];
         if (response.success) {
             createCookie("email", state.email);
-            createCookie("token", response.objects);
-            elements.push(<p>Email: {state.email}</p>);
-            elements.push(<p>Token: {response.objects}</p>);
+            createCookie("registrant_type", response.objects.registrant_type);
+            createCookie("token", response.objects.token);
+            elements.push(<p>Email: {getCookie("email")}</p>);
+            elements.push(<p>Account Type: {getCookie("registrant_type")}</p>);
+            elements.push(<p>Token: {getCookie("token")}</p>);
         } else if (response.errors.length > 0) {
             for (let i = 0; i < response.errors.length; i++) {
                 elements.push(<p key={i}>{response.errors[i]}</p>);
             }
         }
-        ReactDOM.render(elements, document.getElementById('resVals'));
+        ReactDOM.render(elements, document.getElementById('signUpResult'));
     }
 
     return (
         <main>
             <header>
                 <h1>Sign In Page</h1>
-                <div>
-                    <label htmlFor={"email"}>Email: </label>
-                    <input type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
-                    <label htmlFor={"password"}>Password: </label>
-                    <input type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
-                    <button onClick={sendForm}>Submit</button>
-                </div>
-                <div id={"resVals"}>
-
-                </div>
             </header>
+            <div>
+                <label htmlFor={"email"}>Email: </label>
+                <input type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
+                <label htmlFor={"password"}>Password: </label>
+                <input type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
+                <button onClick={sendForm}>Submit</button>
+            </div>
+            <div id={"signUpResult"}>
+
+            </div>
         </main>
     );
 }
