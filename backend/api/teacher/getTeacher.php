@@ -19,7 +19,7 @@ $teacher = new GetTeacher();
 $email = getQuery("email");
 if (!$email) array_push($res->errors, "missing email query");
 if (count($res->errors) == 0) {
-    $query = "id, fname, lname, email, email_confirmed, image_link, school ,shirt_size ,shirts_ordered ,city ,workshop_choices ,diet ,workshop_order ,video_link ,video_approved ,bio ,additional_info ,account_enabled";
+    $query = "id, fname, lname, email, email_confirmed, image_link, school ,shirt_size ,shirts_ordered ,city ,workshop_choices ,diet ,workshop_order ,video_link ,video_approved ,bio ,additional_info ,account_enabled, registrant_type";
     $result = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_teachers WHERE email=%s LIMIT 1", $email);
     if ($teacher->parseResult($result)) {
         $res->status = 200;
