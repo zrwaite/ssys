@@ -3,6 +3,7 @@ import "../styles/styles.css";
 import {httpReq} from "../modules/http_requests";
 import {createCookie, getCookie} from "../modules/cookies";
 import ReactDOM from "react-dom";
+import {Navigate} from "react-router-dom";
 
 function StudentRegister(props) {
     let studentStyle
@@ -16,7 +17,8 @@ function StudentRegister(props) {
         fname: "",
         lname: "",
         teacher_email: "",
-        teacher_id: ""
+        teacher_id: "",
+        redirect: false
     });
     let handleInputChange = (event) => {
         const target = event.target;
@@ -28,7 +30,8 @@ function StudentRegister(props) {
             fname: state.fname,
             lname: state.lname,
             teacher_email: state.teacher_email,
-            teacher_id: state.teacher_id
+            teacher_id: state.teacher_id,
+            redirect: false
         };
         partialState[name] = value;
         setState(partialState);
@@ -61,6 +64,10 @@ function StudentRegister(props) {
             }
         }
         ReactDOM.render(elements, document.getElementById('studentRegistrationResult'));
+    }
+
+    if (state.redirect) {
+        return <Navigate to='/user'/>;
     }
 
     return (

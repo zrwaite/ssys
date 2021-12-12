@@ -2,12 +2,16 @@ import React, {useState} from "react";
 import "../styles/styles.css";
 import {httpReq} from "../modules/http_requests";
 import ReactDOM from "react-dom";
+import {Navigate} from "react-router-dom";
+
+
 import {createCookie, getCookie, deleteCookie} from "../modules/cookies";
 
 function SignIn() {
     let [state, setState] = useState({
         email: "",
-        password: ""
+        password: "",
+        redirect: false
     });
     let handleInputChange = (event) => {
         const target = event.target;
@@ -16,6 +20,7 @@ function SignIn() {
         let partialState = {
             email: state.email,
             password: state.password,
+            redirect: false
         };
         partialState[name] = value;
         setState(partialState);
@@ -27,24 +32,32 @@ function SignIn() {
             password: state.password
         })
         let response = JSON.parse(json);
-        let elements = [];
         if (response.success) {
             createCookie("email", state.email);
             createCookie("registrant_type", response.objects.registrant_type);
             createCookie("token", response.objects.token);
-            elements.push(<p>Email: {getCookie("email")}</p>);
-            elements.push(<p>Account Type: {getCookie("registrant_type")}</p>);
-            elements.push(<p>Token: {getCookie("token")}</p>);
+            setState({
+                email: state.email,
+                password: state.password,
+                redirect: true
+            });
+            // ReactDOM.render(<Link to="/user" >Go to user page</Link>, document.getElementById('signUpResult'));
         } else if (response.errors.length > 0) {
+            let elements = [];
             for (let i = 0; i < response.errors.length; i++) {
                 elements.push(<p key={i}>{response.errors[i]}</p>);
             }
+            ReactDOM.render(elements, document.getElementById('signUpResult'));
         }
-        ReactDOM.render(elements, document.getElementById('signUpResult'));
+    }
+
+    if (state.redirect) {
+        return <Navigate to='/user'/>;
     }
 
     return (
         <main>
+            {/*<Navigate to="/user" />*/}
             <header>
                 <h1>Sign In Page</h1>
             </header>

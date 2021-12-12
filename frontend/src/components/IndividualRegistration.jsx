@@ -3,6 +3,7 @@ import "../styles/styles.css";
 import {httpReq} from "../modules/http_requests";
 import {createCookie, getCookie} from "../modules/cookies";
 import ReactDOM from "react-dom";
+import {Navigate} from "react-router-dom";
 
 function IndividualRegister(props) {
     let individualStyle
@@ -15,6 +16,7 @@ function IndividualRegister(props) {
         password: "",
         fname: "",
         lname: "",
+        redirect: false
     });
 
     let handleInputChange = (event) => {
@@ -25,7 +27,8 @@ function IndividualRegister(props) {
             email: state.email,
             password: state.password,
             fname: state.fname,
-            lname: state.lname
+            lname: state.lname,
+            redirect: false
         };
         partialState[name] = value;
         setState(partialState);
@@ -56,6 +59,10 @@ function IndividualRegister(props) {
             }
         }
         ReactDOM.render(elements, document.getElementById('individualRegistrationResult'));
+    }
+
+    if (state.redirect) {
+        return <Navigate to='/user'/>;
     }
 
     return (
