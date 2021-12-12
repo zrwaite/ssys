@@ -33,9 +33,10 @@ if ($lname) $teacher->lname = $lname;
 else array_push($res->errors, "Must include lname");
 
 $password = getBody("password");
-if ($password) $teacher->password = $password;
-else array_push($res->errors, "Must include password");
-$res->errors = array_merge($res->errors, $teacher->checkPassword());
+if ($password) {
+    $teacher->password = $password;
+    $res->errors = array_merge($res->errors, $teacher->checkPassword());
+} else array_push($res->errors, "Must include password");
 
 if (count($res->errors) == 0) {
     $teacher->createHash();
@@ -49,6 +50,7 @@ if (count($res->errors) == 0) {
                 'password_hash' => $teacher->hash,
                 'confirmation_code' => $teacher->confirmation_code
             ));
+            $teacher->sendEmailConfirmation();
             $res->status = 200;
             $res->success = true;
             $res->objects = $teacher->createResponse();

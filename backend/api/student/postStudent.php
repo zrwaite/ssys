@@ -27,7 +27,7 @@ if ($email) {
     if (!$student->checkEmail()) array_push($res->errors, "Invalid email");
 } else array_push($res->errors, "Must include email");
 
-$registrant_type = getBody("registration_type");
+$registrant_type = getBody("registrant_type");
 if ($registrant_type) $student->registrant_type = $registrant_type;
 else array_push($res->errors, "Must include registrant_type");
 
@@ -43,9 +43,10 @@ if (count($res->errors) == 0) {
             if ($lname) $student->lname = $lname;
             else array_push($res->errors, "Must include lname");
 
-            if ($password) $student->password = $password;
-            else array_push($res->errors, "Must include password");
-            $res->errors = array_merge($res->errors, $student->checkPassword());
+            if ($password) {
+                $student->password = $password;
+                $res->errors = array_merge($res->errors, $student->checkPassword());
+            } else array_push($res->errors, "Must include password");
             $student->password_set = true;
 
             break;
@@ -53,12 +54,16 @@ if (count($res->errors) == 0) {
             if ($fname) $student->fname = $fname;
             if ($lname) $student->lname = $lname;
 
-            if ($password) $student->password = $password;
-            else $student->createPassword();
+            if ($password) {
+                $student->password = $password;
+                $res->errors = array_merge($res->errors, $student->checkPassword());
+                $student->password_set = true;
+            } else $student->createPassword();
 
             $teacher_email = getBody("teacher_email");
             if ($teacher_email) $student->teacher_email = $teacher_email;
             else array_push($res->errors, "Must include teacher_email");
+            //todo confirm teacher email matches id
 
             $teacher_id = getBody("teacher_id");
             if ($teacher_id) $student->teacher_id = $teacher_id;
@@ -83,8 +88,10 @@ if (count($res->errors) == 0) {
                 'teacher_email' => $student->teacher_email,
                 'teacher_id' => $student->teacher_id,
                 'confirmation_code' => $student->confirmation_code,
-                'registrant_type' => $student->registrant_type
+                'registrant_type' => $student->registrant_type,
+                'password_set' => $student->password_set
             ));
+            $student->sendEmailConfirmation();
             $res->status = 200;
             $res->success = true;
             $res->objects = $student->createResponse();
@@ -93,7 +100,7 @@ if (count($res->errors) == 0) {
             array_push($res->errors, "Email already in use");
         }
     } catch (Exception $e) {
-        echo 'Message: ' . $e->getMessage();
+        array_push($res->errors, "Teacher_ID is invalid");
     }
 }
 http_response_code($res->status);

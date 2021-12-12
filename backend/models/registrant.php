@@ -7,6 +7,8 @@ use JetBrains\PhpStorm\ArrayShape;
 
 require_once __DIR__ . "/../modules/checkers.php";
 require_once __DIR__ . "/../auth/tokens.php";
+require_once __DIR__ . "/../modules/mailer.php";
+
 
 class PostRegistrant
 { //Class for json response
@@ -74,6 +76,19 @@ class PostRegistrant
         $token = createToken(new tokenBody($this->email));
         setcookie("token", $token, time() + (86400 * 30), "/");
         return $token;
+    }
+
+    public function sendEmailConfirmation(): bool
+    {
+        $mailHtml = "
+                <h1>Validate your email <a href='http://localhost:3000/confirmEmail?email=" . $this->email . "'>here</a></h1>
+                <p>Confirmation Code: " . $this->confirmation_code . "</p>
+            ";
+        $mailText = "
+                Validate your email here: http://localhost:3000/confirmEmail?email=" . $this->email . "
+                Confirmation Code: " . $this->confirmation_code;
+        sendMail([$this->email], "Validate Email - Sustainable Simcoe Youth Conference", $mailHtml, $mailText);
+        return true;
     }
 }
 

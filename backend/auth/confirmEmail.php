@@ -10,6 +10,8 @@ require_once __DIR__ . "/tokens.php";
 //Main
 #Object declaraion
 $res = new Response();
+$res->request_type = $_SERVER["REQUEST_METHOD"];
+if ($res->request_type != "POST") array_push($res->errors, "Must be POST request");
 
 $email = getQuery("email");
 $code = getBody("confirmation_code");
