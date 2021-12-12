@@ -3,11 +3,21 @@ import "../styles/styles.css";
 import {Link} from "react-router-dom";
 import {createCookie, deleteCookie, getCookie} from "../modules/cookies";
 
+const logout = () => {
+    deleteCookie("token");
+    deleteCookie("email");
+    deleteCookie("registrant_type");
+    window.location.reload();
+}
+
 function Account() {
     return (
         <div>
             <h1>Account Page</h1>
             <p>Email = {getCookie("email")}</p>
+            <p>Token = {getCookie("token")}</p>
+            <p>Account Type = {getCookie("registrant_type")}</p>
+            <button onClick={logout}>Logout</button>
             <div>
                 <div>
                     <Link to="/register">
