@@ -1,39 +1,35 @@
-import React from "react";
 import "../styles/styles.css";
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import {createCookie, deleteCookie, getCookie} from "../modules/cookies";
 
-const logout = () => {
-    deleteCookie("token");
-    deleteCookie("email");
-    deleteCookie("registrant_type");
-    window.location.reload();
-}
-
 function Account() {
+
+    if (getCookie("email") && getCookie("token") && getCookie("registrant_type")) {
+        return <Navigate to='/user'/>;
+    } else {
+        deleteCookie("email");
+        deleteCookie("token");
+        deleteCookie("registrant_type");
+    }
+
     return (
         <div>
             <h1>Account Page</h1>
-            <p>Email = {getCookie("email")}</p>
-            <p>Token = {getCookie("token")}</p>
-            <p>Account Type = {getCookie("registrant_type")}</p>
-            <button onClick={logout}>Logout</button>
             <div>
-                <div>
-                    <Link to="/register">
-                        <span className="link-text">Register</span>
-                    </Link>
-                </div>
-                <div>
+                <h3>Do you have an account? Then Sign In here:</h3>
+                <button>
                     <Link to="/signin">
                         <span className="link-text">Sign In</span>
                     </Link>
-                </div>
-                <div>
-                    <Link to="/user">
-                        <span className="link-text">User Page</span>
+                </button>
+            </div>
+            <div>
+                <h3>Don't have an account? Then Register here:</h3>
+                <button>
+                    <Link to="/register">
+                        <span className="link-text">Register</span>
                     </Link>
-                </div>
+                </button>
             </div>
         </div>
     );
