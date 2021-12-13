@@ -1,37 +1,46 @@
 # SSYC
+
 Code for the Sustainable Simcoe Youth Summit Website.
 
-## Version:
-2.0: October 21
+## Todo:
 
-### Functionality to-do:
-View projects page to view current sections of the project
+Zac:
 
+* Integrate user page get requests
+* Add public boolean to all accounts
+* Integrate user page put requests
+* Finish user page figma design
+* Confirm video link on backend
+* Add num_attendees increment on backend
+* Implement user delete endpoints
+* Implement put endpoint switch statement
+* Auto generate tag image based on sql data (sql-->json-->nodejs-->canvas)
+* Create contact us endpoint
+* Paypal integration
+* Integrate registration status shut down
+* Come up with admin design plan
 
-## Tag Creation
-* Takes information from database in any format, and converts it into an image
+Weiqi:
 
-## Github rules:
-1. NEVER PUSH TO MASTER BRANCH
-3. Website and Back-end pull requests must be reviewed
-4. New branch for each page
-5. New branch for each related page updates
-6. New branch for each route
-7. Back-end editing must be communicated clearly with group
-8. Bugs should be fixed within existing related branches when possible
-9. New branch for bugs if no related branches exist
-
-## Commenting Rules:
-Must be commented:
-- Objects
-- Functions/Methods
-- Variables/Attributes
-- Imports and Exports
-
-Should be commented when appropriate:
-- Function calls
-- Return statements
-- Confusing Logic
-- Important code lines
-
-
+* Build Navbar
+* Create sign in design on figma
+* Create registration design on figma
+* Build sign in component
+* Build Individual registration component
+* Build Student registration component
+* Build Teacher registration component
+* Create home page design on figma
+* Build Home page
+* Create conference info page on figma
+* Build Conference Info page
+* Create contact us page on figma
+* Build contact us page
+* Use User Page figma design:
+    * Create Header component
+    * Create User Info component
+    * Create Conference Info component
+    * Create workshop select component
+    * Create settings component
+    * Create notifications component
+* Make sure user page works for teacher, individual, and student
+* Confirm everything scales to all sizes

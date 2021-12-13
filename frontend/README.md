@@ -1,30 +1,5 @@
 # Frontend SSYS
 
-## Pages:
-* Homepage
-* User page
-* Register page
-* Sign in page
-* Email confirmation page
-* 
-## Attendee User Page:
-* User is prompted to change:
-    * Grade
-    * School
-    * Workshop Choices
-    * Dietary Restriction
-* User can then change:
-    * City
-    * **Image**
-    * Shirt Size
-    * Shirts Ordered
-    * Instagram
-    * Video
-    * Bio
-    * Additional Info
-    * Emergency Contact
-* Map
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
