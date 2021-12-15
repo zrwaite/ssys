@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 function Navbar() {
     return (
         <nav className="navbar">
-            <div className="menu-icon">
+            <div className="nav-link">
                 <i className="fa fa-bars"></i>
             </div>
             <ul className="navbar-nav">
@@ -18,7 +18,7 @@ function Navbar() {
                         <span className="link-text">Logo to be here</span>
                     </Link>
                 </li>
-                <li className="nav-item">
+                <li exact className="nav-item">
                     <Link to="/info" className="nav-link">
                         <span className="link-text">Conference Info</span>
                     </Link>
