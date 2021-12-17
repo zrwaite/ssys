@@ -80,25 +80,25 @@ if (count($res->errors) == 0) {
     try {
         $result = DB::queryFirstRow("SELECT id FROM ssys22_students WHERE email=%s LIMIT 1", $email);
         if (!$result) {
-            DB::insert('ssys22_students', array(
-                'email' => $student->email,
-                'fname' => $student->fname,
-                'lname' => $student->lname,
-                'password_hash' => $student->hash,
-                'teacher_email' => $student->teacher_email,
-                'teacher_id' => $student->teacher_id,
-                'confirmation_code' => $student->confirmation_code,
-                'registrant_type' => $student->registrant_type,
-                'password_set' => $student->password_set
-            ));
-            $student->sendEmailConfirmation();
-            $res->status = 200;
-            $res->success = true;
-            $res->objects = $student->createResponse();
-            //send email with link to confirm email page with confirmation_code
-        } else {
-            array_push($res->errors, "Email already in use");
-        }
+            if ($student->addStudent()) {
+                DB::insert('ssys22_students', array(
+                    'email' => $student->email,
+                    'fname' => $student->fname,
+                    'lname' => $student->lname,
+                    'password_hash' => $student->hash,
+                    'teacher_email' => $student->teacher_email,
+                    'teacher_id' => $student->teacher_id,
+                    'confirmation_code' => $student->confirmation_code,
+                    'registrant_type' => $student->registrant_type,
+                    'password_set' => $student->password_set
+                ));
+                $student->sendEmailConfirmation();
+                $res->status = 200;
+                $res->success = true;
+                $res->objects = $student->createResponse();
+                //send email with link to confirm email page with confirmation_code
+            } else array_push($res->errors, "Attendance full!");
+        } else array_push($res->errors, "Email already in use");
     } catch (Exception $e) {
         array_push($res->errors, "Teacher_ID is invalid");
     }

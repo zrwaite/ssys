@@ -43,21 +43,21 @@ if (count($res->errors) == 0) {
     try {
         $result = DB::queryFirstRow("SELECT id FROM ssys22_teachers WHERE email=%s LIMIT 1", $email);
         if (!$result) {
-            DB::insert('ssys22_teachers', array(
-                'email' => $teacher->email,
-                'fname' => $teacher->fname,
-                'lname' => $teacher->lname,
-                'password_hash' => $teacher->hash,
-                'confirmation_code' => $teacher->confirmation_code
-            ));
-            $teacher->sendEmailConfirmation();
-            $res->status = 200;
-            $res->success = true;
-            $res->objects = $teacher->createResponse();
-            //send email with link to confirm email page with confirmation_code
-        } else {
-            array_push($res->errors, "Email already in use");
-        }
+            if ($teacher->addTeacher()) {
+                DB::insert('ssys22_teachers', array(
+                    'email' => $teacher->email,
+                    'fname' => $teacher->fname,
+                    'lname' => $teacher->lname,
+                    'password_hash' => $teacher->hash,
+                    'confirmation_code' => $teacher->confirmation_code
+                ));
+                $teacher->sendEmailConfirmation();
+                $res->status = 200;
+                $res->success = true;
+                $res->objects = $teacher->createResponse();
+                //send email with link to confirm email page with confirmation_code
+            } else array_push($res->errors, "Attendance full!");
+        } else array_push($res->errors, "Email already in use");
     } catch (Exception $e) {
         echo 'Message: ' . $e->getMessage();
     }

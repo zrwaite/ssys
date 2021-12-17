@@ -24,6 +24,18 @@ if (file_exists(__DIR__ . "/registrant.php")) {
             $this->fname = "Person";
             $this->lname = "Smith";
         }
+
+        public function addStudent(): bool
+        {
+            if ($this->addAttendee()) {
+                $settings = DB::queryFirstRow("SELECT id, num_students FROM ssys22_settings LIMIT 1");
+                $numStudents = $settings['num_students'];
+                $settingsId = $settings['id'];
+                $puts = ['num_students' => $numStudents + 1];
+                DB::update('ssys22_settings', $puts, "id=%s", $settingsId);
+                return true;
+            } else return false;
+        }
     }
 
     class PutStudent extends PutRegistrant

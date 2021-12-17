@@ -10,6 +10,18 @@ class PostTeacher extends PostRegistrant
     {
         parent::__construct(); //Post Registrant Constructor
     }
+
+    public function addTeacher(): bool
+    {
+        if ($this->addAttendee()) {
+            $settings = DB::queryFirstRow("SELECT id, num_teachers FROM ssys22_settings LIMIT 1");
+            $numTeachers = $settings['num_teachers'];
+            $settingsId = $settings['id'];
+            $puts = ['num_teachers' => $numTeachers + 1];
+            DB::update('ssys22_settings', $puts, "id=%s", $settingsId);
+            return true;
+        } else return false;
+    }
 }
 
 class PutTeacher extends PutRegistrant

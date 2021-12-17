@@ -8,6 +8,7 @@ use JetBrains\PhpStorm\ArrayShape;
 require_once __DIR__ . "/../modules/checkers.php";
 require_once __DIR__ . "/../auth/tokens.php";
 require_once __DIR__ . "/../modules/mailer.php";
+require_once __DIR__ . "/../modules/database.php";
 
 
 class PostRegistrant
@@ -89,6 +90,18 @@ class PostRegistrant
                 Confirmation Code: " . $this->confirmation_code;
         sendMail([$this->email], "Validate Email - Sustainable Simcoe Youth Conference", $mailHtml, $mailText);
         return true;
+    }
+
+    public function addAttendee(): bool
+    {
+        $settings = DB::queryFirstRow("SELECT id, num_attendees FROM ssys22_settings LIMIT 1");
+        $numAttendees = $settings['num_attendees'];
+        $settingsId = $settings['id'];
+        if ($numAttendees < 200) {
+            $puts = ['num_attendees' => $numAttendees + 1];
+            DB::update('ssys22_settings', $puts, "id=%s", $settingsId);
+            return true;
+        } else return false;
     }
 }
 
