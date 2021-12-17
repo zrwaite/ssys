@@ -1,0 +1,20 @@
+.userHeader {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.userImage {
+    width: 3rem;
+    height: 3rem;
+}
+
+.notificationIcon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.settingsIcon {
+    width: 3rem;
+    height: 3rem;
+}

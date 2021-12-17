@@ -94,7 +94,7 @@ class PostRegistrant
 
 class PutRegistrant
 {
-    public array $params = ["fname", "lname", "password", "school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "video_link", "bio", "additional_info"];
+    public array $params = ["fname", "lname", "password", "school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "video_link", "bio", "additional_info", "public"];
 
     #[ArrayShape(["errors" => "array", "puts" => "array"])] //dev Array Shape reference
     public function getPutArray($email): array
@@ -108,7 +108,17 @@ class PutRegistrant
             if (!$param) continue; //If the parameter isn't defined continue, otherwise check the switch for special cases
             switch ($current_param) {
                 case "fname":
-                case "lname": //These do not have a special case right now.
+                case "lname": //These do not have a special case right now.c
+                case "school":
+                case "diet":
+                case "city":
+                    break;
+                case "shirt_size":
+                    $shirtOptions = ["XS", "S", "M", "L", "XL"];
+                    if (!in_array($param, $shirtOptions)) {
+                        array_push($errors, "invalid shirt_size");
+                        $error = true;
+                    }
                     break;
                 case "password":
                     $old_password = getBody("old_password");
@@ -148,7 +158,7 @@ class GetRegistrant
 {
     public int $id, $shirts_ordered;
     public string $fname, $lname, $email, $registrant_type; //Primary information
-    public bool $email_confirmed, $video_approved, $account_enabled;
+    public bool $email_confirmed, $video_approved, $account_enabled, $public;
     public string|null $image_link, $school, $city, $video_link; //Display Information
     public string|null $workshop_order, $shirt_size, $workshop_choices; //Conference Information
     public string|null $bio, $additional_info, $diet; //Additional Information
@@ -171,6 +181,7 @@ class GetRegistrant
         $this->workshop_order = $result['workshop_order'];
         $this->video_link = $result['video_link'];
         $this->video_approved = boolval($result['video_approved']);
+        $this->public = boolval($result['public']);
         $this->bio = $result['bio'];
         $this->additional_info = $result['additional_info'];
         $this->account_enabled = boolval($result['account_enabled']);

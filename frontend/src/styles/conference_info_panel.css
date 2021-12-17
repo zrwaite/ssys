@@ -1,0 +1,14 @@
+.conferenceInfoPanel {
+    border: 5px solid black;
+    max-width: 20rem;
+    max-height: 20rem;
+}
+
+.conferenceInfoHeader {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}

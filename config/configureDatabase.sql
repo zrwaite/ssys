@@ -23,6 +23,7 @@ CREATE TABLE sustaina_db.ssys22_teachers
     bio               CHAR(250),
     additional_info   CHAR(250),
     account_enabled   BOOLEAN  DEFAULT 1,
+    public            BOOLEAN  DEFAULT 0,
     registrant_type   CHAR(40) DEFAULT "teacher"
 ) ENGINE = InnoDB;
 
@@ -55,6 +56,7 @@ CREATE TABLE sustaina_db.ssys22_students
     bio               CHAR(250),
     additional_info   CHAR(250),
     emergency_contact CHAR(200),
+    public            BOOLEAN  DEFAULT 0,
     account_enabled   BOOLEAN  DEFAULT 1,
     registrant_type   CHAR(40) DEFAULT "individual"
 ) ENGINE = InnoDB;

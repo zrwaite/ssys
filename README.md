@@ -7,12 +7,10 @@ Code for the Sustainable Simcoe Youth Summit Website.
 Zac:
 
 * Integrate user page get requests
-* Add public boolean to all accounts
 * Integrate user page put requests
 * Finish user page figma design
 * Confirm video link on backend
 * Add num_attendees increment on backend
-* Implement user delete endpoints
 * Implement put endpoint switch statement
 * Auto generate tag image based on sql data (sql-->json-->nodejs-->canvas)
 * Create contact us endpoint
