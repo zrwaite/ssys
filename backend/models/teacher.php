@@ -63,3 +63,16 @@ class GetTeacher extends GetRegistrant
 //            return parent::parseResult($result);
 //        }
 }
+
+class DeleteTeacher extends DeleteRegistrant
+{
+    public function removeTeacher()
+    {
+        $this->removeRegistrant();
+        $settings = DB::queryFirstRow("SELECT id, num_teachers FROM ssys22_settings LIMIT 1");
+        $numTeachers = $settings['num_teachers'];
+        $settingsId = $settings['id'];
+        $puts = ['num_teachers' => $numTeachers - 1];
+        DB::update('ssys22_settings', $puts, "id=%s", $settingsId);
+    }
+}

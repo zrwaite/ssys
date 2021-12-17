@@ -13,6 +13,7 @@ $dotenv->load(__DIR__ . "/../../modules/env/.env");
 
 $res = new Response();
 $res->request_type = "DELETE";
+$teacher = new DeleteTeacher();
 
 $email = getBody("email");
 if (!$email) array_push($res->errors, "missing email");
@@ -22,6 +23,7 @@ if (!$password) array_push($res->errors, "missing password");
 if (count($res->errors) == 0) {
     $res->status = validatePassword($password, $email);
     if ($res->status == 200) {
+        $teacher->removeTeacher();
         DB::delete('ssys22_teachers', 'email=%s', $email);
         $res->objects = "deleted";
         $res->success = true;

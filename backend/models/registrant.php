@@ -202,3 +202,15 @@ class GetRegistrant
         return true;
     }
 }
+
+class DeleteRegistrant
+{
+    public function removeRegistrant()
+    {
+        $settings = DB::queryFirstRow("SELECT id, num_attendees FROM ssys22_settings LIMIT 1");
+        $numAttendees = $settings['num_attendees'];
+        $settingsId = $settings['id'];
+        $puts = ['num_attendees' => $numAttendees - 1];
+        DB::update('ssys22_settings', $puts, "id=%s", $settingsId);
+    }
+}
