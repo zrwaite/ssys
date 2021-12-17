@@ -19,12 +19,20 @@
     color: #fff;
 }
 
+.nav-icon {
+    
+}
+
 .navbar-nav li a:hover,
 .navbar-nav li a.active {
+    font-weight: 300;
+    padding: 1rem 1rem;
+    transition: all 0.5s ease-in-out;
+    margin-left: 2rem;
+    margin-right: 2rem;
     background-color: #fff;
     border-radius: 0.125rem;
-    color: #000;
-    transition: all 0.5s ease-in-out;
+    color: rgba(12, 35, 139, 0.9);
 }
 
 nav {
