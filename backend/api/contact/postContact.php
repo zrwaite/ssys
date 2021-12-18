@@ -29,7 +29,7 @@ if (!$to) array_push($res->errors, "missing to");
 $toEmail = "";
 switch ($to) {
     case "organizer":
-        $toEmail = "blythe@sustainableorillia.ca";
+        $toEmail = "weiqixu2005@sustainableorillia.ca";
         break;
     case "tech":
         $toEmail = "zacwaite@sustainableorillia.ca";
