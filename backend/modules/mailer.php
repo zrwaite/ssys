@@ -23,7 +23,6 @@ function mailConstants(object|array $mailvar): object|array
     $mailvar->Username = 'ssysmailer@sustainableorillia.ca';
     $mailvar->Password = $_ENV['EMAIL_PASSWORD'];
     $mailvar->setFrom('ssysmailer@sustainableorillia.ca', 'Sustainable Simcoe Youth Summit');
-    $mailvar->addReplyTo('ssyscontact@sustainableorillia.ca', 'SSYS');
     // Attachments
     // $mail->addAttachment('../../files/AGM/Notice-of-AGM.docx', 'Notice-ofAGM.docx');
     // $mail->AddEmbeddedImage('../../files/images/longSoLogo.jpeg', 'soLogo');
@@ -33,6 +32,7 @@ function mailConstants(object|array $mailvar): object|array
 function sendMail(array $emails, string $subject, string $html, string $text): bool
 {
     $mail = mailConstants(new PHPMailer(true));
+    $mail->addReplyTo('ssyscontact@sustainableorillia.ca', 'SSYS');
     try {
         for ($i = 0; $i < count($emails); $i++) {
             $mail->addAddress($emails[$i]);
@@ -44,6 +44,23 @@ function sendMail(array $emails, string $subject, string $html, string $text): b
         return true;
     } catch (Exception) {
         echo "ERROR:" . $emails[$i] . ". Mailer Error: $mail->ErrorInfo";
+        return false;
+    }
+}
+
+function receiveMail(string $to, string $from, string $html, string $text): bool
+{
+    $mail = mailConstants(new PHPMailer(true));
+    $mail->addReplyTo($from);
+    try {
+        $mail->addAddress($to);
+        $mail->Subject = "SSYS Contact Form Message";
+        $mail->Body = $html; //Html
+        $mail->AltBody = $text; //Alt
+        $mail->send();
+        return true;
+    } catch (Exception) {
+        echo "ERROR:" . $to . ". Mailer Error: $mail->ErrorInfo";
         return false;
     }
 }

@@ -73,6 +73,17 @@ CREATE TABLE sustaina_db.ssys22_settings
 (
     id                  INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     registration_status INT NOT NULL,
+    -- 0: Not open yet
+    -- 1: Open
+    -- 2: Full
+    -- 3: Finished
+    -- 4: Cancelled
+    num_students        INT NOT NULL,
+    num_teachers        INT NOT NULL,
     num_attendees       INT NOT NULL,
     emergency_status    INT NOT NULL
+    -- 0: None
+    -- 1: Fire
+    -- 2: Inclement weather
+    -- 3: Lockdown
 ) ENGINE = InnoDB;

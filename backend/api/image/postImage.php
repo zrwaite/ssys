@@ -8,7 +8,7 @@ ini_set('file_uploads', "On");
 //Imports
 require_once __DIR__ . "/../../vendor/autoload.php";
 require_once __DIR__ . "/../../models/response.php";
-//require_once __DIR__ . "/../../modules/database.php"; //Connect to database
+require_once __DIR__ . "/../../modules/database.php"; //Connect to database
 require_once __DIR__ . "/../../modules/readParams.php";
 require_once __DIR__ . "/../../modules/checkers.php";
 
@@ -23,8 +23,7 @@ $res->objects = json_decode(file_get_contents('php://input'), true);
 
 //get post queries
 $email = getBody("email");
-if (!$email) array_push(
-    $res->errors, "Must include email");
+if (!$email) array_push($res->errors, "Must include email");
 else if (!checkEmail($email)) array_push($res->errors, "Invalid email");
 
 $image = $_FILES["image"];

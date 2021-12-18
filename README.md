@@ -10,10 +10,8 @@ Zac:
 * Integrate user page put requests
 * Finish user page figma design
 * Confirm video link on backend
-* Add num_attendees increment on backend
 * Implement put endpoint switch statement
 * Auto generate tag image based on sql data (sql-->json-->nodejs-->canvas)
-* Create contact us endpoint
 * Paypal integration
 * Integrate registration status shut down
 * Come up with admin design plan
