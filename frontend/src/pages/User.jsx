@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "../styles/styles.css";
 import "../styles/user_page.css";
 import notificationIcon from '../images/notifications.svg';
@@ -45,11 +45,11 @@ function User() {
         shirt_size: "",
         additional_info: "",
         diet: "",
+        loading: false,
         loaded: false
     });
 
     const getUserData = async () => {
-        console.log("function called");
         let json = await httpReq("/ssys/backend/api/student/?email=" + getCookie("email"), "GET")
         let response = JSON.parse(json);
         if (response.success && response.objects) {
@@ -76,7 +76,8 @@ function User() {
                 public: response.objects.public,
                 video_link: response.objects.video_link,
                 workshop_choices: response.objects.workshop_choices,
-                loaded: true
+                loaded: true,
+                loading: false
             })
         } else if (response.errors.length > 0) {
             setState({
@@ -109,6 +110,7 @@ function User() {
 
     if (!state.loaded) {
         getUserData();
+        return <></>;
     }
     console.log(state);
 
@@ -125,22 +127,20 @@ function User() {
                 <img className={"notificationIcon"} src={notificationIcon} alt={"notifications icon"}/>
                 <img className={"settingsIcon"} src={settingsIcon} alt={"settings icon"}/>
             </header>
-            <div>
-                <UserInfo studentInfo={state.studentInfo} school={state.school} city={state.city} grade={state.grade}
+            <section>
+                <UserInfo loaded={state.loaded} studentInfo={state.studentInfo} school={state.school} city={state.city}
+                          grade={state.grade}
                           instagram={state.instagram} bio={state.bio}/>
-                <ConferenceInfo studentInfo={state.studentInfo} diet={state.diet} shirt_size={state.shirt_size}
+                <ConferenceInfo loaded={state.loaded} studentInfo={state.studentInfo} diet={state.diet}
+                                shirt_size={state.shirt_size}
                                 emergency_contact={state.emergency_contact} additional_info={state.additional_info}
                                 bio={state.bio}/>
-            </div>
-            <div>
-                <h1>User Page</h1>
-                <p>Email = {getCookie("email")}</p>
-                <p>Token = {getCookie("token")}</p>
-                <p>Account Type = {getCookie("registrant_type")}</p>
-                <button onClick={logout}>Logout</button>
-            </div>
-            <div>
-            </div>
+            </section>
+            <h1>User Page</h1>
+            <p>Email = {getCookie("email")}</p>
+            <p>Token = {getCookie("token")}</p>
+            <p>Account Type = {getCookie("registrant_type")}</p>
+            <button onClick={logout}>Logout</button>
         </main>
     );
 }

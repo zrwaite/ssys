@@ -42,7 +42,7 @@ if (count($res->errors) == 0) {
             array_push($res->errors, "Can not find student");
         }
     } catch (Exception $e) {
-        echo 'Message: ' . $e->getMessage();
+        array_push($res->errors, 'Message: ' . $e->getMessage());
     }
 }
 http_response_code($res->status);
