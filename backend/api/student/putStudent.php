@@ -2,8 +2,6 @@
 
 assert($_SERVER['REQUEST_METHOD'] == "PUT");
 
-use Symfony\Component\Dotenv\Dotenv;
-
 //Imports
 require_once __DIR__ . "/../../vendor/autoload.php";
 require_once __DIR__ . "/../../models/response.php";
@@ -11,9 +9,6 @@ require_once __DIR__ . "/../../modules/database.php"; //Connect to database
 require_once __DIR__ . "/../../modules/readParams.php";
 require_once __DIR__ . "/../../models/student.php";
 require_once __DIR__ . "/../../modules/checkers.php";
-
-$dotenv = new Dotenv();
-$dotenv->load(__DIR__ . "/../../modules/env/.env");
 
 //Main
 $res = new Response();
