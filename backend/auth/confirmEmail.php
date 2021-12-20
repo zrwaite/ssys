@@ -1,4 +1,7 @@
 <?php
+header('Access-Control-Allow-Origin: *'); //dev allow localhost cors
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header("Access-Control-Allow-Methods: POST, PUT, GET, DELETE");
 
 //Imports
 require_once __DIR__ . "/../vendor/autoload.php";
