@@ -1,63 +1,68 @@
-.register_options{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 0rem;
-    grid-auto-rows: minmax(1rem, auto);
-    align-items: center;
-    
+.one{
+    text-align: center;
 }
 
-.one{
-    grid-column:1;
-    grid-row:1;
-    padding-left: 2rem;
-    text-align: center;
+.register_options{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem,20rem));
+    justify-content: center;
+    align-items: center;
 }
 
 .two{
-    grid-column:2;
-    grid-row:1;
     background-color: rgba(12, 35, 139, 0.9);
     border: none;
     color: white;
-    padding: 1rem 2rem;
+    padding: 1.25rem 5rem;
     text-align: center;
     font-size: 1rem;
-    margin: 0.25rem 0.125rem;
     opacity: 1;
-    display: inline-block;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.two:hover {
+    font-weight: 300;
+    transition: all 0.5s ease-in-out;
+    background-color: #fff;
+    color: rgba(12, 35, 139, 0.9);
 }
 
 .three{
-    grid-column:3;
-    grid-row:1;
     background-color: rgba(12, 35, 139, 0.9);
     border: none;
     color: white;
-    padding: 1rem 2rem;
+    padding: 1.25rem 5rem;
     text-align: center;
     font-size: 1rem;
-    margin: 0.25rem 0.125rem;
     opacity: 1;
-    display: inline-block;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.three:hover {
+    font-weight: 300;
+    transition: all 0.5s ease-in-out;
+    background-color: #fff;
+    color: rgba(12, 35, 139, 0.9);
 }
 
 .four{
-    grid-column:4;
-    grid-row:1;
     background-color: rgba(12, 35, 139, 0.9);
     border: none;
     color: white;
-    padding: 1rem 2rem;
+    padding: 1.25rem 5rem;
     text-align: center;
     font-size: 1rem;
-    margin: 0.25rem 0.125rem;
     opacity: 1;
-    display: inline-block;
     text-decoration: none;
+    cursor: pointer;
 }
 
-
+.four:hover {
+    font-weight: 300;
+    transition: all 0.5s ease-in-out;
+    background-color: #fff;
+    color: rgba(12, 35, 139, 0.9);
+}
   

@@ -12,18 +12,18 @@ function Register() {
             <header>
                 <h1>Register Page</h1>
             </header>
+            <div>
+                    <h3 class="one">Register as:</h3>                
+                </div>
             <div class="register_options">
-                <div class="one">
-                    <h3>Register as:</h3>                
+                <div>
+                        <button class="two" onClick={() => setRegisterDisplay("student")}>Student</button>
                 </div>
-                <div class="two">
-                        <button onClick={() => setRegisterDisplay("student")}>Student</button>
+                <div>
+                        <button class="three" onClick={() => setRegisterDisplay("individual")}>Individual</button>
                 </div>
-                <div class="three">
-                        <button onClick={() => setRegisterDisplay("individual")}>Individual</button>
-                </div>
-                <div class="four">
-                        <button onClick={() => setRegisterDisplay("teacher")}>Teacher</button>
+                <div>
+                        <button class="four" onClick={() => setRegisterDisplay("teacher")}>Teacher</button>
                 </div>
             </div>
             <StudentRegistration display={registerDisplay}/>
