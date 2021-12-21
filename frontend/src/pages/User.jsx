@@ -1,18 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "../styles/styles.css";
 import "../styles/user_page.css";
-import notificationIcon from '../images/notifications.svg';
 import settingsIcon from '../images/settings.svg';
 import UserInfo from "../components/UserInfo";
 import ConferenceInfo from "../components/ConferenceInfo";
+import NotificationPanel from "../components/NotificationPanel";
 
 import {deleteCookie, getCookie} from "../modules/cookies";
 import {Navigate} from "react-router-dom";
-import {httpReq} from "../modules/http_requests";
+import {httpReq, baseURL} from "../modules/http_requests";
 // import ReactDOM from "react-dom";
 
 const getImageLink = (imageLink) => {
-    return "http://localhost/ssys/backend/images/" + imageLink;
+    return baseURL + "/images/" + imageLink;
 }
 
 const logout = () => {
@@ -50,7 +50,7 @@ function User() {
     });
 
     const getUserData = async () => {
-        let json = await httpReq("/ssys/backend/api/student/?email=" + getCookie("email"), "GET")
+        let json = await httpReq("/api/student/?email=" + getCookie("email"), "GET")
         let response = JSON.parse(json);
         if (response.success && response.objects) {
             console.log(response);
@@ -102,7 +102,7 @@ function User() {
                 public: false,
                 video_link: "",
                 workshop_choices: "",
-                loaded: true
+                loaded: true,
             })
             console.log(response.errors)
         }
@@ -112,7 +112,6 @@ function User() {
         getUserData();
         return <></>;
     }
-    console.log(state);
 
     if (!(getCookie("email") && getCookie("token") && getCookie("registrant_type"))) return <Navigate to='/account'/>;
 
@@ -124,7 +123,7 @@ function User() {
                     <h3>{state.fname}</h3>
                     <h3>{state.lname}</h3>
                 </div>
-                <img className={"notificationIcon"} src={notificationIcon} alt={"notifications icon"}/>
+                <NotificationPanel/>
                 <img className={"settingsIcon"} src={settingsIcon} alt={"settings icon"}/>
             </header>
             <section>
