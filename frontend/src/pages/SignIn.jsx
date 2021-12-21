@@ -27,7 +27,7 @@ function SignIn() {
     }
     handleInputChange = handleInputChange.bind(this);
     const sendForm = async () => {
-        let json = await httpReq("/ssys/backend/auth/signin.php", "POST", {
+        let json = await httpReq("/auth/signin.php", "POST", {
             email: state.email,
             password: state.password
         })

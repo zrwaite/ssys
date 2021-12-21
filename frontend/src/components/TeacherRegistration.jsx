@@ -37,7 +37,7 @@ function TeacherRegister(props) {
 
     const sendForm = async () => {
         console.log(state);
-        let json = await httpReq("/ssys/backend/api/teacher/", "POST", {
+        let json = await httpReq("/api/teacher/", "POST", {
             email: state.email,
             password: state.password,
             fname: state.fname,

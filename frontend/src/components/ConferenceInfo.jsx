@@ -55,7 +55,7 @@ function ConferenceInfo(props) {
 
 
     const sendStudentForm = async () => {
-        let json = await httpReq("/ssys/backend/api/student/", "PUT", {
+        let json = await httpReq("/api/student/", "PUT", {
             email: getCookie("email"),
             diet: state.diet,
             shirt_size: state.shirt_size,
@@ -72,7 +72,7 @@ function ConferenceInfo(props) {
     }
 
     const sendTeacherForm = async () => {
-        let json = await httpReq("/ssys/backend/api/teacher/", "PUT", {
+        let json = await httpReq("/api/teacher/", "PUT", {
             email: getCookie("email"),
             diet: state.diet,
             shirt_size: state.shirt_size,
@@ -103,7 +103,6 @@ function ConferenceInfo(props) {
         editDisplay.display = "block";
         viewDisplay.display = "none";
     }
-    console.log(state);
     return (
         <div className={"conferenceInfoPanel"}>
             <div className={"conferenceInfoHeader"}>

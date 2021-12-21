@@ -27,7 +27,7 @@ function Contact() {
     handleInputChange = handleInputChange.bind(this);
 
     const sendForm = async () => {
-        let json = await httpReq("/ssys/backend/api/contact/", "POST", {
+        let json = await httpReq("/api/contact/", "POST", {
             email: state.email,
             to: state.to,
             message: state.message

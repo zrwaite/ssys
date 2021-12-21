@@ -39,7 +39,7 @@ function StudentRegister(props) {
     handleInputChange = handleInputChange.bind(this);
 
     const sendForm = async () => {
-        let json = await httpReq("/ssys/backend/api/student/", "POST", {
+        let json = await httpReq("/api/student/", "POST", {
             email: state.email,
             password: state.password,
             fname: state.fname,

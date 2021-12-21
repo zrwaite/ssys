@@ -1,4 +1,4 @@
-const baseURL = "http://localhost";
+const baseURL = "http://localhost/ssys/backend";
 const validateURL = (string = "") => {
     let url;
     try {
@@ -44,4 +44,4 @@ const httpReq = async (url, method = "GET", params = {}) => {
     }
 }
 
-export {httpReq};
+export {httpReq, baseURL};

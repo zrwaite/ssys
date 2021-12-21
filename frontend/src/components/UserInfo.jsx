@@ -55,7 +55,7 @@ function UserInfo(props) {
     }
 
     const sendStudentForm = async () => {
-        let json = await httpReq("/ssys/backend/api/student/", "PUT", {
+        let json = await httpReq("/api/student/", "PUT", {
             email: getCookie("email"),
             school: state.school,
             city: state.city,
@@ -72,7 +72,7 @@ function UserInfo(props) {
     }
 
     const sendTeacherForm = async () => {
-        let json = await httpReq("/ssys/backend/api/student/", "PUT", {
+        let json = await httpReq("/api/student/", "PUT", {
             email: getCookie("email"),
             school: state.school,
             city: state.city,
