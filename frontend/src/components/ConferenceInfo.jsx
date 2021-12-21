@@ -8,11 +8,11 @@ import {getCookie} from "../modules/cookies";
 
 function ConferenceInfo(props) {
     let [state, setState] = useState({
-        studentInfo: props.studentInfo,
-        diet: props.diet,
-        shirt_size: props.shirt_size,
-        emergency_contact: props.emergency_contact,
-        additional_info: props.additional_info,
+        studentInfo: props.studentInfo || "",
+        diet: props.diet || "",
+        shirt_size: props.shirt_size || "",
+        emergency_contact: props.emergency_contact || "",
+        additional_info: props.additional_info || "",
         editMode: false,
         initialLoad: false
     });
@@ -20,11 +20,11 @@ function ConferenceInfo(props) {
     if (!props.loaded) return <></>;
     else if (!state.initialLoad) {
         setState({
-            studentInfo: props.studentInfo,
-            diet: props.diet,
-            shirt_size: props.shirt_size,
-            emergency_contact: props.emergency_contact,
-            additional_info: props.additional_info,
+            studentInfo: props.studentInfo || "",
+            diet: props.diet || "",
+            shirt_size: props.shirt_size || "",
+            emergency_contact: props.emergency_contact || "",
+            additional_info: props.additional_info || "",
             editMode: state.editMode,
             initialLoad: true
         })
@@ -33,11 +33,13 @@ function ConferenceInfo(props) {
 
     let changeState = (name, value) => {
         let partialState = {
+            studentInfo: state.studentInfo,
             diet: state.diet,
             shirt_size: state.shirt_size,
             emergency_contact: state.emergency_contact,
             additional_info: state.additional_info,
-            editMode: state.editMode
+            editMode: state.editMode,
+            initialLoad: state.initialLoad
         };
         partialState[name] = value;
         setState(partialState);
@@ -53,7 +55,7 @@ function ConferenceInfo(props) {
 
 
     const sendStudentForm = async () => {
-        let json = await httpReq("/ssys/backend/api/student/putStudent.php", "PUT", {
+        let json = await httpReq("/ssys/backend/api/student/", "PUT", {
             email: getCookie("email"),
             diet: state.diet,
             shirt_size: state.shirt_size,
@@ -70,7 +72,7 @@ function ConferenceInfo(props) {
     }
 
     const sendTeacherForm = async () => {
-        let json = await httpReq("/ssys/backend/api/teacher/putTeacher.php", "PUT", {
+        let json = await httpReq("/ssys/backend/api/teacher/", "PUT", {
             email: getCookie("email"),
             diet: state.diet,
             shirt_size: state.shirt_size,
@@ -87,9 +89,11 @@ function ConferenceInfo(props) {
     }
 
     const sendForm = async () => {
+        console.log(state);
         let registrant_type = getCookie("registrant_type");
         if (registrant_type === "student" || registrant_type === "individual") await sendStudentForm();
         else if (registrant_type === "teacher") await sendTeacherForm();
+        changeState("editMode", false);
     }
     let studentDisplay = {display: "none"};
     let editDisplay = {display: "none"};
@@ -99,6 +103,7 @@ function ConferenceInfo(props) {
         editDisplay.display = "block";
         viewDisplay.display = "none";
     }
+    console.log(state);
     return (
         <div className={"conferenceInfoPanel"}>
             <div className={"conferenceInfoHeader"}>
@@ -113,7 +118,7 @@ function ConferenceInfo(props) {
                 <tr>
                     <td>Dietary Restrictions:</td>
                     <td style={viewDisplay}>{state.diet}</td>
-                    <textarea style={editDisplay} name="bio" rows="5" cols="10" value={state.diet}
+                    <textarea style={editDisplay} name="diet" rows="5" cols="10" value={state.diet}
                               onChange={handleInputChange}/>
                 </tr>
                 <tr>

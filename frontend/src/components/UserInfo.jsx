@@ -8,12 +8,12 @@ import {getCookie} from "../modules/cookies";
 
 function UserInfo(props) {
     let [state, setState] = useState({
-        school: props.school,
-        city: props.city,
-        grade: props.grade,
-        instagram: props.instagram,
-        bio: props.bio,
-        studentInfo: props.studentInfo,
+        school: props.school || "",
+        city: props.city || "",
+        grade: props.grade || "",
+        instagram: props.instagram || "",
+        bio: props.bio || "",
+        studentInfo: props.studentInfo || "",
         editMode: false,
         initialLoad: false
     });
@@ -21,12 +21,12 @@ function UserInfo(props) {
     if (!props.loaded) return <></>;
     else if (!state.initialLoad) {
         setState({
-            school: props.school,
-            city: props.city,
-            grade: props.grade,
-            instagram: props.instagram,
-            bio: props.bio,
-            studentInfo: props.studentInfo,
+            school: props.school || "",
+            city: props.city || "",
+            grade: props.grade || "",
+            instagram: props.instagram || "",
+            bio: props.bio || "",
+            studentInfo: props.studentInfo || "",
             editMode: state.editMode,
             initialLoad: true
         })
@@ -55,16 +55,15 @@ function UserInfo(props) {
     }
 
     const sendStudentForm = async () => {
-        let json = await httpReq("/ssys/backend/api/student/", "POST", {
+        let json = await httpReq("/ssys/backend/api/student/", "PUT", {
             email: getCookie("email"),
-            // school: state.school,
-            // city: state.city,
-            // grade: state.grade,
-            // instagram: state.instagram,
-            // bio: state.bio
+            school: state.school,
+            city: state.city,
+            grade: state.grade,
+            instagram: state.instagram,
+            bio: state.bio
         })
         let response = JSON.parse(json);
-        console.log(response);
         if (response.success && response.objects) {
             console.log(response);
         } else if (response.errors.length > 0) {
@@ -90,9 +89,11 @@ function UserInfo(props) {
     }
 
     const sendForm = async () => {
+        console.log(state);
         let registrant_type = getCookie("registrant_type");
         if (registrant_type === "student" || registrant_type === "individual") await sendStudentForm();
         else if (registrant_type === "teacher") await sendTeacherForm();
+        changeState("editMode", false);
     }
 
     let studentDisplay = {display: "none"};
@@ -103,7 +104,6 @@ function UserInfo(props) {
         editDisplay.display = "block";
         viewDisplay.display = "none";
     }
-
     return (
         <div className={"userInfoPanel"}>
 
@@ -137,7 +137,7 @@ function UserInfo(props) {
                 <tr style={studentDisplay}>
                     <td>Instagram:</td>
                     <td style={viewDisplay}>{state.instagram}</td>
-                    <input style={editDisplay} type={"text"} name={"insta"} value={state.instagram}
+                    <input style={editDisplay} type={"text"} name={"instagram"} value={state.instagram}
                            onChange={handleInputChange}/>
                 </tr>
                 <tr>
