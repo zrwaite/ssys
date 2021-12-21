@@ -125,6 +125,8 @@ class PutRegistrant
                 case "school":
                 case "diet":
                 case "city":
+                case "bio":
+                case "additional_info":
                     break;
                 case "shirt_size":
                     $shirtOptions = ["XS", "S", "M", "L", "XL"];

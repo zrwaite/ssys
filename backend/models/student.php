@@ -52,6 +52,9 @@ class PutStudent extends PutRegistrant
             $param = getBody($current_param);
             if (!$param) continue; //If the parameter isn't defined continue, otherwise check the switch for special cases
             switch ($current_param) {
+                case "instagram":
+                case "emergency_contact":
+                    break;
                 case "teacher_email":
                     if (!checkEmail($param)) {
                         $error = true;

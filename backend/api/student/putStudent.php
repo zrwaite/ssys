@@ -23,7 +23,10 @@ else {
     $student_puts_and_errors = $student->getPutArray($email);
     $res->errors = $student_puts_and_errors["errors"];
     $puts = $student_puts_and_errors["puts"];
-    if (count($puts) == 0 && count($res->errors) == 0) array_push($res->errors, "You didn't send anything to update ");
+    if (count($res->errors) == 0) {
+        if (count($puts) == 0) array_push($res->errors, "You didn't send anything to update ");
+        else $res->objects = $puts;
+    }
 }
 if (count($res->errors) == 0) {
     try {
