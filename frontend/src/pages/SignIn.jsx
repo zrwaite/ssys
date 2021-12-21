@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import {Navigate} from "react-router-dom";
 
 
-import {createCookie, getCookie, deleteCookie} from "../modules/cookies";
+import {createCookie} from "../modules/cookies";
 
 function SignIn() {
     let [state, setState] = useState({
@@ -27,9 +27,10 @@ function SignIn() {
     }
     handleInputChange = handleInputChange.bind(this);
     const sendForm = async () => {
-        let json = await httpReq("/auth/signin.php", "POST", {
+        let json = await httpReq("/auth/", "POST", {
             email: state.email,
-            password: state.password
+            password: state.password,
+            type: "signIn"
         })
         let response = JSON.parse(json);
         if (response.success) {

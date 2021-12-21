@@ -12,7 +12,11 @@ function EmailConfirmation() {
     handleInputChange = handleInputChange.bind(this);
 
     const sendForm = async () => {
-        let json = await httpReq("/auth/confirmEmail.php?email=" + email, "POST", {confirmation_code: state});
+        let json = await httpReq("/auth/", "POST", {
+            confirmation_code: state,
+            email: email,
+            type: "confirmEmail"
+        });
         let response = JSON.parse(json);
         let elements = [];
         console.log(response);

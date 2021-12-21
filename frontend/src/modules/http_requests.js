@@ -26,7 +26,7 @@ const httpReq = async (url, method = "GET", params = {}) => {
             response = await fetch(url, {
                 method: method, // *GET, POST, PUT, DELETE, etc.
                 cache: 'no-cache',
-                mode: 'cors',
+                // mode: 'same-origin',
                 headers: {
                     'Content-Type': 'application/json',
                 },
