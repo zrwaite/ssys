@@ -1,8 +1,4 @@
 <?php
-header('Access-Control-Allow-Origin: *'); //dev allow localhost cors
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-header("Access-Control-Allow-Methods: POST, PUT, GET, DELETE");
-
 //Imports
 require_once __DIR__ . "/../vendor/autoload.php";
 require_once __DIR__ . "/../models/response.php";
@@ -16,7 +12,7 @@ $res = new Response();
 $res->request_type = $_SERVER["REQUEST_METHOD"];
 if ($res->request_type != "POST") array_push($res->errors, "Must be POST request");
 
-$email = getQuery("email");
+$email = getBody("email");
 $code = getBody("confirmation_code");
 if (!$email) array_push($res->errors, "missing email query");
 if (!$code) array_push($res->errors, "missing confirmation_code in body");

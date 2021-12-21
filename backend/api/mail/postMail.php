@@ -6,7 +6,8 @@ assert($_SERVER['REQUEST_METHOD'] == "POST");
 require_once __DIR__ . "/../../vendor/autoload.php";
 require_once __DIR__ . "/../../models/response.php";
 require_once __DIR__ . "/../../modules/readParams.php";
-require_once __DIR__ . "/../../models/student.php";
+require_once __DIR__ . "/../../modules/checkers.php";
+require_once __DIR__ . "/../../modules/mailModules.php";
 
 //Main
 //Object declaraion
@@ -23,9 +24,10 @@ if (!$type) array_push($res->errors, "Must include type");
 if (count($res->errors) == 0) {
     switch ($type) {
         case "email_confirmed":
-            $student = new PostStudent();
-            $student->email = $email;
-            $student->sendEmailConfirmation();
+            $query = "ssys22_teachers.confirmation_code, ssys22_students.confirmation_code";
+            $result = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_teachers, ssys22_students WHERE ssys22_students.email=%s OR ssys22_students.email=%s LIMIT 1", $email, $email);
+            $confirmation_code = $result["confirmation_code"];
+            if (!emailConfirmation($confirmation_code, $email)) array_push($res->errors, "mail fail");
             break;
         default:
             array_push($res->errors, "invalid type");
