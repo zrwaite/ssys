@@ -20,8 +20,10 @@ function NotificationPanel(props) {
     if (state.display) notificationDisplay.display = "block";
 
     let notificationsList = [];
-    if (!props.email_confirmed) notificationsList.push(<Notification default={true} name={"email_confirmed"}/>);
-    if (!props.password_set) notificationsList.push(<Notification default={true} name={"password_set"}/>);
+    if (!props.email_confirmed) notificationsList.push(<Notification key={"email_confirmed"} default={true}
+                                                                     name={"email_confirmed"}/>);
+    if (!props.password_set) notificationsList.push(<Notification key={"password_set"} default={true}
+                                                                  name={"password_set"}/>);
 
     return (
         <div>

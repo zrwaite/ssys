@@ -63,9 +63,8 @@ function ConferenceInfo(props) {
             additional_info: state.additional_info
         })
         let response = JSON.parse(json);
-        console.log(response);
         if (response.success && response.objects) {
-            console.log(response);
+            // console.log(response);
         } else if (response.errors.length > 0) {
             alert(JSON.stringify(response));
         }
@@ -89,7 +88,6 @@ function ConferenceInfo(props) {
     }
 
     const sendForm = async () => {
-        console.log(state);
         let registrant_type = getCookie("registrant_type");
         if (registrant_type === "student" || registrant_type === "individual") await sendStudentForm();
         else if (registrant_type === "teacher") await sendTeacherForm();
@@ -152,9 +150,7 @@ function ConferenceInfo(props) {
                     </div>
                 </div>
                 <div style={editDisplay}>
-                    <td colSpan={2}>
-                        <button onClick={sendForm}>Submit</button>
-                    </td>
+                    <button onClick={sendForm}>Submit</button>
                 </div>
             </div>
         </div>

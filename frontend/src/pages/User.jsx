@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import "../styles/styles.css";
 import "../styles/user_page.css";
-import settingsIcon from '../images/settings.svg';
 import UserInfo from "../components/UserInfo";
 import ConferenceInfo from "../components/ConferenceInfo";
 import NotificationPanel from "../components/NotificationPanel";
@@ -9,6 +8,7 @@ import NotificationPanel from "../components/NotificationPanel";
 import {deleteCookie, getCookie} from "../modules/cookies";
 import {Navigate} from "react-router-dom";
 import {httpReq, baseURL} from "../modules/http_requests";
+import SettingsPanel from "../components/SettingsPanel";
 // import ReactDOM from "react-dom";
 
 const getImageLink = (imageLink) => {
@@ -45,7 +45,6 @@ function User() {
         shirt_size: "",
         additional_info: "",
         diet: "",
-        loading: false,
         loaded: false
     });
 
@@ -53,7 +52,6 @@ function User() {
         let json = await httpReq("/api/student/?email=" + getCookie("email"), "GET")
         let response = JSON.parse(json);
         if (response.success && response.objects) {
-            console.log(response);
             setState({
                 email: getCookie("email"),
                 studentInfo: (getCookie("registrant_type") === "student" || getCookie("registrant_type") === "individual"),
@@ -78,7 +76,6 @@ function User() {
                 video_link: response.objects.video_link,
                 workshop_choices: response.objects.workshop_choices,
                 loaded: true,
-                loading: false
             })
         } else if (response.errors.length > 0) {
             setState({
@@ -125,7 +122,7 @@ function User() {
                     <h3>{state.fname}</h3>
                     <h3>{state.lname}</h3>
                 </div>
-                <img className={"settingsIcon"} src={settingsIcon} alt={"settings icon"}/>
+                <SettingsPanel loaded={state.loaded}/>
                 <NotificationPanel email_confirmed={state.email_confirmed} password_set={state.password_set}/>
             </header>
             <section className={"userBody"}>
@@ -137,7 +134,6 @@ function User() {
                                 emergency_contact={state.emergency_contact} additional_info={state.additional_info}
                                 bio={state.bio}/>
             </section>
-            <h1>User Page</h1>
             <p>Email = {getCookie("email")}</p>
             <p>Token = {getCookie("token")}</p>
             <p>Account Type = {getCookie("registrant_type")}</p>

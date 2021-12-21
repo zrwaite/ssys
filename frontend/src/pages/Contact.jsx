@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import "../styles/styles.css";
 import {httpReq} from "../modules/http_requests";
-import {createCookie} from "../modules/cookies";
 import ReactDOM from "react-dom";
 
 function Contact() {

@@ -9,13 +9,15 @@ import {getCookie} from "../modules/cookies";
 
 function NotificationPanel(props) {
     if (!props.default) {
-        let icon = mailIcon;
+        let icon;
         switch (props.icon) {
             case "mail":
                 break;
             case "warning":
                 icon = warningIcon;
                 break;
+            default:
+                icon = mailIcon;
         }
         return (
             <div className={"notification"}>

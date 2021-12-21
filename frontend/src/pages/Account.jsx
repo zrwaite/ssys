@@ -1,6 +1,6 @@
 import "../styles/styles.css";
 import {Link, Navigate} from "react-router-dom";
-import {createCookie, deleteCookie, getCookie} from "../modules/cookies";
+import {deleteCookie, getCookie} from "../modules/cookies";
 
 function Account() {
 
