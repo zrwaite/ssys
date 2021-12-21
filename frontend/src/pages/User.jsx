@@ -69,6 +69,7 @@ function User() {
                 emergency_contact: response.objects.emergency_contact,
                 additional_info: response.objects.additional_info,
                 password_set: response.objects.password_set,
+                instagram: response.objects.instagram,
                 image_approved: response.objects.image_approved,
                 email_confirmed: response.objects.email_confirmed,
                 video_approved: response.objects.video_approved,
@@ -94,6 +95,7 @@ function User() {
                 shirt_size: "",
                 emergency_contact: "",
                 additional_info: "",
+                instagram: "",
                 password_set: false,
                 image_approved: false,
                 email_confirmed: false,
@@ -126,7 +128,7 @@ function User() {
                 <img className={"settingsIcon"} src={settingsIcon} alt={"settings icon"}/>
                 <NotificationPanel email_confirmed={state.email_confirmed} password_set={state.password_set}/>
             </header>
-            <section>
+            <section className={"userBody"}>
                 <UserInfo loaded={state.loaded} studentInfo={state.studentInfo} school={state.school} city={state.city}
                           grade={state.grade}
                           instagram={state.instagram} bio={state.bio}/>

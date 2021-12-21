@@ -1,5 +1,5 @@
 .userInfoPanel {
-    border: 5px solid black;
+    border: 0.3rem solid black;
     max-width: 20rem;
     max-height: 20rem;
 }
@@ -11,4 +11,18 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+}
+
+.userInfoRow {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    margin: 0;
+}
+
+.userInfoRow > h4 {
+    margin: 0;
+}
+
+.userInfoRow > div > p {
+    margin: 0;
 }
