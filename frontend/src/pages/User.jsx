@@ -123,8 +123,8 @@ function User() {
                     <h3>{state.fname}</h3>
                     <h3>{state.lname}</h3>
                 </div>
-                <NotificationPanel/>
                 <img className={"settingsIcon"} src={settingsIcon} alt={"settings icon"}/>
+                <NotificationPanel email_confirmed={state.email_confirmed} password_set={state.password_set}/>
             </header>
             <section>
                 <UserInfo loaded={state.loaded} studentInfo={state.studentInfo} school={state.school} city={state.city}

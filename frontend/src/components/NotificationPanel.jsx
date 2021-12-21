@@ -5,7 +5,7 @@ import Notification from "./Notification";
 import closeIcon from "../images/close.svg"
 import notificationIcon from '../images/notifications.svg';
 
-function NotificationPanel() {
+function NotificationPanel(props) {
     let [state, setState] = useState({
         display: false
     });
@@ -18,6 +18,11 @@ function NotificationPanel() {
     }
     let notificationDisplay = {display: "none"};
     if (state.display) notificationDisplay.display = "block";
+
+    let notificationsList = [];
+    if (!props.email_confirmed) notificationsList.push(<Notification default={true} name={"email_confirmed"}/>);
+    if (!props.password_set) notificationsList.push(<Notification default={true} name={"password_set"}/>);
+
     return (
         <div>
             <img className={"notificationIcon"} src={notificationIcon} alt={"notifications icon"}
@@ -27,8 +32,8 @@ function NotificationPanel() {
                     <h1>Notifications</h1>
                     <img src={closeIcon} alt={"close"} onClick={() => changeState("display", false)}/>
                 </div>
+                <div>{notificationsList}</div>
                 <Notification icon={"warning"} message={"testing"}/>
-                <Notification default={true} name={"email_confirmed"}/>
             </div>
         </div>
     );

@@ -44,8 +44,17 @@ function NotificationPanel(props) {
                     <div className={"notification"}>
                         <img src={warningIcon} alt={"warning icon"}/>
                         <div>
-                            <p>Your email hasn’t been confirmed! Check your email or click here to send a new one:</p>
+                            <p>Your email hasn't been confirmed! Check your email or click here to send a new one:</p>
                             <button onClick={() => mailConfirmation()}>Send new code</button>
+                        </div>
+                    </div>
+                )
+            case "password_set":
+                return (
+                    <div className={"notification"}>
+                        <img src={warningIcon} alt={"warning icon"}/>
+                        <div>
+                            <p>Your password hasn't been set! Set one in the settings menu.</p>
                         </div>
                     </div>
                 )
