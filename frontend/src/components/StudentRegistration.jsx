@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import "../styles/styles.css";
 import {httpReq} from "../modules/http_requests";
+import {createCookie, getCookie} from "../modules/cookies";
 import ReactDOM from "react-dom";
 import {Navigate} from "react-router-dom";
+import "../styles/student_registration.css";
 
 function StudentRegister(props) {
     let studentStyle
@@ -38,7 +40,7 @@ function StudentRegister(props) {
     handleInputChange = handleInputChange.bind(this);
 
     const sendForm = async () => {
-        let json = await httpReq("/api/student/", "POST", {
+        let json = await httpReq("/ssys/backend/api/student/", "POST", {
             email: state.email,
             password: state.password,
             fname: state.fname,
@@ -51,7 +53,12 @@ function StudentRegister(props) {
         let elements = [];
         console.log(response);
         if (response.success && response.objects) {
-            window.location.assign("/account");
+            createCookie("email", state.email);
+            createCookie("registrant_type", "student");
+            createCookie("token", response.objects.token);
+            elements.push(<p>Email: {getCookie("email")}</p>);
+            elements.push(<p>Account Type: {getCookie("registrant_type")}</p>);
+            elements.push(<p>Token: {getCookie("token")}</p>);
         } else if (response.errors.length > 0) {
             for (let i = 0; i < response.errors.length; i++) {
                 elements.push(<p key={i}>{response.errors[i]}</p>);
@@ -66,28 +73,36 @@ function StudentRegister(props) {
 
     return (
         <div style={studentStyle}>
-            <p>Student Registration</p>
-            <div>
-                <label htmlFor={"email"}>Email: </label>
-                <input type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
-                <br/>
-                <label htmlFor={"password"}>Password: </label>
-                <input type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
-                <br/>
+            <p class="studentregistration">Student Registration</p>
+            <div class="student_register">
+            <div class="firstname">
                 <label htmlFor={"fname"}>First Name: </label>
                 <input type={"text"} name={"fname"} value={state.fname} onChange={handleInputChange}/>
-                <br/>
+                </div>
+                <div class="lastname">
                 <label htmlFor={"lname"}>Last Name: </label>
                 <input type={"text"} name={"lname"} value={state.lname} onChange={handleInputChange}/>
-                <br/>
+                </div>
+                <div class="mail">
+                <label htmlFor={"email"}>Email: </label>
+                <input type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
+                </div>
+                <div class="pword">
+                <label htmlFor={"password"}>Password: </label>
+                <input type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
+                </div>
+                <div class="temail">
                 <label htmlFor={"teacher_email"}>Teacher Email: </label>
                 <input type={"text"} name={"teacher_email"} value={state.teacher_email} onChange={handleInputChange}/>
-                <br/>
+                </div>
+                <div class="tid">
                 <label htmlFor={"teacher_id"}>Teacher Id: </label>
                 <input type={"text"} name={"teacher_id"} value={state.teacher_id} onChange={handleInputChange}/>
-                <br/>
-                <button onClick={sendForm}>Submit</button>
+                </div>
             </div>
+            <div class="center">
+                <button class="submit" onClick={sendForm}>Submit</button>
+                </div>
             <div id={"studentRegistrationResult"}>
 
             </div>

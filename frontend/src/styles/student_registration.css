@@ -1,0 +1,98 @@
+.studentregistration{
+    text-align:center;
+}
+.student_register{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem,20rem));
+    justify-content: center;
+    align-items: center;
+    border: 3px solid green;
+    width: 60%;
+    margin:auto;
+    gap:0.5rem;
+}
+
+.mail{
+    text-align:center;
+    padding: 1rem 5rem;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    background-color: rgba(89, 187, 33, 0.9);
+    border: none;
+}
+
+.pword{
+    text-align:center;
+    padding: 1rem 5rem;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    background-color: rgba(89, 187, 33, 0.9);
+    border: none;
+}
+
+.firstname{
+    text-align:center;
+    padding: 1rem 5rem;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    background-color: rgba(89, 187, 33, 0.9);
+    border: none;
+}
+
+.lastname{
+    text-align:center;
+    padding: 1rem 5rem;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    background-color: rgba(89, 187, 33, 0.9);
+    border: none;
+}
+
+.tid{
+    text-align:center;
+    padding: 1rem 5rem;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    background-color: rgba(89, 187, 33, 0.9);
+    border: none;
+}
+
+.temail{
+    text-align:center;
+    padding: 1rem 5rem;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    background-color: rgba(89, 187, 33, 0.9);
+    border: none;
+}
+
+.submit{
+    background-color: rgba(12, 35, 139, 0.9);
+    border: none;
+    color: white;
+    padding: 1rem 5rem;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.submit:hover {
+    font-weight: 300;
+    transition: all 0.5s ease-in-out;
+    background-color: #fff;
+    color: rgba(12, 35, 139, 0.9);
+}
+
+.center{
+    margin: 0 auto;
+    text-align:center;
+}
+
