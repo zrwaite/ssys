@@ -1,4 +1,4 @@
-const baseURL = "http://localhost";
+const baseURL = "http://localhost/ssys/backend";
 const validateURL = (string = "") => {
     let url;
     try {
@@ -26,6 +26,10 @@ const httpReq = async (url, method = "GET", params = {}) => {
             response = await fetch(url, {
                 method: method, // *GET, POST, PUT, DELETE, etc.
                 cache: 'no-cache',
+                // mode: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
                 body: JSON.stringify(params) // body data type must match "Content-Type" header
             });
         }
@@ -40,4 +44,4 @@ const httpReq = async (url, method = "GET", params = {}) => {
     }
 }
 
-export {httpReq};
+export {httpReq, baseURL};

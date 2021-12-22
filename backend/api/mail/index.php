@@ -4,9 +4,6 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 header("Access-Control-Allow-Methods: POST, PUT, GET, DELETE");
 switch ($_SERVER['REQUEST_METHOD']) {
     case "POST":
-        require __DIR__ . "/postImage.php";
-        break;
-    case "DELETE":
-        require __DIR__ . "/deleteImage.php";
+        require __DIR__ . "/postMail.php";
         break;
 }

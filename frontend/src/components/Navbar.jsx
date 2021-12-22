@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/styles.css";
 import "../styles/nav.css";
-import logo from '../components/SOYC.png'
+// import logo from '../components/SOYC.png'
 import {Link} from "react-router-dom";
 
 
@@ -18,7 +18,7 @@ function Navbar() {
                         <span className="link-text">Logo to be here</span>
                     </Link>
                 </li>
-                <li exact className="nav-item">
+                <li className="nav-item">
                     <Link to="/info" className="nav-link">
                         <span className="link-text">Conference Info</span>
                     </Link>

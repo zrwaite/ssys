@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import "../styles/styles.css";
 import {httpReq} from "../modules/http_requests";
-import {createCookie, getCookie} from "../modules/cookies";
 import ReactDOM from "react-dom";
 import {Navigate} from "react-router-dom";
 
@@ -37,7 +36,7 @@ function TeacherRegister(props) {
 
     const sendForm = async () => {
         console.log(state);
-        let json = await httpReq("/ssys/backend/api/teacher/", "POST", {
+        let json = await httpReq("/api/teacher/", "POST", {
             email: state.email,
             password: state.password,
             fname: state.fname,
@@ -47,12 +46,7 @@ function TeacherRegister(props) {
         let elements = [];
         console.log(response);
         if (response.success && response.objects) {
-            createCookie("email", state.email);
-            createCookie("registrant_type", "teacher");
-            createCookie("token", response.objects.token);
-            elements.push(<p>Email: {getCookie("email")}</p>);
-            elements.push(<p>Account Type: {getCookie("registrant_type")}</p>);
-            elements.push(<p>Token: {getCookie("token")}</p>);
+            window.location.assign("/account");
         } else if (response.errors.length > 0) {
             for (let i = 0; i < response.errors.length; i++) {
                 elements.push(<p key={i}>{response.errors[i]}</p>);

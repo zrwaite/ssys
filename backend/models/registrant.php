@@ -7,7 +7,7 @@ use JetBrains\PhpStorm\ArrayShape;
 
 require_once __DIR__ . "/../modules/checkers.php";
 require_once __DIR__ . "/../auth/tokens.php";
-require_once __DIR__ . "/../modules/mailer.php";
+require_once __DIR__ . "/../modules/mailModules.php";
 require_once __DIR__ . "/../modules/database.php";
 
 
@@ -81,15 +81,7 @@ class PostRegistrant
 
     public function sendEmailConfirmation(): bool
     {
-        $mailHtml = "
-                <h1>Validate your email <a href='http://localhost:3000/confirmEmail?email=" . $this->email . "'>here</a></h1>
-                <p>Confirmation Code: " . $this->confirmation_code . "</p>
-            ";
-        $mailText = "
-                Validate your email here: http://localhost:3000/confirmEmail?email=" . $this->email . "
-                Confirmation Code: " . $this->confirmation_code;
-        sendMail([$this->email], "Validate Email - Sustainable Simcoe Youth Conference", $mailHtml, $mailText);
-        return true;
+        return emailConfirmation($this->confirmation_code, $this->email);
     }
 
     public function addAttendee(): bool
@@ -125,6 +117,8 @@ class PutRegistrant
                 case "school":
                 case "diet":
                 case "city":
+                case "bio":
+                case "additional_info":
                     break;
                 case "shirt_size":
                     $shirtOptions = ["XS", "S", "M", "L", "XL"];

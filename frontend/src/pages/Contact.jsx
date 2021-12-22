@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import "../styles/styles.css";
 import {httpReq} from "../modules/http_requests";
-import {createCookie} from "../modules/cookies";
 import ReactDOM from "react-dom";
 
 function Contact() {
@@ -27,7 +26,7 @@ function Contact() {
     handleInputChange = handleInputChange.bind(this);
 
     const sendForm = async () => {
-        let json = await httpReq("/ssys/backend/api/contact/", "POST", {
+        let json = await httpReq("/api/contact/", "POST", {
             email: state.email,
             to: state.to,
             message: state.message

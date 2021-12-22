@@ -1,6 +1,6 @@
 import "../styles/styles.css";
 import {Link, Navigate} from "react-router-dom";
-import {createCookie, deleteCookie, getCookie} from "../modules/cookies";
+import {deleteCookie, getCookie} from "../modules/cookies";
 
 function Account() {
 
@@ -13,7 +13,7 @@ function Account() {
     }
 
     return (
-        <div>
+        <main>
             <h1>Account Page</h1>
             <div>
                 <h3>Do you have an account? Then Sign In here:</h3>
@@ -31,7 +31,7 @@ function Account() {
                     </Link>
                 </button>
             </div>
-        </div>
+        </main>
     );
 }
 

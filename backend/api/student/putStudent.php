@@ -2,8 +2,6 @@
 
 assert($_SERVER['REQUEST_METHOD'] == "PUT");
 
-use Symfony\Component\Dotenv\Dotenv;
-
 //Imports
 require_once __DIR__ . "/../../vendor/autoload.php";
 require_once __DIR__ . "/../../models/response.php";
@@ -11,9 +9,6 @@ require_once __DIR__ . "/../../modules/database.php"; //Connect to database
 require_once __DIR__ . "/../../modules/readParams.php";
 require_once __DIR__ . "/../../models/student.php";
 require_once __DIR__ . "/../../modules/checkers.php";
-
-$dotenv = new Dotenv();
-$dotenv->load(__DIR__ . "/../../modules/env/.env");
 
 //Main
 $res = new Response();
@@ -28,7 +23,10 @@ else {
     $student_puts_and_errors = $student->getPutArray($email);
     $res->errors = $student_puts_and_errors["errors"];
     $puts = $student_puts_and_errors["puts"];
-    if (count($puts) == 0 && count($res->errors) == 0) array_push($res->errors, "You didn't send anything to update ");
+    if (count($res->errors) == 0) {
+        if (count($puts) == 0) array_push($res->errors, "You didn't send anything to update ");
+        else $res->objects = $puts;
+    }
 }
 if (count($res->errors) == 0) {
     try {
@@ -42,7 +40,7 @@ if (count($res->errors) == 0) {
             array_push($res->errors, "Can not find student");
         }
     } catch (Exception $e) {
-        echo 'Message: ' . $e->getMessage();
+        array_push($res->errors, 'Message: ' . $e->getMessage());
     }
 }
 http_response_code($res->status);
