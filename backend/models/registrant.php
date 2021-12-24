@@ -120,6 +120,11 @@ class PutRegistrant
                 case "bio":
                 case "additional_info":
                     break;
+                case "public":
+                    $error = true;
+                    if ($param=="public") $puts[$current_param] = true;
+                    else if ($param=="private") $puts[$current_param] = false;
+                    break;
                 case "shirt_size":
                     $shirtOptions = ["XS", "S", "M", "L", "XL"];
                     if (!in_array($param, $shirtOptions)) {

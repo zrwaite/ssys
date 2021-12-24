@@ -1,19 +1,29 @@
 const baseURL = "http://localhost/ssys/backend";
-const validateURL = (string = "") => {
-    let url;
+
+const imagePostReq = async (url, image, email) => {
+    url = baseURL + url;
     try {
-        url = new URL(string);
-    } catch (_) {
-        return false;
+        let body = new FormData();
+        body.append('image', image);
+        body.append('email', email);
+        body.append('submit', true);
+        let response = await fetch(url, {
+            method: 'POST',
+            body: body
+        })
+        const data = await response.json();
+        if (!response.ok) {
+            return Promise.resolve(JSON.stringify(data));
+        }
+        return Promise.resolve(JSON.stringify(data));
+    } catch (error) {
+        console.error(error);
+        return Promise.reject(JSON.stringify(error));
     }
-    return url.protocol === "http:" || url.protocol === "https:";
 }
+
 const httpReq = async (url, method = "GET", params = {}) => {
     url = baseURL + url;
-    if (!validateURL(url)) {
-        console.log("invalid url");
-        return false;
-    }
     if (method !== "GET" && method !== "POST" && method !== "PUT" && method !== "DELETE") {
         console.log("invalid method");
         return false;
@@ -44,4 +54,4 @@ const httpReq = async (url, method = "GET", params = {}) => {
     }
 }
 
-export {httpReq, baseURL};
+export {httpReq, imagePostReq, baseURL};

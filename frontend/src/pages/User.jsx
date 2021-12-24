@@ -5,7 +5,7 @@ import UserInfo from "../components/UserInfo";
 import ConferenceInfo from "../components/ConferenceInfo";
 import NotificationPanel from "../components/NotificationPanel";
 
-import {deleteCookie, getCookie} from "../modules/cookies";
+import {getCookie} from "../modules/cookies";
 import {Navigate} from "react-router-dom";
 import {httpReq, baseURL} from "../modules/http_requests";
 import SettingsPanel from "../components/SettingsPanel";
@@ -13,13 +13,6 @@ import SettingsPanel from "../components/SettingsPanel";
 
 const getImageLink = (imageLink) => {
     return baseURL + "/images/" + imageLink;
-}
-
-const logout = () => {
-    deleteCookie("token");
-    deleteCookie("email");
-    deleteCookie("registrant_type");
-    window.location.assign("/account");
 }
 
 function User() {
@@ -122,7 +115,8 @@ function User() {
                     <h3>{state.fname}</h3>
                     <h3>{state.lname}</h3>
                 </div>
-                <SettingsPanel loaded={state.loaded}/>
+                <SettingsPanel loaded={state.loaded} fname={state.fname} lname={state.lname}
+                               image_link={state.image_link} public={state.public}/>
                 <NotificationPanel email_confirmed={state.email_confirmed} password_set={state.password_set}/>
             </header>
             <section className={"userBody"}>
@@ -137,7 +131,6 @@ function User() {
             <p>Email = {getCookie("email")}</p>
             <p>Token = {getCookie("token")}</p>
             <p>Account Type = {getCookie("registrant_type")}</p>
-            <button onClick={logout}>Logout</button>
         </main>
     );
 }

@@ -12,7 +12,7 @@
 
 .settingsPanelHeader {
     display: grid;
-    grid-template-columns: 4fr 1fr 1fr;
+    grid-template-columns: 6fr 1fr 1fr;
     align-items: center;
     justify-content: center;
 }
@@ -24,4 +24,37 @@
 
 .settingsIcon:hover {
     cursor: pointer;
+}
+
+
+.settingsRow {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    margin: 0;
+    padding: 0.5rem 0 0.5rem 0;
+    border-top: 0.1rem solid black;
+}
+
+.settingsRow > h4 {
+    padding-right: 0.3rem;
+    margin: 0;
+    border-right: 0.1rem solid black;
+}
+
+.settingsRow > div {
+    padding-left: 0.3rem;
+}
+
+.settingsRow > div > p {
+    margin: 0;
+}
+
+.settingsBody {
+    display: grid;
+    align-items: center;
+}
+
+.logoutButton {
+    margin: 1rem 2rem;
+    font-size: 2rem;
 }
