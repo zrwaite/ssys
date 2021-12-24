@@ -3,18 +3,18 @@
 }
 .student_register{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem,20rem));
+    grid-template-columns: 1;
     justify-content: center;
     align-items: center;
     border: 3px solid green;
-    width: 60%;
+    width: 70%;
     margin:auto;
     gap:0.5rem;
 }
 
 .mail{
     text-align:center;
-    padding: 1rem 5rem;
+    padding: 1rem 4rem;
     font-size: 1rem;
     opacity: 1;
     text-decoration: none;
@@ -24,7 +24,7 @@
 
 .pword{
     text-align:center;
-    padding: 1rem 5rem;
+    padding: 1rem 4rem;
     font-size: 1rem;
     opacity: 1;
     text-decoration: none;
@@ -34,7 +34,7 @@
 
 .firstname{
     text-align:center;
-    padding: 1rem 5rem;
+    padding: 1rem 4rem;
     font-size: 1rem;
     opacity: 1;
     text-decoration: none;
@@ -44,7 +44,7 @@
 
 .lastname{
     text-align:center;
-    padding: 1rem 5rem;
+    padding: 1rem 4rem;
     font-size: 1rem;
     opacity: 1;
     text-decoration: none;
@@ -54,7 +54,7 @@
 
 .tid{
     text-align:center;
-    padding: 1rem 5rem;
+    padding: 1rem 4rem;
     font-size: 1rem;
     opacity: 1;
     text-decoration: none;
@@ -64,7 +64,7 @@
 
 .temail{
     text-align:center;
-    padding: 1rem 5rem;
+    padding: 1rem 4rem;
     font-size: 1rem;
     opacity: 1;
     text-decoration: none;
@@ -76,7 +76,7 @@
     background-color: rgba(12, 35, 139, 0.9);
     border: none;
     color: white;
-    padding: 1rem 5rem;
+    padding: 1rem 4rem;
     text-align: center;
     font-size: 1rem;
     opacity: 1;
@@ -95,4 +95,3 @@
     margin: 0 auto;
     text-align:center;
 }
-
