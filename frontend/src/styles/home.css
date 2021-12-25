@@ -10,25 +10,188 @@
 .top{
     background-color:darkgreen;
     background-size:cover;
-    height:10rem;
     text-align:center;
+    grid-template-columns: 1fr;
+}
+
+.leading{
+    color:gold;
+}
+
+.oneofakind{
+    width:70%;
+    text-align:center;
+    margin:auto;
+    padding-bottom: 2rem;
+}
+
+.butt{
+    background-color: rgba(12, 35, 139, 0.9);
+    border: none;
+    color: gold;
+    padding: 1.25rem 4rem;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0 auto;
+    width:20%;
+}
+
+.butt:hover {
+    font-weight: 300;
+    padding: 1rem 1rem;
+    transition: all 0.5s ease-in-out;
+    background-color: #fff;
+    border-radius: 0.125rem;
+    color: rgba(12, 35, 139, 0.9);
+}
+
+.butttext{
+    color: gold;
+}
+
+.buttlink{
+    color: gold;
 }
 
 .countdown{
     background-color:rgb(7, 66, 126);
     display:grid;
-    grid-template-columns:1fr 1fr;
-    height:10rem;
+    grid-template-columns: repeat(auto-fit, minmax(10rem,50rem));
+    justify-content:center;
+    align-items:center;
 }
 
 .registrationcountdown{
-    grid-column:1;
     color:gold;
     text-align:center;
+    padding: 1rem 4rem;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    height:10rem;
 }
 
 .conferencecountdown{
-    grid-column:2;
     color:gold;
     text-align:center;
+    padding: 1rem 4rem;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    height:10rem;
+}
+
+.keynote{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 10rem 10rem 10rem;
+    display:grid;
+    background-color:green;
+}
+
+.keynote > h2{
+    grid-column:1 /  span 3;
+    grid-row:1;
+    text-align:center;
+}
+
+.firstspeakerimage{
+    object-fit:fill;
+    width:100%;
+}
+
+.firstspeakerimagebox{
+    grid-column:1;
+    grid-row:2;
+}
+
+.firstspeakerblurbbox{
+    grid-column: 2/2;
+    grid-row:2;
+}
+
+.firstspeakerblurbtext{
+    text-align:left;
+    padding-left: 0.5rem;
+}
+
+.secondspeakerimage{
+    object-fit:fill;
+    width:100%;
+    grid-column:3;
+    grid-row:3;
+}
+
+.secondspeakerblurbbox{
+    grid-column:2;
+    grid-row:3;
+}
+
+.secondspeakerblurbtext{
+    text-align:right;
+    padding-right: 0.5rem;
+}
+
+.secondspeakerimagebox{
+    grid-column: 3;
+    grid-row:3;
+}
+
+.workshop{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(7, 66, 126);
+    gap:0.5rem;
+}
+
+.workshop > h2{
+    text-align:left;
+    padding-left:1rem;
+}
+
+.work{
+    background-color: rgba(12, 35, 139, 0.9);
+    border: none;
+    color: gold;
+    padding: 1.25rem 4rem;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0 auto;
+    width:20%;
+}
+
+.work:hover {
+    font-weight: 300;
+    padding: 1rem 1rem;
+    transition: all 0.5s ease-in-out;
+    background-color: #fff;
+    border-radius: 0.125rem;
+    color: rgba(12, 35, 139, 0.9);
+}
+
+.worktext{
+    color: gold;
+}
+
+.worklink{
+    color: gold;
+}
+
+.about{
+    background-color:lightgreen;
+    height:10rem;
+    background-size:cover;
+    text-align:center;
+}
+
+.about > h2{
+    text-align:center;
+    color:gold;
 }
