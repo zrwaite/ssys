@@ -1,0 +1,76 @@
+.acc{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(15rem,50rem));
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    column-gap:10rem;
+}
+
+.acc h3{
+    text-align:center;
+}
+
+.sign{
+    display:grid;
+    grid-template-columns: 1fr;
+    align-items:center;
+}
+
+.signbutton{
+    background-color: rgba(12, 35, 139, 0.9);
+    border: none;
+    color: gold;
+    padding: 1.25rem 4rem;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.signbutton:hover {
+    font-weight: 300;
+    padding: 1rem 1rem;
+    transition: all 0.5s ease-in-out;
+    background-color: greenyellow;
+    border-radius: 0.125rem;
+    color: rgba(12, 35, 139, 0.9);
+}
+
+.signtext{
+    color:gold;
+}
+
+.reg{
+    display:grid;
+    grid-template-columns: 1fr;
+    align-items:center;
+}
+
+.regbutton{
+    background-color: rgba(12, 35, 139, 0.9);
+    border: none;
+    color: gold;
+    padding: 1.25rem 4rem;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.regbutton:hover {
+    font-weight: 300;
+    padding: 1rem 1rem;
+    transition: all 0.5s ease-in-out;
+    background-color: greenyellow;
+    border-radius: 0.125rem;
+    color: rgba(12, 35, 139, 0.9);
+}
+
+.regtext{
+    color:gold;
+}

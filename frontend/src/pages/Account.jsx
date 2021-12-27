@@ -1,6 +1,7 @@
 import "../styles/styles.css";
 import {Link, Navigate} from "react-router-dom";
 import {deleteCookie, getCookie} from "../modules/cookies";
+import "../styles/account.css";
 
 function Account() {
 
@@ -15,21 +16,19 @@ function Account() {
     return (
         <main>
             <h1>Account Page</h1>
-            <div>
-                <h3>Do you have an account? Then Sign In here:</h3>
-                <button>
-                    <Link to="/signin">
-                        <span className="link-text">Sign In</span>
-                    </Link>
-                </button>
-            </div>
-            <div>
-                <h3>Don't have an account? Then Register here:</h3>
-                <button>
-                    <Link to="/register">
-                        <span className="link-text">Register</span>
-                    </Link>
-                </button>
+            <div class="acc">
+             <div class="sign">
+                    <h3>Do you have an account? Then Sign In here:</h3>
+                        <Link to="/signin" className="signbutton">
+                            <span className="signtext">Sign In</span>
+                        </Link> 
+                </div>
+                <div class="reg">
+                    <h3>Don't have an account? Then Register here:</h3>
+                         <Link to="/register" className="regbutton">
+                           <span className="regtext">Register</span>
+                        </Link>
+                </div>
             </div>
         </main>
     );

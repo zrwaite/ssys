@@ -16,7 +16,7 @@ function Home() {
                         <span className="butttext">Register Now</span>
                     </Link>
                     </div>
-                    <div><br/><br/></div>
+                    <div><br/><br/><br/></div>
                 </div>
                 <div class="countdown">
                     <div class="registrationcountdown">
@@ -33,7 +33,7 @@ function Home() {
                 <div class="keynote">
                     <h2>Our Keynote Speakers</h2>
                     <div class="firstspeakerimagebox">
-                    <img className = "firstspeakerimage" src={logo} alt="Logo" />
+                         <img className = "firstspeakerimage" src={logo} alt="Logo" />
                     </div>
                     <div class="firstspeakerblurbbox">
                         <p class="firstspeakerblurbtext">This is just some text</p>
@@ -47,46 +47,7 @@ function Home() {
                 </div>
                 <div className="workshop">
                     <h2>Our Workshops</h2>
-                    <div>
-                    <Link to="/info" className="work">
-                        <span className="worktext">Register Now</span>
-                    </Link>
-                    </div>
-                    <div>
-                    <Link to="/info" className="work">
-                        <span className="worktext">Register Now</span>
-                    </Link>
-                    </div>
-                    <div>
-                    <Link to="/info" className="work">
-                        <span className="worktext">Register Now</span>
-                    </Link>
-                    </div>
-                    <div>
-                    <Link to="/info" className="work">
-                        <span className="worktext">Register Now</span>
-                    </Link>
-                    </div>
-                    <div>
-                    <Link to="/info" className="work">
-                        <span className="worktext">Register Now</span>
-                    </Link>
-                    </div>
-                    <div>
-                    <Link to="/info" className="work">
-                        <span className="worktext">Register Now</span>
-                    </Link>
-                    </div>
-                    <div>
-                    <Link to="/info" className="work">
-                        <span className="worktext">Register Now</span>
-                    </Link>
-                    </div>
-                    <div>
-                    <Link to="/info" className="work">
-                        <span className="worktext">Register Now</span>
-                    </Link>
-                    </div>
+                    
                 </div>
                 <div className="about">
                     <h2>About Us</h2>

@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "../styles/styles.css";
 import {httpReq} from "../modules/http_requests";
 import ReactDOM from "react-dom";
+import "../styles/contact.css"
 
 function Contact() {
     let [state, setState] = useState({
@@ -54,12 +55,13 @@ function Contact() {
     }
 
     return (
-        <main>
+        <main class="contactus">
             <header>
-                <h1>Contact Page</h1>
+                <h1>Contact Us</h1>
             </header>
+            <p class="blurb">This is some text that is going to serve as a little thing for the contact us page</p>
             <div>
-                <label htmlFor={"email"}>Email: </label>
+                <label class="contactus" htmlFor={"email"}>Email: </label>
                 <input type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
                 <br/>
                 <label htmlFor={"to"}>To:</label>

@@ -16,13 +16,15 @@
 
 .leading{
     color:gold;
+    text-align:center;
+    padding-bottom:1rem;
 }
 
 .oneofakind{
     width:70%;
     text-align:center;
     margin:auto;
-    padding-bottom: 2rem;
+    padding-bottom: 4rem;
 }
 
 .butt{
@@ -59,7 +61,7 @@
 .countdown{
     background-color:rgb(7, 66, 126);
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem,50rem));
+    grid-template-columns: repeat(auto-fit, minmax(5rem,40rem));
     justify-content:center;
     align-items:center;
 }
@@ -67,7 +69,7 @@
 .registrationcountdown{
     color:gold;
     text-align:center;
-    padding: 1rem 4rem;
+    padding: 1rem;
     font-size: 1rem;
     opacity: 1;
     text-decoration: none;
@@ -77,7 +79,7 @@
 .conferencecountdown{
     color:gold;
     text-align:center;
-    padding: 1rem 4rem;
+    padding: 1rem;
     font-size: 1rem;
     opacity: 1;
     text-decoration: none;
@@ -85,8 +87,9 @@
 }
 
 .keynote{
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 10rem 10rem 10rem;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows:minmax(auto,10rem);
+    width:100%;
     display:grid;
     background-color:green;
 }
@@ -98,13 +101,23 @@
 }
 
 .firstspeakerimage{
-    object-fit:fill;
-    width:100%;
+    max-width:100%;
+    max-height:300%;
+    height:auto;
+    grid-column:1;
+    object-fit: cover;
+    grid-row:2;
+    display:block;
 }
 
 .firstspeakerimagebox{
+    max-width:100%;
+    max-height:300%;
+    height:auto;
     grid-column:1;
+    object-fit: cover;
     grid-row:2;
+    display:block;
 }
 
 .firstspeakerblurbbox{
@@ -118,10 +131,13 @@
 }
 
 .secondspeakerimage{
-    object-fit:fill;
-    width:100%;
+    max-width:100%;
+    max-height:300%;
+    height: auto;
     grid-column:3;
+    object-fit: cover;
     grid-row:3;
+    display:block;
 }
 
 .secondspeakerblurbbox{
@@ -135,8 +151,13 @@
 }
 
 .secondspeakerimagebox{
-    grid-column: 3;
+    max-width:100%;
+    max-height:300%;
+    height:auto;
+    object-fit: cover;
+    grid-column:3;
     grid-row:3;
+    display:block;
 }
 
 .workshop{

@@ -1,0 +1,13 @@
+.blurb{
+    border: 1px solid black;
+    margin:auto;
+    width:70%;
+    text-align:center;
+}
+
+.contactus{
+    background-color: green;
+    align-items:center;
+    text-align:center;
+    margin:auto;
+}
