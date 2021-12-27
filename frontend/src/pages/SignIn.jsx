@@ -3,6 +3,7 @@ import "../styles/styles.css";
 import {httpReq} from "../modules/http_requests";
 import ReactDOM from "react-dom";
 import {Navigate} from "react-router-dom";
+import "../styles/signin.css";
 
 
 import {createCookie} from "../modules/cookies";
@@ -57,17 +58,24 @@ function SignIn() {
     }
 
     return (
-        <main>
+        <main class="signinhead">
             {/*<Navigate to="/user" />*/}
             <header>
                 <h1>Sign In Page</h1>
             </header>
-            <div>
-                <label htmlFor={"email"}>Email: </label>
-                <input type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
-                <label htmlFor={"password"}>Password: </label>
-                <input type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
-                <button onClick={sendForm}>Submit</button>
+            <div class="signin">
+                <div class="signinmail">
+                    <label htmlFor={"email"}>Email: </label>
+                     <input type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
+                </div>
+                <div class="signinpword">
+                     <label htmlFor={"password"}>Password: </label>
+                      <input type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
+                </div>
+            </div>
+            <div class="center">
+                <p><br/><br/><br/></p>
+                <button class="signinsubmit" onClick={sendForm}>Submit</button>
             </div>
             <div id={"signUpResult"}>
 
