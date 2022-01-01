@@ -56,25 +56,36 @@ function Contact() {
 
     return (
         <main class="contactus">
-            <header>
-                <h1>Contact Us</h1>
-            </header>
-            <p class="blurb">This is some text that is going to serve as a little thing for the contact us page</p>
+            <div class="contactheader">
+                <header>
+                    <h1>Contact Us</h1>
+                </header>
+                <p class="contactblurb">Have any questions? Problems? Notice a bug? Please use the contact form below and we will get back to you as soon as possible!<br/></p>
+                <div class="emailthing">
+                    <br/>
+                   <label htmlFor={"email"}>Email: </label>
+                   <input type={"text"} class="emailbox" name={"email"} value={state.email} onChange={handleInputChange}/>
+                   <br/>
+                </div>
+            </div>
+            <br/>
             <div>
-                <label class="contactus" htmlFor={"email"}>Email: </label>
-                <input type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
-                <br/>
                 <label htmlFor={"to"}>To:</label>
                 <select id={"to"} name={"to"} value={state.to} onChange={handleInputChange}>
                     <option value="tech">Tech Support</option>
                     <option value="organizer">Conference Information</option>
                 </select>
-                <br/>
+                <br/><br/>
                 <label htmlFor={"message"}>Message: </label>
                 <br/>
-                <textarea name="message" rows="10" cols="30" value={state.message} onChange={handleInputChange}/>
-                <br/>
-                <button onClick={sendForm}>Submit</button>
+                <textarea name="message" class="messagebox" rows="10" cols="30" value={state.message} onChange={handleInputChange}/>
+            </div>
+            <div class="bottomofgreencontact">
+                  <div class="bottomofcontact">
+                      <br/>
+                     <button class="submit" onClick={sendForm}>Submit</button>   
+                 </div>
+                 <br/>
             </div>
             <div id={"contactResult"}>
 

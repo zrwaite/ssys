@@ -1,13 +1,53 @@
-.blurb{
-    border: 1px solid black;
+.contactblurb{
     margin:auto;
-    width:70%;
+    width:100%;
     text-align:center;
+    padding-bottom:1rem;
+    padding-top:1rem;
+    background-color:darkgreen;
 }
 
 .contactus{
-    background-color: green;
     align-items:center;
     text-align:center;
     margin:auto;
+}
+
+.contactheader{
+    background-color:darkgreen;
+}
+
+.emailthing{
+    background-color:white;
+    margin:auto;
+    width:60%;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius:1rem;
+}
+
+.emailbox{
+    color:blue;
+    border-radius:0.5rem;
+    border:1px solid green;
+}
+
+.messagebox{
+    border-radius:0.5rem;
+    width:50%;
+}
+
+.bottomofcontact{
+    background-color:white;
+    margin:auto;
+    width:60%;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius:1rem;
+}
+
+.bottomofgreencontact{
+    background-color:darkgreen;
 }
