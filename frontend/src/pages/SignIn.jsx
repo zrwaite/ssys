@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "../styles/styles.css";
 import {httpReq} from "../modules/http_requests";
 import ReactDOM from "react-dom";
+import {Link} from "react-router-dom";
 import {Navigate} from "react-router-dom";
 import "../styles/signin.css";
 
@@ -61,21 +62,32 @@ function SignIn() {
         <main class="signinhead">
             {/*<Navigate to="/user" />*/}
             <header>
-                <h1>Sign In Page</h1>
+                <h1>Sign In</h1>
             </header>
+            <div class="signinblurb">
+                <p>Already have an account? Then sign in here!</p>
+            </div>
             <div class="signin">
                 <div class="signinmail">
                     <label htmlFor={"email"}>Email: </label>
-                     <input type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
+                     <input type={"text"} class="signininput" name={"email"} value={state.email} onChange={handleInputChange}/>
                 </div>
                 <div class="signinpword">
                      <label htmlFor={"password"}>Password: </label>
-                      <input type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
+                      <input type={"password"} class="signininput" name={"password"} value={state.password} onChange={handleInputChange}/>
                 </div>
+                <div class="nosignup">
+                      <Link to="/register">
+                        <span>Haven't yet signed up? Click here<br/></span>
+                    </Link>
+                    <Link to="/contact">
+                        <span>Forgot your credentials? Click here</span>
+                    </Link>
+                 </div>
             </div>
             <div class="center">
-                <p><br/><br/><br/></p>
-                <button class="signinsubmit" onClick={sendForm}>Submit</button>
+                <p></p>
+                <button class="signinsubmit" onClick={sendForm}>Log In</button>
             </div>
             <div id={"signUpResult"}>
 

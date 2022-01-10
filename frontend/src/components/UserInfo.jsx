@@ -102,9 +102,9 @@ function UserInfo(props) {
         viewDisplay.display = "none";
     }
     return (
-        <div className={"infoPanel"}>
+        <div className={"userInfoPanel"}>
             <div className={"infoHeader"}>
-                <h4>User Info</h4>
+                <h4 class>User Info</h4>
                 <img style={viewDisplay} src={editIcon} onClick={() => changeState("editMode", true)}
                      alt={"edit icon"}/>
                 <img style={editDisplay} src={closeIcon} onClick={() => changeState("editMode", false)}

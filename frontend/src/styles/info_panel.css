@@ -1,9 +1,21 @@
-.infoPanel {
+.userInfoPanel {
     border: 0.3px solid black;
     max-width: 20rem;
-    max-height: 20rem;
+    max-height: 25rem;
     margin: 1rem;
     padding: 0.5rem;
+    border-radius:1rem;
+    background-color: lightgreen;
+}
+
+.conferenceInfoPanel{
+    border:0.3px solid black;
+    max-width: 20rem;
+    max-height: 25rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius:1rem;
+    background-color: lightseagreen;
 }
 
 .infoHeader {
