@@ -5,6 +5,7 @@
     padding-bottom:1rem;
     padding-top:1rem;
     background-color:darkgreen;
+    color:gold;
 }
 
 .contactus{
@@ -15,6 +16,7 @@
 
 .contactheader{
     background-color:darkgreen;
+    background-size:cover;
 }
 
 .emailthing{
@@ -50,4 +52,8 @@
 
 .bottomofgreencontact{
     background-color:darkgreen;
+}
+
+.contactuscolour{
+    color:gold;
 }

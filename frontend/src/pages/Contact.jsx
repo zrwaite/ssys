@@ -55,11 +55,10 @@ function Contact() {
     }
 
     return (
-        <main class="contactus">
+        <main>
+        <div class="contactus">
             <div class="contactheader">
-                <header>
-                    <h1>Contact Us</h1>
-                </header>
+                <h1 class="contactuscolour">Contact Us</h1>
                 <p class="contactblurb">Have any questions? Problems? Notice a bug? Please use the contact form below and we will get back to you as soon as possible!<br/></p>
                 <div class="emailthing">
                     <br/>
@@ -89,6 +88,7 @@ function Contact() {
             </div>
             <div id={"contactResult"}>
 
+            </div>
             </div>
         </main>
     );

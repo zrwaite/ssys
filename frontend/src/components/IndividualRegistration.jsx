@@ -3,6 +3,8 @@ import "../styles/styles.css";
 import {httpReq} from "../modules/http_requests";
 import ReactDOM from "react-dom";
 import {Navigate} from "react-router-dom";
+import "../styles/student_registration.css";
+import{Link} from "react-router-dom";
 
 function IndividualRegister(props) {
     let individualStyle
@@ -61,25 +63,44 @@ function IndividualRegister(props) {
 
     return (
         <div style={individualStyle}>
-            <p>Individual Registration</p>
+            <p class="studentregistration">Student Registration</p>
+            <div class="studentGrid">
+            <div class="registrationPageInfo">
+                <h2>blah blah blah blah</h2>
+                <h3>blah blah blah blah</h3>
+            </div>
             <div>
-                <label htmlFor={"email"}>Email: </label>
-                <input type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
-                <br/>
-                <label htmlFor={"password"}>Password: </label>
-                <input type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
-                <br/>
-                <label htmlFor={"fname"}>First Name: </label>
-                <input type={"text"} name={"fname"} value={state.fname} onChange={handleInputChange}/>
-                <br/>
-                <label htmlFor={"lname"}>Last Name: </label>
-                <input type={"text"} name={"lname"} value={state.lname} onChange={handleInputChange}/>
-                <br/>
-                <button onClick={sendForm}>Submit</button>
+                <div class="student_register">
+                    <div class="registerBlurb">
+                        <h2>Sign up today!</h2>
+                    </div>
+                    <div>
+                        <label htmlFor={"fname"}></label>
+                        <input class="registerBox" placeholder="First Name" type={"text"} name={"fname"} value={state.fname} onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor={"lname"}></label>
+                        <input class="registerBox" placeholder="Last Name" type={"text"} name={"lname"} value={state.lname} onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor={"email"}></label>
+                        <input class="registerBox" placeholder="email" type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor={"password"}></label>
+                        <input class="registerBox" placeholder="password" type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
+                    </div>
+                    <div class="center">
+                        <button class="submit" onClick={sendForm}>Submit</button>
+                    </div>
+                    <div>
+                    <Link to="/signin">
+                        <span class="signedUp">Already Signed Up? Click Here<br/></span>
+                    </Link>
+                    </div>
+                </div>
             </div>
-            <div id={"individualRegistrationResult"}>
-
-            </div>
+        </div>
         </div>
     )
 }

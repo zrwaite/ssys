@@ -102,7 +102,7 @@ function ConferenceInfo(props) {
         viewDisplay.display = "none";
     }
     return (
-        <div className={"infoPanel"}>
+        <div className={"conferenceInfoPanel"}>
             <div className={"infoHeader"}>
                 <h4>Conference Info</h4>
                 <img style={viewDisplay} src={editIcon} onClick={() => changeState("editMode", true)}

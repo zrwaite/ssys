@@ -8,11 +8,10 @@ import "../styles/register.css";
 function Register() {
     let [registerDisplay, setRegisterDisplay] = useState(null);
     return (
-        <main>
+        <main class="registerBackColour">
             <header>
                 <h1>Register Page</h1>
             </header>
-            <p class="blurb">asdfasdfasdfasdf<br/>asdfasdfasdfasdf<br/><br/><br/><br/><br/><br/><br/><br/></p>
             <div>
                     <h3 class="one">Register as:</h3>                
                 </div>

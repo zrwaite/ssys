@@ -5,6 +5,7 @@ import {createCookie, getCookie} from "../modules/cookies";
 import ReactDOM from "react-dom";
 import {Navigate} from "react-router-dom";
 import "../styles/student_registration.css";
+import {Link} from "react-router-dom";
 
 function StudentRegister(props) {
     let studentStyle
@@ -74,37 +75,53 @@ function StudentRegister(props) {
     return (
         <div style={studentStyle}>
             <p class="studentregistration">Student Registration</p>
-            <div class="student_register">
-            <div class="firstname">
-                <label htmlFor={"fname"}>First Name: </label>
-                <input type={"text"} name={"fname"} value={state.fname} onChange={handleInputChange}/>
-                </div>
-                <div class="lastname">
-                <label htmlFor={"lname"}>Last Name: </label>
-                <input type={"text"} name={"lname"} value={state.lname} onChange={handleInputChange}/>
-                </div>
-                <div class="mail">
-                <label htmlFor={"email"}>Email: </label>
-                <input type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
-                </div>
-                <div class="pword">
-                <label htmlFor={"password"}>Password: </label>
-                <input type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
-                </div>
-                <div class="temail">
-                <label htmlFor={"teacher_email"}>Teacher Email: </label>
-                <input type={"text"} name={"teacher_email"} value={state.teacher_email} onChange={handleInputChange}/>
-                </div>
-                <div class="tid">
-                <label htmlFor={"teacher_id"}>Teacher Id: </label>
-                <input type={"text"} name={"teacher_id"} value={state.teacher_id} onChange={handleInputChange}/>
+            <div class="studentGrid">
+            <div class="registrationPageInfo">
+                <h2>blah blah blah blah</h2>
+                <h3>blah blah blah blah</h3>
+            </div>
+            <div>
+                <div class="student_register">
+                    <div class="registerBlurb">
+                        <h2>Sign up today!</h2>
+                    </div>
+                    <div>
+                        <label htmlFor={"fname"}></label>
+                        <input class="registerBox" placeholder="First Name" type={"text"} name={"fname"} value={state.fname} onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor={"lname"}></label>
+                        <input class="registerBox" placeholder="Last Name" type={"text"} name={"lname"} value={state.lname} onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor={"email"}></label>
+                        <input class="registerBox" placeholder="email" type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor={"password"}></label>
+                        <input class="registerBox" placeholder="password" type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor={"teacher_email"}></label>
+                        <input class="registerBox" placeholder="Teacher Email" type={"text"} name={"teacher_email"} value={state.teacher_email} onChange={handleInputChange}/>
+                    </div>
+                    <div>
+                        <label htmlFor={"teacher_id"}></label>
+                        <input class="registerBox" placeholder="Teacher ID" type={"text"} name={"teacher_id"} value={state.teacher_id} onChange={handleInputChange}/>
+                    </div>
+                    <div class="center">
+                        <button class="submit" onClick={sendForm}>Submit</button>
+                    </div>
+                    <div>
+                    <Link to="/signin">
+                        <span class="signedUp">Already Signed Up? Click Here<br/></span>
+                    </Link>
+                    </div>
                 </div>
             </div>
-            <div class="center">
-                <button class="submit" onClick={sendForm}>Submit</button>
-                </div>
-            <div id={"studentRegistrationResult"}>
-
+            </div>
+            <div 
+                id={"studentRegistrationResult"}>
             </div>
         </div>
     )
