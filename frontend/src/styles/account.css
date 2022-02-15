@@ -1,6 +1,6 @@
 .acc{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(15rem,50rem));
+    grid-template-columns:repeat(auto-fit, minmax(15rem,35rem));
     justify-content: center;
     align-items: center;
     margin:auto;

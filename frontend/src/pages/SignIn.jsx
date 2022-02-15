@@ -59,22 +59,22 @@ function SignIn() {
     }
 
     return (
-        <main class="signinhead">
+        <main class="registerBackColour">
             {/*<Navigate to="/user" />*/}
             <header>
                 <h1>Sign In</h1>
             </header>
-            <div class="signinblurb">
-                <p>Already have an account? Then sign in here!</p>
-            </div>
-            <div class="signin">
-                <div class="signinmail">
-                    <label htmlFor={"email"}>Email: </label>
-                     <input type={"text"} class="signininput" name={"email"} value={state.email} onChange={handleInputChange}/>
+            <div class="userSignIn">
+                <div class="signInBlurb">
+                    <p>Already have an account? Then sign in here!</p>
                 </div>
-                <div class="signinpword">
-                     <label htmlFor={"password"}>Password: </label>
-                      <input type={"password"} class="signininput" name={"password"} value={state.password} onChange={handleInputChange}/>
+                <div class="center">
+                    <label htmlFor={"email"}></label>
+                     <input type={"text"} class="signInBox" name={"email"} placeHolder="Email" value={state.email} onChange={handleInputChange}/>
+                </div>
+                <div class="center">
+                     <label htmlFor={"password"}></label>
+                      <input type={"password"} class="signInBox" placeHolder="Password" name={"password"} value={state.password} onChange={handleInputChange}/>
                 </div>
                 <div class="nosignup">
                       <Link to="/register">
@@ -84,10 +84,10 @@ function SignIn() {
                         <span>Forgot your credentials? Click here</span>
                     </Link>
                  </div>
-            </div>
-            <div class="center">
-                <p></p>
-                <button class="signinsubmit" onClick={sendForm}>Log In</button>
+                 <div class="center">
+                     <p></p>
+                <button class="submit" onClick={sendForm}>Log In</button>
+                </div>
             </div>
             <div id={"signUpResult"}>
 
