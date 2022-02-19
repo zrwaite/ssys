@@ -59,11 +59,11 @@
 }
 
 .countdown{
-    background-color:rgb(7, 66, 126);
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(5rem,40rem));
     justify-content:center;
     align-items:center;
+    background-color: rgba(12, 35, 139, 0.9);
 }
 
 .registrationcountdown{
