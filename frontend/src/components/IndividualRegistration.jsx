@@ -46,7 +46,6 @@ function IndividualRegister(props) {
         })
         let response = JSON.parse(json);
         let elements = [];
-        console.log(response);
         if (response.success && response.objects) {
             window.location.assign("/user");
         } else if (response.errors.length > 0) {

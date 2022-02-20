@@ -25,7 +25,7 @@ const imagePostReq = async (url, image, email) => {
 const httpReq = async (url, method = "GET", params = {}) => {
     url = baseURL + url;
     if (method !== "GET" && method !== "POST" && method !== "PUT" && method !== "DELETE") {
-        console.log("invalid method");
+        console.error("invalid method");
         return false;
     }
     try {

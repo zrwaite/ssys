@@ -8,48 +8,37 @@ import {getCookie} from "../modules/cookies";
 
 function ConferenceInfo(props) {
     let [state, setState] = useState({
-        studentInfo: props.studentInfo || "",
-        diet: props.diet || "",
-        shirt_size: props.shirt_size || "",
-        emergency_contact: props.emergency_contact || "",
-        additional_info: props.additional_info || "",
-        editMode: false,
-        initialLoad: false
+        studentInfo: "",
+        diet: "",
+        shirt_size: "",
+        emergency_contact:  "",
+        additional_info:  "",
+        editMode: false
     });
 
-    if (!props.loaded) return <></>;
-    else if (!state.initialLoad) {
+    React.useEffect(() => {
+        props.renderData.current = renderData
+    })
+
+
+    const renderData = (diet, shirt_size, emergency_contact, additional_info, studentInfo) => {
         setState({
-            studentInfo: props.studentInfo || "",
-            diet: props.diet || "",
-            shirt_size: props.shirt_size || "",
-            emergency_contact: props.emergency_contact || "",
-            additional_info: props.additional_info || "",
-            editMode: state.editMode,
-            initialLoad: true
-        })
-    }
-
-
-    let changeState = (name, value) => {
-        let partialState = {
-            studentInfo: state.studentInfo,
-            diet: state.diet,
-            shirt_size: state.shirt_size,
-            emergency_contact: state.emergency_contact,
-            additional_info: state.additional_info,
-            editMode: state.editMode,
-            initialLoad: state.initialLoad
-        };
-        partialState[name] = value;
-        setState(partialState);
+            ...state,
+            diet: diet,
+            shirt_size: shirt_size,
+            emergency_contact:  emergency_contact,
+            additional_info:  additional_info,
+            studentInfo: studentInfo,
+        });
     }
 
     let handleInputChange = (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        changeState(name, value);
+        let partialState = {...state};
+        partialState[name] = value;
+        setState(partialState);
     }
     handleInputChange = handleInputChange.bind(this);
 
@@ -77,11 +66,9 @@ function ConferenceInfo(props) {
             shirt_size: state.shirt_size,
             additional_info: state.additional_info
         })
-        console.log(json);
         let response = JSON.parse(json);
-        console.log(response);
         if (response.success && response.objects) {
-            console.log(response);
+            // console.log(response);
         } else if (response.errors.length > 0) {
             alert(JSON.stringify(response));
         }
@@ -91,7 +78,7 @@ function ConferenceInfo(props) {
         let user_type = getCookie("user_type");
         if (user_type === "student" || user_type === "individual") await sendStudentForm();
         else if (user_type === "teacher") await sendTeacherForm();
-        changeState("editMode", false);
+        setState({...state, editMode:false});
     }
     let studentDisplay = {display: "none"};
     let editDisplay = {display: "none"};
@@ -105,9 +92,9 @@ function ConferenceInfo(props) {
         <div className={"conferenceInfoPanel"}>
             <div className={"infoHeader"}>
                 <h4>Conference Info</h4>
-                <img style={viewDisplay} src={editIcon} onClick={() => changeState("editMode", true)}
+                <img style={viewDisplay} src={editIcon} onClick={() => setState({...state, editMode: true})}
                      alt={"edit icon"}/>
-                <img style={editDisplay} src={closeIcon} onClick={() => changeState("editMode", false)}
+                <img style={editDisplay} src={closeIcon} onClick={() => setState({...state, editMode: false})}
                      alt={"close icon"}/>
             </div>
             <div className={"infoBody"}>

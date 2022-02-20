@@ -75,7 +75,6 @@ function SettingsPanel(props) {
             public: state.public !== "public" ? "private" : "public"
         })
         let response = JSON.parse(json);
-        console.log(response);
         if (response.success && response.objects) {
             return {
                 success: true,
@@ -116,7 +115,6 @@ function SettingsPanel(props) {
         if (user_type === "student" || user_type === "individual") formRespose = await sendStudentForm();
         else if (user_type === "teacher") formRespose = await sendTeacherForm();
         if (inputImage) {
-            console.log(inputImage);
             let json = await imagePostReq("/api/image/", inputImage, getCookie("email"));
             let response = JSON.parse(json);
             if (response.success && response.objects) {
@@ -154,9 +152,6 @@ function SettingsPanel(props) {
         deleteCookie("user_type");
         window.location.assign("/account");
     }
-
-    console.log(props);
-    console.log(state);
 
     return (
         <div>

@@ -127,6 +127,7 @@ class PutUser
                 case "city":
                 case "bio":
                 case "additional_info":
+                case "emergency_contact":
                     break;
                 case "public":
                     $error = true;

@@ -19,7 +19,6 @@ function EmailConfirmation() {
         });
         let response = JSON.parse(json);
         let elements = [];
-        console.log(response);
         if (response.success && response.objects) {
             elements.push(<p>Success: true</p>);
         } else if (response.errors.length > 0) {

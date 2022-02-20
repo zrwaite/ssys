@@ -37,7 +37,6 @@ function TeacherRegister(props) {
     handleInputChange = handleInputChange.bind(this);
 
     const sendForm = async () => {
-        console.log(state);
         let json = await httpReq("/api/user/", "POST", {
             email: state.email,
             password: state.password,
@@ -47,7 +46,6 @@ function TeacherRegister(props) {
         })
         let response = JSON.parse(json);
         let elements = [];
-        console.log(response);
         if (response.success && response.objects) {
             window.location.assign("/account");
         } else if (response.errors.length > 0) {
