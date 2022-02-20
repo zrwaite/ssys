@@ -14,28 +14,16 @@ if ($res->request_type != "POST") array_push($res->errors, "Must be POST request
 
 $email = getBody("email");
 $code = getBody("confirmation_code");
-if (!$email) array_push($res->errors, "missing email query");
-if (!$code) array_push($res->errors, "missing confirmation_code in body");
+if (is_null($email)) array_push($res->errors, "missing email query");
+if (is_null($code)) array_push($res->errors, "missing confirmation_code in body");
 if (count($res->errors) == 0) {
-    $query = "id, confirmation_code";
-    $teacherResult = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_teachers WHERE email=%sLIMIT 1", $email);
-    $studentResult = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_students WHERE email=%sLIMIT 1", $email);
+    $result = DB::queryFirstRow("SELECT id, confirmation_code FROM ssys22_users WHERE email=%s LIMIT 1", $email);
     $success = false;
-    if ($teacherResult['id']) {
-        if ($teacherResult['confirmation_code'] == $code) {
+    if ($result['id']) {
+        if ($result['confirmation_code'] == $code) {
             $puts = array();
             $puts['email_confirmed'] = true;
-            DB::update('ssys22_teachers', $puts, "email=%s", $email);
-            $success = true;
-        } else {
-            $success = false;
-            array_push($res->errors, "incorrect code");
-        }
-    } else if ($studentResult['id']) {
-        if ($studentResult['confirmation_code'] == $code) {
-            $puts = array();
-            $puts['email_confirmed'] = true;
-            DB::update('ssys22_students', $puts, "email=%s", $email);
+            DB::update('ssys22_users', $puts, "email=%s", $email);
             $success = true;
         } else {
             $success = false;

@@ -1,16 +1,16 @@
 <?php
-function getBody(string $param): bool|string
+function getBody(string $param): null|string
 {
     if (isset($_POST[$param])) return htmlspecialchars(stripslashes(trim($_POST[$param])));
     else {
         $req = json_decode(file_get_contents('php://input'), true);
-        if ($req[$param]) return htmlspecialchars(stripslashes(trim($req[$param])));
+        if (isset($req[$param])) return htmlspecialchars(stripslashes(trim($req[$param])));
     }
-    return false;
+    return null;
 }
 
-function getQuery(string $param): bool|string
+function getQuery(string $param): null|string
 {
     if (isset($_GET[$param])) return htmlspecialchars(stripslashes(trim($_GET[$param])));
-    else return false;
+    else return null;
 }

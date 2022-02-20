@@ -11,10 +11,10 @@ require_once __DIR__ . "/../modules/mailModules.php";
 require_once __DIR__ . "/../modules/database.php";
 
 
-class PostRegistrant
+class PostUser
 { //Class for json response
-    public string $email = "";
-    public string $fname, $lname, $password, $hash;
+    public string $email = "", $hash;
+    public string|null $fname, $lname, $password;
     public int $confirmation_code;
 
     public function __construct()
@@ -72,6 +72,14 @@ class PostRegistrant
         ];
     }
 
+    public function tryCreateName():void {
+        if (is_null($this->fname)) {
+            $names = ["Blorg", "Bloop", "Squibbles", "Zorp"];
+            $index = rand(0,3);
+            $this->fname = $names[$index];
+        } if (is_null($this->lname)) $this->lname = "NoName";
+    }
+
     public function createSetToken(): string
     {
         $token = createToken(new tokenBody($this->email));
@@ -84,7 +92,7 @@ class PostRegistrant
         return emailConfirmation($this->confirmation_code, $this->email);
     }
 
-    public function addAttendee(): bool
+    public function addUser(): bool
     {
         $settings = DB::queryFirstRow("SELECT id, num_attendees FROM ssys22_settings LIMIT 1");
         $numAttendees = $settings['num_attendees'];
@@ -97,10 +105,10 @@ class PostRegistrant
     }
 }
 
-class PutRegistrant
+class PutUser
 {
-    public array $params = ["fname", "lname", "password", "school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "video_link", "bio", "additional_info", "public"];
-
+    public array $params = ["fname", "lname", "password", "school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "video_link", "bio", "additional_info", "public", "emergency_contact"];
+// todo seperate based on user_type and add more specifications
     #[ArrayShape(["errors" => "array", "puts" => "array"])] //dev Array Shape reference
     public function getPutArray($email): array
     {
@@ -110,7 +118,7 @@ class PutRegistrant
             $current_param = $this->params[$i];
             $error = false;
             $param = getBody($current_param);
-            if (!$param) continue; //If the parameter isn't defined continue, otherwise check the switch for special cases
+            if (is_null($param)) continue; //If the parameter isn't defined continue, otherwise check the switch for special cases
             switch ($current_param) {
                 case "fname":
                 case "lname": //These do not have a special case right now.c
@@ -166,45 +174,43 @@ class PutRegistrant
     }
 }
 
-class GetRegistrant
+class GetUser
 {
-    public int $id, $shirts_ordered;
-    public string $fname, $lname, $email, $registrant_type; //Primary information
-    public bool $email_confirmed, $video_approved, $account_enabled, $public;
-    public string|null $image_link, $school, $city, $video_link; //Display Information
-    public string|null $workshop_order, $shirt_size, $workshop_choices; //Conference Information
-    public string|null $bio, $additional_info, $diet; //Additional Information
-
-    public function parseResult(object|array $result): bool
+    public $studentTarget = [
+        "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "video_link", "workshop_order", "shirt_size", "workshop_choices", "bio", "additional_info", "diet", "teacher_email", "instagram", "emergency_contact"],
+        "ints" => ["id", "shirts_ordered", "teacher_id"],
+        "bools" => ["password_set", "email_confirmed", "video_approved", "account_enabled", "public"]
+    ];
+    public $teacherTarget = [
+        "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "video_link", "workshop_order", "shirt_size", "workshop_choices", "bio", "additional_info", "diet" ],
+        "ints" => ["id", "shirts_ordered"],
+        "bools" => ["password_set", "email_confirmed", "video_approved", "account_enabled", "public"]
+    ];
+    public $individualTarget = [
+        "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "video_link", "workshop_order", "shirt_size", "workshop_choices", "bio", "additional_info", "diet", "instagram", "emergency_contact" ],
+        "ints" => ["id", "shirts_ordered"],
+        "bools" => ["password_set", "email_confirmed", "video_approved", "account_enabled", "public"]
+    ];
+    
+    public function getParseResult(array|null $result): bool|array
     {
-        if (!boolval($result['id'])) return false;
-        $this->id = intval($result['id']);
-        $this->fname = $result['fname'];
-        $this->lname = $result['lname'];
-        $this->email = $result['email'];
-        $this->email_confirmed = boolval($result['email_confirmed']);
-        $this->image_link = $result['image_link'];
-        $this->school = $result['school'];
-        $this->shirt_size = $result['shirt_size'];
-        $this->shirts_ordered = intval($result['shirts_ordered']);
-        $this->city = $result['city'];
-        $this->workshop_choices = $result['workshop_choices'];
-        $this->diet = $result['diet'];
-        $this->workshop_order = $result['workshop_order'];
-        $this->video_link = $result['video_link'];
-        $this->video_approved = boolval($result['video_approved']);
-        $this->public = boolval($result['public']);
-        $this->bio = $result['bio'];
-        $this->additional_info = $result['additional_info'];
-        $this->account_enabled = boolval($result['account_enabled']);
-        $this->registrant_type = $result['registrant_type'];
-        return true;
+        if (is_null($result)) return false;
+        $type = $result['user_type'];
+        if ($type=="teacher") $target = $this->teacherTarget;
+        else if ($type=="student") $target = $this->studentTarget;
+        else if ($type=="individual") $target = $this->individualTarget;
+        else return false;
+        $resArray = [];
+        foreach($target['strings'] as $elem) $resArray[$elem] = $result[$elem];
+        foreach($target['ints'] as $elem) $resArray[$elem] = intval($result[$elem]);
+        foreach($target['bools'] as $elem) $resArray[$elem] = boolval($result[$elem]);
+        return $resArray;
     }
 }
 
-class DeleteRegistrant
+class DeleteUser
 {
-    public function removeRegistrant()
+    public function removeUser()
     {
         $settings = DB::queryFirstRow("SELECT id, num_attendees FROM ssys22_settings LIMIT 1");
         $numAttendees = $settings['num_attendees'];

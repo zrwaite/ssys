@@ -20,16 +20,14 @@ function checkPassword(string $password): array
 
 function validatePassword(string $password, string $email): int
 {
-    $query = "ssys22_teachers.id, ssys22_teachers.password_hash, ssys22_students.id, ssys22_students.password_hash";
-    $result = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_teachers, ssys22_students WHERE ssys22_students.email=%s OR ssys22_students.email=%s LIMIT 1", $email, $email);
+    $result = DB::queryFirstRow("SELECT id, password_hash FROM ssys22_users WHERE email=%s LIMIT 1", $email);
     if ($result['id']) return (password_verify($password, $result['password_hash'])) ? 200 : 400;
     else return 404;
 }
 
 function validateEmail(string $email): bool
 {
-    $query = "ssys22_teachers.id, ssys22_students.id";
-    $result = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_teachers, ssys22_students WHERE ssys22_students.email=%s OR ssys22_students.email=%s LIMIT 1", $email, $email);
+    $result = DB::queryFirstRow("SELECT id FROM ssys22_users WHERE email=%s LIMIT 1", $email);
     if ($result['id']) return true;
     else return false;
 }
