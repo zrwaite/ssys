@@ -37,7 +37,7 @@ function SignIn() {
         let response = JSON.parse(json);
         if (response.success) {
             createCookie("email", state.email);
-            createCookie("registrant_type", response.objects.registrant_type);
+            createCookie("user_type", response.objects.user_type);
             createCookie("token", response.objects.token);
             setState({
                 email: state.email,
@@ -59,24 +59,24 @@ function SignIn() {
     }
 
     return (
-        <main class="registerBackColour">
+        <main className="registerBackColour">
             {/*<Navigate to="/user" />*/}
             <header>
                 <h1>Sign In</h1>
             </header>
-            <div class="userSignIn">
-                <div class="signInBlurb">
+            <div className="userSignIn">
+                <div className="signInBlurb">
                     <p>Already have an account? Then sign in here!</p>
                 </div>
-                <div class="center">
+                <div className="center">
                     <label htmlFor={"email"}></label>
-                     <input type={"text"} class="signInBox" name={"email"} placeHolder="Email" value={state.email} onChange={handleInputChange}/>
+                     <input type={"text"} className="signInBox" name={"email"} placeholder="Email" value={state.email} onChange={handleInputChange}/>
                 </div>
-                <div class="center">
+                <div className="center">
                      <label htmlFor={"password"}></label>
-                      <input type={"password"} class="signInBox" placeHolder="Password" name={"password"} value={state.password} onChange={handleInputChange}/>
+                      <input type={"password"} className="signInBox" placeholder="Password" name={"password"} value={state.password} onChange={handleInputChange}/>
                 </div>
-                <div class="nosignup">
+                <div className="nosignup">
                       <Link to="/register">
                         <span>Haven't yet signed up? Click here<br/></span>
                     </Link>
@@ -84,9 +84,9 @@ function SignIn() {
                         <span>Forgot your credentials? Click here</span>
                     </Link>
                  </div>
-                 <div class="center">
+                 <div className="center">
                      <p></p>
-                <button class="submit" onClick={sendForm}>Log In</button>
+                <button className="submit" onClick={sendForm}>Log In</button>
                 </div>
             </div>
             <div id={"signUpResult"}>

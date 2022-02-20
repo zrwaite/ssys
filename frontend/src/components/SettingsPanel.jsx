@@ -68,7 +68,7 @@ function SettingsPanel(props) {
     }
 
     const sendStudentForm = async () => {
-        let json = await httpReq("/api/student/", "PUT", {
+        let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
             fname: state.fname,
             lname: state.lname,
@@ -90,7 +90,7 @@ function SettingsPanel(props) {
     }
 
     const sendTeacherForm = async () => {
-        let json = await httpReq("/api/teacher/", "PUT", {
+        let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
             fname: state.fname,
             lname: state.lname
@@ -110,11 +110,11 @@ function SettingsPanel(props) {
     }
 
     const sendForm = async () => {
-        let registrant_type = getCookie("registrant_type");
+        let user_type = getCookie("user_type");
         let formRespose;
         let imageResponse = state.image_link;
-        if (registrant_type === "student" || registrant_type === "individual") formRespose = await sendStudentForm();
-        else if (registrant_type === "teacher") formRespose = await sendTeacherForm();
+        if (user_type === "student" || user_type === "individual") formRespose = await sendStudentForm();
+        else if (user_type === "teacher") formRespose = await sendTeacherForm();
         if (inputImage) {
             console.log(inputImage);
             let json = await imagePostReq("/api/image/", inputImage, getCookie("email"));
@@ -151,7 +151,7 @@ function SettingsPanel(props) {
     const logout = () => {
         deleteCookie("token");
         deleteCookie("email");
-        deleteCookie("registrant_type");
+        deleteCookie("user_type");
         window.location.assign("/account");
     }
 

@@ -18,7 +18,7 @@ const getImageLink = (imageLink) => {
 function User() {
     let [state, setState] = useState({
         email: getCookie("email"),
-        studentInfo: (getCookie("registrant_type") === "student" || getCookie("registrant_type") === "individual"),
+        studentInfo: (getCookie("user_type") === "student" || getCookie("user_type") === "individual"),
         fname: "",
         lname: "",
         image_link: "",
@@ -42,12 +42,12 @@ function User() {
     });
 
     const getUserData = async () => {
-        let json = await httpReq("/api/student/?email=" + getCookie("email"), "GET")
+        let json = await httpReq("/api/user/?email=" + getCookie("email"), "GET")
         let response = JSON.parse(json);
         if (response.success && response.objects) {
             setState({
                 email: getCookie("email"),
-                studentInfo: (getCookie("registrant_type") === "student" || getCookie("registrant_type") === "individual"),
+                studentInfo: (getCookie("user_type") === "student" || getCookie("user_type") === "individual"),
                 fname: response.objects.fname,
                 lname: response.objects.lname,
                 image_link: getImageLink(response.objects.image_link),
@@ -105,7 +105,7 @@ function User() {
         return <></>;
     }
 
-    if (!(getCookie("email") && getCookie("token") && getCookie("registrant_type"))) return <Navigate to='/account'/>;
+    if (!(getCookie("email") && getCookie("token") && getCookie("user_type"))) return <Navigate to='/account'/>;
 
     return (
         <main>
@@ -130,7 +130,7 @@ function User() {
             </section>
             <p>Email = {getCookie("email")}</p>
             <p>Token = {getCookie("token")}</p>
-            <p>Account Type = {getCookie("registrant_type")}</p>
+            <p>Account Type = {getCookie("user_type")}</p>
         </main>
     );
 }

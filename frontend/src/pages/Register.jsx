@@ -8,22 +8,22 @@ import "../styles/register.css";
 function Register() {
     let [registerDisplay, setRegisterDisplay] = useState(null);
     return (
-        <main class="registerBackColour">
+        <main className="registerBackColour">
             <header>
                 <h1>Register Page</h1>
             </header>
             <div>
-                    <h3 class="one">Register as:</h3>                
+                    <h3 className="one">Register as:</h3>                
                 </div>
-            <div class="register_options">
+            <div className="register_options">
                 <div>
-                        <button class="two" onClick={() => setRegisterDisplay("student")}>Student</button>
-                </div>
-                <div>
-                        <button class="three" onClick={() => setRegisterDisplay("individual")}>Individual</button>
+                        <button className="two" onClick={() => setRegisterDisplay("student")}>Student</button>
                 </div>
                 <div>
-                        <button class="four" onClick={() => setRegisterDisplay("teacher")}>Teacher</button>
+                        <button className="three" onClick={() => setRegisterDisplay("individual")}>Individual</button>
+                </div>
+                <div>
+                        <button className="four" onClick={() => setRegisterDisplay("teacher")}>Teacher</button>
                 </div>
             </div>
             <StudentRegistration display={registerDisplay}/>

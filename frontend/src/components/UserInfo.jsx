@@ -55,7 +55,7 @@ function UserInfo(props) {
     }
 
     const sendStudentForm = async () => {
-        let json = await httpReq("/api/student/", "PUT", {
+        let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
             school: state.school,
             city: state.city,
@@ -72,7 +72,7 @@ function UserInfo(props) {
     }
 
     const sendTeacherForm = async () => {
-        let json = await httpReq("/api/student/", "PUT", {
+        let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
             school: state.school,
             city: state.city,
@@ -87,9 +87,9 @@ function UserInfo(props) {
     }
 
     const sendForm = async () => {
-        let registrant_type = getCookie("registrant_type");
-        if (registrant_type === "student" || registrant_type === "individual") await sendStudentForm();
-        else if (registrant_type === "teacher") await sendTeacherForm();
+        let user_type = getCookie("user_type");
+        if (user_type === "student" || user_type === "individual") await sendStudentForm();
+        else if (user_type === "teacher") await sendTeacherForm();
         changeState("editMode", false);
     }
 
@@ -104,7 +104,7 @@ function UserInfo(props) {
     return (
         <div className={"userInfoPanel"}>
             <div className={"infoHeader"}>
-                <h4 class>User Info</h4>
+                <h4>User Info</h4>
                 <img style={viewDisplay} src={editIcon} onClick={() => changeState("editMode", true)}
                      alt={"edit icon"}/>
                 <img style={editDisplay} src={closeIcon} onClick={() => changeState("editMode", false)}

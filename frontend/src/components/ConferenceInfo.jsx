@@ -55,7 +55,7 @@ function ConferenceInfo(props) {
 
 
     const sendStudentForm = async () => {
-        let json = await httpReq("/api/student/", "PUT", {
+        let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
             diet: state.diet,
             shirt_size: state.shirt_size,
@@ -71,7 +71,7 @@ function ConferenceInfo(props) {
     }
 
     const sendTeacherForm = async () => {
-        let json = await httpReq("/api/teacher/", "PUT", {
+        let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
             diet: state.diet,
             shirt_size: state.shirt_size,
@@ -88,9 +88,9 @@ function ConferenceInfo(props) {
     }
 
     const sendForm = async () => {
-        let registrant_type = getCookie("registrant_type");
-        if (registrant_type === "student" || registrant_type === "individual") await sendStudentForm();
-        else if (registrant_type === "teacher") await sendTeacherForm();
+        let user_type = getCookie("user_type");
+        if (user_type === "student" || user_type === "individual") await sendStudentForm();
+        else if (user_type === "teacher") await sendTeacherForm();
         changeState("editMode", false);
     }
     let studentDisplay = {display: "none"};
