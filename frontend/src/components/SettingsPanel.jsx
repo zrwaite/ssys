@@ -17,46 +17,28 @@ function SettingsPanel(props) {
         display: false,
         editMode: false,
         image: null,
-        studentInfo: props.studentInfo || "",
-        fname: props.fname || "",
-        lname: props.lname || "",
-        image_link: props.image_link || "",
-        public: props.public ? "public" : "private",
-        initialLoad: false
+        studentInfo: true,
+        fname: "",
+        lname: "",
+        image_link:"",
+        public_view: false
     });
     let [inputImage, setInputImage] = useState(null);
 
-    if (!props.loaded) return <></>;
-    else if (!state.initialLoad) {
+    React.useEffect(() => {
+        props.renderData.current = renderData
+    })
+    
+    const renderData = (fname, lname, image_link, public_view) => {
         setState({
-            studentInfo: props.studentInfo || "",
-            display: props.display,
-            editMode: state.editMode,
-            fname: props.fname || "",
-            lname: props.lname || "",
-            image: state.image,
-            image_link: props.image_link || "",
-            public: props.public ? "public" : "private",
-            initialLoad: true
+            ...state,
+            fname:fname,
+            lname:lname,
+            image_link:image_link,
+            public_view:public_view
         });
     }
 
-
-    let changeState = (name, value) => {
-        let partialState = {
-            display: state.display,
-            editMode: state.editMode,
-            studentInfo: state.studentInfo,
-            initialLoad: state.initialLoad,
-            fname: state.fname,
-            lname: state.lname,
-            image: state.image,
-            image_link: state.image_link,
-            public: state.public
-        };
-        partialState[name] = value;
-        setState(partialState);
-    }
     let settingsDisplay = {display: "none"};
     if (state.display) settingsDisplay.display = "block";
 
@@ -64,15 +46,17 @@ function SettingsPanel(props) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        changeState(name, value);
+        let partialState = {...state};
+        partialState[name] = value;
+        setState(partialState);
     }
-
+//todo reduce to one form sfunction
     const sendStudentForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
             fname: state.fname,
             lname: state.lname,
-            public: state.public !== "public" ? "private" : "public"
+            public: state.public_view
         })
         let response = JSON.parse(json);
         if (response.success && response.objects) {
@@ -134,7 +118,7 @@ function SettingsPanel(props) {
         });
     }
 
-    if (!state.display && state.editMode) changeState("editMode", false);
+    if (!state.display && state.editMode) setState({...state, editMode: false});
 
 
     let studentDisplay = {display: "none"};
@@ -156,16 +140,16 @@ function SettingsPanel(props) {
     return (
         <div>
             <img className={"settingsIcon"} src={settingsIcon} alt={"settings icon"}
-                 onClick={() => changeState("display", true)}/>
+                 onClick={() => setState({...state, display:true})}/>
             <div style={settingsDisplay} className={"settingsPanel"}>
                 <div className={"settingsPanelHeader"}>
                     <h1>Settings</h1>
-                    <img style={viewDisplay} src={editIcon} alt={"edit"} onClick={() => changeState("editMode", true)}/>
-                    <img style={editDisplay} src={checkIcon} onClick={() => changeState("editMode", false)}
+                    <img style={viewDisplay} src={editIcon} alt={"edit"} onClick={() => setState({...state, editMode: true})}/>
+                    <img style={editDisplay} src={checkIcon} onClick={() => setState({...state, editMode: false})}
                          alt={"check icon"}/>
+                    <img src={closeIcon} alt={"close"} onClick={() => setState({...state, display: false})}/>
 
 
-                    <img src={closeIcon} alt={"close"} onClick={() => changeState("display", false)}/>
                 </div>
                 <div className={"settingsBody"}>
                     <div className={"settingsRow"}>
@@ -187,11 +171,11 @@ function SettingsPanel(props) {
                     <div className={"infoRow"}>
                         <h4>Public:</h4>
                         <div>
-                            <p style={viewDisplay}>{state.public}</p>
-                            <select style={editDisplay} name={"public"} value={state.public}
+                            <p style={viewDisplay}>{state.public_view?"Public":"Private"}</p>
+                            <select style={editDisplay} name={"public_view"} value={state.public_view}
                                     onChange={handleInputChange}>
-                                <option value={"public"}>Public</option>
-                                <option value={"private"}>Private</option>
+                                <option value={true}>Public</option>
+                                <option value={false}>Private</option>
                             </select>
                         </div>
                     </div>

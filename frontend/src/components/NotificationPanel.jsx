@@ -7,32 +7,38 @@ import notificationIcon from '../images/notifications.svg';
 
 function NotificationPanel(props) {
     let [state, setState] = useState({
-        display: false
+        display: false,
+        password_set: true,
+        email_confirmed: true
     });
-    let changeState = (name, value) => {
-        let partialState = {
-            display: state.display
-        };
-        partialState[name] = value;
-        setState(partialState);
-    }
+    React.useEffect(() => {
+        props.renderData.current = renderData
+    })
+    
+    const renderData = (password_set, email_confirmed) => {
+        setState({
+            ...state,
+            password_set: password_set,
+            email_confirmed: email_confirmed
+        });
+    } 
     let notificationDisplay = {display: "none"};
     if (state.display) notificationDisplay.display = "block";
 
     let notificationsList = [];
-    if (!props.email_confirmed) notificationsList.push(<Notification key={"email_confirmed"} default={true}
+    if (!state.email_confirmed) notificationsList.push(<Notification key={"email_confirmed"} default={true}
                                                                      name={"email_confirmed"}/>);
-    if (!props.password_set) notificationsList.push(<Notification key={"password_set"} default={true}
+    if (!state.password_set) notificationsList.push(<Notification key={"password_set"} default={true}
                                                                   name={"password_set"}/>);
 
     return (
         <div>
             <img className={"notificationIcon"} src={notificationIcon} alt={"notifications icon"}
-                 onClick={() => changeState("display", true)}/>
+                 onClick={() => setState({...state, display:true})}/>
             <div style={notificationDisplay} className={"notificationPanel"}>
                 <div className={"notificationPanelHeader"}>
                     <h1>Notifications</h1>
-                    <img src={closeIcon} alt={"close"} onClick={() => changeState("display", false)}/>
+                    <img src={closeIcon} alt={"close"} onClick={() => setState({...state, display:false})}/>
                 </div>
                 <div>{notificationsList}</div>
                 <Notification icon={"warning"} message={"testing"}/>

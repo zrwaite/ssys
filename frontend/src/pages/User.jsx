@@ -20,18 +20,17 @@ class User extends React.Component {
         super();
         this.renderUserInfoData = React.createRef();
         this.renderConferenceInfoData = React.createRef();
+        this.renderSettingsData = React.createRef();
+        this.renderNotificationsData = React.createRef();
         this.state = {
             email: getCookie("email"),
             studentInfo: (getCookie("user_type") === "student" || getCookie("user_type") === "individual"),
             fname: "",
             lname: "",
             image_link: "",
-            password_set: false,
             image_approved: false,
-            email_confirmed: false,
             video_approved: false,
             account_enabled: true,
-            public: false,
             video_link: ""
         };
     }   
@@ -41,7 +40,6 @@ class User extends React.Component {
         let response = JSON.parse(json);
         if (response.success && response.objects) {
             const studentInfo = (getCookie("user_type") === "student" || getCookie("user_type") === "individual")
-            alert(studentInfo)
             this.renderUserInfoData.current(
                 response.objects.school||"",
                 response.objects.city||"",
@@ -57,20 +55,27 @@ class User extends React.Component {
                 response.objects.additional_info||"", 
                 studentInfo
             )
+            this.renderSettingsData.current(
+                response.objects.fname, 
+                response.objects.lname, 
+                getImageLink(response.objects.image_link),
+                response.objects.public
+            )
+            this.renderNotificationsData.current(
+                response.objects.password_set,
+                response.objects.email_confirmed
+            )
             this.setState({
-                email: getCookie("email"),
-                fname: response.objects.fname,
-                lname: response.objects.lname,
+                ...this.state,
+                fname: response.objects.fname, 
+                lname: response.objects.lname, 
                 image_link: getImageLink(response.objects.image_link),
-                password_set: response.objects.password_set,
+                email: getCookie("email"),
                 image_approved: response.objects.image_approved,
-                email_confirmed: response.objects.email_confirmed,
                 video_approved: response.objects.video_approved,
                 account_enabled: response.objects.account_enabled,
-                public: response.objects.public,
                 video_link: response.objects.video_link,
-                workshop_choices: response.objects.workshop_choices,
-                loaded: true,
+                workshop_choices: response.objects.workshop_choices
             })
         } else if (response.errors.length > 0) {
             alert(response.errors)
@@ -87,23 +92,13 @@ class User extends React.Component {
                         <h3>{this.state.fname}</h3>
                         <h3>{this.state.lname}</h3>
                     </div>
-                    <SettingsPanel 
-                        loaded={this.state.loaded} 
-                        fname={this.state.fname} 
-                        lname={this.state.lname}
-                        image_link={this.state.image_link} 
-                        public={this.state.public}/>
-                    <NotificationPanel 
-                        email_confirmed={this.state.email_confirmed} 
-                        password_set={this.state.password_set}/>
+                    <SettingsPanel renderData={this.renderSettingsData}/>
+                    <NotificationPanel renderData={this.renderNotificationsData}/>
                 </header>
                 <section className={"userBody"}>
                     <UserInfo renderData={this.renderUserInfoData}/>
                     <ConferenceInfo renderData={this.renderConferenceInfoData}/>
                 </section>
-                <p>Email = {getCookie("email")}</p>
-                <p>Token = {getCookie("token")}</p>
-                <p>Account Type = {getCookie("user_type")}</p>
             </main>
         );
     }
