@@ -11,6 +11,7 @@ import SignIn from "../pages/SignIn";
 import User from "../pages/User";
 import EmailConfirmation from "../pages/EmailConfirmation";
 import Navbar from "./Navbar";
+import Workshop1 from "../pages/Workshop1";
 
 function Pages() {
     return (
@@ -32,6 +33,8 @@ function Pages() {
                 <Route path="/user" element={<User/>}>
                 </Route>
                 <Route path="/confirmEmail" element={<EmailConfirmation/>}>
+                </Route>
+                <Route path="/Workshop1" element={<Workshop1/>}>
                 </Route>
             </Routes>
         </Router>

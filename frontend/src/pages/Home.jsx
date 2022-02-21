@@ -47,7 +47,11 @@ function Home() {
                 </div>
                 <div className="workshop">
                     <h2>Our Workshops</h2>
-                    
+                    <div>
+                    <Link to="/workshop1" className="butt">
+                        <span className="butttext">Register Now</span>
+                    </Link>
+                    </div>
                 </div>
                 <div className="about">
                     <h2>About Us</h2>

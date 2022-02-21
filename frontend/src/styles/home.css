@@ -11,7 +11,6 @@
     background-color:darkgreen;
     background-size:cover;
     text-align:center;
-    grid-template-columns: 1fr;
 }
 
 .leading{
