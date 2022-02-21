@@ -7,10 +7,10 @@ import logo from "../components/SOYC.png"
 function Home() {
     return (
         <main>
-            <div class="layout">
-                <div class="top">
-                    <h1 class="leading">Leading the Eco-Revolution</h1>
-                    <h3 class="oneofakind">A one of a kind event created by youth, for youth, empowering youth ages 14-18 to take a stand for their future<br/></h3>
+            <div className="layout">
+                <div className="top">
+                    <h1 className="leading">Leading the Eco-Revolution</h1>
+                    <h3 className="oneofakind">A one of a kind event created by youth, for youth, empowering youth ages 14-18 to take a stand for their future<br/></h3>
                     <div>
                     <Link to="/account" className="butt">
                         <span className="butttext">Register Now</span>
@@ -18,31 +18,31 @@ function Home() {
                     </div>
                     <div><br/><br/><br/></div>
                 </div>
-                <div class="countdown">
-                    <div class="registrationcountdown">
+                <div className="countdown">
+                    <div className="registrationcountdown">
                         <h1>69:69:69:69</h1>
                         <h2>Until Registration Closes</h2>
                         <h3>Whenever</h3>
                     </div>
-                    <div class="conferencecountdown">
+                    <div className="conferencecountdown">
                         <h1>69:69:69:69</h1>
                         <h2>Until The Summit</h2>
                         <h3>May 10th</h3>
                     </div>
                 </div>
-                <div class="keynote">
+                <div className="keynote">
                     <h2>Our Keynote Speakers</h2>
-                    <div class="firstspeakerimagebox">
+                    <div className="firstspeakerimagebox">
                          <img className = "firstspeakerimage" src={logo} alt="Logo" />
                     </div>
-                    <div class="firstspeakerblurbbox">
-                        <p class="firstspeakerblurbtext">This is just some text</p>
+                    <div className="firstspeakerblurbbox">
+                        <p className="firstspeakerblurbtext">This is just some text</p>
                     </div>
-                    <div class = "secondspeakerimagebox">
+                    <div className = "secondspeakerimagebox">
                     <img className= "secondspeakerimage" src={logo} alt="Logo"/>
                     </div>
-                    <div class="secondspeakerblurbbox">
-                        <p class="secondspeakerblurbtext">This is just some text</p>
+                    <div className="secondspeakerblurbbox">
+                        <p className="secondspeakerblurbtext">This is just some text</p>
                     </div>
                 </div>
                 <div className="workshop">

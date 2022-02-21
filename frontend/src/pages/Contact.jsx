@@ -56,14 +56,14 @@ function Contact() {
 
     return (
         <main>
-        <div class="contactus">
-            <div class="contactheader">
-                <h1 class="contactuscolour">Contact Us</h1>
-                <p class="contactblurb">Have any questions? Problems? Notice a bug? Please use the contact form below and we will get back to you as soon as possible!<br/></p>
-                <div class="emailthing">
+        <div className="contactus">
+            <div className="contactheader">
+                <h1 className="contactuscolour">Contact Us</h1>
+                <p className="contactblurb">Have any questions? Problems? Notice a bug? Please use the contact form below and we will get back to you as soon as possible!<br/></p>
+                <div className="emailthing">
                     <br/>
                    <label htmlFor={"email"}>Email: </label>
-                   <input type={"text"} class="emailbox" name={"email"} value={state.email} onChange={handleInputChange}/>
+                   <input type={"text"} className="emailbox" name={"email"} value={state.email} onChange={handleInputChange}/>
                    <br/>
                 </div>
             </div>
@@ -77,12 +77,12 @@ function Contact() {
                 <br/><br/>
                 <label htmlFor={"message"}>Message: </label>
                 <br/>
-                <textarea name="message" class="messagebox" rows="10" cols="30" value={state.message} onChange={handleInputChange}/>
+                <textarea name="message" className="messagebox" rows="10" cols="30" value={state.message} onChange={handleInputChange}/>
             </div>
-            <div class="bottomofgreencontact">
-                  <div class="bottomofcontact">
+            <div className="bottomofgreencontact">
+                  <div className="bottomofcontact">
                       <br/>
-                     <button class="submit" onClick={sendForm}>Submit</button>   
+                     <button className="submit" onClick={sendForm}>Submit</button>   
                  </div>
                  <br/>
             </div>

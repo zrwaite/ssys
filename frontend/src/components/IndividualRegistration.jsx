@@ -37,16 +37,15 @@ function IndividualRegister(props) {
     handleInputChange = handleInputChange.bind(this);
 
     const sendForm = async () => {
-        let json = await httpReq("/api/student/", "POST", {
+        let json = await httpReq("/api/user/", "POST", {
             email: state.email,
             password: state.password,
             fname: state.fname,
             lname: state.lname,
-            registrant_type: "individual"
+            user_type: "individual"
         })
         let response = JSON.parse(json);
         let elements = [];
-        console.log(response);
         if (response.success && response.objects) {
             window.location.assign("/user");
         } else if (response.errors.length > 0) {
@@ -63,39 +62,39 @@ function IndividualRegister(props) {
 
     return (
         <div style={individualStyle}>
-            <p class="studentregistration">Student Registration</p>
-            <div class="studentGrid">
-            <div class="registrationPageInfo">
+            <p className="studentregistration">Student Registration</p>
+            <div className="studentGrid">
+            <div className="registrationPageInfo">
                 <h2>blah blah blah blah</h2>
                 <h3>blah blah blah blah</h3>
             </div>
             <div>
-                <div class="student_register">
-                    <div class="registerBlurb">
+                <div className="student_register">
+                    <div className="registerBlurb">
                         <h2>Sign up today!</h2>
                     </div>
                     <div>
                         <label htmlFor={"fname"}></label>
-                        <input class="registerBox" placeholder="First Name" type={"text"} name={"fname"} value={state.fname} onChange={handleInputChange}/>
+                        <input className="registerBox" placeholder="First Name" type={"text"} name={"fname"} value={state.fname} onChange={handleInputChange}/>
                     </div>
                     <div>
                         <label htmlFor={"lname"}></label>
-                        <input class="registerBox" placeholder="Last Name" type={"text"} name={"lname"} value={state.lname} onChange={handleInputChange}/>
+                        <input className="registerBox" placeholder="Last Name" type={"text"} name={"lname"} value={state.lname} onChange={handleInputChange}/>
                     </div>
                     <div>
                         <label htmlFor={"email"}></label>
-                        <input class="registerBox" placeholder="email" type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
+                        <input className="registerBox" placeholder="email" type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
                     </div>
                     <div>
                         <label htmlFor={"password"}></label>
-                        <input class="registerBox" placeholder="password" type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
+                        <input className="registerBox" placeholder="password" type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
                     </div>
-                    <div class="center">
-                        <button class="submit" onClick={sendForm}>Submit</button>
+                    <div className="center">
+                        <button className="submit" onClick={sendForm}>Submit</button>
                     </div>
                     <div>
                     <Link to="/signin">
-                        <span class="signedUp">Already Signed Up? Click Here<br/></span>
+                        <span className="signedUp">Already Signed Up? Click Here<br/></span>
                     </Link>
                     </div>
                 </div>

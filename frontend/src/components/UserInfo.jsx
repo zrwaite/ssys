@@ -8,54 +8,42 @@ import {getCookie} from "../modules/cookies";
 
 function UserInfo(props) {
     let [state, setState] = useState({
-        school: props.school || "",
-        city: props.city || "",
-        grade: props.grade || "",
-        instagram: props.instagram || "",
-        bio: props.bio || "",
-        studentInfo: props.studentInfo || "",
-        editMode: false,
-        initialLoad: false
+        school: "",
+        city: "",
+        grade: "",
+        instagram: "",
+        bio: "",
+        studentInfo: true,
+        editMode: false
     });
 
-    if (!props.loaded) return <></>;
-    else if (!state.initialLoad) {
+    React.useEffect(() => {
+        props.renderData.current = renderData
+    })
+    
+    const renderData = (school, city, grade, instagram, bio, studentInfo) => {
         setState({
-            school: props.school || "",
-            city: props.city || "",
-            grade: props.grade || "",
-            instagram: props.instagram || "",
-            bio: props.bio || "",
-            studentInfo: props.studentInfo || "",
-            editMode: state.editMode,
-            initialLoad: true
-        })
-    }
-
-    let changeState = (name, value) => {
-        let partialState = {
-            school: state.school,
-            city: state.city,
-            grade: state.grade,
-            instagram: state.instagram,
-            bio: state.bio,
-            studentInfo: state.studentInfo,
-            editMode: state.editMode,
-            initialLoad: state.initialLoad
-        };
-        partialState[name] = value;
-        setState(partialState);
+            ...state,
+            school:school,
+            city:city,
+            grade:grade,
+            instagram:instagram,
+            bio: bio,
+            studentInfo: studentInfo
+        });
     }
 
     let handleInputChange = (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        changeState(name, value);
+        let partialState = {...state};
+        partialState[name] = value;
+        setState(partialState);
     }
 
     const sendStudentForm = async () => {
-        let json = await httpReq("/api/student/", "PUT", {
+        let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
             school: state.school,
             city: state.city,
@@ -72,7 +60,7 @@ function UserInfo(props) {
     }
 
     const sendTeacherForm = async () => {
-        let json = await httpReq("/api/student/", "PUT", {
+        let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
             school: state.school,
             city: state.city,
@@ -80,17 +68,17 @@ function UserInfo(props) {
         })
         let response = JSON.parse(json);
         if (response.success && response.objects) {
-            console.log(response);
+            // console.log(response);
         } else if (response.errors.length > 0) {
             alert(JSON.stringify(response));
         }
     }
 
     const sendForm = async () => {
-        let registrant_type = getCookie("registrant_type");
-        if (registrant_type === "student" || registrant_type === "individual") await sendStudentForm();
-        else if (registrant_type === "teacher") await sendTeacherForm();
-        changeState("editMode", false);
+        let user_type = getCookie("user_type");
+        if (user_type === "student" || user_type === "individual") await sendStudentForm();
+        else if (user_type === "teacher") await sendTeacherForm();
+        setState({...state, editMode: false});
     }
 
     let studentDisplay = {display: "none"};
@@ -104,10 +92,10 @@ function UserInfo(props) {
     return (
         <div className={"userInfoPanel"}>
             <div className={"infoHeader"}>
-                <h4 class>User Info</h4>
-                <img style={viewDisplay} src={editIcon} onClick={() => changeState("editMode", true)}
+                <h4>User Info</h4>
+                <img style={viewDisplay} src={editIcon} onClick={() => setState({...state, editMode: true})}
                      alt={"edit icon"}/>
-                <img style={editDisplay} src={closeIcon} onClick={() => changeState("editMode", false)}
+                <img style={editDisplay} src={closeIcon} onClick={() => setState({...state, editMode: false})}
                      alt={"close icon"}/>
             </div>
             <div className={"infoBody"}>

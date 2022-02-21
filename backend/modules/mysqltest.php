@@ -7,7 +7,7 @@ require __DIR__ . '/database.php';
 
 //MAIN
 $ids = array();
-$accounts = DB::query("SELECT id FROM ssys22_students");
+$accounts = DB::query("SELECT id FROM ssys22_users");
 foreach ($accounts as $account) {
     array_push($ids, $account['id']);
 }
