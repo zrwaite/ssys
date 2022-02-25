@@ -107,11 +107,14 @@ class PostUser
 
 class PutUser
 {
-    public array $params = ["fname", "lname", "password", "school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "video_link", "bio", "additional_info", "public", "emergency_contact"];
+    public array $params = ["fname", "lname", "password", "school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "video_link", "bio", "additional_info", "public"];
 // todo seperate based on user_type and add more specifications
     #[ArrayShape(["errors" => "array", "puts" => "array"])] //dev Array Shape reference
-    public function getPutArray($email): array
+    public function getPutArray($email, $user_type): array
     {
+        if ($user_type=="student"|| $user_type=="individual"){
+            array_push($this->params, "grade", "instagram", "emergency_contact");
+        }
         $errors = array();
         $puts = array();
         for ($i = 0; $i < count($this->params); $i++) {
@@ -126,6 +129,8 @@ class PutUser
                 case "diet":
                 case "city":
                 case "bio":
+                case "instagram":
+                case "grade":
                 case "additional_info":
                 case "emergency_contact":
                     break;
@@ -179,7 +184,7 @@ class GetUser
 {
     public $studentTarget = [
         "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "video_link", "workshop_order", "shirt_size", "workshop_choices", "bio", "additional_info", "diet", "teacher_email", "instagram", "emergency_contact"],
-        "ints" => ["id", "shirts_ordered", "teacher_id"],
+        "ints" => ["id", "shirts_ordered", "teacher_id", "grade"],
         "bools" => ["password_set", "email_confirmed", "video_approved", "account_enabled", "public"]
     ];
     public $teacherTarget = [
@@ -189,7 +194,7 @@ class GetUser
     ];
     public $individualTarget = [
         "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "video_link", "workshop_order", "shirt_size", "workshop_choices", "bio", "additional_info", "diet", "instagram", "emergency_contact" ],
-        "ints" => ["id", "shirts_ordered"],
+        "ints" => ["id", "shirts_ordered", "grade"],
         "bools" => ["password_set", "email_confirmed", "video_approved", "account_enabled", "public"]
     ];
     

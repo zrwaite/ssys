@@ -33,7 +33,7 @@ function NotificationPanel(props) {
 
     return (
         <div>
-            <img className={"notificationIcon"} src={notificationIcon} alt={"notifications icon"}
+            <img className={"icon"} src={notificationIcon} alt={"notifications icon"}
                  onClick={() => setState({...state, display:true})}/>
             <div style={notificationDisplay} className={"notificationPanel"}>
                 <div className={"notificationPanelHeader"}>

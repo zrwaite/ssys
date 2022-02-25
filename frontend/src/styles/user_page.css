@@ -1,31 +1,36 @@
 .userHeader {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-}
-
-.userHeader > div {
+    justify-content:space-between;
+    margin: 0 1rem;
+    height: 5rem;
+    box-sizing:content-box;
     padding: 0.5rem;
 }
 
-.userHeader > div > h3 {
-    margin: 0;
+.userHeader > div {
+    height: 100%;
+}
+
+.userHeader  h2 {
+    margin: 0 0.5rem;
 }
 
 .userImage {
-    width: 3rem;
+    width: auto;
     height: 3rem;
 }
 
 .userBody {
     display: grid;
+    box-sizing: content-box;
     align-items: center;
     justify-content: center;
     place-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 }
 
-.settingsIcon {
+/* .settingsIcon {
     width: 3rem;
     height: 3rem;
-}
+} */

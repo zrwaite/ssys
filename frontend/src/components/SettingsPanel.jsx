@@ -139,7 +139,7 @@ function SettingsPanel(props) {
 
     return (
         <div>
-            <img className={"settingsIcon"} src={settingsIcon} alt={"settings icon"}
+            <img className={"icon"} src={settingsIcon} alt={"settings icon"}
                  onClick={() => setState({...state, display:true})}/>
             <div style={settingsDisplay} className={"settingsPanel"}>
                 <div className={"settingsPanelHeader"}>

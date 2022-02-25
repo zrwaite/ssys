@@ -5,3 +5,16 @@
 h1 {
     text-align: center;
 }
+
+.horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon {
+    height: 3rem;
+    width: 3rem;
+}
+.icon:hover {
+    cursor: pointer;
+}

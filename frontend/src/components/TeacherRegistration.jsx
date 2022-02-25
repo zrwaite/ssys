@@ -24,13 +24,7 @@ function TeacherRegister(props) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        let partialState = {
-            email: state.email,
-            password: state.password,
-            fname: state.fname,
-            lname: state.lname,
-            redirect: false
-        };
+        let partialState = {...state};
         partialState[name] = value;
         setState(partialState);
     }

@@ -91,7 +91,7 @@ function ConferenceInfo(props) {
     return (
         <div className={"conferenceInfoPanel"}>
             <div className={"infoHeader"}>
-                <h4>Conference Info</h4>
+                <h2>Conference Info</h2>
                 <img style={viewDisplay} src={editIcon} onClick={() => setState({...state, editMode: true})}
                      alt={"edit icon"}/>
                 <img style={editDisplay} src={closeIcon} onClick={() => setState({...state, editMode: false})}

@@ -53,7 +53,7 @@ function UserInfo(props) {
         })
         let response = JSON.parse(json);
         if (response.success && response.objects) {
-            // console.log(response);
+            console.log(response);
         } else if (response.errors.length > 0) {
             alert(JSON.stringify(response));
         }
@@ -68,7 +68,7 @@ function UserInfo(props) {
         })
         let response = JSON.parse(json);
         if (response.success && response.objects) {
-            // console.log(response);
+            console.log("teacher:", response);
         } else if (response.errors.length > 0) {
             alert(JSON.stringify(response));
         }
@@ -92,7 +92,7 @@ function UserInfo(props) {
     return (
         <div className={"userInfoPanel"}>
             <div className={"infoHeader"}>
-                <h4>User Info</h4>
+                <h2>User Info</h2>
                 <img style={viewDisplay} src={editIcon} onClick={() => setState({...state, editMode: true})}
                      alt={"edit icon"}/>
                 <img style={editDisplay} src={closeIcon} onClick={() => setState({...state, editMode: false})}

@@ -28,11 +28,6 @@
     grid-template-columns: 1fr 4fr;
 }
 
-.notificationIcon {
-    width: 3rem;
-    height: 3rem;
-}
-
 .notificationIcon:hover {
     cursor: pointer;
 }

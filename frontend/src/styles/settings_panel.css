@@ -17,11 +17,6 @@
     justify-content: center;
 }
 
-.settingsIcon {
-    width: 3rem;
-    height: 3rem;
-}
-
 .settingsIcon:hover {
     cursor: pointer;
 }

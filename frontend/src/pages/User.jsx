@@ -87,13 +87,14 @@ class User extends React.Component {
         return (
             <main>
                 <header className={"userHeader"}>
-                    <img className={"userImage"} src={this.state.image_link} alt={this.state.image_link}/>
-                    <div>
-                        <h3>{this.state.fname}</h3>
-                        <h3>{this.state.lname}</h3>
+                    <div className="horizontal">
+                        <img className={"userImage"} src={this.state.image_link} alt={this.state.image_link}/>
+                        <h2>{this.state.fname} {this.state.lname}</h2>
                     </div>
-                    <SettingsPanel renderData={this.renderSettingsData}/>
-                    <NotificationPanel renderData={this.renderNotificationsData}/>
+                    <div className={"horizontal"} >
+                        <SettingsPanel renderData={this.renderSettingsData}/>
+                        <NotificationPanel renderData={this.renderNotificationsData}/>
+                    </div>
                 </header>
                 <section className={"userBody"}>
                     <UserInfo renderData={this.renderUserInfoData}/>
