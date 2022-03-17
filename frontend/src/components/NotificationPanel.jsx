@@ -8,27 +8,15 @@ import notificationIcon from '../images/notifications.svg';
 function NotificationPanel(props) {
     let [state, setState] = useState({
         display: false,
-        password_set: true,
-        email_confirmed: true
     });
-    React.useEffect(() => {
-        props.renderData.current = renderData
-    })
     
-    const renderData = (password_set, email_confirmed) => {
-        setState({
-            ...state,
-            password_set: password_set,
-            email_confirmed: email_confirmed
-        });
-    } 
     let notificationDisplay = {display: "none"};
     if (state.display) notificationDisplay.display = "block";
 
     let notificationsList = [];
-    if (!state.email_confirmed) notificationsList.push(<Notification key={"email_confirmed"} default={true}
+    if (!props.email_confirmed) notificationsList.push(<Notification key={"email_confirmed"} default={true}
                                                                      name={"email_confirmed"}/>);
-    if (!state.password_set) notificationsList.push(<Notification key={"password_set"} default={true}
+    if (!props.password_set) notificationsList.push(<Notification key={"password_set"} default={true}
                                                                   name={"password_set"}/>);
 
     return (

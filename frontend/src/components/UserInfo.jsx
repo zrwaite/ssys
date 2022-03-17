@@ -8,48 +8,18 @@ import {getCookie} from "../modules/cookies";
 
 function UserInfo(props) {
     let [state, setState] = useState({
-        school: "",
-        city: "",
-        grade: "",
-        instagram: "",
-        bio: "",
         studentInfo: true,
         editMode: false
     });
-
-    React.useEffect(() => {
-        props.renderData.current = renderData
-    })
     
-    const renderData = (school, city, grade, instagram, bio, studentInfo) => {
-        setState({
-            ...state,
-            school:school,
-            city:city,
-            grade:grade,
-            instagram:instagram,
-            bio: bio,
-            studentInfo: studentInfo
-        });
-    }
-
-    let handleInputChange = (event) => {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        let partialState = {...state};
-        partialState[name] = value;
-        setState(partialState);
-    }
-
     const sendStudentForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
-            school: state.school,
-            city: state.city,
-            grade: state.grade,
-            instagram: state.instagram,
-            bio: state.bio
+            school: props.school,
+            city: props.city,
+            grade: props.grade,
+            instagram: props.instagram,
+            bio: props.bio
         })
         let response = JSON.parse(json);
         if (response.success && response.objects) {
@@ -62,9 +32,9 @@ function UserInfo(props) {
     const sendTeacherForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
-            school: state.school,
-            city: state.city,
-            bio: state.bio
+            school: props.school,
+            city: props.city,
+            bio: props.bio
         })
         let response = JSON.parse(json);
         if (response.success && response.objects) {
@@ -102,41 +72,41 @@ function UserInfo(props) {
                 <div className={"infoRow"}>
                     <h4>School:</h4>
                     <div>
-                        <p style={viewDisplay}>{state.school}</p>
-                        <input style={editDisplay} type={"text"} name={"school"} value={state.school}
-                               onChange={handleInputChange}/>
+                        <p style={viewDisplay}>{props.school}</p>
+                        <input style={editDisplay} type={"text"} name={"school"} value={props.school}
+                               onChange={props.parentHandleInputChange}/>
                     </div>
                 </div>
                 <div className={"infoRow"}>
                     <h4>City:</h4>
                     <div>
-                        <p style={viewDisplay}>{state.city}</p>
-                        <input style={editDisplay} type={"text"} name={"city"} value={state.city}
-                               onChange={handleInputChange}/>
+                        <p style={viewDisplay}>{props.city}</p>
+                        <input style={editDisplay} type={"text"} name={"city"} value={props.city}
+                               onChange={props.parentHandleInputChange}/>
                     </div>
                 </div>
                 <div className={"infoRow"} style={studentDisplay}>
                     <h4>Grade:</h4>
                     <div>
-                        <p style={viewDisplay}>{state.grade}</p>
-                        <input style={editDisplay} type={"text"} name={"grade"} value={state.grade}
-                               onChange={handleInputChange}/>
+                        <p style={viewDisplay}>{props.grade}</p>
+                        <input style={editDisplay} type={"text"} name={"grade"} value={props.grade}
+                               onChange={props.parentHandleInputChange}/>
                     </div>
                 </div>
                 <div className={"infoRow"} style={studentDisplay}>
                     <h4>Instagram:</h4>
                     <div>
-                        <p style={viewDisplay}>{state.instagram}</p>
-                        <input style={editDisplay} type={"text"} name={"instagram"} value={state.instagram}
-                               onChange={handleInputChange}/>
+                        <p style={viewDisplay}>{props.instagram}</p>
+                        <input style={editDisplay} type={"text"} name={"instagram"} value={props.instagram}
+                               onChange={props.parentHandleInputChange}/>
                     </div>
                 </div>
                 <div className={"infoRow"}>
                     <h4>Bio:</h4>
                     <div>
-                        <p style={viewDisplay}>{state.bio}</p>
-                        <textarea style={editDisplay} name="bio" rows="10" cols="30" value={state.bio}
-                                  onChange={handleInputChange}/>
+                        <p style={viewDisplay}>{props.bio}</p>
+                        <textarea style={editDisplay} name="bio" rows="10" cols="30" value={props.bio}
+                                  onChange={props.parentHandleInputChange}/>
                     </div>
                 </div>
                 <div style={editDisplay}>

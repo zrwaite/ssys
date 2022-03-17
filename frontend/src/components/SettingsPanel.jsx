@@ -12,51 +12,23 @@ const getImageLink = (imageLink) => {
     return baseURL + "/images/" + imageLink;
 }
 
-function SettingsPanel(props) {
+const SettingsPanel = (props) => {
     let [state, setState] = useState({
         display: false,
         editMode: false,
-        image: null,
-        studentInfo: true,
-        fname: "",
-        lname: "",
-        image_link:"",
-        public_view: false
     });
     let [inputImage, setInputImage] = useState(null);
-
-    React.useEffect(() => {
-        props.renderData.current = renderData
-    })
-    
-    const renderData = (fname, lname, image_link, public_view) => {
-        setState({
-            ...state,
-            fname:fname,
-            lname:lname,
-            image_link:image_link,
-            public_view:public_view
-        });
-    }
 
     let settingsDisplay = {display: "none"};
     if (state.display) settingsDisplay.display = "block";
 
-    let handleInputChange = (event) => {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        let partialState = {...state};
-        partialState[name] = value;
-        setState(partialState);
-    }
 //todo reduce to one form sfunction
     const sendStudentForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
-            fname: state.fname,
-            lname: state.lname,
-            public: state.public_view
+            fname: props.fname,
+            lname: props.lname,
+            public: props.public_view
         })
         let response = JSON.parse(json);
         if (response.success && response.objects) {
@@ -67,16 +39,16 @@ function SettingsPanel(props) {
             }
         } else return {
             success: false,
-            fname: state.fname,
-            lname: state.lname
+            fname: props.fname,
+            lname: props.lname
         }
     }
 
     const sendTeacherForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
-            fname: state.fname,
-            lname: state.lname
+            fname: props.fname,
+            lname: props.lname
         })
         let response = JSON.parse(json);
         if (response.success && response.objects) {
@@ -87,15 +59,15 @@ function SettingsPanel(props) {
             }
         } else return {
             success: false,
-            fname: state.fname,
-            lname: state.lname
+            fname: props.fname,
+            lname: props.lname
         }
     }
 
     const sendForm = async () => {
         let user_type = getCookie("user_type");
         let formRespose;
-        let imageResponse = state.image_link;
+        let imageResponse = props.image_link;
         if (user_type === "student" || user_type === "individual") formRespose = await sendStudentForm();
         else if (user_type === "teacher") formRespose = await sendTeacherForm();
         if (inputImage) {
@@ -103,19 +75,8 @@ function SettingsPanel(props) {
             let response = JSON.parse(json);
             if (response.success && response.objects) {
                 imageResponse = getImageLink(response.objects);
-            } else imageResponse = state.image_link;
+            } else imageResponse = props.image_link;
         }
-        setState({
-            studentInfo: state.studentInfo,
-            display: state.display,
-            editMode: false,
-            fname: formRespose.fname || state.fname,
-            lname: formRespose.lname || state.lname,
-            image: null,
-            image_link: imageResponse,
-            initialLoad: state.initialLoad,
-            public: state.public
-        });
     }
 
     if (!state.display && state.editMode) setState({...state, editMode: false});
@@ -124,7 +85,7 @@ function SettingsPanel(props) {
     let studentDisplay = {display: "none"};
     let editDisplay = {display: "none"};
     let viewDisplay = {display: "grid"};
-    if (state.studentInfo) studentDisplay.display = "grid";
+    if (props.studentInfo) studentDisplay.display = "grid";
     if (state.editMode) {
         editDisplay.display = "grid";
         viewDisplay.display = "none";
@@ -155,25 +116,25 @@ function SettingsPanel(props) {
                     <div className={"settingsRow"}>
                         <h4>First Name:</h4>
                         <div>
-                            <p style={viewDisplay}>{state.fname}</p>
-                            <input style={editDisplay} type={"text"} name={"fname"} value={state.fname}
-                                   onChange={handleInputChange}/>
+                            <p style={viewDisplay}>{props.fname}</p>
+                            <input style={editDisplay} type={"text"} name={"fname"} value={props.fname}
+                                   onChange={props.parentHandleInputChange}/>
                         </div>
                     </div>
                     <div className={"infoRow"}>
                         <h4>Last Name:</h4>
                         <div>
-                            <p style={viewDisplay}>{state.lname}</p>
-                            <input style={editDisplay} type={"text"} name={"lname"} value={state.lname}
-                                   onChange={handleInputChange}/>
+                            <p style={viewDisplay}>{props.lname}</p>
+                            <input style={editDisplay} type={"text"} name={"lname"} value={props.lname}
+                                   onChange={props.parentHandleInputChange}/>
                         </div>
                     </div>
                     <div className={"infoRow"}>
                         <h4>Public:</h4>
                         <div>
-                            <p style={viewDisplay}>{state.public_view?"Public":"Private"}</p>
-                            <select style={editDisplay} name={"public_view"} value={state.public_view}
-                                    onChange={handleInputChange}>
+                            <p style={viewDisplay}>{props.public_view?"Public":"Private"}</p>
+                            <select style={editDisplay} name={"public_view"} value={props.public_view}
+                                    onChange={props.parentHandleInputChange}>
                                 <option value={true}>Public</option>
                                 <option value={false}>Private</option>
                             </select>
@@ -182,8 +143,8 @@ function SettingsPanel(props) {
                     <div className={"infoRow"}>
                         <h4>Image:</h4>
                         <div>
-                            <img style={viewDisplay} className={"userImage"} src={state.image_link}
-                                 alt={state.image_link}/>
+                            <img style={viewDisplay} className={"userImage"} src={props.image_link}
+                                 alt={props.image_link}/>
                             <input style={editDisplay} type={"file"} accept={"image/*"}
                                    onChange={(e) => setInputImage(e.target.files[0])}/>
                         </div>
