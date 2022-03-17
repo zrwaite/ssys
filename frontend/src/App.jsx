@@ -4,7 +4,6 @@ import Info from "./pages/Info";
 import Account from "./pages/Account";
 import Contact from "./pages/Contact";
 import "./styles/styles.css";
-import "./styles/nav.css";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";

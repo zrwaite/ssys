@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import { MobileContext } from "../../App";
 import "./KeyValueEdit.css";
 
 const KeyValueEdit = (props) => {
+	const {mobile} = useContext(MobileContext);
 	let editDisplay = {display: "none"};
     let viewDisplay = {display: "grid"};
     if (props.editMode) {
@@ -21,8 +24,8 @@ const KeyValueEdit = (props) => {
 			</select>)
 
     return (
-		<div className={"keyValueEditRow"}>
-			<h4 className={"keyValueEditKey"}>{props.displayName}:</h4>
+		<div className={mobile?"keyValueEditRowMobile":"keyValueEditRow"}>
+			<h4 className={mobile?"keyValueEditKeyMobile":"keyValueEditKey"}>{props.displayName}:</h4>
 			<div>
 				<p style={viewDisplay}>{props.value}</p>
 				{inputSection}

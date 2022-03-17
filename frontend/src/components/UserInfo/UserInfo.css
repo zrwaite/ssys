@@ -1,0 +1,42 @@
+.conferenceInfoPanel{
+    background-color: lightseagreen;
+}
+.userInfoPanel{
+	background-color:palegreen;
+}
+
+.infoHeader {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.infoHeader *:first-child {
+    margin: 0rem;
+}
+/* .infoBody {
+} */
+
+.infoRow {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    margin: 0;
+    padding: 0.5rem 0 0.5rem 0;
+    border-top: 0.1rem solid black;
+}
+
+.infoRow > h4 {
+    padding-right: 0.3rem;
+    margin: 0;
+}
+
+.infoRow > div {
+    padding-left: 0.3rem;
+}
+
+.infoRow > div > p {
+    margin: 0;
+}

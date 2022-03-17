@@ -27,6 +27,8 @@ html, body {
 button{
 	color: black;
 	font-family: pangram, serif;
+    height: 2rem;
+    font-size: 1.25rem;
 }
 input, option, select, textarea{
 	height: 2rem;
@@ -36,7 +38,7 @@ input, option, select, textarea{
 	border: 0.2rem solid black;
 	border-radius: 0.5rem;
 	padding: 0 0.2rem;
-	margin: 0.2rem;
+	margin: 0.1rem;
 	text-align: var(--defaultTextAlign);
 }
 input[type='radio'], input[type='checkbox']{
@@ -70,6 +72,15 @@ textarea {
 	cursor: pointer;
 	background-color: white;
 	color: black;
+}
+.userPagePanel{
+    border: 0.2rem solid black;
+    max-width: 25rem;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius:1rem;
 }
 
 .horizontal {
