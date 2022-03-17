@@ -1,9 +1,75 @@
 :root {
     font-size: 16px;
+	color: black;
+	font-family: pangram;
+	--defaultTextAlign: "left"
 }
+@font-face {
+	font-family: pangram;
+	src: url(../fonts/PPPangramSansRounded-CompactRegular.otf);
+}
+h1, h2, h3, h4, h5, h6{
+	text-align: var(--defaultTextAlign);
+	margin: 0;
+}
+p{margin: 0;}
 
-h1 {
-    text-align: center;
+html, body {
+	width: 100%;
+	height: 100%;
+	min-width: 15rem;
+	margin: 0;
+	background-color: var(--bgcolor);
+}
+#root {
+	height: 100%;
+}
+button{
+	color: black;
+	font-family: pangram, serif;
+}
+input, option, select, textarea{
+	height: 2rem;
+	font-size :1rem;
+	color: black;
+	font-family: pangram, serif;
+	border: 0.2rem solid black;
+	border-radius: 0.5rem;
+	padding: 0 0.2rem;
+	margin: 0.2rem;
+	text-align: var(--defaultTextAlign);
+}
+input[type='radio'], input[type='checkbox']{
+	height: 1.5rem;
+	width: 1.5rem;
+	margin: 0.25rem 0.5rem;
+}
+textarea {
+	resize: vertical;
+	text-align: left;
+	height: 8rem;
+	padding: 0.5rem;
+	box-sizing: border-box;
+}
+.blackButton{
+	background-color: black;
+	color: white;
+	border-radius: 0.5rem;
+	text-align: center;
+	border: 0.2rem solid black;
+	transition: color 0.3s, background-color 0.3s;
+}
+.disabledButton{
+	background-color: grey;
+	color: white;
+	border-radius: 0.5rem;
+	text-align: center;
+	border: 0.2rem solid black;
+}
+.blackButton:hover, .blackButton:active{
+	cursor: pointer;
+	background-color: white;
+	color: black;
 }
 
 .horizontal {

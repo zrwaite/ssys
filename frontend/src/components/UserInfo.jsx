@@ -5,6 +5,7 @@ import editIcon from "../images/edit.svg"
 import closeIcon from "../images/close.svg"
 import {httpReq} from "../modules/http_requests";
 import {getCookie} from "../modules/cookies";
+import KeyValueEdit from "./KeyValueEdit"
 
 function UserInfo(props) {
     let [state, setState] = useState({
@@ -69,48 +70,21 @@ function UserInfo(props) {
                      alt={"close icon"}/>
             </div>
             <div className={"infoBody"}>
-                <div className={"infoRow"}>
-                    <h4>School:</h4>
-                    <div>
-                        <p style={viewDisplay}>{props.school}</p>
-                        <input style={editDisplay} type={"text"} name={"school"} value={props.school}
-                               onChange={props.parentHandleInputChange}/>
-                    </div>
-                </div>
-                <div className={"infoRow"}>
-                    <h4>City:</h4>
-                    <div>
-                        <p style={viewDisplay}>{props.city}</p>
-                        <input style={editDisplay} type={"text"} name={"city"} value={props.city}
-                               onChange={props.parentHandleInputChange}/>
-                    </div>
-                </div>
-                <div className={"infoRow"} style={studentDisplay}>
-                    <h4>Grade:</h4>
-                    <div>
-                        <p style={viewDisplay}>{props.grade}</p>
-                        <input style={editDisplay} type={"text"} name={"grade"} value={props.grade}
-                               onChange={props.parentHandleInputChange}/>
-                    </div>
-                </div>
-                <div className={"infoRow"} style={studentDisplay}>
-                    <h4>Instagram:</h4>
-                    <div>
-                        <p style={viewDisplay}>{props.instagram}</p>
-                        <input style={editDisplay} type={"text"} name={"instagram"} value={props.instagram}
-                               onChange={props.parentHandleInputChange}/>
-                    </div>
-                </div>
-                <div className={"infoRow"}>
-                    <h4>Bio:</h4>
-                    <div>
-                        <p style={viewDisplay}>{props.bio}</p>
-                        <textarea style={editDisplay} name="bio" rows="10" cols="30" value={props.bio}
-                                  onChange={props.parentHandleInputChange}/>
-                    </div>
-                </div>
+                {
+                    [
+                        {displayName: "School", name: "school", inputType: "text"},
+                        {displayName: "City", name: "city", inputType: "text"},
+                        {displayName: "Grade", name: "grade", inputType: "text"},
+                        {displayName: "Instagram", name: "instagram", inputType: "text"},
+                        {displayName: "Bio", name: "bio", inputType: "textarea"}
+                    ].map((keyValueData, i) => {
+                        return (
+                            <KeyValueEdit key={i} value={props[keyValueData.name]} {...keyValueData} editMode={state.editMode} onChange={props.parentHandleInputChange} />
+                        )
+                    })
+                }
                 <div style={editDisplay}>
-                    <button onClick={sendForm}>Submit</button>
+                    <button className={"blackButton"} onClick={sendForm}>Submit</button>
                 </div>
             </div>
         </div>

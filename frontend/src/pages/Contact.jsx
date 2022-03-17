@@ -71,13 +71,13 @@ function Contact() {
             <div>
                 <label htmlFor={"to"}>To:</label>
                 <select id={"to"} name={"to"} value={state.to} onChange={handleInputChange}>
-                    <option value="tech">Tech Support</option>
-                    <option value="organizer">Conference Information</option>
+                    <option readOnly={true} value="tech">Tech Support</option>
+                    <option readOnly={true} value="organizer">Conference Information</option>
                 </select>
                 <br/><br/>
                 <label htmlFor={"message"}>Message: </label>
                 <br/>
-                <textarea name="message" className="messagebox" rows="10" cols="30" value={state.message} onChange={handleInputChange}/>
+                <textarea name="message" className="messagebox" rows="10" value={state.message} onChange={handleInputChange}/>
             </div>
             <div className="bottomofgreencontact">
                   <div className="bottomofcontact">

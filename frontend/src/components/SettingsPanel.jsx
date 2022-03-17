@@ -135,8 +135,8 @@ const SettingsPanel = (props) => {
                             <p style={viewDisplay}>{props.public_view?"Public":"Private"}</p>
                             <select style={editDisplay} name={"public_view"} value={props.public_view}
                                     onChange={props.parentHandleInputChange}>
-                                <option value={true}>Public</option>
-                                <option value={false}>Private</option>
+                                <option value={true} readOnly={true}>Public</option>
+                                <option value={false} readOnly={true}>Private</option>
                             </select>
                         </div>
                     </div>

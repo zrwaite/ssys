@@ -2,10 +2,10 @@
     border: 0.3px solid black;
     /* max-width: 20rem;
     max-height: 25rem; */
-    width: 90%;
+    /* width: 90%; */
     height: 90%;
     margin: 1rem;
-    padding: 0.5rem;
+    padding: 1rem;
     border-radius:1rem;
     background-color: lightgreen;
 }
@@ -14,10 +14,10 @@
     border:0.3px solid black;
     /* max-width: 20rem;
     max-height: 25rem; */
-    width: 90%;
+    /* width: 90%; */
     height: 90%;
     margin: 1rem;
-    padding: 0.5rem;
+    padding: 1rem;
     border-radius:1rem;
     background-color: lightseagreen;
 }
@@ -56,13 +56,4 @@
 
 .infoRow > div > p {
     margin: 0;
-}
-
-
-@media only screen and (max-width: 35rem) {
-	.infoRow {
-        grid-template-columns: 1fr;
-        align-items: center;
-        justify-items: center;
-    }
 }

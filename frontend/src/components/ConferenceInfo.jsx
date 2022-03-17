@@ -5,6 +5,7 @@ import editIcon from "../images/edit.svg"
 import closeIcon from "../images/close.svg"
 import {httpReq} from "../modules/http_requests";
 import {getCookie} from "../modules/cookies";
+import KeyValueEdit from "./KeyValueEdit";
 
 const ConferenceInfo = (props) => {
     let [state, setState] = useState({
@@ -66,46 +67,20 @@ const ConferenceInfo = (props) => {
                      alt={"close icon"}/>
             </div>
             <div className={"infoBody"}>
-                <div className={"infoRow"}>
-                    <h4>Dietary Restrictions:</h4>
-                    <div>
-                        <p style={viewDisplay}>{props.diet}</p>
-                        <textarea style={editDisplay} name="diet" rows="5" cols="10" value={props.diet}
-                                  onChange={props.parentHandleInputChange}/>
-                    </div>
-                </div>
-                <div className={"infoRow"}>
-                    <h4>Shirt Size:</h4>
-                    <div>
-                        <p style={viewDisplay}>{props.shirt_size}</p>
-                        <select style={editDisplay} name={"shirt_size"} value={props.shirt_size}
-                                onChange={props.parentHandleInputChange}>
-                            <option value="XS">XS</option>
-                            <option value="S">S</option>
-                            <option value="M">M</option>
-                            <option value="L">L</option>
-                            <option value="XL">XL</option>
-                        </select>
-                    </div>
-                </div>
-                <div className={"infoRow"} style={studentDisplay}>
-                    <h4>Emergency Contact:</h4>
-                    <div>
-                        <p style={viewDisplay}>{props.emergency_contact}</p>
-                        <input style={editDisplay} type={"text"} name={"emergency_contact"}
-                               value={props.emergency_contact} onChange={props.parentHandleInputChange}/>
-                    </div>
-                </div>
-                <div className={"infoRow"}>
-                    <h4>Additional Info:</h4>
-                    <div>
-                        <p style={viewDisplay}>{props.additional_info}</p>
-                        <textarea style={editDisplay} name="additional_info" rows="5" cols="10"
-                                  value={props.additional_info} onChange={props.parentHandleInputChange}/>
-                    </div>
-                </div>
+                {
+                    [
+                        {displayName: "Dietary Restrictions:", name: "diet", inputType: "textarea"},
+                        {displayName: "Shirt Size", name: "shirt_size", inputType: "select", options: ["XS", "S", "M", "L", "XL"]},
+                        {displayName: "Emergency Contact", name: "emergency_contact", inputType: "text"},
+                        {displayName: "Additional Info", name: "additional_info", inputType: "textarea"},
+                    ].map((keyValueData, i) => {
+                        return (
+                            <KeyValueEdit key={i} value={props[keyValueData.name]} {...keyValueData} editMode={state.editMode} onChange={props.parentHandleInputChange} />
+                        )
+                    })
+                }
                 <div style={editDisplay}>
-                    <button onClick={sendForm}>Submit</button>
+                    <button className={"blackButton"} onClick={sendForm}>Submit</button>
                 </div>
             </div>
         </div>
