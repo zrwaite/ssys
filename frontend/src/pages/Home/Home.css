@@ -8,13 +8,13 @@
 }
 
 .top{
-    background-color:darkgreen;
+    background-color:#93D783;
     background-size:cover;
     text-align:center;
 }
 
 .leading{
-    color:gold;
+    color:#FEF363;
     text-align:center;
     padding-bottom:1rem;
 }
@@ -24,10 +24,11 @@
     text-align:center;
     margin:auto;
     padding-bottom: 4rem;
+    color: #2D6434;
 }
 
 .butt{
-    background-color: rgba(12, 35, 139, 0.9);
+    background-color: #002A4A;
     border: none;
     color: gold;
     padding: 1.25rem 4rem;
@@ -42,15 +43,13 @@
 
 .butt:hover {
     font-weight: 300;
-    padding: 1rem 1rem;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out; 
     background-color: #fff;
-    border-radius: 0.125rem;
     color: rgba(12, 35, 139, 0.9);
 }
 
 .butttext{
-    color: gold;
+    color: #FEF363;
 }
 
 .buttlink{

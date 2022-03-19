@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import logo from "../../components/SOYC.png"
+import "./Home.css"
 
 function Home() {
     return (
