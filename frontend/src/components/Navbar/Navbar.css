@@ -16,27 +16,22 @@
 
 .nav-link {
     text-decoration: none;
-    color: #fff;
+    color: #9F9F9F;
 }
 
 .nav-icon {
     
 }
 
-.navbar-nav li a:hover,
-.navbar-nav li a.active {
+.navbar-nav li a:hover {
     font-weight: 300;
-    padding: 1rem 1rem;
     transition: all 0.5s ease-in-out;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    background-color: #fff;
     border-radius: 0.125rem;
     color: rgba(12, 35, 139, 0.9);
 }
 
 nav {
-    background: rgba(12, 35, 139, 0.9);
+    background: rgba(255, 255, 255);
     padding: 1rem;
     display: flex;
     justify-content: center;

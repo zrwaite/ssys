@@ -1,7 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import logo from "../../components/SOYC.png"
-import "./Home.css"
+import logo from "../../components/SOYC.png";
+import "./Home.css";
+import Countdown from "../../components/Countdown/Countdown.jsx";
 
 function Home() {
     return (
@@ -18,6 +19,7 @@ function Home() {
                     <div><br/><br/><br/></div>
                 </div>
                 <div className="countdown">
+                    <Countdown/>
                     <div className="registrationcountdown">
                         <h1>69:69:69:69</h1>
                         <h2>Until Registration Closes</h2>
