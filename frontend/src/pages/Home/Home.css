@@ -73,10 +73,20 @@
     text-decoration: none;
     height:10rem;
     margin:auto;
+    text-align:center;
 }
 
 .registrationcountdown > h1{
     font-size:3rem;
+    text-align:center;
+}
+
+.registrationcountdown > h2{
+    text-align:center;
+}
+
+.registrationcountdown > h3{
+    text-align:center;
 }
 
 .conferencecountdown{
@@ -86,10 +96,20 @@
     opacity: 1;
     text-decoration: none;
     height:10rem;
+    text-align:center;
 }
 
 .conferencecountdown > h1{
     font-size:3rem;
+    text-align:center;
+}
+
+.conferencecountdown > h2{
+    text-align:center;
+}
+
+.conferencecountdown > h3{
+    text-align:center;
 }
 
 .keynote{
