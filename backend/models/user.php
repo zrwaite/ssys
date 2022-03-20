@@ -9,6 +9,7 @@ require_once __DIR__ . "/../modules/checkers.php";
 require_once __DIR__ . "/../auth/tokens.php";
 require_once __DIR__ . "/../modules/mailModules.php";
 require_once __DIR__ . "/../modules/database.php";
+require_once __DIR__ . "/workshops.php";
 
 
 class PostUser
@@ -16,10 +17,12 @@ class PostUser
     public string $email = "", $hash;
     public string|null $fname, $lname, $password;
     public int $confirmation_code;
+    public string $workshop_choices;
 
     public function __construct()
     {
         $this->createConfirmationCode();
+        $this->randomWorkshopChoices();
     }
 
     public function createConfirmationCode()
@@ -61,6 +64,15 @@ class PostUser
     public function createHash()
     {
         $this->hash = password_hash($this->password, PASSWORD_DEFAULT);
+    }
+
+    public function randomWorkshopChoices() {
+        $workshopOptions = array();
+        foreach (WORKSHOPS as $workshop) {
+            array_push($workshopOptions, $workshop["code"]);
+        }
+        shuffle($workshopOptions);
+        $this->workshop_choices = join(" ", $workshopOptions);
     }
 
     #[ArrayShape(["request" => "mixed", "token" => "string"])] //Dev Array shape implementation

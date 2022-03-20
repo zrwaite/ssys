@@ -71,7 +71,8 @@ if (count($res->errors) == 0) {
                 'teacher_id' => $user->teacher_id,
                 'confirmation_code' => $user->confirmation_code,
                 'user_type' => $user->user_type,
-                'password_set' => $user->password_set
+                'password_set' => $user->password_set,
+                'workshop_choices' => $user->workshop_choices
             ));
             $user->sendEmailConfirmation();
             $res->status = 200;

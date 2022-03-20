@@ -3,6 +3,7 @@ import "./User.css";
 import UserInfo from "../../components/UserInfo";
 import ConferenceInfo from "../../components/ConferenceInfo";
 import NotificationPanel from "../../components/NotificationPanel";
+import WorkshopChoices from "../../components/WorkshopChoices";
 
 import {getCookie} from "../../modules/cookies";
 import {Navigate} from "react-router-dom";
@@ -37,7 +38,8 @@ const User = () => {
         additional_info: "",
         public: "",
         password_set: "",
-        email_confirmed: ""
+        email_confirmed: "",
+        workshop_choices: ""
     });
     const handleInputChange = (event) => {
         console.log("changing");
@@ -47,6 +49,10 @@ const User = () => {
         let partialState = {...userData};
         partialState[name] = value;
         setUserData(partialState);
+    }
+
+    const changeWorkshopChoices = (newChoices) => {
+        setUserData({...userData, workshop_choices: newChoices});
     }
 
     const getUserData = async () => {
@@ -74,7 +80,8 @@ const User = () => {
                 image_link: getImageLink(response.objects.image_link),
                 public: response.objects.public,
                 password_set: response.objects.password_set,
-                email_confirmed: response.objects.email_confirmed
+                email_confirmed: response.objects.email_confirmed,
+                workshop_choices: response.objects.workshop_choices
             })
         } else if (response.errors.length > 0) {
             alert(response.errors)
@@ -99,6 +106,7 @@ const User = () => {
             <section className={"userBody"}>
                 <UserInfo {...userData} parentHandleInputChange={handleInputChange}/>
                 <ConferenceInfo {...userData} parentHandleInputChange={handleInputChange}/>
+                <WorkshopChoices {...userData} parentChangeWorkshopChoices={changeWorkshopChoices} />
             </section>
         </main>
     );
