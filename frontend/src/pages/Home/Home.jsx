@@ -2,7 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import logo from "../../components/SOYC.png";
 import "./Home.css";
-import Countdown from "../../components/CountdownRegistration/CountdownRegistration.jsx";
+import CountdownRegistration from "../../components/CountdownRegistration/CountdownRegistration.jsx";
+import CountdownSummit from "../../components/CountdownSummit/CountdownSummit.jsx";
 
 function Home() {
     return (
@@ -19,14 +20,13 @@ function Home() {
                     <div><br/><br/><br/></div>
                 </div>
                 <div className="countdown">
-                    <Countdown/>
                     <div className="registrationcountdown">
-                        <h1>69:69:69:69</h1>
-                        <h2>Until Registration Closes</h2>
-                        <h3>Whenever</h3>
+                        <h1><CountdownRegistration/></h1>
+                        <h2>Until The Summit</h2>
+                        <h3>May 10th</h3>
                     </div>
                     <div className="conferencecountdown">
-                        <h1>69:69:69:69</h1>
+                        <h1><CountdownSummit/></h1>
                         <h2>Until The Summit</h2>
                         <h3>May 10th</h3>
                     </div>
