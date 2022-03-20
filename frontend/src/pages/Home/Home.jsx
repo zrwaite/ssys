@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import logo from "../../components/SOYC.png";
 import "./Home.css";
-import Countdown from "../../components/Countdown/Countdown.jsx";
+import Countdown from "../../components/CountdownRegistration/CountdownRegistration.jsx";
 
 function Home() {
     return (
