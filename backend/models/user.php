@@ -158,6 +158,16 @@ class PutUser
                         $error = true;
                     }
                     break;
+                case "workshop_choices":
+                    $ids = WORKSHOP_IDS;
+                    $input_ids = explode(" ",$param);
+                    sort($ids);
+                    sort($input_ids);
+                    if ($ids != $input_ids) {
+                        array_push($errors, "invalid workshop choices");
+                        $error = true;
+                    }
+                    break;
                 case "password":
                     $old_password = getBody("old_password");
                     if (!$old_password) {

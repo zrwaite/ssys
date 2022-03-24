@@ -42,7 +42,6 @@ const User = () => {
         workshop_choices: ""
     });
     const handleInputChange = (event) => {
-        console.log("changing");
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;

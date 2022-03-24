@@ -18,19 +18,17 @@ $res = new Response();
 $res->request_type = "GET";
 
 $index = getQuery("index");
-if (is_null($index)) array_push($res->errors, "Missing index query");
-
-if (count($res->errors) == 0) {
+if (is_null($index)) {
+	$res->objects = WORKSHOPS;
+} else {
 	if (intval($index) > count(WORKSHOPS) || intval($index) < 0) {
 		$res->status = 404;
 		array_push($res->errors, "index out of bounds");
-	} else {
-		$result = WORKSHOPS[intval($index)];
-		$res->status = 200;
-		$res->success = true;
-		$res->objects = $result;
-	}
+	} else $res->objects = WORKSHOPS[intval($index)];
 }
+$res->status = 200;
+$res->success = true;
+
 http_response_code($res->status);
 echo json_encode($res);
 

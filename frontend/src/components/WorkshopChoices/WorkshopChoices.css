@@ -1,0 +1,38 @@
+.workshopChoicesPanel{
+	background-color:rgb(251, 152, 165);
+}
+.workshopChoice{
+	margin: 1rem;
+	padding: 1rem;
+	border-radius: 1rem;
+	border: 0.2rem solid black;
+	background: white;
+	display:flex;
+}
+.workshopImage{
+	width: min(100%, 10rem);
+}
+.workshopSelector{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.workshopSelectorUp{
+	height: 2rem;
+	width: 2rem;
+	background-color: green;
+	border: 0.1rem solid transparent;
+
+}
+.workshopSelectorDown{
+	height: 2rem;
+	width: 2rem;
+	background-color: red;
+	border: 0.1rem solid transparent;
+
+}
+.workshopSelectorUp:hover, .workshopSelectorDown:hover {
+	cursor: pointer;
+	border: 0.1rem solid white;
+}

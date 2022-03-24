@@ -9,6 +9,9 @@ function CreateWorkshop($name, $description, $image_link, $code):array { //Class
     ];
 }
 
+const WORKSHOP_IDS = [
+    "a", "b", "c", "d", "e", "f"
+];
 
 define("WORKSHOPS", array(
     CreateWorkshop(
@@ -48,3 +51,4 @@ define("WORKSHOPS", array(
         "f"
     )
 ));
+

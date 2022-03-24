@@ -31,12 +31,14 @@ if ($result) {
         $puts = $user_puts_and_errors["puts"];
         if (count($res->errors) == 0) {
             if (count($puts) == 0) array_push($res->errors, "You didn't send anything to update ");
-            else $res->objects = $puts;
+            else {
+                $res->objects = $puts;
+                DB::update('ssys22_users', $puts, "email=%s", $email);
+                $res->status = 200;
+                $res->success = true;
+            }
         }
     }
-    DB::update('ssys22_users', $puts, "email=%s", $email);
-    $res->status = 200;
-    $res->success = true;
 } else {
     $res->status = 404;
     array_push($res->errors, "Can not find user");

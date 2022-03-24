@@ -74,7 +74,7 @@ const ConferenceInfo = (props) => {
                         {displayName: "Additional Info", name: "additional_info", inputType: "textarea"},
                     ].map((keyValueData, i) => {
                         return (
-                            <KeyValueEdit key={i} value={props[keyValueData.name]} {...keyValueData} editMode={state.editMode} onChange={props.parentHandleInputChange} />
+                            <KeyValueEdit key={i} value={props[keyValueData.name]} {...keyValueData} editMode={state.editMode} parentHandleInputChange={props.parentHandleInputChange} />
                         )
                     })
                 }
