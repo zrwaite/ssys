@@ -15,19 +15,23 @@ function Account() {
 
     return (
         <main>
-            <h1>Account Page</h1>
-            <div className="acc">
-             <div className="sign">
-                    <h3>Do you have an account? Then Sign In here:</h3>
-                        <Link to="/signin" className="signbutton">
-                            <span className="signtext">Sign In</span>
-                        </Link> 
+            <div className="top">
+                <h1>REGISTER/SIGN IN</h1>
+                <div className="accBlurb">
+                    <p>Make sure you don't miss out on this incredible opportunity! Register now before it's too late!</p>
                 </div>
-                <div className="reg">
-                    <h3>Don't have an account? Then Register here:</h3>
-                         <Link to="/register" className="regbutton">
-                           <span className="regtext">Register</span>
+            </div>
+            <p><br/></p>
+            <div className="acc">
+              <div className="accReg">
+                         <Link to="/register" className="accButton">
+                           <span>Register</span>
                         </Link>
+                </div>
+                <div className="accSign">
+                        <Link to="/signin" className="accButton">
+                            <span>Sign In</span>
+                        </Link> 
                 </div>
             </div>
         </main>
