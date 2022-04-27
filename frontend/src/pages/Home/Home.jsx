@@ -23,12 +23,12 @@ function Home() {
                     <div className="registrationcountdown">
                         <h1><CountdownRegistration/></h1>
                         <h2>Until The Summit</h2>
-                        <h3>May 10th</h3>
+                        <h3>May 26th</h3>
                     </div>
                     <div className="conferencecountdown">
                         <h1><CountdownSummit/></h1>
                         <h2>Until The Summit</h2>
-                        <h3>May 10th</h3>
+                        <h3>May 26th</h3>
                     </div>
                 </div>
                 <div className="keynote">

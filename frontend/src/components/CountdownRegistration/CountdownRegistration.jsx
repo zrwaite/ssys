@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const futureDate = new Date(2022, 4, 27);
+const futureDate = new Date(2022, 4, 26);
 const getDateDiff = (date1, date2) => {
   const diff = new Date(date2.getTime() - date1.getTime());
   return {
