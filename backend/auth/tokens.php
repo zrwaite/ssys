@@ -11,6 +11,7 @@ header('Content-Type:application/json; charset=utf-8');
 
 //Imports
 require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/../models/structures.php";
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__ . "/../modules/env/.env");
 
@@ -30,23 +31,36 @@ function createToken(object|array $body): string
     return JWT::encode($body, $key);
 }
 
-function verifyToken(string $token): bool|object|array
+function validateToken(string $email): ErrorsBool
 {
-    $key = $_ENV['JWT_KEY'];
-    try {
-        $decoded = JWT::decode($token, new Key($key, 'HS256'));
-        return $decoded;
-    } catch (Exception) {
-        return false;
+    $result = new ErrorsBool();
+    $tokenData = getTokenData();
+    $result->errors = $tokenData->errors;
+    if (!count($result->errors)) {
+        if ($tokenData->response->email != $email) {
+            array_push($result->errors, "Token not authorized for user");
+        } else $result->success = true;
     }
+    return $result;
 }
 
-function getToken(): bool|string
+function getTokenData(): ErrorsObject
 {
+    $result = new ErrorsObject();
     $auth = getallheaders()["Authorization"];
-    $token = explode(" ", $auth)[1]; //Got to love php's string split being EXPLODE
-    $token = str_replace("\"", "", $token);
-    if ($token) return $token;
-    else return false;
+    $tokenSections = explode(" ", $auth);
+    if (count($tokenSections) == 2) {
+        $token = $tokenSections[1];
+        $token = str_replace("\"", "", $token);
+        try {
+            $key = $_ENV['JWT_KEY'];
+            $decoded = JWT::decode($token, new Key($key, 'HS256'));
+            $result->response = $decoded;
+        } catch (Exception) {
+            array_push($result->errors, "Invalid Token");
+        }
+    } else {
+        array_push($result->errors, "Invalid Authorization");
+    }
+    return $result;
 }
-//getToken from auth
