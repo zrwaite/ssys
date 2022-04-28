@@ -65,16 +65,23 @@ const SettingsPanel = (props) => {
 
     const sendForm = async () => {
         let user_type = getCookie("user_type");
-        let formRespose;
+        let formResponse;
         let imageResponse = props.image_link;
-        if (user_type === "student" || user_type === "individual") formRespose = await sendStudentForm();
-        else if (user_type === "teacher") formRespose = await sendTeacherForm();
+        if (user_type === "student" || user_type === "individual") formResponse = await sendStudentForm();
+        else if (user_type === "teacher") formResponse = await sendTeacherForm();
         if (inputImage) {
             let json = await imagePostReq("/api/image/", inputImage, getCookie("email"));
             let response = JSON.parse(json);
             if (response.success && response.objects) {
                 imageResponse = getImageLink(response.objects);
             } else imageResponse = props.image_link;
+        }
+        if (formResponse) {
+            if (formResponse.success) {
+                //Success
+            } else {
+                alert("error");
+            }
         }
     }
 
@@ -108,8 +115,6 @@ const SettingsPanel = (props) => {
                     <img style={editDisplay} src={checkIcon} onClick={() => setState({...state, editMode: false})}
                          alt={"check icon"}/>
                     <img src={closeIcon} alt={"close"} onClick={() => setState({...state, display: false})}/>
-
-
                 </div>
                 <div className={"settingsBody"}>
                     <div className={"settingsRow"}>
@@ -131,11 +136,11 @@ const SettingsPanel = (props) => {
                     <div className={"infoRow"}>
                         <h4>Public:</h4>
                         <div>
-                            <p style={viewDisplay}>{props.public_view?"Public":"Private"}</p>
+                            <p style={viewDisplay}>{props.public_view ? "Public" : "Private"}</p>
                             <select style={editDisplay} name={"public_view"} value={props.public_view}
                                     onChange={props.parentHandleInputChange}>
-                                <option value={true} readOnly={true}>Public</option>
-                                <option value={false} readOnly={true}>Private</option>
+                                <option value={true}>Public</option>
+                                <option value={false}>Private</option>
                             </select>
                         </div>
                     </div>

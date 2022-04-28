@@ -68,8 +68,13 @@ const ConferenceInfo = (props) => {
             <div className={"infoBody"}>
                 {
                     [
-                        {displayName: "Dietary Restrictions:", name: "diet", inputType: "textarea"},
-                        {displayName: "Shirt Size", name: "shirt_size", inputType: "select", options: ["XS", "S", "M", "L", "XL"]},
+                        {displayName: "Dietary Restrictions", name: "diet", inputType: "textarea"},
+                        {
+                            displayName: "Shirt Size",
+                            name: "shirt_size",
+                            inputType: "select",
+                            options: ["XS", "S", "M", "L", "XL"]
+                        },
                         {displayName: "Emergency Contact", name: "emergency_contact", inputType: "text"},
                         {displayName: "Additional Info", name: "additional_info", inputType: "textarea"},
                     ].map((keyValueData, i) => {

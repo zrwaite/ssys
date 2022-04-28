@@ -8,6 +8,7 @@
     border: 0.3rem solid black;
     border-radius: 0.5rem;
     background-color: #c0c0c0;
+    padding: 1rem;
 }
 
 .settingsPanelHeader {
@@ -15,6 +16,7 @@
     grid-template-columns: 6fr 1fr 1fr;
     align-items: center;
     justify-content: center;
+    padding: 0.25rem 0 0.5rem;
 }
 
 .settingsIcon:hover {
@@ -51,5 +53,5 @@
 
 .logoutButton {
     margin: 1rem 2rem;
-    font-size: 2rem;
+    font-size: 1.25rem;
 }

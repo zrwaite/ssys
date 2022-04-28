@@ -1,22 +1,23 @@
 import React, {useState} from "react";
 import {httpReq} from "../../modules/http_requests";
 import {getCookie} from "../../modules/cookies";
-
+import upArrow from "../../images/upArrow.svg";
+import downArrow from "../../images/downArrow.svg";
 import "./WorkshopChoices.css"
 
 const WorkshopChoices = (props) => {
 	const [dataPulled, setDataPulled] = useState(false);
 	const [workshops, setWorkshops] = useState([]);
 	const getWorkshops = async () => {
-        let json = await httpReq("/api/workshop/", "GET")
-        let response = JSON.parse(json);
+		let json = await httpReq("/api/workshop/", "GET")
+		let response = JSON.parse(json);
 		console.log(response);
-        if (response.success && response.objects) {
-            setWorkshops(response.objects);
-        } else if (response.errors.length > 0) {
-            alert(response.errors);
-        }
-    }
+		if (response.success && response.objects) {
+			setWorkshops(response.objects);
+		} else if (response.errors.length > 0) {
+			alert(response.errors);
+		}
+	}
 	const rearrangeWorkshops = async (index, up) => {
 		const newWorkshops = props.workshop_choices.split(" ");
 		let secondIndex = index+(up?-1:1);
@@ -59,8 +60,12 @@ const WorkshopChoices = (props) => {
 						<img className={"workshopImage"} src={workshop.image_link} alt="workshop"/>
 					</div>
 					<div className={"workshopSelector"}>
-						<div className={"workshopSelectorUp"} onClick={() => rearrangeWorkshops(i, true)}></div>
-						<div className={"workshopSelectorDown"} onClick={() => rearrangeWorkshops(i, false)}></div>
+						<div className={"workshopSelectorUp"} onClick={() => rearrangeWorkshops(i, true)}>
+							<img src={upArrow} alt={"Up"}/>
+						</div>
+						<div className={"workshopSelectorDown"} onClick={() => rearrangeWorkshops(i, false)}>
+							<img src={downArrow} alt={"Down"}/>
+						</div>
 					</div>
 				</div>
 			})}

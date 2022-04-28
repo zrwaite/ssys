@@ -1,8 +1,11 @@
-.conferenceInfoPanel{
+.conferenceInfoPanel {
     background-color: lightseagreen;
+    margin: 1rem;
 }
-.userInfoPanel{
-	background-color:palegreen;
+
+.userInfoPanel {
+    background-color: palegreen;
+    margin: 1rem;
 }
 
 .infoHeader {
@@ -15,7 +18,7 @@
 }
 
 .infoHeader *:first-child {
-    margin: 0rem;
+    margin: 0;
 }
 /* .infoBody {
 } */

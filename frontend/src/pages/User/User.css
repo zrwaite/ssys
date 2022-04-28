@@ -24,10 +24,8 @@
 .userBody {
     display: grid;
     box-sizing: content-box;
-    align-items: center;
-    justify-content: center;
-    place-items: center;
-    gap: 1rem;
+    align-items: flex-start;
+    place-items: flex-start;
     grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
     margin: 0 1rem;
     padding: 0 1rem;
@@ -37,3 +35,11 @@
     width: 3rem;
     height: 3rem;
 } */
+
+.informationColumn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+}

@@ -9,6 +9,8 @@ import {getCookie} from "../../modules/cookies";
 import {Navigate} from "react-router-dom";
 import {httpReq, baseURL} from "../../modules/http_requests";
 import SettingsPanel from "../../components/SettingsPanel";
+import AccountIcon from "../../images/account.svg";
+
 // import ReactDOM from "react-dom";
 
 const getImageLink = (imageLink) => {
@@ -76,7 +78,7 @@ const User = () => {
                 shirt_size: response.objects.shirt_size,
                 emergency_contact: response.objects.emergency_contact,
                 additional_info: response.objects.additional_info,
-                image_link: getImageLink(response.objects.image_link),
+                image_link: response.objects.image_link ? getImageLink(response.objects.image_link) : AccountIcon,
                 public: response.objects.public,
                 password_set: response.objects.password_set,
                 email_confirmed: response.objects.email_confirmed,
@@ -97,15 +99,17 @@ const User = () => {
                     <img className={"userImage"} src={userData.image_link} alt={userData.image_link}/>
                     <h2>{userData.fname} {userData.lname}</h2>
                 </div>
-                <div className={"horizontal"} >
+                <div className={"horizontal"}>
                     <SettingsPanel {...userData} parentHandleInputChange={handleInputChange}/>
                     <NotificationPanel {...userData} parentHandleInputChange={handleInputChange}/>
                 </div>
             </header>
             <section className={"userBody"}>
-                <UserInfo {...userData} parentHandleInputChange={handleInputChange}/>
-                <ConferenceInfo {...userData} parentHandleInputChange={handleInputChange}/>
-                <WorkshopChoices {...userData} parentChangeWorkshopChoices={changeWorkshopChoices} />
+                <div className={"informationColumn"}>
+                    <UserInfo {...userData} parentHandleInputChange={handleInputChange}/>
+                    <ConferenceInfo {...userData} parentHandleInputChange={handleInputChange}/>
+                </div>
+                <WorkshopChoices {...userData} parentChangeWorkshopChoices={changeWorkshopChoices}/>
             </section>
         </main>
     );
