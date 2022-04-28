@@ -19,9 +19,6 @@ function Register() {
                         <button className="two" onClick={() => setRegisterDisplay("student")}>Student</button>
                 </div>
                 <div>
-                        <button className="three" onClick={() => setRegisterDisplay("individual")}>Individual</button>
-                </div>
-                <div>
                         <button className="four" onClick={() => setRegisterDisplay("teacher")}>Teacher</button>
                 </div>
             </div>

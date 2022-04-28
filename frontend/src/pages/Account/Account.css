@@ -1,76 +1,59 @@
+.top{
+    background-color: #002A4A;
+}
+
+.top > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 3rem;
+}
+
+.accBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+}
+
 .acc{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(15rem,35rem));
+    grid-template-rows: 1fr 1fr;
     justify-content: center;
     align-items: center;
     margin:auto;
-    column-gap:10rem;
+    background-color:#2D6434;
 }
 
-.acc h3{
-    text-align:center;
+.accReg{
+    padding-top:10rem;
+    padding-bottom:2rem;
+    margin:auto;
+    grid-row:1;
 }
 
-.sign{
-    display:grid;
-    grid-template-columns: 1fr;
-    align-items:center;
+.accSign{
+    padding-bottom:10rem;
+    padding-top:2rem;
+    grid-row:2;
 }
 
-.signbutton{
-    background-color: rgba(12, 35, 139, 0.9);
+.accButton{
+    background-color: #93D783;
     border: none;
-    color: gold;
-    padding: 1.25rem 4rem;
+    color: #2D6434;
+    padding: 1rem 4rem;
     text-align: center;
-    font-size: 1rem;
+    font-size: 2rem;
     opacity: 1;
     text-decoration: none;
     cursor: pointer;
-    margin: 0 auto;
+    width: 12rem;
 }
 
-.signbutton:hover {
+.accButton:hover {
     font-weight: 300;
-    padding: 1rem 1rem;
     transition: all 0.5s ease-in-out;
-    background-color: greenyellow;
-    border-radius: 0.125rem;
-    color: rgba(12, 35, 139, 0.9);
-}
-
-.signtext{
-    color:gold;
-}
-
-.reg{
-    display:grid;
-    grid-template-columns: 1fr;
-    align-items:center;
-}
-
-.regbutton{
-    background-color: rgba(12, 35, 139, 0.9);
-    border: none;
-    color: gold;
-    padding: 1.25rem 4rem;
-    text-align: center;
-    font-size: 1rem;
-    opacity: 1;
-    text-decoration: none;
-    cursor: pointer;
-    margin: 0 auto;
-}
-
-.regbutton:hover {
-    font-weight: 300;
-    padding: 1rem 1rem;
-    transition: all 0.5s ease-in-out;
-    background-color: greenyellow;
-    border-radius: 0.125rem;
-    color: rgba(12, 35, 139, 0.9);
-}
-
-.regtext{
-    color:gold;
+    background-color: #fff;
+    color: #93D783;
 }
