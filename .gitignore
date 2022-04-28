@@ -1,6 +1,6 @@
 .DS_Store
 backend/vendor
-frontend/node_modules
+node_modules
 .env
 .env2
 .idea

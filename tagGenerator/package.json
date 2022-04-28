@@ -1,0 +1,20 @@
+{
+  "name": "taggenerator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.9.1",
+    "qrcode": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.4.2"
+  }
+}
