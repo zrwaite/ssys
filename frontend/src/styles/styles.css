@@ -1,8 +1,9 @@
 :root {
-    font-size: 16px;
+	font-size: 16px;
 	color: black;
-	font-family: pangram;
-	--defaultTextAlign: "left"
+	font-family: pangram, serif;
+	--defaultTextAlign: "left";
+	--bgcolor: "white";
 }
 @font-face {
 	font-family: pangram;
@@ -73,25 +74,44 @@ textarea {
 	background-color: white;
 	color: black;
 }
-.userPagePanel{
-    border: 0.2rem solid black;
-    max-width: 25rem;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    padding: 1rem;
-    border-radius:1rem;
+.userPagePanel {
+	border: 0.2rem solid black;
+	max-width: 25rem;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 1rem;
+	border-radius: 1rem;
 }
 
 .horizontal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
+
+.vertical {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.vertical > * {
+	width: 100%;
+}
+
+.horizontalTop {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+}
+
 .icon {
-    height: 3rem;
-    width: 3rem;
+	height: 3rem;
+	width: 3rem;
 }
+
 .icon:hover {
-    cursor: pointer;
+	cursor: pointer;
 }

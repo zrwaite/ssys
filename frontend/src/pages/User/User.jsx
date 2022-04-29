@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import "./User.css";
 import UserInfo from "../../components/UserInfo";
 import ConferenceInfo from "../../components/ConferenceInfo";
@@ -10,6 +10,7 @@ import {Navigate} from "react-router-dom";
 import {httpReq, baseURL} from "../../modules/http_requests";
 import SettingsPanel from "../../components/SettingsPanel";
 import AccountIcon from "../../images/account.svg";
+import {MobileContext} from "../../App";
 
 // import ReactDOM from "react-dom";
 
@@ -18,6 +19,7 @@ const getImageLink = (imageLink) => {
 }
 
 const User = () => {
+    const {mobile} = useContext(MobileContext);
     const [dataPulled, setDataPulled] = useState(false);
     const [userData, setUserData] = useState({
         email: getCookie("email"),
@@ -98,12 +100,14 @@ const User = () => {
                     <NotificationPanel {...userData} parentHandleInputChange={handleInputChange}/>
                 </div>
             </header>
-            <section className={"userBody"}>
+            <section className={mobile ? "vertical" : "horizontalTop"}>
                 <div className={"informationColumn"}>
                     <UserInfo {...userData} parentHandleInputChange={handleInputChange}/>
                     <ConferenceInfo {...userData} parentHandleInputChange={handleInputChange}/>
                 </div>
-                <WorkshopChoices {...userData} parentChangeWorkshopChoices={changeWorkshopChoices}/>
+                <div className={"informationColumn"}>
+                    <WorkshopChoices {...userData} parentChangeWorkshopChoices={changeWorkshopChoices}/>
+                </div>
             </section>
         </main>
     );

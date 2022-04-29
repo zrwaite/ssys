@@ -42,17 +42,17 @@ function App() {
 	return (
 		<MobileContext.Provider value={mobileValue}>
 			<Router>
-				<Navbar />
+				<Navbar/>
 				<Routes>
-					<Route path="/" element={<Home />}></Route>
-					<Route path="/info" element={<Info />}></Route>
-					<Route path="/account" element={<Account />}></Route>
-					<Route path="/contact" element={<Contact />}></Route>
-					<Route path="/register" element={<Register />}></Route>
-					<Route path="/signin" element={<SignIn />}></Route>
-					<Route path="/user" element={<User />}></Route>
-					<Route path="/confirmEmail" element={<EmailConfirmation />}></Route>
-					<Route path="/Workshop1" element={<Workshop1 />}></Route>
+					<Route path="/" element={<Home/>}/>
+					<Route path="/info" element={<Info/>}/>
+					<Route path="/account" element={<Account/>}/>
+					<Route path="/contact" element={<Contact/>}/>
+					<Route path="/register" element={<Register/>}/>
+					<Route path="/signin" element={<SignIn/>}/>
+					<Route path="/user" element={<User/>}/>
+					<Route path="/confirmEmail" element={<EmailConfirmation/>}/>
+					<Route path="/Workshop1" element={<Workshop1/>}/>
 				</Routes>
 			</Router>
 		</MobileContext.Provider>
