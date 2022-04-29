@@ -22,6 +22,7 @@
 
 .bodyOption{
     background-color:#2D6434;
+    height:100%;
 }
 .register_options{
     display: grid;
