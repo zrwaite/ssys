@@ -5,3 +5,4 @@ node_modules
 .env2
 .idea
 backend/modules/logs
+backend/images

@@ -1,3 +1,5 @@
+import {getCookie} from "./cookies";
+
 const baseURL = "http://localhost/ssys/backend";
 
 const imagePostReq = async (url, image, email) => {
@@ -23,6 +25,7 @@ const imagePostReq = async (url, image, email) => {
 }
 
 const httpReq = async (url, method = "GET", params = {}) => {
+    const token = getCookie("token");
     url = baseURL + url;
     if (method !== "GET" && method !== "POST" && method !== "PUT" && method !== "DELETE") {
         console.error("invalid method");
@@ -31,7 +34,12 @@ const httpReq = async (url, method = "GET", params = {}) => {
     try {
         let response;
         if (method === "GET") {
-            response = await fetch(url, {cache: 'no-cache'});
+            response = await fetch(url, {
+                cache: 'no-cache',
+                headers: {
+                    Authorization: "Bearer " + token
+                }
+            });
         } else {
             response = await fetch(url, {
                 method: method, // *GET, POST, PUT, DELETE, etc.
@@ -39,6 +47,7 @@ const httpReq = async (url, method = "GET", params = {}) => {
                 // mode: 'same-origin',
                 headers: {
                     'Content-Type': 'application/json',
+                    Authorization: "Bearer " + token
                 },
                 body: JSON.stringify(params) // body data type must match "Content-Type" header
             });

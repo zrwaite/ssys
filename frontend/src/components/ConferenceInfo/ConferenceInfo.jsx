@@ -15,7 +15,6 @@ const ConferenceInfo = (props) => {
         let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
             diet: props.diet,
-            shirt_size: props.shirt_size,
             emergency_contact: props.emergency_contact,
             additional_info: props.additional_info
         })
@@ -31,7 +30,6 @@ const ConferenceInfo = (props) => {
         let json = await httpReq("/api/user/", "PUT", {
             email: getCookie("email"),
             diet: props.diet,
-            shirt_size: props.shirt_size,
             additional_info: props.additional_info
         })
         let response = JSON.parse(json);
@@ -69,12 +67,6 @@ const ConferenceInfo = (props) => {
                 {
                     [
                         {displayName: "Dietary Restrictions", name: "diet", inputType: "textarea"},
-                        {
-                            displayName: "Shirt Size",
-                            name: "shirt_size",
-                            inputType: "select",
-                            options: ["XS", "S", "M", "L", "XL"]
-                        },
                         {displayName: "Emergency Contact", name: "emergency_contact", inputType: "text"},
                         {displayName: "Additional Info", name: "additional_info", inputType: "textarea"},
                     ].map((keyValueData, i) => {

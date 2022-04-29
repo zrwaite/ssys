@@ -25,7 +25,7 @@ if (is_null($email)) array_push($res->errors, "Missing email query, or did you m
 
 if (count($res->errors) == 0) {
     $tokenData = validateToken($email);
-    $query = "id, fname, lname, email, email_confirmed, teacher_email, teacher_id, password_set, grade, image_link, image_approved ,school ,shirt_size ,shirts_ordered ,city ,workshop_choices ,instagram ,diet ,workshop_order ,video_link ,video_approved ,bio ,additional_info ,emergency_contact ,account_enabled, public, user_type";
+    $query = "id, fname, lname, email, email_confirmed, teacher_email, teacher_id, password_set, grade, image_link, image_approved ,school ,city ,workshop_choices ,instagram ,diet ,workshop_order ,bio ,additional_info ,emergency_contact ,account_enabled, public, user_type";
     $result = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_users WHERE email=%s", $email);
     $parsedResult = $user->getParseResult($result);
     if ($parsedResult) {

@@ -119,7 +119,7 @@ class PostUser
 
 class PutUser
 {
-    public array $params = ["fname", "lname", "password", "school", "shirt_size", "shirts_ordered", "city", "workshop_choices", "diet", "video_link", "bio", "additional_info", "public"];
+    public array $params = ["fname", "lname", "password", "school", "city", "workshop_choices", "diet", "bio", "additional_info", "public"];
 // todo seperate based on user_type and add more specifications
     #[ArrayShape(["errors" => "array", "puts" => "array"])] //dev Array Shape reference
     public function getPutArray($email, $user_type): array
@@ -150,13 +150,6 @@ class PutUser
                     $error = true;
                     if ($param=="public") $puts[$current_param] = true;
                     else if ($param=="private") $puts[$current_param] = false;
-                    break;
-                case "shirt_size":
-                    $shirtOptions = ["XS", "S", "M", "L", "XL"];
-                    if (!in_array($param, $shirtOptions)) {
-                        array_push($errors, "invalid shirt_size");
-                        $error = true;
-                    }
                     break;
                 case "workshop_choices":
                     $ids = WORKSHOP_IDS;
@@ -205,19 +198,19 @@ class PutUser
 class GetUser
 {
     public $studentTarget = [
-        "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "video_link", "workshop_order", "shirt_size", "workshop_choices", "bio", "additional_info", "diet", "teacher_email", "instagram", "emergency_contact"],
-        "ints" => ["id", "shirts_ordered", "teacher_id", "grade"],
-        "bools" => ["password_set", "email_confirmed", "video_approved", "account_enabled", "public"]
+        "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "workshop_order", "workshop_choices", "bio", "additional_info", "diet", "teacher_email", "instagram", "emergency_contact"],
+        "ints" => ["id", "teacher_id", "grade"],
+        "bools" => ["password_set", "email_confirmed", "account_enabled", "public"]
     ];
     public $teacherTarget = [
-        "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "video_link", "workshop_order", "shirt_size", "workshop_choices", "bio", "additional_info", "diet" ],
-        "ints" => ["id", "shirts_ordered"],
-        "bools" => ["password_set", "email_confirmed", "video_approved", "account_enabled", "public"]
+        "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "workshop_order", "workshop_choices", "bio", "additional_info", "diet"],
+        "ints" => ["id"],
+        "bools" => ["password_set", "email_confirmed", "account_enabled", "public"]
     ];
     public $individualTarget = [
-        "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "video_link", "workshop_order", "shirt_size", "workshop_choices", "bio", "additional_info", "diet", "instagram", "emergency_contact" ],
-        "ints" => ["id", "shirts_ordered", "grade"],
-        "bools" => ["password_set", "email_confirmed", "video_approved", "account_enabled", "public"]
+        "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "workshop_order", "workshop_choices", "bio", "additional_info", "diet", "instagram", "emergency_contact"],
+        "ints" => ["id", "grade"],
+        "bools" => ["password_set", "email_confirmed", "account_enabled", "public"]
     ];
     
     public function getParseResult(array|null $result): bool|array
