@@ -1,5 +1,6 @@
 .topReg{
     background-color: #002A4A;
+    margin-bottom:0.5rem;
 }
 
 .topReg > h1{
@@ -15,6 +16,8 @@
     font-size: 1.5rem;
     padding-bottom: 3rem;
     text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
 }
 
 .bodyOption{
@@ -52,6 +55,7 @@
     cursor: pointer;
     text-align:center;
     margin:auto;
+    line-height:0rem;
 }
 
 .regTwo{
@@ -65,5 +69,6 @@
     cursor: pointer;
     text-align:center;
     margin:auto;
+    line-height:0rem;
 }
 

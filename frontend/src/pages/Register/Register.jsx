@@ -12,8 +12,8 @@ function Register() {
                     <h1>Register</h1>
                     <div className="regBlurb">
                         <p>Congratulations! You're one step closer to joining us for a day of fun, interactive workshops and impactful speeches from experts in the environmental field!</p>
-                        </div>                
-                </div>
+                    </div>                
+            </div>
             <div className="bodyOption">
              <div className="register_options">
                  <div className="regBodyBox1">
