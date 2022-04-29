@@ -7,20 +7,22 @@ import "./Register.css";
 function Register() {
     let [registerDisplay, setRegisterDisplay] = useState(null);
     return (
-        <main className="registerBackColour">
-            <header>
-                <h1>Register Page</h1>
-            </header>
-            <div>
-                    <h3 className="one">Register as:</h3>                
+        <main>
+            <div className="topReg">
+                    <h1>Register</h1>
+                    <div className="regBlurb">
+                        <p>Congratulations! You're one step closer to joining us for a day of fun, interactive workshops and impactful speeches from experts in the environmental field!</p>
+                        </div>                
                 </div>
-            <div className="register_options">
-                <div>
-                        <button className="two" onClick={() => setRegisterDisplay("student")}>Student</button>
+            <div className="bodyOption">
+             <div className="register_options">
+                 <div className="regBodyBox1">
+                        <button className="regOne" onClick={() => setRegisterDisplay("student")}>Student</button>
                 </div>
-                <div>
-                        <button className="four" onClick={() => setRegisterDisplay("teacher")}>Teacher</button>
+                <div className="regBodyBox2">
+                        <button className="regTwo" onClick={() => setRegisterDisplay("teacher")}>Teacher</button>
                 </div>
+             </div>
             </div>
             <StudentRegistration display={registerDisplay}/>
             {/* <IndividualRegistration display={registerDisplay}/> */}

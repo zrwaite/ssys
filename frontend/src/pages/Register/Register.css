@@ -1,82 +1,71 @@
-.blurb{
-    border: 2px solid green;
-    margin:auto;
-    width:70%;
+.topReg{
+    background-color: #002A4A;
+}
+
+.topReg > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 3rem;
+}
+
+.regBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 3rem;
     text-align:center;
-    border-radius:1rem;
 }
 
-.registerBackColour{
-    background-color: rgb(51, 139, 194);
+.bodyOption{
+    background-color:#2D6434;
 }
-
-.one{
-    text-align: center;
-}
-
 .register_options{
     display: grid;
-    grid-template-columns: repeat(3, minmax(3rem,12rem));
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: repeat(2, 50vw);
+    justify-content:center;
+    align-items:center;
+    padding-left:0.5rem;
+    padding-right:0.5rem;
 }
 
-.two{
-    background-color: forestgreen;
+.regBodyBox1{
+    height:6rem;
+    margin:auto;
+    justify-items:right;
+    padding-right:1rem;
+}
+
+.regBodyBox2{
+    height:6rem;
+    margin:auto;
+    justify-items:left;
+    padding-left:1rem;
+}
+
+.regOne{
+    background-color: #93D783;
     border: none;
-    color: white;
-    padding: 10% 30%;
+    color: #2D6434;
+    padding: 2rem 4rem;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.5rem;
     opacity: 1;
     text-decoration: none;
     cursor: pointer;
-    margin: 0 auto;
 }
 
-.two:hover {
-    font-weight: 300;
-    transition: all 0.5s ease-in-out;
-    background-color: #fff;
-    color: rgba(12, 35, 139, 0.9);
-}
-
-.three{
-    background-color: forestgreen;
+.regTwo{
+    background-color: #93D783;
     border: none;
-    color: white;
-    padding: 10% 30%;
+    color: #2D6434;
+    padding: 2rem 4rem;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.5rem;
     opacity: 1;
     text-decoration: none;
     cursor: pointer;
-    margin: 0 auto;
+    text-align:center;
+    margin:auto;
 }
 
-.three:hover {
-    font-weight: 300;
-    transition: all 0.5s ease-in-out;
-    background-color: #fff;
-    color: rgba(12, 35, 139, 0.9);
-}
-
-.four{
-    background-color: forestgreen;
-    border: none;
-    color: white;
-    padding: 10% 30%;
-    text-align: center;
-    font-size: 1rem;
-    opacity: 1;
-    text-decoration: none;
-    cursor: pointer;
-    margin: 0 auto;
-}
-
-.four:hover {
-    font-weight: 300;
-    transition: all 0.5s ease-in-out;
-    background-color: #fff;
-    color: rgba(12, 35, 139, 0.9);
-}
