@@ -22,7 +22,7 @@
 }
 .register_options{
     display: grid;
-    grid-template-columns: repeat(2, 50vw);
+    grid-template-rows: 1fr 1fr;
     justify-content:center;
     align-items:center;
     padding-left:0.5rem;
@@ -31,16 +31,14 @@
 
 .regBodyBox1{
     padding-top:2rem;
-    padding-bottom:2rem;
+    padding-bottom:1rem;
     margin:auto;
-    margin-right:1rem;
 }
 
 .regBodyBox2{
-    padding-top:2rem;
+    padding-top:1rem;
     padding-bottom:2rem;
     margin:auto;
-    margin-left:1rem;
 }
 
 .regOne{
