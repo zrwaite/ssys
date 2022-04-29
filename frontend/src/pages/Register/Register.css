@@ -44,7 +44,7 @@
     margin:auto;
 }
 
-.regOne{
+.regButton{
     background-color: #93D783;
     border: none;
     color: #2D6434;
@@ -57,18 +57,3 @@
     margin:auto;
     line-height:0rem;
 }
-
-.regTwo{
-    background-color: #93D783;
-    border: none;
-    color: #2D6434;
-    padding: 1.5rem 4rem;
-    text-align: center;
-    opacity: 1;
-    text-decoration: none;
-    cursor: pointer;
-    text-align:center;
-    margin:auto;
-    line-height:0rem;
-}
-

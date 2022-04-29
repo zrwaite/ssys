@@ -17,10 +17,10 @@ function Register() {
             <div className="bodyOption">
              <div className="register_options">
                  <div className="regBodyBox1">
-                        <button className="regOne" onClick={() => setRegisterDisplay("student")}>Student</button>
+                        <button className="regButton" onClick={() => setRegisterDisplay("student")}>Student</button>
                 </div>
                 <div className="regBodyBox2">
-                        <button className="regTwo" onClick={() => setRegisterDisplay("teacher")}>Teacher</button>
+                        <button className="regButton" onClick={() => setRegisterDisplay("teacher")}>Teacher</button>
                 </div>
              </div>
             </div>
