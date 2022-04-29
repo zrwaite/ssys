@@ -30,38 +30,38 @@
 }
 
 .regBodyBox1{
-    height:6rem;
+    padding-top:2rem;
+    padding-bottom:2rem;
     margin:auto;
-    justify-items:right;
-    padding-right:1rem;
+    margin-right:1rem;
 }
 
 .regBodyBox2{
-    height:6rem;
+    padding-top:2rem;
+    padding-bottom:2rem;
     margin:auto;
-    justify-items:left;
-    padding-left:1rem;
+    margin-left:1rem;
 }
 
 .regOne{
     background-color: #93D783;
     border: none;
     color: #2D6434;
-    padding: 2rem 4rem;
+    padding: 1.5rem 4rem;
     text-align: center;
-    font-size: 1.5rem;
     opacity: 1;
     text-decoration: none;
     cursor: pointer;
+    text-align:center;
+    margin:auto;
 }
 
 .regTwo{
     background-color: #93D783;
     border: none;
     color: #2D6434;
-    padding: 2rem 4rem;
+    padding: 1.5rem 4rem;
     text-align: center;
-    font-size: 1.5rem;
     opacity: 1;
     text-decoration: none;
     cursor: pointer;
