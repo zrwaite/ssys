@@ -1,64 +1,79 @@
-.studentregistration{
-    text-align:center;
+.registerTop{
+    background-color: #002A4A;
+    margin-top:0.5rem;
+    margin-bottom:0.5rem;
 }
 
-.studentGrid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(5rem,40rem));
-    justify-content:center;
-    align-items:center;
-}
-
-.registrationPageInfo{
-    text-align:center;
-    justify-content:center;
-}
-
-.student_register{
-    display: grid;
-    grid-template-columns: 1;
-    justify-content: center;
-    align-items: center;
-    border: 3px solid green;
-    margin:auto;
-    gap:1.25rem;
-    border-radius:1rem;
-    max-width:60%;
-    background-color: gold;
-    padding-top:2rem;
-    padding-bottom:2rem;
+.registerTop > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
 }
 
 .registerBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+    padding-left:1rem;
+    padding-right:1rem;
     text-align:center;
+}
+
+.registrationOptions{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(5rem,40rem));
+    background-color:#2D6434;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+}
+
+.registrationCenter{
+    margin: 0 auto;
+    text-align:center;
+}
+
+.registrationRight{
+    margin:auto;
+    margin-right:1rem;
+}
+
+.registrationLeft{
+    margin:auto;
+    margin-left:1rem;
 }
 
 .registerBox{
     align-self:center;
+    color: #2D6434;
+    border:1px #2D6434;
+    font-size: 1rem;
+    height: 2rem;
+    width:12rem;
+    background-color:lightgray;
+    margin-bottom:1rem;
+}
+/*old stuff below*/
+
+::placeholder{
+    color:#2D6434;
+}
+
+@media(max-width:640px){
+    .registerBox{
+        align-self:center;
     color:blue;
     border-radius:0.25rem;
-    border:1px solid green;
+    border:1px solid pink;
     font-size: 1rem;
     height: 2rem;
     background-color:lightgray;
-}
-
-::placeholder{
-    color:fuchsia;
-    text-align:left;
+    }
 }
 
 .submit{
-    background-color: rgba(12, 35, 139, 0.9);
-    border: none;
-    color: white;
-    padding: 1rem 4rem;
-    text-align: center;
-    font-size: 1rem;
-    opacity: 1;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius:2rem;
 }
 
 .submit:hover {
@@ -66,11 +81,6 @@
     transition: all 0.5s ease-in-out;
     background-color: #fff;
     color: rgba(12, 35, 139, 0.9);
-}
-
-.center{
-    margin: 0 auto;
-    text-align:center;
 }
 
 .signedUp{

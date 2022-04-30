@@ -73,38 +73,35 @@ function StudentRegister(props) {
 
     return (
         <div style={studentStyle}>
-            <p className="studentregistration">Student Registration</p>
-            <div className="studentGrid">
-            <div className="registrationPageInfo">
-                <h2>blah blah blah blah</h2>
-                <h3>blah blah blah blah</h3>
+            <div className="registerTop">
+                <h1>STUDENT REGISTRATION</h1>
+                <div className="registerBlurb">
+                    <p>PLEASE ENTER YOUR INFORMATION BELOW. THIS ACCOUNT YOU WILL BE CREATING WILL BE YOUR ACCOUNT FOR THE SUMMIT!</p>
+                </div>
             </div>
             <div>
-                <div className="student_register">
-                    <div className="registerBlurb">
-                        <h2>Sign up today!</h2>
-                    </div>
-                    <div>
+            <div className="registrationOptions">
+                    <div className="registrationRight">
                         <label htmlFor={"fname"}></label>
                         <input className="registerBox" placeholder="First Name" type={"text"} name={"fname"} value={state.fname} onChange={handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="registrationLeft">
                         <label htmlFor={"lname"}></label>
                         <input className="registerBox" placeholder="Last Name" type={"text"} name={"lname"} value={state.lname} onChange={handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="registrationRight">
                         <label htmlFor={"email"}></label>
-                        <input className="registerBox" placeholder="email" type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
+                        <input className="registerBox" placeholder="email@scdsb.on.ca" type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="registrationLeft">
                         <label htmlFor={"password"}></label>
                         <input className="registerBox" placeholder="password" type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="registrationRight">
                         <label htmlFor={"teacher_email"}></label>
                         <input className="registerBox" placeholder="Teacher Email" type={"text"} name={"teacher_email"} value={state.teacher_email} onChange={handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="registrationLeft">
                         <label htmlFor={"teacher_id"}></label>
                         <input className="registerBox" placeholder="Teacher ID" type={"text"} name={"teacher_id"} value={state.teacher_id} onChange={handleInputChange}/>
                     </div>
@@ -116,7 +113,6 @@ function StudentRegister(props) {
                         <span className="signedUp">Already Signed Up? Click Here<br/></span>
                     </Link>
                     </div>
-                </div>
             </div>
             </div>
             <div 
