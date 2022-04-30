@@ -27,10 +27,12 @@ function Workshop() {
                     <img className = "workshopImage" src={Trish} alt="Elder Trish Monague" />
                 </div>
                 <div className="workshopBlurb">
+                    <details>
+                        <summary>Workshop:  “The Three Sisters and Sustainability”</summary>
                     <p>
-                        Workshop:  “The Three Sisters and Sustainability” <br/><br/>
                         Trish Monague (“Cedar Woman”) is from Beausoleil First Nation, and she began her relationship with the spirit at the age of three and uses her gift as a cultural teacher and traditional healer. She has been clean and sober and walking the Anishnawbe Miikan for 30 years. Currently, she is the Heritage and Cultural Coordinator for Beausoleil First Nation and she shares her time, wisdom, and teachings with the Lakehead Orillia community as a traditional healer, Elder-in-residence, and a member of the Lakehead University Elders Council.
                     </p>
+                    </details>
                 </div>
             </div>
         </div>
@@ -56,10 +58,10 @@ We'll focus on the many solutions it takes to get where we need to go, and we'll
                     <img className = "workshopImage" src={Laura} alt="Laura Baldwick" />
                 </div>
                 <div className="workshopBlurb">
-                    <p>
-                    Workshop: “Climate Change and Nature-based Solutions” <br/><br/>
-                    Laura Baldwick, Project Coordinator at Parks Canada's Georgian Bay Islands National Park, works to restore ecological integrity through the removal of invasive alien species. Laura works to protect, preserve and restore protected areas. Parks Canada maintains biodiversity and keeps ecosystems strong. Strong, diverse ecosystems are resilient—that is, better able to cope with the impacts of climate change. A healthy forest with many tree species, for example, can recover better from insect pests. Parks Canada is committed to providing youth with an understanding of the importance of conserving 30% of Canada’s land and water by 2030. Join Laura to learn how protected areas serve as natural solutions to climate change.
-                    </p>
+                    <details>
+                        <summary>Workshop: “Climate Change and Nature-based Solutions”</summary>
+                        <p> Laura Baldwick, Project Coordinator at Parks Canada's Georgian Bay Islands National Park, works to restore ecological integrity through the removal of invasive alien species. Laura works to protect, preserve and restore protected areas. Parks Canada maintains biodiversity and keeps ecosystems strong. Strong, diverse ecosystems are resilient—that is, better able to cope with the impacts of climate change. A healthy forest with many tree species, for example, can recover better from insect pests. Parks Canada is committed to providing youth with an understanding of the importance of conserving 30% of Canada’s land and water by 2030. Join Laura to learn how protected areas serve as natural solutions to climate change.</p>
+                    </details>
                 </div>
             </div>
         </div>
