@@ -33,12 +33,6 @@ Zac:
 Weiqi:
 
 * Build Navbar
-* Create sign in design on figma
-* Create registration design on figma
-* Build sign in component
-* Build Individual registration component
-* Build Student registration component
-* Build Teacher registration component
 * Create home page design on figma
 * Build Home page
 * Create conference info page on figma
