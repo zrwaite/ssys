@@ -32,7 +32,14 @@ function Info() {
                          <img className = "infoWhereImage" src={lakehead} alt="lakehead" />
                     </div>
                     <div className="infoWhereBlurb">
-                        <p>Lakehead University Orillia Campus, 500 University Ave, Orillia</p>
+                        <p>Lakehead University Orillia Campus, 500 University Ave, Orillia
+                            <br/><br/>Home to Ontario's second best primarily undergraduate university. For more information about Lakehead Orillia, click the button below.
+                        </p>
+                        <div className="infoWhereButtonBox">
+                            <a href='https://www.lakeheadu.ca/about/orillia-campus'>
+                                <button className="infoWhereButton">Submit</button>   
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

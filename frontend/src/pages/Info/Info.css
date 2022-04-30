@@ -91,7 +91,9 @@
     font-size: 1.5rem;
     padding-bottom: 2.5rem;
     text-align:center;
+    margin:auto;
     padding-right:1rem;
+    padding-left:1rem;
 }
 
 .infoWhereGrid{
@@ -100,17 +102,56 @@
 }
 
 .infoWhereImageBox{
-    padding-bottom: 1rem;
     padding-bottom: 2.5rem;
     text-align:center;
     padding-left:1rem;
-    max-width:33vw;
+    padding-right:1rem;
+    max-width:35vw;
     margin:auto;
 }
-
-
 
 .infoWhereImage{
     object-fit:contain;
     width:100%;
+}
+
+@media(max-width:1080px){
+    .infoWhereGrid{
+        display:grid;
+        grid-template-columns:1fr;
+    }
+
+    .infoWhereImageBox{
+        padding-bottom: 2.5rem;
+        text-align:center;
+        max-width:80vw;
+        margin:auto;
+    }
+}
+
+.infoWhereButton{
+    background-color: #002A4A;
+    border: none;
+    color: #FEF363;
+    padding: 1.5rem 4rem;
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 1;
+    text-decoration: none;
+    cursor: pointer;
+    margin:auto;
+    line-height:0rem;
+}
+
+.infoWhereButton:hover {
+    font-weight: 300;
+    transition: all 0.5s ease-in-out;
+    background-color: #fff;
+    color: #002A4A;
+}
+
+.infoWhereButtonBox{
+    padding-top:2rem;
+    margin:auto;
+    text-align:center;
 }
