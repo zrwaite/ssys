@@ -10,7 +10,7 @@ import SignIn from "./pages/SignIn";
 import User from "./pages/User";
 import EmailConfirmation from "./pages/EmailConfirmation";
 import Navbar from "./components/Navbar";
-import Workshop1 from "./pages/Workshop1";
+import Workshop from "./pages/Workshop";
 import {mobileWidth} from "./constants";
 
 const MobileContext = React.createContext({
@@ -52,7 +52,7 @@ function App() {
 					<Route path="/signin" element={<SignIn/>}/>
 					<Route path="/user" element={<User/>}/>
 					<Route path="/confirmEmail" element={<EmailConfirmation/>}/>
-					<Route path="/Workshop1" element={<Workshop1/>}/>
+					<Route path="/Workshop" element={<Workshop/>}/>
 				</Routes>
 			</Router>
 		</MobileContext.Provider>

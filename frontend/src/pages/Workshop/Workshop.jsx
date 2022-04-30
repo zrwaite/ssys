@@ -1,8 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import "./Workshop1.css";
+import "./Workshop.css";
 
-function Workshop1() {
+function Workshop() {
     return(
         <main>
         <div>
@@ -12,4 +12,4 @@ function Workshop1() {
     );
 }
 
-export default Workshop1;
+export default Workshop;
