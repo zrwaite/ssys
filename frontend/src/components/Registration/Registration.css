@@ -59,7 +59,7 @@
 }
 
 ::placeholder{
-    color:#2D6434;
+    color:black;
     text-align:center;
 }
 
@@ -106,6 +106,7 @@
 .registrationBackground{
     background-color:#2D6434;
     height:5rem;
+    padding-top:1rem;
 }
 
 /*old stuff below*/
