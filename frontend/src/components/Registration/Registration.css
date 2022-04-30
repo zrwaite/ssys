@@ -60,6 +60,7 @@
 
 ::placeholder{
     color:#2D6434;
+    text-align:center;
 }
 
 @media(max-width:1080px){
@@ -82,9 +83,9 @@
 }
 
 .submitRegistration{
-    background-color: #93D783;
+    background-color: #002A4A;
     border: none;
-    color: #2D6434;
+    color: #FEF363;
     padding: 1.5rem 4rem;
     text-align: center;
     opacity: 1;
@@ -103,7 +104,8 @@
 }
 
 .registrationBackground{
-    color:#2D6434;
+    background-color:#2D6434;
+    height:5rem;
 }
 
 /*old stuff below*/
