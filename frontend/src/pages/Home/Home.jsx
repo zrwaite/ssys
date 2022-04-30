@@ -8,54 +8,26 @@ import CountdownSummit from "../../components/CountdownSummit/CountdownSummit.js
 function Home() {
     return (
         <main>
-            <div className="layout">
-                <div className="top">
-                    <h1 className="leading">Leading the Eco-Revolution</h1>
-                    <h3 className="oneofakind">A one of a kind event created by youth, for youth, empowering youth ages 14-18 to take a stand for their future<br/></h3>
-                    <div>
-                    <Link to="/account" className="butt">
-                        <span className="butttext">Register Now</span>
-                    </Link>
-                    </div>
-                    <div><br/><br/><br/></div>
+            <div className="homeTop">
+                <h1>LEADING THE ECO-REVOLUTION</h1>
+                <div className="homeBlurb">
+                    <p>A one-of-a-kind event created by youth, for youth: empowering high school students to take a stand for their future</p>
                 </div>
-                <div className="countdown">
-                    <div className="registrationcountdown">
-                        <h1><CountdownRegistration/></h1>
-                        <h2>Until The Summit</h2>
-                        <h3>May 26th</h3>
+                <div className="homeRegisterBox">
+                    <Link to="/account" className="homeRegister">
+                           <span>Register</span>
+                    </Link>
+                </div>
+            </div>
+            <div className="homeCountdown">
+                <div className="homeCountdownGrid">
+                    <div className="homeCountdownBlurb">
+                        <p>May 26th, 2022 <br/>9AM to 4PM <br/> Lakehead University Orillia Campus</p>
                     </div>
-                    <div className="conferencecountdown">
+                    <div className="homeCountdownRight">
                         <h1><CountdownSummit/></h1>
                         <h2>Until The Summit</h2>
-                        <h3>May 26th</h3>
                     </div>
-                </div>
-                <div className="keynote">
-                    <h2>Our Keynote Speakers</h2>
-                    <div className="firstspeakerimagebox">
-                         <img className = "firstspeakerimage" src={logo} alt="Logo" />
-                    </div>
-                    <div className="firstspeakerblurbbox">
-                        <p className="firstspeakerblurbtext">This is just some text</p>
-                    </div>
-                    <div className = "secondspeakerimagebox">
-                    <img className= "secondspeakerimage" src={logo} alt="Logo"/>
-                    </div>
-                    <div className="secondspeakerblurbbox">
-                        <p className="secondspeakerblurbtext">This is just some text</p>
-                    </div>
-                </div>
-                <div className="workshop">
-                    <h2>Our Workshops</h2>
-                    <div>
-                    <Link to="/workshop1" className="butt">
-                        <span className="butttext">Register Now</span>
-                    </Link>
-                    </div>
-                </div>
-                <div className="about">
-                    <h2>About Us</h2>
                 </div>
             </div>
         </main>
