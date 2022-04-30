@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {httpReq} from "../../../modules/http_requests";
-import {createCookie, getCookie} from "../../../modules/cookies";
-import ReactDOM from "react-dom";
+import {createCookie} from "../../../modules/cookies";
 import {Navigate} from "react-router-dom";
 import "../Registration.css";
 import {Link} from "react-router-dom";
@@ -13,12 +12,10 @@ function StudentRegister(props) {
     } else studentStyle = {display: "none"};
 
     let [state, setState] = useState({
-        email: "",
+        code: "",
         password: "",
         fname: "",
         lname: "",
-        teacher_email: "",
-        teacher_id: "",
         redirect: false
     });
     let handleInputChange = (event) => {
@@ -41,30 +38,23 @@ function StudentRegister(props) {
 
     const sendForm = async () => {
         let json = await httpReq("/api/user/", "POST", {
-            email: state.email,
             password: state.password,
             fname: state.fname,
             lname: state.lname,
-            teacher_email: state.teacher_email,
-            teacher_id: state.teacher_id,
             user_type: "student"
         })
         let response = JSON.parse(json);
-        let elements = [];
         console.log(response);
         if (response.success && response.objects) {
             createCookie("email", state.email);
             createCookie("user_type", "student");
             createCookie("token", response.objects.token);
-            elements.push(<p>Email: {getCookie("email")}</p>);
-            elements.push(<p>Account Type: {getCookie("user_type")}</p>);
-            elements.push(<p>Token: {getCookie("token")}</p>);
+            // elements.push(<p>Email: {getCookie("email")}</p>);
+            // elements.push(<p>Account Type: {getCookie("user_type")}</p>);
+            // elements.push(<p>Token: {getCookie("token")}</p>);
         } else if (response.errors.length > 0) {
-            for (let i = 0; i < response.errors.length; i++) {
-                elements.push(<p key={i}>{response.errors[i]}</p>);
-            }
+            alert(JSON.stringify(response.errors));
         }
-        ReactDOM.render(elements, document.getElementById('studentRegistrationResult'));
     }
 
     if (state.redirect) {
@@ -80,44 +70,41 @@ function StudentRegister(props) {
                 </div>
             </div>
             <div>
-            <div className="registrationOptions">
+                <div className="registrationOptions">
                     <div className="registrationRight">
-                        <label htmlFor={"fname"}></label>
-                        <input className="registerBox" placeholder="FIRST NAME" type={"text"} name={"fname"} value={state.fname} onChange={handleInputChange}/>
+                        <label htmlFor={"fname"}>First name</label>
+                        <input className="registerBox" placeholder="FIRST NAME" type={"text"} name={"fname"}
+                               value={state.fname} onChange={handleInputChange}/>
                     </div>
                     <div className="registrationLeft">
-                        <label htmlFor={"lname"}></label>
-                        <input className="registerBox" placeholder="LAST NAME" type={"text"} name={"lname"} value={state.lname} onChange={handleInputChange}/>
-                    </div>
-                    <div className="registrationRight">
-                        <label htmlFor={"email"}></label>
-                        <input className="registerBox" placeholder="EMAIL@SCDSB.ON.CA" type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
+                        <label htmlFor={"lname"}>Last name</label>
+                        <input className="registerBox" placeholder="LAST NAME" type={"text"} name={"lname"}
+                               value={state.lname} onChange={handleInputChange}/>
                     </div>
                     <div className="registrationLeft">
-                        <label htmlFor={"password"}></label>
-                        <input className="registerBox" placeholder="PASSWORD" type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
-                    </div>
-                    <div className="registrationRight">
-                        <label htmlFor={"teacher_email"}></label>
-                        <input className="registerBox" placeholder="TEACHER EMAIL" type={"text"} name={"teacher_email"} value={state.teacher_email} onChange={handleInputChange}/>
+                        <label htmlFor={"password"}>Password</label>
+                        <input className="registerBox" placeholder="PASSWORD" type={"password"} name={"password"}
+                               value={state.password} onChange={handleInputChange}/>
                     </div>
                     <div className="registrationLeft">
-                        <label htmlFor={"teacher_id"}></label>
-                        <input className="registerBox" placeholder="TEACHER ID" type={"text"} name={"teacher_id"} value={state.teacher_id} onChange={handleInputChange}/>
+                        <label htmlFor={"code"}>Code </label>
+                        <input className="registerBox" placeholder="CODE" type={"password"} name={"code"}
+                               value={state.code}
+                               onChange={handleInputChange}/>
                     </div>
-            </div>
-            <div className="registrationBackground">
-                <div className="registerCenter">
-                    <button className="submitRegistration" onClick={sendForm}>Submit</button>
                 </div>
-            </div>
+                <div className="registrationBackground">
+                    <div className="registerCenter">
+                        <button className="submitRegistration" onClick={sendForm}>Submit</button>
+                    </div>
+                </div>
             </div>
             <div>
-                    <Link to="/signin">
-                        <span className="signedUp">Already Signed Up? Click Here<br/></span>
-                    </Link>
-                </div>
-            <div 
+                <Link to="/signin">
+                    <span className="signedUp">Already Signed Up? Click Here<br/></span>
+                </Link>
+            </div>
+            <div
                 id={"studentRegistrationResult"}>
             </div>
         </div>
