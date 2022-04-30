@@ -60,13 +60,13 @@ function SignIn() {
     return (
         <main className="registerBackColour">
             {/*<Navigate to="/user" />*/}
-            <header>
-                <h1>Sign In</h1>
-            </header>
-            <div className="userSignIn">
+            <div className="signInTop">
+                <h1>SIGN IN</h1>
                 <div className="signInBlurb">
-                    <p>Already have an account? Then sign in here!</p>
+                    <p>ALREADY HAVE AN ACCOUNT? SIGN IN HERE!</p>
                 </div>
+            </div>
+            <div className="userSignIn">
                 <div className="center">
                     <label htmlFor={"email"}></label>
                      <input type={"text"} className="signInBox" name={"email"} placeholder="Email" value={state.email} onChange={handleInputChange}/>
@@ -84,7 +84,6 @@ function SignIn() {
                     </Link>
                  </div>
                  <div className="center">
-                     <p></p>
                 <button className="submit" onClick={sendForm}>Log In</button>
                 </div>
             </div>
