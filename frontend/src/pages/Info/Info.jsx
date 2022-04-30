@@ -78,9 +78,12 @@ function Info() {
                          <img className = "infoDibbleImage" src={BradDibble} alt="Dr. Brad Dibble" />
                     </div>
                     <div className="infoDibbleBlurb">
+                        <details>
+                        <summary>Dr. Brad Dibble</summary>
                         <p>Dr. Brad Dibble was appointed by the federal Minister of the Environment as one of 25 members to the Sustainable Development Advisory Council, a membership he still maintains. A Mentor for Climate Reality Canada, he has received training with Al Gore and endorsements from Col. Chris Hadfield for his work.  He has also written the award-winning book, Comprehending the Climate Crisis: Everything you need to know about Global Warming and how to stop it (2012).  
                             <br/><br/> His opening keynote address will provide summit participants with all the background information they need to understand the science behind the climate crisis, and what changes need to be made to stop the damage before it is too late. 
                         </p>
+                        </details>
                     </div>
                 </div>
             </div>
@@ -91,9 +94,12 @@ function Info() {
                          <img className = "infoAllieImage" src={AllieRougeot} alt="Aliénor (Allie) Rougeot" />
                     </div>
                     <div className="infoAllieBlurb">
+                        <details>
+                        <summary>Allie Rougeot</summary>
                         <p>Allie Rougeot is an Economics and Public Policy student at the University of Toronto. She has been an environmental and human rights activist since the age of 10, and has, since high school, been passionate about sustainability and climate justice. Since January 2019 she has been the lead coordinator of the Fridays for Future movement in Toronto. She has been recognized for her work by the Canadian Voice of Women for peace with the Kim Phuc Youth Award, and has appeared several times in the Toronto Star, on Metro Morning, CTV, Global News, Radio Canada, National Observer and other media.
                             <br/><br/>Her closing keynote address will focus on her experiences as a youth organizer, activist and changemaker. She is here to inspire and empower summit participants to take what they learned throughout the day and use it to create real change in their communities, and fight for the future in which they want to live!
                         </p>
+                        </details>
                     </div>
                 </div>
             </div>

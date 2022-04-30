@@ -30,6 +30,17 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <div className="homeGreen">
+                <h1>Workshops, keynote speakers, and more!</h1>
+                <div className="homeGreenBlurb">
+                    <p>To find out more, click the button below</p>
+                </div>
+                <div className="homeRegisterBox">
+                    <Link to="/info" className="homeRegister">
+                           <span>Info</span>
+                    </Link>
+                </div>
+            </div>
         </main>
     );
 }

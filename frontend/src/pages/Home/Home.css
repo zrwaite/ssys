@@ -100,3 +100,48 @@
         grid-template-columns:1fr;
     }
 }
+
+/*just generic colours*/
+.homeGreen{
+    background-color: #2D6434;
+    margin-top:0.5rem;
+}
+
+.homeGreen > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.homeGreenBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
+}
+
+.homeBlue{
+    background-color: #2D6434;
+    margin-top:0.5rem;
+}
+
+.homeBlue > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.homeBlueBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
+}

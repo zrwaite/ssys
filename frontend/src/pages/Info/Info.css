@@ -335,6 +335,13 @@
         padding-right:1rem;
         padding-left:1rem;
     }
+
+    .infoDibbleImage{
+        object-fit:contain;
+        width:100%;
+        border-radius:0.5rem;
+        max-height:40vh;
+    }
 }
 
 /*ALLIE ROUGEOT*/
@@ -404,6 +411,13 @@
         margin:auto;
         padding-right:1rem;
         padding-left:1rem;
+    }
+
+    .infoAllieImage{
+        object-fit:contain;
+        width:100%;
+        border-radius:0.5rem;
+        max-height:40vh;
     }
 }
 

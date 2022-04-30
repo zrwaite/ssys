@@ -11,7 +11,7 @@ function Register() {
             <div className="topReg">
                     <h1>Register</h1>
                     <div className="regBlurb">
-                        <p>Congratulations! You're one step closer to joining us for a day of fun, interactive workshops and impactful speeches from experts in the environmental field!</p>
+                        <p>Congratulations! You're one step closer to joining us for a day of fun, interactive workshops and impactful speeches from experts in the environmental field!<br/><br/>*Please not the summit is not open for individual registration</p>
                     </div>                
             </div>
             <div className="bodyOption">
