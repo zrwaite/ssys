@@ -6,6 +6,7 @@ import Jen from "../../components/Jen.png";
 import Laura from "../../components/Laura.jpeg";
 import Margaret from "../../components/Margaret.jpg";
 import Sami from "../../components/Sami.jpg";
+import Sara from "../../components/Sara.png";
 
 function Workshop() {
     return(
@@ -83,6 +84,20 @@ We'll focus on the many solutions it takes to get where we need to go, and we'll
                     <p>
                     Workshop: “Lobbying Youth for Change” <br/><br/>
                     Sami Pritchard is a passionate and experienced Community Organizer and Team Leader dedicated to creating communities where people, particularly youth, feel a sense of belonging.  She seeks to empower students and youth to see their potential, develop leadership skills and build cultures of care. Her experience working with a variety of organizations -including CanMediate International, the Canadian Federation of Students, and Lakehead University Student Union - has provided her with a strong understanding of organizational structures, allowing her to provide thoughtful and strategic solutions and plans for those seeking to work together to create change.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div className="workshopBlue">
+            <h1>Sara Layton and Olivia Hunter</h1>
+            <div className="workshopGrid">
+                <div className="workshopImageBox">
+                    <img className = "workshopImage" src={Sara} alt="Sara Layton and Olivia Hunter" />
+                </div>
+                <div className="workshopBlurb">
+                    <p>
+                    Workshop: “Mental Health: Managing Climate Anxiety and Burnout alongside Environmental Action” <br/><br/>
+                    Sara Layton and Olivia Hunter are both certified teachers (OCT) and graduate students in the Masters of Education program, specializations in Education for Change: Environmental and Sustainability Education at Lakehead University. As part of their GA positions, Sara and Olivia are managing the existential toolkit for climate justice educators, an international network of scholars focused on addressing climate anxiety through sharing research and teaching resources. This workshop will draw on best practice to offer tools for young people to process their climate anxiety.
                     </p>
                 </div>
             </div>
