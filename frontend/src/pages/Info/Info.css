@@ -113,6 +113,7 @@
 .infoWhereImage{
     object-fit:contain;
     width:100%;
+    border-radius:0.5rem;
 }
 
 @media(max-width:1080px){
@@ -155,3 +156,67 @@
     margin:auto;
     text-align:center;
 }
+
+/*WHEN*/
+
+.infoWhen{
+    background-color: #002A4A;
+    margin-top:0.5rem;
+}
+
+.infoWhen > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.infoWhenBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    margin:auto;
+    padding-right:1rem;
+    padding-left:1rem;
+}
+
+.infoWhenGrid{
+    display:grid;
+    grid-template-columns:repeat(2,33vw);
+    justify-content:center;
+    margin:auto;
+}
+
+.infoWhenCountdown{
+    color:#FEF363;
+    margin:auto;
+    padding: 1rem;
+    opacity: 1;
+    text-decoration: none;
+    height:10rem;
+    text-align:center;
+}
+
+.infoWhenCountdown > h1{
+    font-size:3rem;
+    text-align:center;
+}
+
+.infoWhenCountdown > h2{
+    text-align:center;
+}
+
+.infoWhenCountdown > h3{
+    text-align:center;
+}
+
+@media(max-width:1080px){
+    .infoWhenGrid{
+        display:grid;
+        grid-template-columns:1fr;
+    }
+}
+
+/*WHY*/

@@ -3,6 +3,7 @@ import "./Info.css";
 import lakehead from "../../components/lakehead.png";
 import diannesaxe from "../../components/diannesaxe.jpg";
 import {Link} from "react-router-dom";
+import CountdownSummit from "../../components/CountdownSummit/CountdownSummit.jsx";
 
 function Info() {
     return (
@@ -43,7 +44,20 @@ function Info() {
                     </div>
                 </div>
             </div>
-            
+            <div className="infoWhen">
+                <h1>WHEN?</h1>
+                <div className="infoWhenGrid">
+                    <div className="infoWhenBlurb">
+                        <p>May 26th, 2022. <br/>9AM to 4PM. <br/> A day dedicated to climate.</p>
+                    </div>
+                    <div className="infoWhenCountdown">
+                        <h1><CountdownSummit/></h1>
+                        <h2>Until The Summit</h2>
+                        <h3>May 26th</h3>
+                    </div>
+                </div>
+            </div>
+    
         </main>
     );
 } 
