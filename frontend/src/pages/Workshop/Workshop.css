@@ -33,7 +33,7 @@
     padding-top: 2rem;
 }
 
-.workshopBlueBlurb{
+.workshopBlurb{
     padding-bottom: 1rem;
     color: #FEF363;
     font-size: 1.5rem;
@@ -44,12 +44,12 @@
     padding-left:1rem;
 }
 
-.workshopBlueGrid{
+.workshopGrid{
     display:grid;
     grid-template-columns:repeat(2,50vw);
 }
 
-.workshopBlueImageBox{
+.workshopImageBox{
     padding-bottom: 2.5rem;
     text-align:center;
     padding-left:1rem;
@@ -58,26 +58,26 @@
     margin:auto;
 }
 
-.workshopBlueImage{
+.workshopImage{
     object-fit:contain;
     width:100%;
     border-radius:0.5rem;
 }
 
 @media(max-width:1080px){
-    .workshopBlueGrid{
+    .workshopGrid{
         display:grid;
         grid-template-columns:1fr;
     }
 
-    .workshopBlueImageBox{
+    .workshopImageBox{
         padding-bottom: 2.5rem;
         text-align:center;
         max-width:80vw;
         margin:auto;
     }
 
-    .workshopBlueBlurb{
+    .workshopBlurb{
         padding-bottom: 1rem;
         color: #FEF363;
         font-size: 1.5rem;
@@ -91,70 +91,15 @@
 
 /*Green Workshop*/
 
-.workshopBlue{
+.workshopGreen{
     background-color: #2D6434;
     margin-top:0.5rem;
 }
 
-.workshopBlue > h1{
+.workshopGreen > h1{
     color:#FEF363;
     font-size: 3rem;
     padding-bottom: 2rem;
     padding-top: 2rem;
 }
 
-.workshopBlueBlurb{
-    padding-bottom: 1rem;
-    color: #FEF363;
-    font-size: 1.5rem;
-    padding-bottom: 2.5rem;
-    text-align:center;
-    margin:auto;
-    padding-right:2rem;
-    padding-left:1rem;
-}
-
-.workshopBlueGrid{
-    display:grid;
-    grid-template-columns:repeat(2,50vw);
-}
-
-.workshopBlueImageBox{
-    padding-bottom: 2.5rem;
-    text-align:center;
-    padding-left:1rem;
-    padding-right:1rem;
-    max-width:35vw;
-    margin:auto;
-}
-
-.workshopBlueImage{
-    object-fit:contain;
-    width:100%;
-    border-radius:0.5rem;
-}
-
-@media(max-width:1080px){
-    .workshopBlueGrid{
-        display:grid;
-        grid-template-columns:1fr;
-    }
-
-    .workshopBlueImageBox{
-        padding-bottom: 2.5rem;
-        text-align:center;
-        max-width:80vw;
-        margin:auto;
-    }
-
-    .workshopBlueBlurb{
-        padding-bottom: 1rem;
-        color: #FEF363;
-        font-size: 1.5rem;
-        padding-bottom: 2.5rem;
-        text-align:center;
-        margin:auto;
-        padding-right:1rem;
-        padding-left:1rem;
-    }
-}
