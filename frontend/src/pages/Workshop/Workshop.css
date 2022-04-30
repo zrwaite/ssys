@@ -88,6 +88,14 @@
         padding-right:1rem;
         padding-left:1rem;
     }
+
+    .workshopImage{
+        object-fit:contain;
+        width:100%;
+        border-radius:1rem;
+        max-height: 33vh;
+    }
+    
 }
 
 /*Green Workshop*/
