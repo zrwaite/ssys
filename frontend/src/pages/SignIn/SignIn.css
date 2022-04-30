@@ -17,4 +17,59 @@
     padding-left:1rem;
     padding-right:1rem;
     text-align:center;
+    margin-bottom:0.5rem;
+}
+
+.signInGrid{
+    padding-top:1rem;
+    display:grid;
+    align-items:center;
+    justify-content:center;
+    grid-template-rows: 1fr 1fr;
+    margin:auto;
+    background-color:#2D6434;
+}
+
+.signInBox{
+    align-self:center;
+    color: #2D6434;
+    border:1px #2D6434;
+    font-size: 1rem;
+    height: 2rem;
+    width:12rem;
+    background-color: #93D783;
+    margin-bottom:1rem;
+    margin-top:0.5rem;
+}
+
+.submitSignIn{
+    background-color: #002A4A;
+    border: none;
+    color: #FEF363;
+    padding: 1.5rem 4rem;
+    text-align: center;
+    opacity: 1;
+    text-decoration: none;
+    cursor: pointer;
+    text-align:center;
+    margin:auto;
+    line-height:0rem;
+}
+
+.submitSignIn:hover {
+    font-weight: 300;
+    transition: all 0.5s ease-in-out;
+    background-color: #fff;
+    color: rgba(12, 35, 139, 0.9);
+}
+
+.signInBackground{
+    background-color:#2D6434;
+    height:5rem;
+    padding-top:1rem;
+}
+
+.signInCenter{
+    margin:auto;
+    text-align:center;
 }

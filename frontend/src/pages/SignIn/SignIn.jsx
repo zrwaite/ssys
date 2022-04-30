@@ -66,27 +66,27 @@ function SignIn() {
                     <p>ALREADY HAVE AN ACCOUNT? SIGN IN HERE!</p>
                 </div>
             </div>
-            <div className="userSignIn">
-                <div className="center">
+            <div className="signInGrid">
+                <div>
                     <label htmlFor={"email"}></label>
-                     <input type={"text"} className="signInBox" name={"email"} placeholder="Email" value={state.email} onChange={handleInputChange}/>
+                     <input type={"text"} className="signInBox" name={"email"} placeholder="EMAIL@SCDSB.ON.CA" value={state.email} onChange={handleInputChange}/>
                 </div>
-                <div className="center">
+                <div>
                      <label htmlFor={"password"}></label>
-                      <input type={"password"} className="signInBox" placeholder="Password" name={"password"} value={state.password} onChange={handleInputChange}/>
+                      <input type={"password"} className="signInBox" placeholder="PASSWORD" name={"password"} value={state.password} onChange={handleInputChange}/>
                 </div>
-                <div className="nosignup">
-                      <Link to="/register">
+            </div>
+            <div className="signInBackground">
+                <div className="signInCenter">
+                    <button className="submitSignIn" onClick={sendForm}>Log In</button>
+                </div>
+            </div>
+                <Link to="/register">
                         <span>Haven't yet signed up? Click here<br/></span>
                     </Link>
                     <Link to="/contact">
                         <span>Forgot your credentials? Click here</span>
                     </Link>
-                 </div>
-                 <div className="center">
-                <button className="submit" onClick={sendForm}>Log In</button>
-                </div>
-            </div>
             <div id={"signUpResult"}>
 
             </div>
