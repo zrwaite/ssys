@@ -9,6 +9,7 @@ import Sami from "../../components/Sami.jpg";
 import Sara from "../../components/Sara.png";
 import YCL from "../../components/YCL.jpg";
 import Ellen from "../../components/Ellen.jpg";
+import BradDibble from "../../components/BradDibble.jpg";
 
 function Workshop() {
     return(
@@ -119,6 +120,19 @@ We'll focus on the many solutions it takes to get where we need to go, and we'll
             </div>
         </div>
         <div className="workshopBlue">
+            <h1>Dr. Brad Dibble</h1>
+            <div className="workshopGrid">
+                <div className="workshopImageBox">
+                    <img className = "workshopImage" src={BradDibble} alt="Dr. Ellen Field and bonnie Anderson" />
+                </div>
+                <div className="workshopBlurb">
+                    <p>
+                    Workshop: “Comprehending the Climate Crisis”<br/><br/>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div className="workshopGreen">
             <h1>Dr. Ellen Field and Bonnie Anderson</h1>
             <div className="workshopGrid">
                 <div className="workshopImageBox">
