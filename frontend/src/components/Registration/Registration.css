@@ -109,6 +109,10 @@
     padding-top:1rem;
 }
 
+.registerCenter{
+    margin:auto;
+    text-align:center;
+}
 /*old stuff below*/
 
 .signedUp{

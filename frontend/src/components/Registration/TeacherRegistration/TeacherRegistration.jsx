@@ -73,7 +73,7 @@ function TeacherRegister(props) {
                     </div>
                     <div className="registrationRight">
                         <label htmlFor={"email"}></label>
-                        <input className="registerBox" placeholder="EMAIL" type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
+                        <input className="registerBox" placeholder="EMAIL@SCDSB.ON.CA" type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
                     </div>
                     <div className="registrationLeft">
                         <label htmlFor={"password"}></label>
@@ -82,7 +82,7 @@ function TeacherRegister(props) {
             </div>
             </div>
             <div className="registrationBackground">
-                <div className="center">
+                <div className="registerCenter">
                     <button className="submitRegistration" onClick={sendForm}>Submit</button>
                 </div>
             </div>

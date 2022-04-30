@@ -107,7 +107,7 @@ function StudentRegister(props) {
                     </div>
             </div>
             <div className="registrationBackground">
-                <div className="center">
+                <div className="registerCenter">
                     <button className="submitRegistration" onClick={sendForm}>Submit</button>
                 </div>
             </div>
