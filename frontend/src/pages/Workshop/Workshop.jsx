@@ -7,6 +7,8 @@ import Laura from "../../components/Laura.jpeg";
 import Margaret from "../../components/Margaret.jpg";
 import Sami from "../../components/Sami.jpg";
 import Sara from "../../components/Sara.png";
+import YCL from "../../components/YCL.jpg";
+import Ellen from "../../components/Ellen.jpg";
 
 function Workshop() {
     return(
@@ -14,7 +16,7 @@ function Workshop() {
         <div className="workshopTop">
             <h1>WORKSHOPS</h1>
             <div className="workshopBlurb">
-                <p>Below are our 10 wonderful workshops!</p>
+                <p>Below are our wonderful workshops and their facilitators (teachers, go down to the bottom - there's even one for you)!</p>
             </div>
         </div>
         <div className="workshopGreen">
@@ -98,6 +100,36 @@ We'll focus on the many solutions it takes to get where we need to go, and we'll
                     <p>
                     Workshop: “Mental Health: Managing Climate Anxiety and Burnout alongside Environmental Action” <br/><br/>
                     Sara Layton and Olivia Hunter are both certified teachers (OCT) and graduate students in the Masters of Education program, specializations in Education for Change: Environmental and Sustainability Education at Lakehead University. As part of their GA positions, Sara and Olivia are managing the existential toolkit for climate justice educators, an international network of scholars focused on addressing climate anxiety through sharing research and teaching resources. This workshop will draw on best practice to offer tools for young people to process their climate anxiety.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div className="workshopGreen">
+            <h1>Youth Climate Lab</h1>
+            <div className="workshopGrid">
+                <div className="workshopImageBox">
+                    <img className = "workshopImage" src={YCL} alt="Youth Climate Lab" />
+                </div>
+                <div className="workshopBlurb">
+                    <p>
+                    Workshop: “Responsive Education” <br/><br/>
+                    blah blah blah
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div className="workshopBlue">
+            <h1>Dr. Ellen Field and Bonnie Anderson</h1>
+            <div className="workshopGrid">
+                <div className="workshopImageBox">
+                    <img className = "workshopImage" src={Ellen} alt="Dr. Ellen Field and bonnie Anderson" />
+                </div>
+                <div className="workshopBlurb">
+                    <p>
+                    Parallel Professional Development Workshop for Teachers - Integrating Climate Change into Your Teaching <br/><br/>
+                    Ellen Field is an Assistant Professor in the Faculty of Education at Lakehead University. Her research interests are in policy and practice of climate change education in the Canadian K-12 system. Dr. Field has a strong background in survey development and implementation, educational tool development and stakeholder engagement. She is engaged with Ministries, school boards, teachers and community members, and co-leads an online community on Climate Change Education in Canada.
+Ellen teaches Environmental Education (B.Ed) and Climate Change Education (M.Ed) in the Faculty of Education, and has engaged 800 teachers in professional development workshops in the last several years. Ellen is an Associate Editor of the Canadian Journal of Environmental Education and co-chair of the Canadian Regional Hub of Monitoring and Evaluation of Climate Change Education (MECCE).
+Bonnie Anderson is the Outdoor Environmental Education and Healthy Active Living Coordinator for the Simcoe County District School Board. She has extensive experience in leadership in environmental education programs and has worked in Peel, Toronto, Bark Lake Leadership Centre, and Kawartha Pine Ridge District School Boards in coordinating positions.
                     </p>
                 </div>
             </div>
