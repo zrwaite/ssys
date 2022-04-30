@@ -24,6 +24,7 @@
 
 .infoWho{
     background-color: #002A4A;
+    margin-bottom:0.5rem;
 }
 
 .infoWho > h1{
@@ -37,12 +38,40 @@
     padding-bottom: 1rem;
     color: #FEF363;
     font-size: 1.5rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: 3rem;
     text-align:center;
     padding-left:1rem;
     padding-right:1rem;
 }
 
+.infoWhoButton{
+    background-color: #93D783;
+    border: none;
+    color: #2D6434;
+    padding: 1rem 4rem;
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 1;
+    text-decoration: none;
+    cursor: pointer;
+    width: 6rem;
+    text-align:center;
+    margin:auto;
+}
+
+.infoWhoButton:hover {
+    font-weight: 300;
+    transition: all 0.5s ease-in-out;
+    background-color: #fff;
+    color: #93D783;
+}
+
+.infoWhoButtonBox{
+    margin:auto;
+    height:6rem;
+    text-align:center;
+
+}
 /*WHERE*/
 
 .infoWhere{
@@ -62,6 +91,26 @@
     font-size: 1.5rem;
     padding-bottom: 2.5rem;
     text-align:center;
-    padding-left:1rem;
     padding-right:1rem;
+}
+
+.infoWhereGrid{
+    display:grid;
+    grid-template-columns:repeat(2,50vw);
+}
+
+.infoWhereImageBox{
+    padding-bottom: 1rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    padding-left:1rem;
+    max-width:33vw;
+    margin:auto;
+}
+
+
+
+.infoWhereImage{
+    object-fit:contain;
+    width:100%;
 }
