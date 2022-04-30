@@ -4,9 +4,12 @@ import "./Workshop.css";
 
 function Workshop() {
     return(
-        <main>
-        <div>
-            <h1>LALALLALA</h1>
+    <main>
+        <div className="workshopTop">
+            <h1>WORKSHOPS</h1>
+            <div className="workshopBlurb">
+                <p>Below are our 10 wonderful workshops!</p>
+            </div>
         </div>
     </main>
     );
