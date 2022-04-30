@@ -242,3 +242,27 @@
     padding-left:1rem;
     padding-right:1rem;
 }
+
+/*KEYNOTE SPEAKERS*/
+
+.infoKeynote{
+    background-color:#002A4A;
+    margin-top:0.5rem;
+}
+
+.infoKeynote > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.infoKeynoteBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
+}

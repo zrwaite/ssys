@@ -18,6 +18,7 @@ function Info() {
                 <h1>WHO?</h1>
                 <div className="infoWhoBlurb">
                     <p>200 HIGH SCHOOL STUDENTS FROM ACROSS SIMCOE COUNTY. 10 WORKSHOP LEADERS. 2 KEYNOTE SPEAKERS. <br/><br/>
+                    FOR MORE INFORMATION ON THE KEYNOTE SPEAKERS, SCROLL DOWN<br/><br/>
                     FOR MORE INFORMATION ON THE WORKSHOPS, CLICK THE BUTTON BELOW</p>
                 </div>
                 <div className="infoWhoButtonBox">
@@ -38,7 +39,7 @@ function Info() {
                         </p>
                         <div className="infoWhereButtonBox">
                             <a href='https://www.lakeheadu.ca/about/orillia-campus'>
-                                <button className="infoWhereButton">Submit</button>   
+                                <button className="infoWhereButton">Lakehead</button>   
                             </a>
                         </div>
                     </div>
@@ -61,6 +62,12 @@ function Info() {
                 <h1>WHY?</h1>
                 <div className="infoWhyBlurb">
                     <p>To enable youth-led climate action across Simcoe County</p>
+                </div>
+            </div>
+            <div className="infoKeynote">
+                <h1>OUR KEYNOTE SPEAKERS</h1>
+                <div className="infoKeynoteBlurb">
+                    <p>Below are our 2 fabulous keynote speakers!</p>
                 </div>
             </div>
         </main>
