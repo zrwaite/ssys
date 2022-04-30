@@ -266,3 +266,143 @@
     padding-left:1rem;
     padding-right:1rem;
 }
+
+/*Brad Dibble*/
+
+.infoDibble{
+    background-color: #2D6434;
+    margin-top:0.5rem;
+}
+
+.infoDibble > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.infoDibbleBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    margin:auto;
+    padding-right:2rem;
+    padding-left:1rem;
+}
+
+.infoDibbleGrid{
+    display:grid;
+    grid-template-columns:repeat(2,50vw);
+}
+
+.infoDibbleImageBox{
+    padding-bottom: 2.5rem;
+    text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
+    max-width:35vw;
+    margin:auto;
+}
+
+.infoDibbleImage{
+    object-fit:contain;
+    width:100%;
+    border-radius:0.5rem;
+}
+
+@media(max-width:1080px){
+    .infoDibbleGrid{
+        display:grid;
+        grid-template-columns:1fr;
+    }
+
+    .infoDibbleImageBox{
+        padding-bottom: 2.5rem;
+        text-align:center;
+        max-width:80vw;
+        margin:auto;
+    }
+
+    .infoDibbleBlurb{
+        padding-bottom: 1rem;
+        color: #FEF363;
+        font-size: 1.5rem;
+        padding-bottom: 2.5rem;
+        text-align:center;
+        margin:auto;
+        padding-right:1rem;
+        padding-left:1rem;
+    }
+}
+
+/*ALLIE ROUGEOT*/
+
+.infoAllie{
+    background-color: #002A4A;
+    margin-top:0.5rem;
+}
+
+.infoAllie > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.infoAllieBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    margin:auto;
+    padding-right:2rem;
+    padding-left:1rem;
+}
+
+.infoAllieGrid{
+    display:grid;
+    grid-template-columns:repeat(2,50vw);
+}
+
+.infoAllieImageBox{
+    padding-bottom: 2.5rem;
+    text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
+    max-width:35vw;
+    margin:auto;
+}
+
+.infoAllieImage{
+    object-fit:contain;
+    width:100%;
+    border-radius:0.5rem;
+}
+
+@media(max-width:1080px){
+    .infoAllieGrid{
+        display:grid;
+        grid-template-columns:1fr;
+    }
+
+    .infoAllieImageBox{
+        padding-bottom: 2.5rem;
+        text-align:center;
+        max-width:80vw;
+        margin:auto;
+    }
+
+    .infoAllieBlurb{
+        padding-bottom: 1rem;
+        color: #FEF363;
+        font-size: 1.5rem;
+        padding-bottom: 2.5rem;
+        text-align:center;
+        margin:auto;
+        padding-right:1rem;
+        padding-left:1rem;
+    }
+}

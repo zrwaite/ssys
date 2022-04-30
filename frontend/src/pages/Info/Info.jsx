@@ -1,7 +1,8 @@
 import React from "react";
 import "./Info.css";
 import lakehead from "../../components/lakehead.png";
-import diannesaxe from "../../components/diannesaxe.jpg";
+import BradDibble from "../../components/BradDibble.jpg";
+import AllieRougeot from "../../components/AllieRougeot.jpg";
 import {Link} from "react-router-dom";
 import CountdownSummit from "../../components/CountdownSummit/CountdownSummit.jsx";
 
@@ -68,6 +69,28 @@ function Info() {
                 <h1>OUR KEYNOTE SPEAKERS</h1>
                 <div className="infoKeynoteBlurb">
                     <p>Below are our 2 fabulous keynote speakers!</p>
+                </div>
+            </div>
+            <div className="infoDibble">
+                <h1>Dr. Brad Dibble</h1>
+                <div className="infoDibbleGrid">
+                    <div className="infoDibbleImageBox">
+                         <img className = "infoDibbleImage" src={BradDibble} alt="Dr. Brad Dibble" />
+                    </div>
+                    <div className="infoDibbleBlurb">
+                        <p>Dr. Brad Dibble was appointed by the federal Minister of the Environment as one of 25 members to the Sustainable Development Advisory Council, a membership he still maintains. A Mentor for Climate Reality Canada, he has received training with Al Gore and endorsements from Col. Chris Hadfield for his work.  He has also written the award-winning book, Comprehending the Climate Crisis: Everything you need to know about Global Warming and how to stop it (2012).  </p>
+                    </div>
+                </div>
+            </div>
+            <div className="infoAllie">
+                <h1>Aliénor (Allie) Rougeot</h1>
+                <div className="infoAllieGrid">
+                    <div className="infoAllieImageBox">
+                         <img className = "infoAllieImage" src={AllieRougeot} alt="Aliénor (Allie) Rougeot" />
+                    </div>
+                    <div className="infoAllieBlurb">
+                        <p>Allie Rougeot is an Economics and Public Policy student at the University of Toronto. She has been an environmental and human rights activist since the age of 10, and has, since high school, been passionate about sustainability and climate justice. Since January 2019 she has been the lead coordinator of the Fridays for Future movement in Toronto. She has been recognized for her work by the Canadian Voice of Women for peace with the Kim Phuc Youth Award, and has appeared several times in the Toronto Star, on Metro Morning, CTV, Global News, Radio Canada, National Observer and other media.</p>
+                    </div>
                 </div>
             </div>
         </main>
