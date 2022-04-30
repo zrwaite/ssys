@@ -5,6 +5,7 @@ import Trish from "../../components/Trish.jpg";
 import Jen from "../../components/Jen.png";
 import Laura from "../../components/Laura.jpeg";
 import Margaret from "../../components/Margaret.jpg";
+import Sami from "../../components/Sami.jpg";
 
 function Workshop() {
     return(
@@ -68,6 +69,20 @@ We'll focus on the many solutions it takes to get where we need to go, and we'll
                     <p>
                     Workshop: “Complete Communities” <br/><br/>
                     Margaret Prophet has a Bachelor of Education, specialized in Adult Education, and a BA in Psychology from Brock University. Her passion for the environment and love of community led her to volunteer for her local ratepayers association. This led to her getting involved with complex land-use planning matters and municipal politics. With that knowledge, she eventually helped create the Simcoe County Greenbelt Coalition, a group with 15 like-minded member groups committed to protecting and preserving natural greenspaces, and growing protected areas (like the Greenbelt) in Ontario. She believes strongly in creating communities where youth can thrive, without the mental and physical effects of sprawled out communities where essential services and community connection is inaccessible.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div className="workshopGreen">
+            <h1>Sami Pritchard</h1>
+            <div className="workshopGrid">
+                <div className="workshopImageBox">
+                    <img className = "workshopImage" src={Sami} alt="Sami Pritchard" />
+                </div>
+                <div className="workshopBlurb">
+                    <p>
+                    Workshop: “Lobbying Youth for Change” <br/><br/>
+                    Sami Pritchard is a passionate and experienced Community Organizer and Team Leader dedicated to creating communities where people, particularly youth, feel a sense of belonging.  She seeks to empower students and youth to see their potential, develop leadership skills and build cultures of care. Her experience working with a variety of organizations -including CanMediate International, the Canadian Federation of Students, and Lakehead University Student Union - has provided her with a strong understanding of organizational structures, allowing her to provide thoughtful and strategic solutions and plans for those seeking to work together to create change.
                     </p>
                 </div>
             </div>
