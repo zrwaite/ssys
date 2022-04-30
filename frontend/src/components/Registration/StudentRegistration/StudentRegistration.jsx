@@ -105,14 +105,16 @@ function StudentRegister(props) {
                         <label htmlFor={"teacher_id"}></label>
                         <input className="registerBox" placeholder="Teacher ID" type={"text"} name={"teacher_id"} value={state.teacher_id} onChange={handleInputChange}/>
                     </div>
-                    <div className="center">
-                        <button className="submit" onClick={sendForm}>Submit</button>
-                    </div>
                     <div>
                     <Link to="/signin">
                         <span className="signedUp">Already Signed Up? Click Here<br/></span>
                     </Link>
                     </div>
+            </div>
+            <div className="registrationBackground">
+                <div className="center">
+                    <button className="submitRegistration" onClick={sendForm}>Submit</button>
+                </div>
             </div>
             </div>
             <div 

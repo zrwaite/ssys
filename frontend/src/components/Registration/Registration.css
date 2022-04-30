@@ -23,11 +23,12 @@
 
 .registrationOptions{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(5rem,40rem));
+    grid-template-columns:repeat(2,1fr);
     background-color:#2D6434;
     align-items:center;
     justify-content:center;
     margin:auto;
+    padding-top:2rem;
 }
 
 .registrationCenter{
@@ -37,12 +38,12 @@
 
 .registrationRight{
     margin:auto;
-    margin-right:1rem;
+    margin-right:1.5rem;
 }
 
 .registrationLeft{
     margin:auto;
-    margin-left:1rem;
+    margin-left:1.5rem;
 }
 
 .registerBox{
@@ -52,36 +53,60 @@
     font-size: 1rem;
     height: 2rem;
     width:12rem;
-    background-color:lightgray;
+    background-color: #93D783;
     margin-bottom:1rem;
+    margin-top:0.5rem;
 }
-/*old stuff below*/
 
 ::placeholder{
     color:#2D6434;
 }
 
-@media(max-width:640px){
-    .registerBox{
-        align-self:center;
-    color:blue;
-    border-radius:0.25rem;
-    border:1px solid pink;
-    font-size: 1rem;
-    height: 2rem;
-    background-color:lightgray;
+@media(max-width:1080px){
+    .registrationOptions{
+        display:grid;
+        grid-template-columns:1fr;
+        background-color:#2D6434;
+        align-items:center;
+        justify-content:center;
+        margin:auto;
+    }
+
+    .registrationLeft{
+        margin:auto;
+    }
+
+    .registrationRight{
+        margin:auto;
     }
 }
 
-.submit{
+.submitRegistration{
+    background-color: #93D783;
+    border: none;
+    color: #2D6434;
+    padding: 1.5rem 4rem;
+    text-align: center;
+    opacity: 1;
+    text-decoration: none;
+    cursor: pointer;
+    text-align:center;
+    margin:auto;
+    line-height:0rem;
 }
 
-.submit:hover {
+.submitRegistration:hover {
     font-weight: 300;
     transition: all 0.5s ease-in-out;
     background-color: #fff;
     color: rgba(12, 35, 139, 0.9);
 }
+
+.registrationBackground{
+    color:#2D6434;
+}
+
+/*old stuff below*/
 
 .signedUp{
     font-size:0.75rem;
