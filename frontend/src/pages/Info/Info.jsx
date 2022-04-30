@@ -57,7 +57,12 @@ function Info() {
                     </div>
                 </div>
             </div>
-    
+            <div className="infoWhy">
+                <h1>WHY?</h1>
+                <div className="infoWhyBlurb">
+                    <p>To enable youth-led climate action across Simcoe County</p>
+                </div>
+            </div>
         </main>
     );
 } 
