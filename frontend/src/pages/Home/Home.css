@@ -125,7 +125,7 @@
 }
 
 .homeBlue{
-    background-color: #2D6434;
+    background-color: #002a4a;
     margin-top:0.5rem;
 }
 
@@ -144,4 +144,89 @@
     text-align:center;
     padding-left:1rem;
     padding-right:1rem;
+}
+
+/*SOYC*/
+
+.SOYCGrid{
+    display:grid;
+    grid-template-columns:repeat(2,50vw);
+}
+
+.SOYCImageBox{
+    padding-bottom: 2.5rem;
+    text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
+    max-width:30vw;
+    margin:auto;
+}
+
+.SOYCBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    margin:auto;
+    padding-right:2rem;
+    padding-left:1rem;
+}
+
+.SOYCImage{
+    object-fit:contain;
+    width:100%;
+    border-radius:0.5rem;
+}
+
+@media(max-width:1080px){
+    .SOYCGrid{
+        display:grid;
+        grid-template-columns:1fr;
+    }
+
+    .SOYCImageBox{
+        padding-bottom: 2.5rem;
+        text-align:center;
+        max-width:80vw;
+        margin:auto;
+    }
+
+    .SOYCBlurb{
+        padding-bottom: 1rem;
+        color: #FEF363;
+        font-size: 1.5rem;
+        padding-bottom: 2.5rem;
+        text-align:center;
+        margin:auto;
+        padding-right:1rem;
+        padding-left:1rem;
+    }    
+}
+
+.SOYCButton{
+    background-color: #2D6434;
+    border: none;
+    color: #FEF363;
+    padding: 1.5rem 4rem;
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 1;
+    text-decoration: none;
+    cursor: pointer;
+    margin:auto;
+    line-height:0rem;
+}
+
+.SOYCButton:hover {
+    font-weight: 300;
+    transition: all 0.5s ease-in-out;
+    background-color: #fff;
+    color: #002A4A;
+}
+
+.SOYCButtonBox{
+    padding-top:2rem;
+    margin:auto;
+    text-align:center;
 }
