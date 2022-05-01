@@ -68,7 +68,7 @@ function Contact() {
             </div>
             <div className="contactEmailBox">
                 <label htmlFor={"to"}>To: </label>
-                    <select id={"to"} name={"to"} value={state.to} onChange={handleInputChange}>
+                    <select  className="contactToBox" id={"to"} name={"to"} value={state.to} onChange={handleInputChange}>
                         <option readOnly={true} value="tech">Tech Support</option>
                         <option readOnly={true} value="organizer">Conference Information</option>
                     </select>

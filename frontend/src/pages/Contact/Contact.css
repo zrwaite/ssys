@@ -57,6 +57,12 @@
         background-color:#93D783;
         color:black;
     }
+
+    .contactEmail{
+        background-color: #93D783;
+        color: black;
+        width:40vw;
+    }
 }
 
 .contactButtonBox{
@@ -85,4 +91,8 @@
     transition: all 0.5s ease-in-out;
     background-color: #fff;
     color: #002A4A;
+}
+
+.contactToBox{
+    background-color:#93D783;
 }
