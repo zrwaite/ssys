@@ -5,8 +5,7 @@ import ConferenceInfo from "../../components/ConferenceInfo";
 import NotificationPanel from "../../components/NotificationPanel";
 import WorkshopChoices from "../../components/WorkshopChoices";
 
-import {getCookie} from "../../modules/cookies";
-import {Navigate} from "react-router-dom";
+import {getCookie, signedIn} from "../../modules/cookies";
 import {httpReq, baseURL} from "../../modules/http_requests";
 import SettingsPanel from "../../components/SettingsPanel";
 import AccountIcon from "../../images/account.svg";
@@ -86,7 +85,8 @@ const User = () => {
         setDataPulled(true);
     }
     if (!dataPulled) getUserData();
-    if (!(getCookie("email") && getCookie("token") && getCookie("user_type"))) return <Navigate to='/account'/>;
+    if (!signedIn()) window.location.href = "/account";
+
 
     return (
         <main>

@@ -31,13 +31,13 @@ function createToken(object|array $body): string
     return JWT::encode($body, $key);
 }
 
-function validateToken(string $email): ErrorsBool
+function validateToken(string $username): ErrorsBool
 {
     $result = new ErrorsBool();
     $tokenData = getTokenData();
     $result->errors = $tokenData->errors;
     if (!count($result->errors)) {
-        if ($tokenData->response->email != $email) {
+        if ($tokenData->response->username != $username) {
             array_push($result->errors, "Token not authorized for user");
         } else $result->success = true;
     }

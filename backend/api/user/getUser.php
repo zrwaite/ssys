@@ -20,14 +20,15 @@ $res = new Response();
 $res->request_type = "GET";
 $user = new GetUser();
 
-$email = getQuery("email");
-if (is_null($email)) array_push($res->errors, "Missing email query, or did you mean for a non-GET request?");
+$username = getQuery("username");
+if (is_null($username)) array_push($res->errors, "Missing email query, or did you mean for a non-GET request?");
 
 if (count($res->errors) == 0) {
-    $tokenData = validateToken($email);
-    $query = "id, fname, lname, email, email_confirmed, teacher_email, teacher_id, password_set, grade, image_link, image_approved ,school ,city ,workshop_choices ,instagram ,diet ,workshop_order ,bio ,additional_info ,emergency_contact ,account_enabled, public, user_type";
-    $result = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_users WHERE email=%s", $email);
+    $tokenData = validateToken($username);
+    $query = "id, fname, lname, username, grade, image_link, image_approved ,school ,city ,workshop_choices ,instagram ,diet ,workshop_order ,bio ,additional_info ,emergency_contact ,account_enabled, public, teacher";
+    $result = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_users WHERE username=%s", $username);
     $parsedResult = $user->getParseResult($result);
+//    var_dump($parsedResult);
     if ($parsedResult) {
         if ($parsedResult['public'] || $tokenData->success) {
             $res->status = 200;

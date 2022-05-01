@@ -1,17 +1,10 @@
-
-import {Link, Navigate} from "react-router-dom";
-import {deleteCookie, getCookie} from "../../modules/cookies";
+import {Link} from "react-router-dom";
+import {signedIn} from "../../modules/cookies";
 import "./Account.css";
 
 function Account() {
 
-    if (getCookie("email") && getCookie("token") && getCookie("user_type")) {
-        return <Navigate to='/user'/>;
-    } else {
-        deleteCookie("email");
-        deleteCookie("token");
-        deleteCookie("user_type");
-    }
+    if (signedIn()) window.location.href = "/user";
 
     return (
         <main>

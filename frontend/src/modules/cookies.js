@@ -15,4 +15,13 @@ const getCookie = (cname) => {
     }
     return "";
 }
-export {createCookie, deleteCookie, getCookie};
+const signedIn = () => {
+    if (getCookie("username") && getCookie("token") && getCookie("user_type")) return true;
+    else {
+        deleteCookie("username");
+        deleteCookie("token");
+        deleteCookie("user_type");
+        return false;
+    }
+}
+export {signedIn, createCookie, deleteCookie, getCookie};

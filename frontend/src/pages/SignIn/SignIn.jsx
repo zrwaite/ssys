@@ -10,7 +10,7 @@ import {createCookie} from "../../modules/cookies";
 
 function SignIn() {
     let [state, setState] = useState({
-        email: "",
+        username: "",
         password: "",
         redirect: false
     });
@@ -19,8 +19,7 @@ function SignIn() {
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
         let partialState = {
-            email: state.email,
-            password: state.password,
+            ...state,
             redirect: false
         };
         partialState[name] = value;
@@ -29,18 +28,17 @@ function SignIn() {
     handleInputChange = handleInputChange.bind(this);
     const sendForm = async () => {
         let json = await httpReq("/auth/", "POST", {
-            email: state.email,
+            username: state.username,
             password: state.password,
             type: "signIn"
         })
         let response = JSON.parse(json);
         if (response.success) {
-            createCookie("email", state.email);
+            createCookie("username", state.username);
             createCookie("user_type", response.objects.user_type);
             createCookie("token", response.objects.token);
             setState({
-                email: state.email,
-                password: state.password,
+                ...state,
                 redirect: true
             });
             // ReactDOM.render(<Link to="/user" >Go to user page</Link>, document.getElementById('signUpResult'));
@@ -68,12 +66,14 @@ function SignIn() {
             </div>
             <div className="signInGrid">
                 <div>
-                    <label htmlFor={"email"}></label>
-                     <input type={"text"} className="signInBox" name={"email"} placeholder="EMAIL@SCDSB.ON.CA" value={state.email} onChange={handleInputChange}/>
+                    <label htmlFor={"username"}>Username</label>
+                    <input type={"text"} className="signInBox" name={"username"} placeholder="USERNAME"
+                           value={state.username} onChange={handleInputChange}/>
                 </div>
                 <div>
-                     <label htmlFor={"password"}></label>
-                      <input type={"password"} className="signInBox" placeholder="PASSWORD" name={"password"} value={state.password} onChange={handleInputChange}/>
+                    <label htmlFor={"password"}>Password</label>
+                    <input type={"password"} className="signInBox" placeholder="PASSWORD" name={"password"}
+                           value={state.password} onChange={handleInputChange}/>
                 </div>
             </div>
             <div className="signInBackground">

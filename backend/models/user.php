@@ -178,34 +178,19 @@ class PutUser
 
 class GetUser
 {
-    public $studentTarget = [
-        "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "workshop_order", "workshop_choices", "bio", "additional_info", "diet", "teacher_email", "instagram", "emergency_contact"],
-        "ints" => ["id", "teacher_id", "grade"],
-        "bools" => ["password_set", "email_confirmed", "account_enabled", "public"]
-    ];
-    public $teacherTarget = [
-        "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "workshop_order", "workshop_choices", "bio", "additional_info", "diet"],
-        "ints" => ["id"],
-        "bools" => ["password_set", "email_confirmed", "account_enabled", "public"]
-    ];
-    public $individualTarget = [
-        "strings" => ["fname", "lname", "email", "user_type", "image_link", "school", "city", "workshop_order", "workshop_choices", "bio", "additional_info", "diet", "instagram", "emergency_contact"],
+    public $parseTarget = [
+        "strings" => ["fname", "lname", "username", "image_link", "school", "city", "workshop_order", "workshop_choices", "bio", "additional_info", "diet", "teacher_email", "instagram", "emergency_contact"],
         "ints" => ["id", "grade"],
-        "bools" => ["password_set", "email_confirmed", "account_enabled", "public"]
+        "bools" => ["account_enabled", "public", "teacher"]
     ];
-    
+
+
     public function getParseResult(array|null $result): bool|array
     {
         if (is_null($result)) return false;
-        $type = $result['user_type'];
-        if ($type=="teacher") $target = $this->teacherTarget;
-        else if ($type=="student") $target = $this->studentTarget;
-        else if ($type=="individual") $target = $this->individualTarget;
-        else return false;
-        $resArray = [];
-        foreach($target['strings'] as $elem) $resArray[$elem] = $result[$elem];
-        foreach($target['ints'] as $elem) $resArray[$elem] = intval($result[$elem]);
-        foreach($target['bools'] as $elem) $resArray[$elem] = boolval($result[$elem]);
+        foreach ($this->parseTarget['strings'] as $elem) $resArray[$elem] = $result[$elem];
+        foreach ($this->parseTarget['ints'] as $elem) $resArray[$elem] = intval($result[$elem]);
+        foreach ($this->parseTarget['bools'] as $elem) $resArray[$elem] = boolval($result[$elem]);
         return $resArray;
     }
 }
