@@ -1,5 +1,13 @@
 CREATE DATABASE sustaina_db;
 
+create table sustaina_db.ssys22_codes
+(
+    id   int auto_increment primary key,
+    code char(20),
+    type char(20),
+    used BOOLEAN default 0
+);
+
 CREATE TABLE sustaina_db.ssys22_users
 (
     id                INT      NOT NULL AUTO_INCREMENT PRIMARY KEY,
