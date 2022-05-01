@@ -119,3 +119,7 @@ textarea {
 details:hover{
 	cursor:pointer;
 }
+
+label{
+	display:none;
+}
