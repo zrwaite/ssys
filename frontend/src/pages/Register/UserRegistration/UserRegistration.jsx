@@ -85,11 +85,13 @@ function UserRegister(props) {
                         <input className="registerBox" placeholder="CODE" type={"text"} name={"code"}
                                value={state.code} onChange={handleInputChange}/>
                     </div>
-                    <div className="registrationRight">
+                </div>
+                <div className="registrationBackground2">
+                <div className="registerCenter">
                         <label htmlFor={"username"}>Username </label>
                         <input className="registerBox" placeholder="USERNAME" type={"text"} name={"username"}
                                value={state.username} onChange={handleInputChange}/>
-                    </div>
+                </div>
                 </div>
                 <div className="registrationBackground">
                     <div className="registerCenter">
