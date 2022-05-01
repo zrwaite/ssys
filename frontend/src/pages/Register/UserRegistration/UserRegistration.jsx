@@ -5,12 +5,9 @@ import {Navigate} from "react-router-dom";
 import "../Registration.css";
 import {Link} from "react-router-dom";
 
-function StudentRegister(props) {
-    let studentStyle
-    if (props.display === "student") {
-        studentStyle = {display: "block"};
-    } else studentStyle = {display: "none"};
-
+function UserRegister(props) {
+    let displayStyle = props.display ? {display: "block"} : {display: "none"};
+    let teacherMode = props.display === "teacher";
     let [state, setState] = useState({
         code: "",
         password: "",
@@ -38,14 +35,14 @@ function StudentRegister(props) {
             lname: state.lname,
             username: state.username,
             password: state.password,
-            teacher: false,
+            teacher: teacherMode,
             code: state.code
         })
         let response = JSON.parse(json);
         console.log(response);
         if (response.success && response.objects) {
             createCookie("username", state.username);
-            createCookie("user_type", "student");
+            createCookie("user_type", props.display);
             createCookie("token", response.objects.token);
             window.location.href = "/account"
         } else if (response.errors.length > 0) {
@@ -58,11 +55,12 @@ function StudentRegister(props) {
     }
 
     return (
-        <div style={studentStyle}>
+        <div style={displayStyle}>
             <div className="registerTop">
-                <h1>STUDENT REGISTRATION</h1>
+                <h1>{props.display === "student" ? "STUDENT" : "TEACHER"} REGISTRATION</h1>
                 <div className="registerBlurb">
-                    <p>PLEASE ENTER YOUR INFORMATION BELOW. THIS ACCOUNT YOU WILL BE CREATING WILL BE YOUR ACCOUNT FOR THE SUMMIT!</p>
+                    <p>PLEASE ENTER YOUR INFORMATION BELOW. THIS ACCOUNT YOU WILL BE CREATING WILL BE YOUR ACCOUNT FOR
+                        THE SUMMIT!</p>
                 </div>
             </div>
             <div>
@@ -104,11 +102,8 @@ function StudentRegister(props) {
                     <span className="signedUp">Already Signed Up? Click Here<br/></span>
                 </Link>
             </div>
-            <div
-                id={"studentRegistrationResult"}>
-            </div>
         </div>
     )
 }
 
-export default StudentRegister;
+export default UserRegister;

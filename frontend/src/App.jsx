@@ -8,7 +8,6 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";
 import User from "./pages/User";
-import EmailConfirmation from "./pages/EmailConfirmation";
 import Navbar from "./components/Navbar";
 import Workshop from "./pages/Workshop";
 import {mobileWidth} from "./constants";
@@ -51,7 +50,6 @@ function App() {
 					<Route path="/register" element={<Register/>}/>
 					<Route path="/signin" element={<SignIn/>}/>
 					<Route path="/user" element={<User/>}/>
-					<Route path="/confirmEmail" element={<EmailConfirmation/>}/>
 					<Route path="/Workshop" element={<Workshop/>}/>
 				</Routes>
 			</Router>

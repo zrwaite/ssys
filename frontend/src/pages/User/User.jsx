@@ -10,6 +10,7 @@ import {httpReq, baseURL} from "../../modules/http_requests";
 import SettingsPanel from "../../components/SettingsPanel";
 import AccountIcon from "../../images/account.svg";
 import {MobileContext} from "../../App";
+import StudentCodes from "../../components/StudentCodes";
 
 // import ReactDOM from "react-dom";
 
@@ -39,7 +40,8 @@ const User = () => {
         public: "",
         password_set: "",
         email_confirmed: "",
-        workshop_choices: ""
+        workshop_choices: "",
+        teacher: false
     });
     const handleInputChange = (event) => {
         const target = event.target;
@@ -77,7 +79,8 @@ const User = () => {
                 public: response.objects.public,
                 password_set: response.objects.password_set,
                 email_confirmed: response.objects.email_confirmed,
-                workshop_choices: response.objects.workshop_choices
+                workshop_choices: response.objects.workshop_choices,
+                teacher: response.objects.teacher
             })
         } else if (response.errors.length > 0) {
             alert(response.errors)
@@ -106,7 +109,8 @@ const User = () => {
                     <ConferenceInfo {...userData} parentHandleInputChange={handleInputChange}/>
                 </div>
                 <div className={"informationColumn"}>
-                    <WorkshopChoices {...userData} parentChangeWorkshopChoices={changeWorkshopChoices}/>
+                    {userData.teacher ? <StudentCodes/> :
+                        <WorkshopChoices {...userData} parentChangeWorkshopChoices={changeWorkshopChoices}/>}
                 </div>
             </section>
         </main>

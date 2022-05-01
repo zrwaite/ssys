@@ -24,7 +24,7 @@ const SettingsPanel = (props) => {
 //todo reduce to one form sfunction
     const sendStudentForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
-            email: getCookie("email"),
+            username: getCookie("username"),
             fname: props.fname,
             lname: props.lname,
             public: props.public_view
@@ -45,7 +45,7 @@ const SettingsPanel = (props) => {
 
     const sendTeacherForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
-            email: getCookie("email"),
+            username: getCookie("username"),
             fname: props.fname,
             lname: props.lname
         })
@@ -70,7 +70,7 @@ const SettingsPanel = (props) => {
         if (user_type === "student" || user_type === "individual") formResponse = await sendStudentForm();
         else if (user_type === "teacher") formResponse = await sendTeacherForm();
         if (inputImage) {
-            let json = await imagePostReq("/api/image/", inputImage, getCookie("email"));
+            let json = await imagePostReq("/api/image/", inputImage, getCookie("username"));
             let response = JSON.parse(json);
             if (response.success && response.objects) {
                 imageResponse = getImageLink(response.objects);
@@ -99,7 +99,7 @@ const SettingsPanel = (props) => {
 
     const logout = () => {
         deleteCookie("token");
-        deleteCookie("email");
+        deleteCookie("username");
         deleteCookie("user_type");
         window.location.assign("/account");
     }
