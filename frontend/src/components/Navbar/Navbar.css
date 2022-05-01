@@ -82,6 +82,10 @@ a{
     transform:translateX(0);
 }
 
+.nav_inactive{
+    transform:translateX(100%);
+}
+
 .navMenu{
     line-height:0rem;
     text-align:center;
