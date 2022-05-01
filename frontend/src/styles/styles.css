@@ -115,3 +115,7 @@ textarea {
 .icon:hover {
 	cursor: pointer;
 }
+
+details:hover{
+	cursor:pointer;
+}

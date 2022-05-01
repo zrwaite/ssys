@@ -56,13 +56,15 @@ a{
         top:5vh;
         position:fixed;
         right: 0;
-        width: 50%;
+        width: 33%;
         height:60vh;
         background: rgb(0,28,73);
         flex-direction: column;
         transform: translateX(100%);
         transition: 0.25s ease-in;
         gap:1rem;
+        padding-bottom:1rem;
+        padding-top:1rem;
     }
     a{
         text-decoration:none;
