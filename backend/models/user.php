@@ -7,34 +7,36 @@ use JetBrains\PhpStorm\ArrayShape;
 
 require_once __DIR__ . "/../modules/checkers.php";
 require_once __DIR__ . "/../auth/tokens.php";
-require_once __DIR__ . "/../modules/mailModules.php";
 require_once __DIR__ . "/../modules/database.php";
 require_once __DIR__ . "/workshops.php";
 
+const userPostParams = [
+    "username",
+    "fname",
+    "lname",
+    "teacher"
+];
 
 class PostUser
 { //Class for json response
-    public string $email = "", $hash;
-    public string|null $fname, $lname, $password;
-    public int $confirmation_code;
-    public string $workshop_choices;
+    public string $password, $code;
+    public array $postData = [
+        "username" => "",
+        "fname" => "",
+        "lname" => "",
+        "teacher" => false,
+        "password_hash" => "",
+        "workshop_choices" => ""
+    ];
 
     public function __construct()
     {
-        $this->createConfirmationCode();
         $this->randomWorkshopChoices();
     }
 
-    public function createConfirmationCode()
+    public function usernameInUse(): bool
     {
-        $chars = 6;
-        $data = '123456789';
-        $this->confirmation_code = intval(substr(str_shuffle($data), 0, $chars));
-    }
-
-    public function checkEmail(): bool
-    {
-        return checkEmail($this->email);
+        return usernameInUse($this->postData["username"]);
     }
 
     public function checkPassword(): array
@@ -42,66 +44,45 @@ class PostUser
         return checkPassword($this->password);
     }
 
-    public function createPassword()
-    {
-        $allNums = "1234567890";
-        $allUppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        $allLowers = "abcdefghijklmnopqrstuvwxyz";
-        $allSpecial = "!@#$%^&*?";
-        $numNums = mt_rand(2, 5);
-        $numUppers = mt_rand(2, 5);
-        $numLowers = mt_rand(2, 5);
-        $numSpecials = mt_rand(2, 5);
-        $nums = substr(str_shuffle($allNums), 0, $numNums);
-        $uppers = substr(str_shuffle($allUppers), 0, $numUppers);
-        $lowers = substr(str_shuffle($allLowers), 0, $numLowers);
-        $special = substr(str_shuffle($allSpecial), 0, $numSpecials);
-        $allChars = $nums . $uppers . $lowers . $special;
-        $numChars = $numNums + $numUppers + $numLowers + $numSpecials;
-        $this->password = substr(str_shuffle($allChars), 0, $numChars);
-    }
-
     public function createHash()
     {
-        $this->hash = password_hash($this->password, PASSWORD_DEFAULT);
+        $this->postData["password_hash"] = password_hash($this->password, PASSWORD_DEFAULT);
     }
 
-    public function randomWorkshopChoices() {
+    public function checkCode(): array
+    {
+        return checkCode($this->code, $this->postData["teacher"]);
+    }
+
+    public function useCode(): string|null
+    {
+        return useCode($this->code, $this->postData["teacher"]);
+    }
+
+    public function randomWorkshopChoices()
+    {
         $workshopOptions = array();
         foreach (WORKSHOPS as $workshop) {
             array_push($workshopOptions, $workshop["code"]);
         }
         shuffle($workshopOptions);
-        $this->workshop_choices = join(" ", $workshopOptions);
+        $this->postData["workshop_choices"] = join(" ", $workshopOptions);
     }
 
     #[ArrayShape(["request" => "mixed", "token" => "string"])] //Dev Array shape implementation
     public function createResponse(): array
     {
         return [
-            "request" => json_decode(file_get_contents('php://input'), true),
+            "request" => $this->postData,
             "token" => $this->createSetToken()
         ];
     }
 
-    public function tryCreateName():void {
-        if (is_null($this->fname)) {
-            $names = ["Blorg", "Bloop", "Squibbles", "Zorp"];
-            $index = rand(0,3);
-            $this->fname = $names[$index];
-        } if (is_null($this->lname)) $this->lname = "NoName";
-    }
-
     public function createSetToken(): string
     {
-        $token = createToken(new tokenBody($this->email));
+        $token = createToken(new tokenBody($this->postData["username"]));
         setcookie("token", $token, time() + (86400 * 30), "/");
         return $token;
-    }
-
-    public function sendEmailConfirmation(): bool
-    {
-        return emailConfirmation($this->confirmation_code, $this->email);
     }
 
     public function addUser(): bool
@@ -109,7 +90,7 @@ class PostUser
         $settings = DB::queryFirstRow("SELECT id, num_attendees FROM ssys22_settings LIMIT 1");
         $numAttendees = $settings['num_attendees'];
         $settingsId = $settings['id'];
-        if ($numAttendees < 200) {
+        if ($numAttendees < 250) {
             $puts = ['num_attendees' => $numAttendees + 1];
             DB::update('ssys22_settings', $puts, "id=%s", $settingsId);
             return true;

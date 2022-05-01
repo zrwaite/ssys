@@ -17,11 +17,11 @@ $dotenv->load(__DIR__ . "/../modules/env/.env");
 
 class tokenBody
 {
-    public string $email;
+    public string $username;
 
-    function __construct($email)
+    function __construct($username)
     {
-        $this->email = $email;
+        $this->username = $username;
     }
 }
 

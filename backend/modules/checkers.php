@@ -25,9 +25,21 @@ function validatePassword(string $password, string $email): int
     else return 404;
 }
 
-function validateEmail(string $email): bool
+function usernameInUse(string $username): bool
 {
-    $result = DB::queryFirstRow("SELECT id FROM ssys22_users WHERE email=%s LIMIT 1", $email);
+    $result = DB::queryFirstRow("SELECT id FROM ssys22_users WHERE username=%s LIMIT 1", $username);
     if ($result['id']) return true;
     else return false;
+}
+
+function checkCode(string $code, bool $teacher): array
+{
+    $result = DB::queryFirstRow("SELECT id, used, teacher FROM ssys22_codes WHERE code=%s LIMIT 1", $code);
+    if ($result["id"]) {
+        if ($result["used"]) return ["Code has already been used"];
+        else if ($result["teacher"] != $teacher) return ["Code not authorized for current teacher"];
+        else return [];
+    } else {
+        return ["Invalid code"];
+    }
 }

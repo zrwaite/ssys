@@ -19,20 +19,23 @@ $dotenv->load(__DIR__ . "/../../modules/env/.env");
 $res = new Response();
 $res->request_type = "POST";
 
-$type = getBody("type");
+$teacher = getBody("teacher");
 $password = getBody("password");
 $numCodes = getBody("num_codes");
+$username = getBody("username");
 
-if (is_null($type)) array_push($res->errors, "missing type");
-if (is_null($password)) array_push($res->errors, "missing password");
-else if ($password != $_ENV['CODE_PASSWORD']) array_push($res->errors, "incorrect password");
+if (is_null($teacher)) array_push($res->errors, "missing teacher");
+else if (!is_bool($teacher)) array_push($res->errors, "invalid teacher");
 if (!count($res->errors)) {
-    if ($type == "teacher") {
+    if ($teacher) {
         $newCode = generateAccessCode();
-        try {
+        if (is_null($password)) array_push($res->errors, "missing password");
+        else if ($password != $_ENV['CODE_PASSWORD']) array_push($res->errors, "incorrect password");
+        else try {
             DB::insert('ssys22_codes', array(
-                'type' => "teacher",
+                'teacher' => true,
                 'code' => $newCode,
+                "owner" => "You"
             ));
             $res->objects = $newCode;
             $res->success = true;
@@ -40,17 +43,19 @@ if (!count($res->errors)) {
         } catch (Exception) {
             array_push($res->errors, "database error");
         }
-    } else if ($type == "student") {
-        if (is_null($numCodes)) array_push($res->errors, "missing num_codes");
-        else if (!is_int($numCodes)) array_push($res->errors, "invalid num_codes");
+    } else {
+        if (is_null($username)) array_push($res->errors, "missing username");
+        else if (is_null($numCodes)) array_push($res->errors, "missing num_codes");
+        else if (!is_numeric($numCodes)) array_push($res->errors, $numCodes);
         else {
             $newCodes = array();
             for ($i = 0; $i < $numCodes; $i++) {
                 $newCode = generateAccessCode();
                 try {
                     DB::insert('ssys22_codes', array(
-                        'type' => "student",
+                        'teacher' => false,
                         'code' => $newCode,
+                        'owner' => $username
                     ));
                     array_push($newCodes, $newCode);
                 } catch (Exception) {
@@ -63,7 +68,7 @@ if (!count($res->errors)) {
                 $res->status = 201;
             }
         }
-    } else array_push($res->errors, "invalid type");
+    }
 }
 
 http_response_code($res->status);
