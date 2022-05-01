@@ -18,7 +18,7 @@ function Navbar() {
 
     return (
         <nav className="nav">
-            <Link to="/" className="nav_brand">
+            <Link to="/">
                 <span>SSYS</span>
             </Link>
             <ul className={active}>
@@ -44,7 +44,7 @@ function Navbar() {
                 </li>
             </ul>
             <div onClick = {navToggle} className={toggleIcon}>
-                <div className>Menu</div>
+                <div className="navMenu">☰</div>
             </div>
         </nav>
     );

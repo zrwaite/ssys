@@ -19,20 +19,15 @@ li{
 
 a{
     text-decoration:none;
-    color: darkgray;
+    color: #002a4a;
 }
 
 .nav{
     display:flex;
     align-items:center;
     justify-content:space-around;
-    height:8vh;
+    height:4rem;
     background: white;
-}
-
-.nav_brand{
-    text-transform:uppercase;
-    font-weight:bold;
 }
 
 .nav_menu{
@@ -46,7 +41,6 @@ a{
     width:2.5rem;
     height:0.2rem;
     width:1rem;
-    background:darkgray;
 }
 
 .nav_toggler{
@@ -70,8 +64,17 @@ a{
         transition: 0.25s ease-in;
         gap:1rem;
     }
+    a{
+        text-decoration:none;
+        color: white;
+    }
 }
 
 .nav_active{
     transform:translateX(0);
+}
+
+.navMenu{
+    line-height:0rem;
+    text-align:center;
 }
