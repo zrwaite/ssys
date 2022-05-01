@@ -31,13 +31,14 @@
     padding-top:10rem;
     padding-bottom:2rem;
     margin:auto;
-    grid-row:1;
+    padding-left:0.5rem;
+    padding-right:0.5rem;
 }
 
 .accSign{
-    padding-bottom:10rem;
-    padding-top:2rem;
-    grid-row:2;
+    padding-left:0.5rem;
+    padding-right:0.5rem;
+    margin:auto;
 }
 
 .accButton{
@@ -50,7 +51,6 @@
     opacity: 1;
     text-decoration: none;
     cursor: pointer;
-    width: 12rem;
 }
 
 .accButton:hover {
