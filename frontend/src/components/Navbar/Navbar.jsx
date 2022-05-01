@@ -1,38 +1,51 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Navbar.css";
-// import logo from '../components/SOYC.png'
+import logo from "../../components/SSYS.png";
 import {Link} from "react-router-dom";
 
 
 
 function Navbar() {
+    const [active, setActive] = useState("nav_menu");
+    const [toggleIcon, setToggleIcon] = useState("nav_toggler");
+
+    const navToggle = () => {
+        active==="nav_menu" ? setActive("nav_menu nav_active") : setActive("nav_menu");
+
+        toggleIcon==="nav_toggler"?setToggleIcon("nav_toggler toggle"):setToggleIcon("nav_toggler");
+    }
+
+
     return (
-        <nav className="navbar">
-            <div className="nav-link">
-                <i className="fa fa-bars"></i>
-            </div>
-            <ul className="navbar-nav">
-                <li className="nav-item">
-                    <Link to="/" className="nav-link">
-                        <span className="link-text">Logo to be here</span>
+        <nav className="nav">
+            <Link to="/" className="nav_brand">
+                <span>SSYS</span>
+            </Link>
+            <ul className={active}>
+                <li className="nav_item"> 
+                    <Link to="/">
+                        <span>Home</span>
                     </Link>
                 </li>
-                <li className="nav-item">
-                    <Link to="/info" className="nav-link">
-                        <span className="link-text">Conference Info</span>
+                <li className="nav_item"> 
+                    <Link to="/info">
+                        <span>Info</span>
                     </Link>
                 </li>
-                <li className="nav-item">
-                    <Link to="/account" className="nav-link">
-                        <span className="link-text">Account Page</span>
+                <li className="nav_item"> 
+                    <Link to="/account">
+                        <span>Account</span>
                     </Link>
                 </li>
-                <li className="nav-item">
-                    <Link to="/contact" className="nav-link">
-                        <span className="link-text">Contact Us</span>
+                <li className="nav_item"> 
+                    <Link to="/contact">
+                        <span>Contact</span>
                     </Link>
                 </li>
             </ul>
+            <div onClick = {navToggle} className={toggleIcon}>
+                <div className>Menu</div>
+            </div>
         </nav>
     );
 }
