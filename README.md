@@ -32,7 +32,6 @@ Zac:
 
 Weiqi:
 
-* Build Navbar
 * Use User Page figma design:
     * Create Header component
     * Create User Info component
