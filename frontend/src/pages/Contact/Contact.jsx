@@ -2,87 +2,46 @@ import React, {useState} from "react";
 import {httpReq} from "../../modules/http_requests";
 import ReactDOM from "react-dom";
 import "./Contact.css"
+import SOYC from "../../components/SOYC.png";
 
 function Contact() {
-    let [state, setState] = useState({
-        email: "",
-        to: "tech",
-        message: "",
-        submitted: false
-    });
-    let handleInputChange = (event) => {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        let partialState = {
-            email: state.email,
-            to: state.to,
-            message: state.message,
-            submitted: false
-        };
-        partialState[name] = value;
-        setState(partialState);
-    }
-    handleInputChange = handleInputChange.bind(this);
-
-    const sendForm = async () => {
-        let json = await httpReq("/api/contact/", "POST", {
-            email: state.email,
-            to: state.to,
-            message: state.message
-        })
-        let response = JSON.parse(json);
-        if (response.success) {
-            setState({
-                email: "",
-                to: "",
-                message: "",
-                submitted: true
-            });
-            let element = (
-                <p>Thank you for filling out the form!</p>
-            )
-            ReactDOM.render(element, document.getElementById('contactResult'));
-
-        } else if (response.errors.length > 0) {
-            let elements = [];
-            for (let i = 0; i < response.errors.length; i++) {
-                elements.push(<p key={i}>{response.errors[i]}</p>);
-            }
-            ReactDOM.render(elements, document.getElementById('contactResult'));
-        }
-    }
 
     return (
         <main>
             <div className="contactTop">
                 <h1>Contact Us</h1>
                 <div className="contactBlurb">
-                    <p>Have any questions? Problems? Notice a bug? Please use the contact form below and we will get back to you as soon as possible!</p>
+                    <p>Have any questions? Problems? Notice a bug? Please us using the information below!</p>
                 </div>
             </div>
-            <div className="contactBody">
-            <div className="contactEmailBox">
-                <label htmlFor={"email"}>Email: </label>
-                <input type={"text"} className="contactEmail" name={"email"} value={state.email} onChange={handleInputChange}/>
+            <div className="contactBodyBlue">
+                <h1>Summit Information</h1>
+                <div className="contactBlurb">
+                    <p>Have any general questions about the summit? Please email blythe@sustainableorillia.ca</p>
+                </div>
             </div>
-            <div className="contactEmailBox">
-                <label htmlFor={"to"}>To: </label>
-                    <select  className="contactToBox" id={"to"} name={"to"} value={state.to} onChange={handleInputChange}>
-                        <option readOnly={true} value="tech">Tech Support</option>
-                        <option readOnly={true} value="organizer">Conference Information</option>
-                    </select>
+            <div className="contactBodyGreen">
+                <h1>Tech Support</h1>
+                <div className="contactBlurb">
+                    <p>Having tech problems? Please email weiqixu2005@sustainableorillia.ca</p>
+                </div>
             </div>
-            <div className="contactTextBox">
-                <label htmlFor={"message"}>Message: </label>
-                <br/>
-                <textarea name="message" className="contactMessageBox" rows="10" value={state.message} onChange={handleInputChange}/>
+            <div className="contactSOYC">
+                <h1>SOYC Information</h1>
+                <div className="contactSOYCGrid">
+                    <div className="contactSOYCImageBox">
+                        <img className = "contactSOYCImage" src={SOYC} alt="SOYC" />
+                    </div>
+                    <div className="contactSOYCBlurb">
+                        <p>If you are interested in finding out more about the SOYC, or perhaps even joining, you can email yc@sustainableorillia.ca or click the button below to check out our Instagram!</p>
+                        <div className="contactSOYCButtonBox">
+                            <a href='https://www.instagram.com/sustainableorillia_yc/'>
+                                <button className="contactSOYCButton">SOYC Instagram</button>   
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="contactButtonBox">
-                <button className="contactButton" onClick={sendForm}>Submit</button>   
-            </div>
-            </div>
-            <div id={"contactResult"}></div>
         </main>
     );
 }

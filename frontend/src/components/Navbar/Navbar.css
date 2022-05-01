@@ -1,84 +1,120 @@
-*,
-*::after,
-*::before {
+*{
     margin:0;
+    padding:0;
     box-sizing:border-box;
 }
 
-html{
-    font-size: 62.5%;
+.navbar{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    height:75px;
+    background-color: white;
+    color:#002a4a;
 }
 
-body{
-    font-size:1.6rem;
+.nav_menu2{
+    display:flex;
+    align-items:left;
+    justify-content:left;
 }
 
-li{
+.nav-links{
+    display:flex;
+    justify-content:flex-end;
     list-style:none;
+    width:75%;
 }
 
-a{
+.nav-links2{
+    display:flex;
+    justify-content:flex-start;
+    list-style:none;
+    width:25%;
+}
+
+.home,
+.info, 
+.account,
+.contact{
     text-decoration:none;
-    color: #002a4a;
+    color:#002a4a;
+    font-size:20px;
+    padding:10px 20px;
+    margin: 0 20px;
+    cursor:pointer; 
 }
 
-.nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-    height:6rem;
-    background: white;
-}
-
-.nav_menu{
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-    gap:3rem;
-}
-
-.nav_toggler div{
-    width:2.5rem;
-    height:0.2rem;
-    width:1rem;
-}
-
-.nav_toggler{
+.home,
+.info,
+.account,
+.contact:hover{
     cursor:pointer;
+}
+
+.mobile-menu-icon{
     display:none;
 }
 
-@media(max-width:1080px) {
-    .nav_toggler{
+@media(max-width:1080px){
+    .logo{
+        display:flex;
+        position:absolute;
+        top:15px;
+        left:35px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .nav-links-mobile{
+        position:absolute;
         display:block;
+        list-style:none;
+        background-color:white;
+        left:0;
+        top:75px;
+        transition: all 0.5s ease-out;
+        width: 100%;
     }
-    .nav_menu{
-        top:5vh;
-        position:fixed;
-        right: 0;
-        width: 50%;
-        height:60vh;
-        background: rgb(0,28,73);
-        flex-direction: column;
-        transform: translateX(100%);
-        transition: 0.25s ease-in;
-        gap:1rem;
+
+    .home,
+    .info,
+    .account,
+    .contact{
+        color:#002a4a;
+        text-align:center;
+        padding:32px;
+        width:100%;
+        transition:all 0.5s ease;
     }
-    a{
-        text-decoration:none;
-        color: white;
+
+    .mobile-menu-icon{
+        display:block;
+        position:absolute;
+        font-size:30px;
+        color:#002a4a;
+        background-color: white;
+        border:none;
+        outline:none;
+        top:15px;
+        right:25px;
+    }
+
+    .nav-links2{
+        display:flex;
+        justify-content:flex-start;
+        list-style:none;
+        width:25%;
     }
 }
 
-.nav_active{
-    transform:translateX(0);
-}
-
-.navMenu{
-    line-height:0rem;
-    text-align:center;
+.navButtonBackground{
+    background-color:white;
+    color:#002a4a;
 }
 
 .navImage{
-    width:6rem;
+    width:5rem;
 }

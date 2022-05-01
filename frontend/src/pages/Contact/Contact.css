@@ -20,59 +20,107 @@
     padding-right:1rem;
 }
 
-.contactBody{
-    background-color:#002a4a;
+.contactBodyBlue{
+    background-color:#002A4A;
+    margin-top:0.5rem;
+}
+
+.contactBodyBlue > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.contactBodyGreen{
+    background-color:#2D6434;
+    margin-top:0.5rem;
+}
+
+.contactBodyGreen > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+/*SOYC stuff*/
+.contactSOYC{
+    background-color: #002A4A;
+    margin-top:0.5rem;
+}
+
+.contactSOYC > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.contactSOYCBlurb{
+    padding-bottom: 1rem;
     color: #FEF363;
-    padding-top:1rem;
-    padding-bottom:1rem;
-}
-
-.contactEmailBox{
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
     text-align:center;
     margin:auto;
-    padding-top:1rem;
-    align-self:center;
+    padding-right:2rem;
+    padding-left:1rem;
 }
 
-.contactEmail{
-    background-color: #93D783;
-    color: black;
+.contactSOYCGrid{
+    display:grid;
+    grid-template-columns:repeat(2,50vw);
 }
 
-.contactTextBox{
-    padding-top:1.5rem;
-    margin:auto;
+.contactSOYCImageBox{
+    padding-bottom: 2.5rem;
     text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
+    max-width:35vw;
+    margin:auto;
 }
 
-.contactMessageBox{
-    width:33vw;
-    background-color:#93D783;
-    color:black;
+.contactSOYCImage{
+    object-fit:contain;
+    width:100%;
+    border-radius:0.5rem;
 }
 
-@media(max-width:1080px) {
-    .contactMessageBox{
-        width:70vw;
-        background-color:#93D783;
-        color:black;
+@media(max-width:1080px){
+    .contactSOYCGrid{
+        display:grid;
+        grid-template-columns:1fr;
     }
 
-    .contactEmail{
-        background-color: #93D783;
-        color: black;
-        width:40vw;
+    .contactSOYCImageBox{
+        padding-bottom: 2.5rem;
+        text-align:center;
+        max-width:80vw;
+        margin:auto;
+    }
+
+    .contactSOYCBlurb{
+        padding-bottom: 1rem;
+        color: #FEF363;
+        font-size: 1.5rem;
+        padding-bottom: 2.5rem;
+        text-align:center;
+        margin:auto;
+        padding-right:1rem;
+        padding-left:1rem;
+    }
+
+    .contactSOYCImage{
+        object-fit:contain;
+        width:100%;
+        border-radius:0.5rem;
+        max-height:40vh;
     }
 }
 
-.contactButtonBox{
-    margin:auto;
-    text-align:center;
-    padding-top:2rem;
-    padding-bottom:3rem;
-}
-
-.contactButton{
+.contactSOYCButton{
     background-color: #2D6434;
     border: none;
     color: #FEF363;
@@ -86,13 +134,15 @@
     line-height:0rem;
 }
 
-.contactButton:hover {
+.contactSOYCButton:hover {
     font-weight: 300;
     transition: all 0.5s ease-in-out;
     background-color: #fff;
     color: #002A4A;
 }
 
-.contactToBox{
-    background-color:#93D783;
+.contactSOYCButtonBox{
+    padding-top:2rem;
+    margin:auto;
+    text-align:center;
 }
