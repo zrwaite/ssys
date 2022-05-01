@@ -1,0 +1,25 @@
+.teacherCodeTop{
+    margin-bottom:0.5rem;
+    background-color: #2D6434;
+}
+
+.teacherCodeTop > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.teacherCodeBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
+}
+
+.teacherCodeBody{
+    background-color:#002a4a;
+}
