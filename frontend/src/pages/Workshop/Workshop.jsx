@@ -10,6 +10,7 @@ import YCL from "../../components/YCL.jpg";
 import BradDibble from "../../components/BradDibble.jpg";
 import Ellen from "../../components/Ellen.jpg";
 import Bolu from "../../components/Bolu.jpg";
+import {Link} from "react-router-dom";
 
 const workshopsData = [
     {
@@ -75,13 +76,6 @@ const workshopsData = [
         summary: "filler",
         description: "Filler",
     },
-    {
-        name: "Dr. Ellen Field and Bonnie Anderson",
-        imageSrc: Ellen,
-        title: "Parallel Professional Development Workshop for Teachers - Integrating Climate Change into Your Teaching",
-        summary: "Ellen Field is an Assistant Professor in the Faculty of Education at Lakehead University...",
-        description: "Ellen Field is an Assistant Professor in the Faculty of Education at Lakehead University. Her research interests are in policy and practice of climate change education in the Canadian K-12 system. Dr. Field has a strong background in survey development and implementation, educational tool development and stakeholder engagement. She is engaged with Ministries, school boards, teachers and community members, and co-leads an online community on Climate Change Education in Canada. Ellen teaches Environmental Education (B.Ed) and Climate Change Education (M.Ed) in the Faculty of Education, and has engaged 800 teachers in professional development workshops in the last several years. Ellen is an Associate Editor of the Canadian Journal of Environmental Education and co-chair of the Canadian Regional Hub of Monitoring and Evaluation of Climate Change Education (MECCE). Bonnie Anderson is the Outdoor Environmental Education and Healthy Active Living Coordinator for the Simcoe County District School Board. She has extensive experience in leadership in environmental education programs and has worked in Peel, Toronto, Bark Lake Leadership Centre, and Kawartha Pine Ridge District School Boards in coordinating positions.",
-    },
 ]
 
 function Workshop() {
@@ -90,7 +84,12 @@ function Workshop() {
         <div className="workshopTop">
             <h1>WORKSHOPS</h1>
             <div className="workshopBlurb">
-                <p>Below are our wonderful workshops and their facilitators! There's even one for the teachers (just scroll to the bottom)!</p>
+                <p>Below are our wonderful workshops and their facilitators! There's even one for the teachers (just click the button below)!</p>
+            </div>
+            <div className="workshopTopButtonBox">
+                    <a href='#teacherWorkshop'>
+                        <button className="workshopTopButton">Teacher Workshop</button>   
+                    </a>
             </div>
         </div>
 {
@@ -131,6 +130,21 @@ function Workshop() {
     }
     })
 }
+    <div className="workshopBlue" id="teacherWorkshop">
+        <h1>Dr. Ellen Field and Bonnie Anderson</h1>
+        <div className="workshopGrid">
+            <div className="workshopImageBox">
+                <img className="workshopImage" src={Ellen} alt="Dr. Ellen Field and Bonnie Anderson"></img>
+            </div>
+            <div className="workshopBlurb">
+                <p>Parallel Professional Development Workshop for Teachers - Integrating Climate Change into Your Teaching</p><br/><br/>
+                <details>
+                <summary>Ellen Field is an Assistant Professor in the Faculty of Education at Lakehead University...</summary>
+                <p>Ellen Field is an Assistant Professor in the Faculty of Education at Lakehead University. Her research interests are in policy and practice of climate change education in the Canadian K-12 system. Dr. Field has a strong background in survey development and implementation, educational tool development and stakeholder engagement. She is engaged with Ministries, school boards, teachers and community members, and co-leads an online community on Climate Change Education in Canada. Ellen teaches Environmental Education (B.Ed) and Climate Change Education (M.Ed) in the Faculty of Education, and has engaged 800 teachers in professional development workshops in the last several years. Ellen is an Associate Editor of the Canadian Journal of Environmental Education and co-chair of the Canadian Regional Hub of Monitoring and Evaluation of Climate Change Education (MECCE). Bonnie Anderson is the Outdoor Environmental Education and Healthy Active Living Coordinator for the Simcoe County District School Board. She has extensive experience in leadership in environmental education programs and has worked in Peel, Toronto, Bark Lake Leadership Centre, and Kawartha Pine Ridge District School Boards in coordinating positions.</p>
+                </details>
+            </div>
+        </div>
+    </div>
     </main>
     );
 }
