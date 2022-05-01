@@ -1,59 +1,40 @@
-.contactblurb{
-    margin:auto;
-    width:100%;
+.contactTop{
+    background-color: #2D6434;
+    margin-bottom:0.5rem;
+}
+
+.contactTop > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.contactBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
     text-align:center;
-    padding-bottom:1rem;
+    padding-left:1rem;
+    padding-right:1rem;
+}
+
+.contactBody{
+    background-color:#002a4a;
+    color: #FEF363;
     padding-top:1rem;
-    background-color:darkgreen;
-    color:gold;
+    padding-bottom:1rem;
 }
 
-.contactus{
-    align-items:center;
+.contactEmailBox{
     text-align:center;
     margin:auto;
+    padding-top:1rem;
+    align-self:center;
 }
 
-.contactheader{
-    background-color:darkgreen;
-    background-size:cover;
-}
-
-.emailthing{
-    background-color:white;
-    margin:auto;
-    width:60%;
-    padding-top:0.5rem;
-    padding-bottom:0.5rem;
-    border-top-left-radius: 1rem;
-    border-top-right-radius:1rem;
-}
-
-.emailbox{
-    color:blue;
-    border-radius:0.5rem;
-    border:1px solid green;
-}
-
-.messagebox{
-    border-radius:0.5rem;
-    width:50%;
-}
-
-.bottomofcontact{
-    background-color:white;
-    margin:auto;
-    width:60%;
-    padding-top:0.5rem;
-    padding-bottom:0.5rem;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius:1rem;
-}
-
-.bottomofgreencontact{
-    background-color:darkgreen;
-}
-
-.contactuscolour{
-    color:gold;
+.contactEmail{
+    background-color: #93D783;
+    color: black;
 }

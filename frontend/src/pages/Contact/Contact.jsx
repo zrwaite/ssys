@@ -55,40 +55,31 @@ function Contact() {
 
     return (
         <main>
-        <div className="contactus">
-            <div className="contactheader">
-                <h1 className="contactuscolour">Contact Us</h1>
-                <p className="contactblurb">Have any questions? Problems? Notice a bug? Please use the contact form below and we will get back to you as soon as possible!<br/></p>
-                <div className="emailthing">
-                    <br/>
-                   <label htmlFor={"email"}>Email: </label>
-                   <input type={"text"} className="emailbox" name={"email"} value={state.email} onChange={handleInputChange}/>
-                   <br/>
+            <div className="contactTop">
+                <h1>Contact Us</h1>
+                <div className="contactBlurb">
+                    <p>Have any questions? Problems? Notice a bug? Please use the contact form below and we will get back to you as soon as possible!</p>
                 </div>
             </div>
-            <br/>
+            <div className="contactEmailBox">
+                <label htmlFor={"email"}>Email: </label>
+                <input type={"text"} className="contactEmail" name={"email"} value={state.email} onChange={handleInputChange}/>
+            </div>
             <div>
                 <label htmlFor={"to"}>To:</label>
-                <select id={"to"} name={"to"} value={state.to} onChange={handleInputChange}>
-                    <option readOnly={true} value="tech">Tech Support</option>
-                    <option readOnly={true} value="organizer">Conference Information</option>
-                </select>
-                <br/><br/>
+                    <select id={"to"} name={"to"} value={state.to} onChange={handleInputChange}>
+                        <option readOnly={true} value="tech">Tech Support</option>
+                        <option readOnly={true} value="organizer">Conference Information</option>
+                    </select>
+            </div>
+            <div>
                 <label htmlFor={"message"}>Message: </label>
-                <br/>
                 <textarea name="message" className="messagebox" rows="10" value={state.message} onChange={handleInputChange}/>
             </div>
-            <div className="bottomofgreencontact">
-                  <div className="bottomofcontact">
-                      <br/>
-                     <button className="submit" onClick={sendForm}>Submit</button>   
-                 </div>
-                 <br/>
+            <div className="bottomofcontact">
+                <button className="submit" onClick={sendForm}>Submit</button>   
             </div>
-            <div id={"contactResult"}>
-
-            </div>
-            </div>
+            <div id={"contactResult"}></div>
         </main>
     );
 }
