@@ -26,7 +26,7 @@ a{
     display:flex;
     align-items:center;
     justify-content:space-around;
-    height:4rem;
+    height:6rem;
     background: white;
 }
 
@@ -53,11 +53,11 @@ a{
         display:block;
     }
     .nav_menu{
+        top:5vh;
         position:fixed;
-        top:7vh;
         right: 0;
         width: 50%;
-        height:50vh;
+        height:60vh;
         background: rgb(0,28,73);
         flex-direction: column;
         transform: translateX(100%);
@@ -77,4 +77,8 @@ a{
 .navMenu{
     line-height:0rem;
     text-align:center;
+}
+
+.navImage{
+    width:6rem;
 }

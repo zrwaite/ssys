@@ -18,10 +18,12 @@ function Navbar() {
 
     return (
         <nav className="nav">
-            <Link to="/">
-                <span>SSYS</span>
-            </Link>
             <ul className={active}>
+                <li className="nav_item">
+                    <a href="/">
+                    <img className="navImage"src={logo} alt="SSYS"/>
+                    </a>
+                </li>
                 <li className="nav_item"> 
                     <Link to="/">
                         <span>Home</span>
