@@ -18,12 +18,14 @@ function Navbar() {
 
     return (
         <nav className="nav">
-            <ul className={active}>
-                <li className="nav_item">
+            <ul className="nav_menu2">
+            <li className="nav_item">
                     <a href="/">
                     <img className="navImage"src={logo} alt="SSYS"/>
                     </a>
                 </li>
+            </ul>
+            <ul className={active}>
                 <li className="nav_item"> 
                     <Link to="/">
                         <span>Home</span>
