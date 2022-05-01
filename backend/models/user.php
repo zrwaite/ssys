@@ -100,14 +100,11 @@ class PostUser
 
 class PutUser
 {
-    public array $params = ["fname", "lname", "password", "school", "city", "workshop_choices", "diet", "bio", "additional_info", "public"];
+    public array $params = ["fname", "lname", "password", "school", "city", "workshop_choices", "diet", "bio", "additional_info", "public", "grade", "instagram", "emergency_contact"];
 // todo seperate based on user_type and add more specifications
     #[ArrayShape(["errors" => "array", "puts" => "array"])] //dev Array Shape reference
-    public function getPutArray($email, $user_type): array
+    public function getPutArray($email): array
     {
-        if ($user_type=="student"|| $user_type=="individual"){
-            array_push($this->params, "grade", "instagram", "emergency_contact");
-        }
         $errors = array();
         $puts = array();
         for ($i = 0; $i < count($this->params); $i++) {

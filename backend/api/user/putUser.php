@@ -15,27 +15,31 @@ $res = new Response();
 $res->request_type = "PUT";
 $user = new PutUser();
 //get post queries
-$email = getBody("email");
+$username = getBody("username");
 
 $puts = array();
-if (is_null($email)) array_push($res->errors, "Must include email");
+if (is_null($username)) array_push($res->errors, "Must include username");
 try {
-    $result = DB::queryFirstRow("SELECT id, user_type FROM ssys22_users WHERE email=%s LIMIT 1", $email);
+    $result = DB::queryFirstRow("SELECT id, teacher FROM ssys22_users WHERE username=%s LIMIT 1", $username);
 } catch (Exception $e) {
     array_push($res->errors, 'Message: ' . $e->getMessage());
 }
 if ($result) {
     if (count($res->errors) == 0) {
-        $user_puts_and_errors = $user->getPutArray($email, $result["user_type"]);
+        $user_puts_and_errors = $user->getPutArray($username);
         $res->errors = $user_puts_and_errors["errors"];
         $puts = $user_puts_and_errors["puts"];
         if (count($res->errors) == 0) {
             if (count($puts) == 0) array_push($res->errors, "You didn't send anything to update ");
             else {
-                $res->objects = $puts;
-                DB::update('ssys22_users', $puts, "email=%s", $email);
-                $res->status = 200;
-                $res->success = true;
+                try {
+                    DB::update('ssys22_users', $puts, "username=%s", $username);
+                    $res->objects = $puts;
+                    $res->status = 200;
+                    $res->success = true;
+                } catch (Exception) {
+                    array_push($res->errors, "Invalid input");
+                }
             }
         }
     }

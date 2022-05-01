@@ -14,7 +14,7 @@ function UserInfo(props) {
     
     const sendStudentForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
-            email: getCookie("email"),
+            username: getCookie("username"),
             school: props.school,
             city: props.city,
             grade: props.grade,
@@ -25,13 +25,13 @@ function UserInfo(props) {
         if (response.success && response.objects) {
             console.log(response);
         } else if (response.errors.length > 0) {
-            alert(JSON.stringify(response));
+            alert(JSON.stringify(response.errors));
         }
     }
 
     const sendTeacherForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
-            email: getCookie("email"),
+            username: getCookie("username"),
             school: props.school,
             city: props.city,
             bio: props.bio

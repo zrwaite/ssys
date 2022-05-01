@@ -12,7 +12,7 @@ function TeacherRegister(props) {
     } else teacherStyle = {display: "none"};
 
     let [state, setState] = useState({
-        email: "",
+        username: "",
         password: "",
         fname: "",
         lname: "",
@@ -31,7 +31,7 @@ function TeacherRegister(props) {
 
     const sendForm = async () => {
         let json = await httpReq("/api/user/", "POST", {
-            email: state.email,
+            username: state.username,
             password: state.password,
             fname: state.fname,
             lname: state.lname,
@@ -62,24 +62,28 @@ function TeacherRegister(props) {
                 </div>
             </div>
             <div>
-            <div className="registrationOptions">
+                <div className="registrationOptions">
                     <div className="registrationRight">
-                        <label htmlFor={"fname"}></label>
-                        <input className="registerBox" placeholder="FIRST NAME" type={"text"} name={"fname"} value={state.fname} onChange={handleInputChange}/>
+                        <label htmlFor={"fname"}>First name</label>
+                        <input className="registerBox" placeholder="FIRST NAME" type={"text"} name={"fname"}
+                               value={state.fname} onChange={handleInputChange}/>
                     </div>
                     <div className="registrationLeft">
-                        <label htmlFor={"lname"}></label>
-                        <input className="registerBox" placeholder="LAST NAME" type={"text"} name={"lname"} value={state.lname} onChange={handleInputChange}/>
+                        <label htmlFor={"lname"}>Last name</label>
+                        <input className="registerBox" placeholder="LAST NAME" type={"text"} name={"lname"}
+                               value={state.lname} onChange={handleInputChange}/>
                     </div>
                     <div className="registrationRight">
-                        <label htmlFor={"email"}></label>
-                        <input className="registerBox" placeholder="EMAIL@SCDSB.ON.CA" type={"text"} name={"email"} value={state.email} onChange={handleInputChange}/>
+                        <label htmlFor={"username"}>Username</label>
+                        <input className="registerBox" placeholder="USERNAME" type={"text"} name={"username"}
+                               value={state.username} onChange={handleInputChange}/>
                     </div>
                     <div className="registrationLeft">
-                        <label htmlFor={"password"}></label>
-                        <input className="registerBox" placeholder="PASSWORD" type={"password"} name={"password"} value={state.password} onChange={handleInputChange}/>
+                        <label htmlFor={"password"}>Password</label>
+                        <input className="registerBox" placeholder="PASSWORD" type={"password"} name={"password"}
+                               value={state.password} onChange={handleInputChange}/>
                     </div>
-            </div>
+                </div>
             </div>
             <div className="registrationBackground">
                 <div className="registerCenter">

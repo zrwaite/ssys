@@ -13,7 +13,7 @@ const ConferenceInfo = (props) => {
 
     const sendStudentForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
-            email: getCookie("email"),
+            username: getCookie("username"),
             diet: props.diet,
             emergency_contact: props.emergency_contact,
             additional_info: props.additional_info
@@ -28,7 +28,7 @@ const ConferenceInfo = (props) => {
 
     const sendTeacherForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
-            email: getCookie("email"),
+            username: getCookie("username"),
             diet: props.diet,
             additional_info: props.additional_info
         })

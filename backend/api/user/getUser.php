@@ -21,7 +21,7 @@ $res->request_type = "GET";
 $user = new GetUser();
 
 $username = getQuery("username");
-if (is_null($username)) array_push($res->errors, "Missing email query, or did you mean for a non-GET request?");
+if (is_null($username)) array_push($res->errors, "Missing username query, or did you mean for a non-GET request?");
 
 if (count($res->errors) == 0) {
     $tokenData = validateToken($username);

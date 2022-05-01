@@ -26,7 +26,7 @@ const WorkshopChoices = (props) => {
 		newWorkshops[secondIndex] = newWorkshops[index];
 		newWorkshops[index] = temp;
 		let json = await httpReq("/api/user/", "PUT", {
-			email: getCookie("email"),
+			username: getCookie("username"),
 			workshop_choices: newWorkshops.join(" ")
 		})
 		let response = JSON.parse(json);

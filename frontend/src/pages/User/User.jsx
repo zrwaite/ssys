@@ -22,7 +22,7 @@ const User = () => {
     const [dataPulled, setDataPulled] = useState(false);
     const [userData, setUserData] = useState({
         email: getCookie("email"),
-        studentInfo: (getCookie("user_type") === "student" || getCookie("user_type") === "individual"),
+        studentInfo: (getCookie("user_type") === "student"),
         fname: "",
         lname: "",
         image_link: "",
@@ -55,12 +55,12 @@ const User = () => {
     }
 
     const getUserData = async () => {
-        let json = await httpReq("/api/user/?email=" + getCookie("email"), "GET")
+        let json = await httpReq("/api/user/?username=" + getCookie("username"), "GET")
         let response = JSON.parse(json);
         if (response.success && response.objects) {
             setUserData({
                 ...userData,
-                email: getCookie("email"),
+                username: getCookie("username"),
                 fname: response.objects.fname,
                 lname: response.objects.lname,
                 image_approved: response.objects.image_approved,
