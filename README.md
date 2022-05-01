@@ -33,8 +33,6 @@ Zac:
 Weiqi:
 
 * Build Navbar
-* Create home page design on figma
-* Build Home page
 * Create contact us page on figma
 * Build contact us page
 * Use User Page figma design:
