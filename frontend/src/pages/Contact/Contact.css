@@ -38,3 +38,51 @@
     background-color: #93D783;
     color: black;
 }
+
+.contactTextBox{
+    padding-top:1.5rem;
+    margin:auto;
+    text-align:center;
+}
+
+.contactMessageBox{
+    width:33vw;
+    background-color:#93D783;
+    color:black;
+}
+
+@media(max-width:1080px) {
+    .contactMessageBox{
+        width:70vw;
+        background-color:#93D783;
+        color:black;
+    }
+}
+
+.contactButtonBox{
+    margin:auto;
+    text-align:center;
+    padding-top:2rem;
+    padding-bottom:3rem;
+}
+
+.contactButton{
+    background-color: #2D6434;
+    border: none;
+    color: #FEF363;
+    padding: 1.5rem 4rem;
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 1;
+    text-decoration: none;
+    cursor: pointer;
+    margin:auto;
+    line-height:0rem;
+}
+
+.contactButton:hover {
+    font-weight: 300;
+    transition: all 0.5s ease-in-out;
+    background-color: #fff;
+    color: #002A4A;
+}

@@ -61,23 +61,26 @@ function Contact() {
                     <p>Have any questions? Problems? Notice a bug? Please use the contact form below and we will get back to you as soon as possible!</p>
                 </div>
             </div>
+            <div className="contactBody">
             <div className="contactEmailBox">
                 <label htmlFor={"email"}>Email: </label>
                 <input type={"text"} className="contactEmail" name={"email"} value={state.email} onChange={handleInputChange}/>
             </div>
-            <div>
-                <label htmlFor={"to"}>To:</label>
+            <div className="contactEmailBox">
+                <label htmlFor={"to"}>To: </label>
                     <select id={"to"} name={"to"} value={state.to} onChange={handleInputChange}>
                         <option readOnly={true} value="tech">Tech Support</option>
                         <option readOnly={true} value="organizer">Conference Information</option>
                     </select>
             </div>
-            <div>
+            <div className="contactTextBox">
                 <label htmlFor={"message"}>Message: </label>
-                <textarea name="message" className="messagebox" rows="10" value={state.message} onChange={handleInputChange}/>
+                <br/>
+                <textarea name="message" className="contactMessageBox" rows="10" value={state.message} onChange={handleInputChange}/>
             </div>
-            <div className="bottomofcontact">
-                <button className="submit" onClick={sendForm}>Submit</button>   
+            <div className="contactButtonBox">
+                <button className="contactButton" onClick={sendForm}>Submit</button>   
+            </div>
             </div>
             <div id={"contactResult"}></div>
         </main>
