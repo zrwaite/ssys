@@ -62,7 +62,7 @@ function Info() {
             <div className="infoWhy">
                 <h1>WHY?</h1>
                 <div className="infoWhyBlurb">
-                    <p>To enable youth-led climate action across Simcoe County</p>
+                    <p>To enable youth-led climate action across Simcoe County. With each student taking part in 3 workshops of their choice, 1 collective workshop, and listening to 2 amazing keynote speakers, it will be a day they will never forget. </p>
                 </div>
             </div>
             <div className="infoKeynote">
