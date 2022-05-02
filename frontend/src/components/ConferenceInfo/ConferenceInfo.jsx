@@ -76,7 +76,7 @@ const ConferenceInfo = (props) => {
                     })
                 }
                 <div style={editDisplay}>
-                    <button className={"blackButton"} onClick={sendForm}>Submit</button>
+                    <button className={"greenButton"} onClick={sendForm}>Submit</button>
                 </div>
             </div>
         </div>

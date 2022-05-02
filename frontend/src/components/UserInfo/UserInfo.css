@@ -8,6 +8,10 @@
     margin: 1rem;
 }
 
+.userInfoBackground{
+    background-color: palegreen;
+}
+
 .infoHeader {
     margin: auto;
     display: flex;

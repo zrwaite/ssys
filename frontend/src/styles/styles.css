@@ -62,6 +62,22 @@ textarea {
 	border: 0.2rem solid black;
 	transition: color 0.3s, background-color 0.3s;
 }
+.blueButton{
+	background-color: #002a4a;
+	color: #fef363;
+	border-radius: 0.5rem;
+	text-align: center;
+	border: 0.2rem solid black;
+	transition: color 0.3s, background-color 0.3s;
+}
+.greenButton{
+	background-color: #2d6434;
+	color: #fef363;
+	border-radius: 0.5rem;
+	text-align: center;
+	border: 0.2rem solid black;
+	transition: color 0.3s, background-color 0.3s;
+}
 .disabledButton{
 	background-color: grey;
 	color: white;

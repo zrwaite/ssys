@@ -83,7 +83,7 @@ function UserInfo(props) {
                     })
                 }
                 <div style={editDisplay}>
-                    <button className={"blackButton"} onClick={sendForm}>Submit</button>
+                    <button className={"blueButton"} onClick={sendForm}>Submit</button>
                 </div>
             </div>
         </div>
