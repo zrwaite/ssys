@@ -1,15 +1,13 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 import "./User.css";
 import UserInfo from "../../components/UserInfo";
 import ConferenceInfo from "../../components/ConferenceInfo";
-import NotificationPanel from "../../components/NotificationPanel";
 import WorkshopChoices from "../../components/WorkshopChoices";
 
 import {getCookie, signedIn} from "../../modules/cookies";
 import {httpReq, baseURL} from "../../modules/http_requests";
 import SettingsPanel from "../../components/SettingsPanel";
 import AccountIcon from "../../images/account.svg";
-import {MobileContext} from "../../App";
 import StudentCodes from "../../components/StudentCodes";
 
 // import ReactDOM from "react-dom";
@@ -19,7 +17,6 @@ const getImageLink = (imageLink) => {
 }
 
 const User = () => {
-    const {mobile} = useContext(MobileContext);
     const [dataPulled, setDataPulled] = useState(false);
     const [userData, setUserData] = useState({
         email: getCookie("email"),
@@ -60,6 +57,7 @@ const User = () => {
         let json = await httpReq("/api/user/?username=" + getCookie("username"), "GET")
         let response = JSON.parse(json);
         if (response.success && response.objects) {
+            console.log(response.objects);
             setUserData({
                 ...userData,
                 username: getCookie("username"),
@@ -67,14 +65,14 @@ const User = () => {
                 lname: response.objects.lname,
                 image_approved: response.objects.image_approved,
                 account_enabled: response.objects.account_enabled,
-                school: response.objects.school,
-                city: response.objects.city,
-                grade: response.objects.grade,
-                instagram: response.objects.instagram,
-                bio: response.objects.bio,
-                diet: response.objects.diet,
-                emergency_contact: response.objects.emergency_contact,
-                additional_info: response.objects.additional_info,
+                school: response.objects.school || "",
+                city: response.objects.city || "",
+                grade: response.objects.grade || "",
+                instagram: response.objects.instagram || "",
+                bio: response.objects.bio || "",
+                diet: response.objects.diet || "",
+                emergency_contact: response.objects.emergency_contact || "",
+                additional_info: response.objects.additional_info || "",
                 image_link: response.objects.image_link ? getImageLink(response.objects.image_link) : AccountIcon,
                 public: response.objects.public,
                 password_set: response.objects.password_set,

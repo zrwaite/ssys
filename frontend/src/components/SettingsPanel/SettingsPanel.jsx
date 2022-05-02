@@ -16,7 +16,7 @@ const SettingsPanel = (props) => {
         display: false,
         editMode: false,
     });
-    let [inputImage, setInputImage] = useState(null);
+    let [inputImage, setInputImage] = useState("");
 
     let settingsDisplay = {display: "none"};
     if (state.display) settingsDisplay.display = "block";

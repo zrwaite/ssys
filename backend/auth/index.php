@@ -7,9 +7,6 @@ require_once __DIR__ . "/../modules/readParams.php";
 $type = getBody("type");
 
 switch ($type) {
-    case "confirmEmail":
-        require __DIR__ . "/confirmEmail.php";
-        break;
     case "signIn":
         require __DIR__ . "/signin.php";
         break;

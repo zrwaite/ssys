@@ -22,9 +22,8 @@ $res->request_type = "POST";
 $res->objects = json_decode(file_get_contents('php://input'), true);
 
 //get post queries
-$email = getBody("email");
-if (is_null($email)) array_push($res->errors, "Must include email");
-else if (!checkEmail($email)) array_push($res->errors, "Invalid email");
+$username = getBody("username");
+if (is_null($username)) array_push($res->errors, "Must include email");
 
 $image = $_FILES["image"];
 $filePath = false;
@@ -50,9 +49,9 @@ if (count($res->errors) == 0) {
     }
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $filePath)) {
         try {
-            $result = DB::queryFirstRow("SELECT id FROM ssys22_users WHERE email=%s LIMIT 1", $email);
+            $result = DB::queryFirstRow("SELECT id FROM ssys22_users WHERE username=%s LIMIT 1", $username);
             if ($result) {
-                DB::update('ssys22_users', ["image_link" => $fileName], "email=%s", $email);
+                DB::update('ssys22_users', ["image_link" => $fileName], "username=%s", $username);
                 $res->status = 200;
                 $res->success = true;
                 $res->objects = $fileName;
