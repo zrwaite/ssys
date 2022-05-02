@@ -115,10 +115,18 @@ const User = () => {
                     </div>
                 </div>
             </div>
+            <div className="userGreen">
+            {userData.teacher ? <h1>Student Codes</h1> :
+                        <h1>Workshop Selection</h1>}
+                <div className="userGreenBlurb">
+                {userData.teacher ? <p>Just enter the number of codes you would like and then press submit.</p> :
+                        <p>This is where you select your workshops! Just rank the workshops you would like to do from top being first, to bottom being last!</p>}
+                </div>
                 <div className={"informationColumn"}>
                     {userData.teacher ? <StudentCodes/> :
                         <WorkshopChoices {...userData} parentChangeWorkshopChoices={changeWorkshopChoices}/>}
                 </div>
+            </div>
         </main>
     );
 }

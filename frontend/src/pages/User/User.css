@@ -89,9 +89,11 @@
 
 @media(max-width:1080px){
     .userGrid{
-        display:flex;
-        flex-direction:column;
-        width:100vw;
+        display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width:100vw;
     }
 
     .userGridItem1{
@@ -112,4 +114,26 @@
     .userGridItem{
         width:100%;
     }
+}
+
+.userGreen{
+    background-color: #2d6434;
+    margin-top:0.5rem;
+}
+
+.userGreen > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.userGreenBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
 }
