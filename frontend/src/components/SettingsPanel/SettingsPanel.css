@@ -9,6 +9,7 @@
     border-radius: 0.5rem;
     background-color: #c0c0c0;
     padding: 1rem;
+    color:black;
 }
 
 .settingsPanelHeader {
@@ -54,4 +55,6 @@
 .logoutButton {
     margin: 1rem 2rem;
     font-size: 1.25rem;
+    background-color:#002a4a;
+    color:#fef363;
 }

@@ -100,7 +100,6 @@ const User = () => {
                 </div>
                 <div className={"horizontal"}>
                     <SettingsPanel {...userData} parentHandleInputChange={handleInputChange}/>
-                    <NotificationPanel {...userData} parentHandleInputChange={handleInputChange}/>
                 </div>
             </header>
             <section className={mobile ? "vertical" : "horizontalTop"}>

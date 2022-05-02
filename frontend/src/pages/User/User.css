@@ -6,6 +6,8 @@
     height: 5rem;
     box-sizing:content-box;
     padding: 0.5rem;
+    background-color:#93D783;
+    color: #fef363;
 }
 
 .userHeader > div {
