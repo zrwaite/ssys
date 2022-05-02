@@ -43,3 +43,25 @@
     justify-content: flex-start;
     align-items: center;
 }
+
+.userTop{
+    background-color: #002a4a;
+    margin-bottom:0.5rem;
+}
+
+.userTop > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.userBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
+}
