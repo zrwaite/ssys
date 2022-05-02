@@ -121,7 +121,7 @@ const SettingsPanel = (props) => {
                         <h4>First Name:</h4>
                         <div>
                             <p style={viewDisplay}>{props.fname}</p>
-                            <input style={editDisplay} type={"text"} name={"fname"} value={props.fname}
+                            <input className="settingsGreen" style={editDisplay} type={"text"} name={"fname"} value={props.fname}
                                    onChange={props.parentHandleInputChange}/>
                         </div>
                     </div>
@@ -129,7 +129,7 @@ const SettingsPanel = (props) => {
                         <h4>Last Name:</h4>
                         <div>
                             <p style={viewDisplay}>{props.lname}</p>
-                            <input style={editDisplay} type={"text"} name={"lname"} value={props.lname}
+                            <input className="settingsGreen" style={editDisplay} type={"text"} name={"lname"} value={props.lname}
                                    onChange={props.parentHandleInputChange}/>
                         </div>
                     </div>
@@ -137,7 +137,7 @@ const SettingsPanel = (props) => {
                         <h4>Public:</h4>
                         <div>
                             <p style={viewDisplay}>{props.public_view ? "Public" : "Private"}</p>
-                            <select style={editDisplay} name={"public_view"} value={props.public_view}
+                            <select className="settingsYellow" style={editDisplay} name={"public_view"} value={props.public_view}
                                     onChange={props.parentHandleInputChange}>
                                 <option value={true}>Public</option>
                                 <option value={false}>Private</option>
@@ -155,7 +155,7 @@ const SettingsPanel = (props) => {
                     </div>
                     <button className={"logoutButton"} onClick={logout}>Logout</button>
                     <div style={editDisplay}>
-                        <button onClick={sendForm}>Submit</button>
+                        <button className="settingsSubmit" onClick={sendForm}>Submit</button>
                     </div>
                 </div>
             </div>

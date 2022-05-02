@@ -7,7 +7,7 @@
     transform: translate(-50%, -50%);
     border: 0.3rem solid black;
     border-radius: 0.5rem;
-    background-color: #c0c0c0;
+    background-color: #93d783;
     padding: 1rem;
     color:black;
 }
@@ -57,4 +57,18 @@
     font-size: 1.25rem;
     background-color:#002a4a;
     color:#fef363;
+}
+
+.settingsSubmit{
+    background-color:#002a4a;
+    color:#fef363;
+}
+
+.settingsGreen{
+    background-color: #93d783;
+}
+
+.settingsYellow{
+    color:#fef363;
+    background-color:#002a4a;
 }
