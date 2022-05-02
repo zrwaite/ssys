@@ -108,10 +108,10 @@ const User = () => {
                 </div>
                 <div className={"userGrid"}>
                     <div className="userGridItem1">
-                    <UserInfo {...userData} parentHandleInputChange={handleInputChange}/>
+                        <UserInfo {...userData} parentHandleInputChange={handleInputChange}/>
                     </div>
                     <div className="userGridItem2">
-                    <ConferenceInfo {...userData} parentHandleInputChange={handleInputChange}/>
+                        <ConferenceInfo {...userData} parentHandleInputChange={handleInputChange}/>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,8 @@
     padding: 0.5rem;
     background-color:#93D783;
     color: #002a4a;
+    padding-left:1rem;
+    padding-right:1rem;
 }
 
 .userHeader > div {
@@ -81,24 +83,27 @@
     margin-left:3rem;
 }
 
+.userGridItem{
+
+}
+
 @media(max-width:1080px){
     .userGrid{
-        display:flex;
-        flex-direction:column;
+        display:grid;
+        grid-template-columns:100vw;
     }
 
     .userGridItem1{
         margin:auto;
-        max-width:80vw;
         text-align:center;
-        padding-left:1rem;
-        padding-right:1rem;
+        max-width:80vw;
     }
 
     .userGridItem2{
         margin:auto;
         max-width:80vw;
         text-align:center;
+        padding-bottom:2rem;
     }
 
     .userGridItem{
