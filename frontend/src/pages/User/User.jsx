@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./User.css";
 import UserInfo from "../../components/UserInfo";
+import UserInfoTeacher from "../../components/UserInfoTeacher";
 import ConferenceInfo from "../../components/ConferenceInfo";
 import WorkshopChoices from "../../components/WorkshopChoices";
 
@@ -108,7 +109,8 @@ const User = () => {
                 </div>
                 <div className={"userGrid"}>
                     <div className="userGridItem1">
-                        <UserInfo {...userData} parentHandleInputChange={handleInputChange}/>
+                        {userData.teacher?<UserInfoTeacher {...userData} parentHandleInputChange={handleInputChange}/>:
+                        <UserInfo {...userData} parentHandleInputChange={handleInputChange}/>}
                     </div>
                     <div className="userGridItem2">
                         <ConferenceInfo {...userData} parentHandleInputChange={handleInputChange}/>
