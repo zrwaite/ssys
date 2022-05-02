@@ -38,7 +38,10 @@ const StudentCodes = () => {
                 <h2>Get Student Access Codes</h2>
             </div>
             <div className={"infoBody"}>
-                <input type={"text"} value={state.numCodes} name={"numCodes"} onChange={handleInputChange}/>
+                <div className="studentCodesInput">
+                <input className="studentCodesGreen" placeholder="Insert Number" type={"text"} value={state.numCodes} name={"numCodes"} onChange={handleInputChange}/>
+                </div>
+                <div className="studentCodesInput">
                 <ul>
                     {
                         codes.map((code, i) => {
@@ -46,8 +49,9 @@ const StudentCodes = () => {
                         })
                     }
                 </ul>
-                <div>
-                    <button className={"blackButton"} onClick={getCodes}>Submit</button>
+                </div>
+                <div className="studentCodesCenter">
+                    <button className={"studentCodesButton"} onClick={getCodes}>Submit</button>
                 </div>
             </div>
         </div>

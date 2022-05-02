@@ -1,3 +1,26 @@
 .studentCodesPanel {
     background-color: orange;
 }
+
+.studentCodesCenter{
+    margin:auto;
+    text-align:center;
+}
+
+.studentCodesButton{
+    margin-top:1rem;
+    padding:1rem 3rem;
+    text-align:center;
+    background-color: #2d6434;
+    color:#fef363;
+    line-height:0rem;
+}
+
+.studentCodesGreen{
+    background-color: #93d783;
+}
+
+.studentCodesInput{
+    margin:auto;
+    text-align:center;
+}
