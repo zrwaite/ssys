@@ -56,7 +56,10 @@ const WorkshopChoices = (props) => {
 				<div className={"workshopChoice"} key={i}>
 					<div className={"workshopChoiceInfo"}>
 						<h2>{workshop.name}</h2>
+						<details>
+						<summary>About {workshop.name}</summary>
 						<p>{workshop.description}</p>
+						</details>
 						<img className={"workshopImage"} src={workshop.image_link} alt="workshop"/>
 					</div>
 					<div className={"workshopSelector"}>

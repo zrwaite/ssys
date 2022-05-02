@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "./UserInfo.css";
+import "./UserInfoTeacher.css";
 import editIcon from "../../images/edit.svg"
 import closeIcon from "../../images/close.svg"
 import {httpReq} from "../../modules/http_requests";
@@ -69,20 +69,10 @@ function UserInfo(props) {
                      alt={"close icon"}/>
             </div>
             <div className={"infoBody"}>
-                {props.teacher?
+                {
                     [
                         {displayName: "School", name: "school", inputType: "text"},
                         {displayName: "City", name: "city", inputType: "text"},
-                        {displayName: "Bio", name: "bio", inputType: "textarea"}
-                    ].map((keyValueData, i) => {
-                        return (
-                            <KeyValueEdit key={i} value={props[keyValueData.name]} {...keyValueData} editMode={state.editMode} parentHandleInputChange={props.parentHandleInputChange} />
-                        )
-                    }):[
-                        {displayName: "School", name: "school", inputType: "text"},
-                        {displayName: "City", name: "city", inputType: "text"},
-                        {displayName: "Grade", name: "grade", inputType: "text"},
-                        {displayName: "Instagram", name: "instagram", inputType: "text"},
                         {displayName: "Bio", name: "bio", inputType: "textarea"}
                     ].map((keyValueData, i) => {
                         return (

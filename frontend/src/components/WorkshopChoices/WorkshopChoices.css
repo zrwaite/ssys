@@ -12,6 +12,11 @@
 	background: #93d783;
 	display:flex;
 }
+
+.workshopChoiceInfo{
+	text-align:center;
+}
+
 .workshopImage{
 	width: min(100%, 10rem);
 }
