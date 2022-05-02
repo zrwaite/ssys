@@ -37,7 +37,7 @@ if ($result) {
                     $res->objects = $puts;
                     $res->status = 200;
                     $res->success = true;
-                } catch (Exception) {
+                } catch (Exception $e) {
                     array_push($res->errors, "Invalid input");
                 }
             }

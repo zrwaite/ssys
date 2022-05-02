@@ -9,7 +9,7 @@ class ErrorsString
 class ErrorsObject
 {
     public array $errors = array();
-    public mixed $response;
+    public $response;
 }
 
 class ErrorsBool

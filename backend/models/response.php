@@ -7,8 +7,8 @@ class Response
     public bool $success;
     public int $status;
     public array $errors;
-    public mixed $objects;
-    public string|null $request_type;
+    public $objects;
+    public $request_type;
 
     public function __construct()
     {

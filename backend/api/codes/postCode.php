@@ -40,7 +40,7 @@ if (!count($res->errors)) {
             $res->objects = $newCode;
             $res->success = true;
             $res->status = 201;
-        } catch (Exception) {
+        } catch (Exception $exception) {
             array_push($res->errors, "database error");
         }
     } else {
@@ -58,7 +58,7 @@ if (!count($res->errors)) {
                         'owner' => $username
                     ));
                     array_push($newCodes, $newCode);
-                } catch (Exception) {
+                } catch (Exception $exception) {
                     array_push($res->errors, "database error");
                 }
             }

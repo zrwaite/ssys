@@ -51,7 +51,7 @@ if (count($res->errors) == 0) {
                 $res->status = 200;
                 $res->success = true;
                 $res->objects = $user->createResponse();
-            } catch (Exception) {
+            } catch (Exception $e) {
                 array_push($res->errors, "database error");
             }
         } else array_push($res->errors, "failed to add code");

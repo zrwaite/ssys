@@ -54,7 +54,7 @@ class PostUser
         return checkCode($this->code, $this->postData["teacher"]);
     }
 
-    public function useCode(): string|null
+    public function useCode()
     {
         return useCode($this->code, $this->postData["teacher"]);
     }
@@ -111,7 +111,7 @@ class PutUser
             $current_param = $this->params[$i];
             $error = false;
             $param = getBody($current_param);
-            if (is_null($param)) continue; //If the parameter isn't defined continue, otherwise check the switch for special cases
+            if (is_null($param) || $param == "") continue; //If the parameter isn't defined continue, otherwise check the switch for special cases
             switch ($current_param) {
                 case "fname":
                 case "lname": //These do not have a special case right now.c
@@ -176,15 +176,16 @@ class PutUser
 class GetUser
 {
     public $parseTarget = [
-        "strings" => ["fname", "lname", "username", "image_link", "school", "city", "workshop_order", "workshop_choices", "bio", "additional_info", "diet", "teacher_email", "instagram", "emergency_contact"],
+        "strings" => ["fname", "lname", "username", "image_link", "school", "city", "workshop_order", "workshop_choices", "bio", "additional_info", "diet", "instagram", "emergency_contact"],
         "ints" => ["id", "grade"],
         "bools" => ["account_enabled", "public", "teacher"]
     ];
 
 
-    public function getParseResult(array|null $result): bool|array
+    public function getParseResult($result)
     {
         if (is_null($result)) return false;
+        $resArray = array();
         foreach ($this->parseTarget['strings'] as $elem) $resArray[$elem] = $result[$elem];
         foreach ($this->parseTarget['ints'] as $elem) $resArray[$elem] = intval($result[$elem]);
         foreach ($this->parseTarget['bools'] as $elem) $resArray[$elem] = boolval($result[$elem]);

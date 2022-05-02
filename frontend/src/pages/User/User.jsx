@@ -10,8 +10,6 @@ import SettingsPanel from "../../components/SettingsPanel";
 import AccountIcon from "../../images/account.svg";
 import StudentCodes from "../../components/StudentCodes";
 
-// import ReactDOM from "react-dom";
-
 const getImageLink = (imageLink) => {
     return baseURL + "/images/" + imageLink;
 }

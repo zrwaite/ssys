@@ -1,6 +1,6 @@
 import {getCookie} from "./cookies";
 
-const baseURL = "https://bundle-edinburgh-gathered-treating.trycloudflare.com/ssys/backend";
+const baseURL = "https://sustainableorillia.ca/ssys/backend";
 
 const imagePostReq = async (url, image, email) => {
     url = baseURL + url;
@@ -37,7 +37,7 @@ const httpReq = async (url, method = "GET", params = {}) => {
             response = await fetch(url, {
                 cache: 'no-cache',
                 headers: {
-                    //Authorization: "Bearer " + token
+                    Authorization: "Bearer " + token
                 }
             });
         } else {
@@ -47,7 +47,7 @@ const httpReq = async (url, method = "GET", params = {}) => {
                 // mode: 'same-origin',
                 headers: {
                     'Content-Type': 'application/json',
-                    //Authorization: "Bearer " + token
+                    Authorization: "Bearer " + token
                 },
                 body: JSON.stringify(params) // body data type must match "Content-Type" header
             });

@@ -25,7 +25,7 @@ class tokenBody
     }
 }
 
-function createToken(object|array $body): string
+function createToken($body): string
 {
     $key = $_ENV['JWT_KEY'];
     return JWT::encode($body, $key);
@@ -56,7 +56,7 @@ function getTokenData(): ErrorsObject
             $key = $_ENV['JWT_KEY'];
             $decoded = JWT::decode($token, new Key($key, 'HS256'));
             $result->response = $decoded;
-        } catch (Exception) {
+        } catch (Exception $e) {
             array_push($result->errors, "Invalid Token");
         }
     } else {

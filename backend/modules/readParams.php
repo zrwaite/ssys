@@ -1,5 +1,5 @@
 <?php
-function getBody(string $param): mixed
+function getBody(string $param)
 {
     if (isset($_POST[$param])) return $_POST[$param];
     else {
@@ -9,7 +9,7 @@ function getBody(string $param): mixed
     return null;
 }
 
-function getQuery(string $param): null|string
+function getQuery(string $param)
 {
     if (isset($_GET[$param])) return $_GET[$param];
     else return null;

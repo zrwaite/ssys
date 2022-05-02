@@ -4,7 +4,7 @@ create table sustaina_db.ssys22_codes
 (
     id      int auto_increment primary key,
     code    char(20),
-    teacher bool,
+    teacher boolean,
     used    BOOLEAN default 0,
     owner   char(100)
 );
@@ -16,10 +16,10 @@ CREATE TABLE sustaina_db.ssys22_users
     fname             CHAR(20)  NOT NULL,
     lname             CHAR(20)  NOT NULL,
     password_hash     CHAR(200) not null,
-    teacher           char(200),
+    teacher           boolean,
     grade             int(5),
     image_link        CHAR(200),
-    image_approved    BOOLEAN  DEFAULT 0,
+    image_approved    BOOLEAN DEFAULT 0,
     school            CHAR(100),
     city              CHAR(40),
     workshop_choices  VARCHAR(400),
@@ -29,9 +29,8 @@ CREATE TABLE sustaina_db.ssys22_users
     bio               CHAR(250),
     additional_info   CHAR(250),
     emergency_contact CHAR(200),
-    public            BOOLEAN  DEFAULT 0,
-    account_enabled   BOOLEAN  DEFAULT 1,
-    user_type   CHAR(40)
+    public            BOOLEAN DEFAULT 0,
+    account_enabled   BOOLEAN DEFAULT 1
 ) ENGINE = InnoDB;
 
 CREATE TABLE sustaina_db.ssys22_settings

@@ -1,0 +1,7 @@
+version: '2.0'
+services:
+  client:
+    build: ./
+    image: "zrwaite/ssysfrontend:3.0"
+    ports:
+      - "80:80"
