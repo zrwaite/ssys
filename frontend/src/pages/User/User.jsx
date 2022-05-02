@@ -102,16 +102,25 @@ const User = () => {
                     <SettingsPanel {...userData} parentHandleInputChange={handleInputChange}/>
                 </div>
             </header>
-            <section className={mobile ? "vertical" : "horizontalTop"}>
-                <div className={"informationColumn"}>
-                    <UserInfo {...userData} parentHandleInputChange={handleInputChange}/>
-                    <ConferenceInfo {...userData} parentHandleInputChange={handleInputChange}/>
+            <div className="userTop">
+                <h1>Welcome to your user page!</h1>
+                <div className="userTopBlurb">
+                {userData.teacher ? <p>Here, you can edit information about yourself, and generate codes for your students. Just enter the amount of codes you would like, and then press submit! Also, since you are a teacher, you won't be able to edit your grade or instagram or add an emergency contact.</p> :
+                        <p>Here, you can edit information about yourself, edit your profile (make sure to toggle the settings icon also), and choose your workshops!</p>}
                 </div>
+                <div className={"userGrid"}>
+                    <div className="userGridItem1">
+                    <UserInfo {...userData} parentHandleInputChange={handleInputChange}/>
+                    </div>
+                    <div className="userGridItem2">
+                    <ConferenceInfo {...userData} parentHandleInputChange={handleInputChange}/>
+                    </div>
+                </div>
+            </div>
                 <div className={"informationColumn"}>
                     {userData.teacher ? <StudentCodes/> :
                         <WorkshopChoices {...userData} parentChangeWorkshopChoices={changeWorkshopChoices}/>}
                 </div>
-            </section>
         </main>
     );
 }
