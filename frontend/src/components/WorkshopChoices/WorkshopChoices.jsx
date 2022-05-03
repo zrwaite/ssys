@@ -1,27 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
 import {httpReq} from "../../modules/http_requests";
 import {getCookie} from "../../modules/cookies";
 import upArrow from "../../images/upArrow.svg";
 import downArrow from "../../images/downArrow.svg";
 import "./WorkshopChoices.css"
+import {workshopsData} from "../../modules/workshops";
 
 const WorkshopChoices = (props) => {
-	const [dataPulled, setDataPulled] = useState(false);
-	const [workshops, setWorkshops] = useState([]);
-	const getWorkshops = async () => {
-		let json = await httpReq("/api/workshop/", "GET")
-		let response = JSON.parse(json);
-		console.log(response);
-		if (response.success && response.objects) {
-			setWorkshops(response.objects);
-		} else if (response.errors.length > 0) {
-			alert(response.errors);
-		}
-	}
 	const rearrangeWorkshops = async (index, up) => {
 		const newWorkshops = props.workshop_choices.split(" ");
-		let secondIndex = index+(up?-1:1);
-		if (secondIndex<0 || secondIndex >= workshops.length) return;
+		let secondIndex = index + (up ? -1 : 1);
+		if (secondIndex < 0 || secondIndex >= workshopsData.length) return;
 		let temp = newWorkshops[secondIndex];
 		newWorkshops[secondIndex] = newWorkshops[index];
 		newWorkshops[index] = temp;
@@ -37,30 +26,26 @@ const WorkshopChoices = (props) => {
 			alert(JSON.stringify(response));
 		}
 	}
-    if (!dataPulled) {
-		setDataPulled(true);
-		getWorkshops();
-	}
 	return (
-        <div className={"workshopChoicesPanel userPagePanel"}>
+		<div className={"workshopChoicesPanel userPagePanel"}>
 			<div className={"infoHeader"}>
-                <h2>Workshop Choices</h2>
-                {/* <img style={viewDisplay} src={editIcon} onClick={() => setState({...state, editMode: true})}
+				<h2>Workshop Choices</h2>
+				{/* <img style={viewDisplay} src={editIcon} onClick={() => setState({...state, editMode: true})}
                      alt={"edit icon"}/>
                 <img style={editDisplay} src={closeIcon} onClick={() => setState({...state, editMode: false})}
                      alt={"close icon"}/> */}
-            </div>
+			</div>
 			{props.workshop_choices.split(" ").map((id, i) => {
-				const workshop = workshops.find(item => item.code === id);
-				return !workshop?null:
+				const workshop = workshopsData.find(item => item.code === id);
+				return !workshop ? null :
 				<div className={"workshopChoice"} key={i}>
 					<div className={"workshopChoiceInfo"}>
 						<h2>{workshop.name}</h2>
 						<details>
-						<summary>About {workshop.name}</summary>
-						<p>{workshop.description}</p>
+							<summary>About {workshop.title}</summary>
+							<p>{workshop.description}</p>
 						</details>
-						<img className={"workshopImage"} src={workshop.image_link} alt="workshop"/>
+						<img className={"workshopImage"} src={workshop.imageSrc} alt="workshop"/>
 					</div>
 					<div className={"workshopSelector"}>
 						<div className={"workshopSelectorUp"} onClick={() => rearrangeWorkshops(i, true)}>

@@ -1,8 +1,8 @@
 import React from "react";
 import "./Info.css";
-import lakehead from "../../components/lakehead.png";
-import BradDibble from "../../components/BradDibble.jpg";
-import AllieRougeot from "../../components/AllieRougeot.jpg";
+import lakehead from "../../images/lakehead.png";
+import BradDibble from "../../images/BradDibble.jpg";
+import AllieRougeot from "../../images/AllieRougeot.jpg";
 import {Link} from "react-router-dom";
 import CountdownSummit from "../../components/CountdownSummit/CountdownSummit.jsx";
 
@@ -12,7 +12,8 @@ function Info() {
             <div className="infoTop">
                 <h1>WHAT TO EXPECT</h1>
                 <div className="infoBlurb">
-                    <p>JOIN US FOR A DAY OF EMPOWERING SPEECHES BY LEADERS IN SUSTAINABILITY AND ENVIRONMENTALISM, AND A SERIES OF IMPACTFUL WORKSHOPS</p>
+                    <p>JOIN US FOR A DAY OF EMPOWERING SPEECHES BY LEADERS IN SUSTAINABILITY AND ENVIRONMENTALISM, AND A
+                        SERIES OF IMPACTFUL WORKSHOPS</p>
                 </div>
             </div>
             <div className="infoWho">

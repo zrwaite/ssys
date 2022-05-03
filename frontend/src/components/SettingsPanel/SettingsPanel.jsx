@@ -129,30 +129,31 @@ const SettingsPanel = (props) => {
                         <h4>Last Name:</h4>
                         <div>
                             <p style={viewDisplay}>{props.lname}</p>
-                            <input className="settingsGreen" style={editDisplay} type={"text"} name={"lname"} value={props.lname}
+                            <input className="settingsGreen" style={editDisplay} type={"text"} name={"lname"}
+                                   value={props.lname}
                                    onChange={props.parentHandleInputChange}/>
                         </div>
                     </div>
-                    <div className={"infoRow"}>
-                        <h4>Public:</h4>
-                        <div>
-                            <p style={viewDisplay}>{props.public_view ? "Public" : "Private"}</p>
-                            <select className="settingsYellow" style={editDisplay} name={"public_view"} value={props.public_view}
-                                    onChange={props.parentHandleInputChange}>
-                                <option value={true}>Public</option>
-                                <option value={false}>Private</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className={"infoRow"}>
-                        <h4>Image:</h4>
-                        <div>
-                            <img style={viewDisplay} className={"userImage"} src={props.image_link}
-                                 alt={props.image_link}/>
-                            <input style={editDisplay} type={"file"} accept={"image/*"}
-                                   onChange={(e) => setInputImage(e.target.files[0])}/>
-                        </div>
-                    </div>
+                    {/*<div className={"infoRow"}>*/}
+                    {/*    <h4>Public:</h4>*/}
+                    {/*    <div>*/}
+                    {/*        <p style={viewDisplay}>{props.public_view ? "Public" : "Private"}</p>*/}
+                    {/*        <select className="settingsYellow" style={editDisplay} name={"public_view"} value={props.public_view}*/}
+                    {/*                onChange={props.parentHandleInputChange}>*/}
+                    {/*            <option value={true}>Public</option>*/}
+                    {/*            <option value={false}>Private</option>*/}
+                    {/*        </select>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                    {/*<div className={"infoRow"}>*/}
+                    {/*    <h4>Image:</h4>*/}
+                    {/*    <div>*/}
+                    {/*        <img style={viewDisplay} className={"userImage"} src={props.image_link}*/}
+                    {/*             alt={props.image_link}/>*/}
+                    {/*        <input style={editDisplay} type={"file"} accept={"image/*"}*/}
+                    {/*               onChange={(e) => setInputImage(e.target.files[0])}/>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                     <button className={"logoutButton"} onClick={logout}>Logout</button>
                     <div style={editDisplay}>
                         <button className="settingsSubmit" onClick={sendForm}>Submit</button>

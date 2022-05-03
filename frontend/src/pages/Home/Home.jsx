@@ -1,9 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import logo from "../../components/SOYC.png";
-import LindaEllen from "../../components/LindaEllen.jpg";
+import logo from "../../images/SOYC.png";
+import LindaEllen from "../../images/LindaEllen.jpg";
 import "./Home.css";
-import CountdownRegistration from "../../components/CountdownRegistration/CountdownRegistration.jsx";
 import CountdownSummit from "../../components/CountdownSummit/CountdownSummit.jsx";
 
 function Home() {
@@ -12,7 +11,8 @@ function Home() {
             <div className="homeTop">
                 <h1>LEADING THE ECO-REVOLUTION</h1>
                 <div className="homeBlurb">
-                    <p>A one-of-a-kind event created by youth, for youth: empowering high school students to take a stand for their future</p>
+                    <p>A one-of-a-kind event created by youth, for youth: empowering high school students to take a
+                        stand for their future</p>
                 </div>
                 <div className="homeRegisterBox">
                     <Link to="/account" className="homeRegister">

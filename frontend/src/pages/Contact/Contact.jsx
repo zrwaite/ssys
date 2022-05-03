@@ -1,8 +1,6 @@
-import React, {useState} from "react";
-import {httpReq} from "../../modules/http_requests";
-import ReactDOM from "react-dom";
+import React from "react";
 import "./Contact.css"
-import SOYC from "../../components/SOYC.png";
+import SOYC from "../../images/SOYC.png";
 
 function Contact() {
 

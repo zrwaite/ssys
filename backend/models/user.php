@@ -62,8 +62,8 @@ class PostUser
     public function randomWorkshopChoices()
     {
         $workshopOptions = array();
-        foreach (WORKSHOPS as $workshop) {
-            array_push($workshopOptions, $workshop["code"]);
+        foreach (WORKSHOP_IDS as $workshopId) {
+            array_push($workshopOptions, $workshopId);
         }
         shuffle($workshopOptions);
         $this->postData["workshop_choices"] = join(" ", $workshopOptions);
