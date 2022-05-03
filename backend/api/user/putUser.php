@@ -29,6 +29,8 @@ if ($result) {
         $user_puts_and_errors = $user->getPutArray($username);
         $res->errors = $user_puts_and_errors["errors"];
         $puts = $user_puts_and_errors["puts"];
+        $tokenData = validateToken($username);
+        if (!$tokenData->success) $res->errors = array_merge($res->errors, $tokenData->errors);
         if (count($res->errors) == 0) {
             if (count($puts) == 0) array_push($res->errors, "You didn't send anything to update ");
             else {

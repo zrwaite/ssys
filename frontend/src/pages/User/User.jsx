@@ -56,7 +56,6 @@ const User = () => {
         let json = await httpReq("/api/user/?username=" + getCookie("username"), "GET")
         let response = JSON.parse(json);
         if (response.success && response.objects) {
-            console.log(response.objects);
             setUserData({
                 ...userData,
                 username: getCookie("username"),

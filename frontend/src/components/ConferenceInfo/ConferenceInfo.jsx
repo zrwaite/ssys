@@ -54,6 +54,7 @@ const ConferenceInfo = (props) => {
         editDisplay.display = "grid";
         viewDisplay.display = "none";
     }
+    console.log(props.teacher);
     return (
         <div className={"conferenceInfoPanel userPagePanel"}>
             <div className={"infoHeader"}>
@@ -65,13 +66,24 @@ const ConferenceInfo = (props) => {
             </div>
             <div className={"infoBody"}>
                 {
-                    [
+                    props.teacher ? [
+                        {displayName: "Dietary Restrictions", name: "diet", inputType: "textarea"},
+                        {displayName: "Additional Info", name: "additional_info", inputType: "textarea"},
+                    ].map((keyValueData, i) => {
+                        return (
+                            <KeyValueEdit key={i} value={props[keyValueData.name]} {...keyValueData}
+                                          editMode={state.editMode}
+                                          parentHandleInputChange={props.parentHandleInputChange}/>
+                        )
+                    }) : [
                         {displayName: "Dietary Restrictions", name: "diet", inputType: "textarea"},
                         {displayName: "Emergency Contact", name: "emergency_contact", inputType: "text"},
                         {displayName: "Additional Info", name: "additional_info", inputType: "textarea"},
                     ].map((keyValueData, i) => {
                         return (
-                            <KeyValueEdit key={i} value={props[keyValueData.name]} {...keyValueData} editMode={state.editMode} parentHandleInputChange={props.parentHandleInputChange} />
+                            <KeyValueEdit key={i} value={props[keyValueData.name]} {...keyValueData}
+                                          editMode={state.editMode}
+                                          parentHandleInputChange={props.parentHandleInputChange}/>
                         )
                     })
                 }

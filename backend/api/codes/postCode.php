@@ -10,6 +10,7 @@ require_once __DIR__ . "/../../models/response.php";
 require_once __DIR__ . "/../../modules/database.php"; //Connect to database
 require_once __DIR__ . "/../../modules/readParams.php";
 require_once __DIR__ . "/../../modules/generateData.php";
+require_once __DIR__ . "/../../auth/tokens.php";
 
 
 $dotenv = new Dotenv();
@@ -48,18 +49,22 @@ if (!count($res->errors)) {
         else if (is_null($numCodes)) array_push($res->errors, "missing num_codes");
         else if (!is_numeric($numCodes)) array_push($res->errors, $numCodes);
         else {
-            $newCodes = array();
-            for ($i = 0; $i < $numCodes; $i++) {
-                $newCode = generateAccessCode();
-                try {
-                    DB::insert('ssys22_codes', array(
-                        'teacher' => false,
-                        'code' => $newCode,
-                        'owner' => $username
-                    ));
-                    array_push($newCodes, $newCode);
-                } catch (Exception $exception) {
-                    array_push($res->errors, "database error");
+            $tokenData = validateToken($username);
+            if (!$tokenData->success) $res->errors = array_merge($res->errors, $tokenData->errors);
+            else {
+                $newCodes = array();
+                for ($i = 0; $i < $numCodes; $i++) {
+                    $newCode = generateAccessCode();
+                    try {
+                        DB::insert('ssys22_codes', array(
+                            'teacher' => false,
+                            'code' => $newCode,
+                            'owner' => $username
+                        ));
+                        array_push($newCodes, $newCode);
+                    } catch (Exception $exception) {
+                        array_push($res->errors, "database error");
+                    }
                 }
             }
             if (!count($res->errors)) {

@@ -28,16 +28,20 @@ if (is_null($username)) array_push($res->errors, "Must include email");
 $image = $_FILES["image"];
 $filePath = false;
 $fileName = false;
-if ($image) {
-    $fileName = basename($image["name"]); //Get the filename of the upload
-    $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-    $validFile = getimagesize($image["tmp_name"]);
-    if (!$validFile) {
-        array_push($res->errors, "invalid file");
-        if ($image["size"] > 500000) array_push($res->errors, "image is too large");
-        if ($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif") array_push($res->errors, "only jpg, jpeg, png, gif");
-    }
-} else array_push($res->errors, "image not found");
+$tokenData = validateToken($username);
+if (!$tokenData->success) $res->errors = array_merge($res->errors, $tokenData->errors);
+else {
+    if ($image) {
+        $fileName = basename($image["name"]); //Get the filename of the upload
+        $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+        $validFile = getimagesize($image["tmp_name"]);
+        if (!$validFile) {
+            array_push($res->errors, "invalid file");
+            if ($image["size"] > 500000) array_push($res->errors, "image is too large");
+            if ($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif") array_push($res->errors, "only jpg, jpeg, png, gif");
+        }
+    } else array_push($res->errors, "image not found");
+}
 
 if (count($res->errors) == 0) {
     $filePath = __DIR__ . "/../../images/" . $fileName; // Get the file path on the server

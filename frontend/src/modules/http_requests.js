@@ -1,6 +1,6 @@
 import {getCookie} from "./cookies";
 
-const baseURL = "http://localhost/ssys/backend";
+const baseURL = "https://sustainableorillia.ca/ssys/backend";
 
 const imagePostReq = async (url, image, email) => {
     url = baseURL + url;
