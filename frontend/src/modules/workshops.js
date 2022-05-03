@@ -6,7 +6,6 @@ import Sami from "../images/Sami.jpg";
 import Sara from "../images/Sara.png";
 import BradDibble from "../images/BradDibble.jpg";
 import Bolu from "../images/Bolu.jpg";
-import Alyvia from "../images/Alyvia.png";
 
 const workshopsData = [
     {
@@ -76,7 +75,7 @@ const workshopsData = [
     {
         name: "Alyvia Sipidias",
         code: "i",
-        imageSrc: Alyvia,
+        imageSrc: Sara,
         title: "Workshop: “Climate Action Planning: Where to Begin”",
         summary: "Alyvia Sipidias is a certified teacher (OCT) and graduate student in the Masters of Education program...",
         description: "Alyvia Sipidias is a certified teacher (OCT) and graduate student in the Masters of Education program, specialization in Education for Change: Environmental Sustainability Education at Lakehead University. In this workshop Alyvia will provide students with an action-planning framework for students to consolidate their learning from the one day summit into an action plan for their home school. Through her graduate assistantship Alyvia is working with the Community Engagement and Lifelong Learning department. Based on her passion for environmental education, Alyvia will be assisting the Sustainable Orillia Youth Council with the day long Summit event. In this workshop, Alyvia will be teaching an introductory class to climate action planning, teaching students the simple things they need in order to get started on their climate action journey.",
