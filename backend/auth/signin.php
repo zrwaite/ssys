@@ -1,4 +1,7 @@
 <?php
+header('Access-Control-Allow-Origin: *'); //dev allow localhost cors
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization");
+header("Access-Control-Allow-Methods: POST, PUT, GET, DELETE");
 assert($_SERVER['REQUEST_METHOD'] == "POST");
 
 //Imports
