@@ -15,7 +15,7 @@ const getImageLink = (imageLink) => {
     return baseURL + "/images/" + imageLink;
 }
 
-const User = () => {
+const ViewUser = () => {
     const [dataPulled, setDataPulled] = useState(false);
     const [userData, setUserData] = useState({
         email: getCookie("email"),
