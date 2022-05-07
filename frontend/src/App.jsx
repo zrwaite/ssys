@@ -11,7 +11,7 @@ import User from "./pages/User";
 import Navbar from "./components/Navbar";
 import Workshop from "./pages/Workshop";
 import TeacherCode from "./pages/TeacherCode";
-import ViewUser from "/pages/ViewUser";
+import ViewUser from "./pages/ViewUser";
 import {mobileWidth} from "./constants";
 
 const MobileContext = React.createContext({
