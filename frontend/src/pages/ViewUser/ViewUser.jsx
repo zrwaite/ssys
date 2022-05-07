@@ -89,15 +89,11 @@ const ViewUser = () => {
 
     return (
         <main>
-            <header className={"userHeader"}>
-                <div className="horizontal">
-                    <img className={"userImage"} src={userData.image_link} alt={userData.image_link}/>
-                    <h2>{userData.fname} {userData.lname}</h2>
-                </div>
-            </header>
             <div className="userTop">
-                <h1>Welcome to {userData.fname}{userData.lname}'s name!</h1>
-                <div className="userTopBlurb">
+                <h1>Welcome to {userData.fname}'s page!</h1>
+            </div>
+            <div className="userGreen">
+                <div className="viewUserTopBlurb">
                 <p>
                 {userData.bio} <br/><br/>
                 School: {userData.school} <br/><br/>
