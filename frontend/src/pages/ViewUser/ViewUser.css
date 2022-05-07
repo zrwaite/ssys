@@ -1,0 +1,139 @@
+.userHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    height: 5rem;
+    box-sizing:content-box;
+    padding: 0.5rem;
+    background-color:#93D783;
+    color: #002a4a;
+    padding-left:1rem;
+    padding-right:1rem;
+}
+
+.userHeader > div {
+    height: 100%;
+}
+
+.userHeader  h2 {
+    margin: 0 0.5rem;
+}
+
+.userImage {
+    width: auto;
+    height: 3rem;
+}
+
+.userBody {
+    display: grid;
+    box-sizing: content-box;
+    place-items: flex-start;
+    grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+    margin: 0 1rem;
+    padding: 0 1rem;
+}
+
+/* .settingsIcon {
+    width: 3rem;
+    height: 3rem;
+} */
+
+.informationColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.userTop{
+    background-color: #002a4a;
+    margin-top:0.5rem;
+}
+
+.userTop > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.userTopBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
+}
+
+.userGrid{
+    display:grid;
+    grid-template-columns:repeat(2,50vw);
+}
+
+.userGridItem1{
+    margin:auto;
+    margin-right:3rem;
+    padding-bottom:2rem;
+}
+
+.userGridItem2{
+    margin:auto;
+    margin-left:3rem;
+}
+
+.userGridItem{
+
+}
+
+@media(max-width:1080px){
+    .userGrid{
+        display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width:100vw;
+    }
+
+    .userGridItem1{
+        margin:auto;
+        padding-left:1rem;
+        padding-right:1rem;
+        text-align:center;
+    }
+
+    .userGridItem2{
+        text-align:center;
+        margin:auto;
+        padding-left:1rem;
+        padding-right:1rem;
+        padding-bottom:2rem;
+    }
+
+    .userGridItem{
+        width:100%;
+    }
+}
+
+.userGreen{
+    background-color: #2d6434;
+    margin-top:0.5rem;
+}
+
+.userGreen > h1{
+    color:#FEF363;
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.userGreenBlurb{
+    padding-bottom: 1rem;
+    color: #FEF363;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
+}
