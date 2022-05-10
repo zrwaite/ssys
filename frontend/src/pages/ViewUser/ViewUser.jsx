@@ -1,25 +1,21 @@
 import React, {useState} from "react";
 import "./ViewUser.css";
-import UserInfo from "../../components/UserInfo";
-import UserInfoTeacher from "../../components/UserInfoTeacher";
-import ConferenceInfo from "../../components/ConferenceInfo";
-import WorkshopChoices from "../../components/WorkshopChoices";
 
-import {getCookie, signedIn} from "../../modules/cookies";
+import {signedIn} from "../../modules/cookies";
 import {httpReq, baseURL} from "../../modules/http_requests";
-import SettingsPanel from "../../components/SettingsPanel";
 import AccountIcon from "../../images/account.svg";
-import StudentCodes from "../../components/StudentCodes";
+import {useParams} from "react-router-dom";
 
 const getImageLink = (imageLink) => {
     return baseURL + "/images/" + imageLink;
 }
 
 const ViewUser = () => {
+    console.log(useParams());
+    const {userId} = useParams();
     const [dataPulled, setDataPulled] = useState(false);
     const [userData, setUserData] = useState({
-        email: getCookie("email"),
-        studentInfo: (getCookie("user_type") === "student"),
+        email: "",
         fname: "",
         lname: "",
         image_link: "",
@@ -39,26 +35,14 @@ const ViewUser = () => {
         workshop_choices: "",
         teacher: false
     });
-    const handleInputChange = (event) => {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        let partialState = {...userData};
-        partialState[name] = value;
-        setUserData(partialState);
-    }
-
-    const changeWorkshopChoices = (newChoices) => {
-        setUserData({...userData, workshop_choices: newChoices});
-    }
 
     const getUserData = async () => {
-        let json = await httpReq("/api/user/?username=" + getCookie("username"), "GET")
+        let json = await httpReq("/api/user/?id=" + userId, "GET")
         let response = JSON.parse(json);
         if (response.success && response.objects) {
             setUserData({
                 ...userData,
-                username: getCookie("username"),
+                username: response.objects.username,
                 fname: response.objects.fname,
                 lname: response.objects.lname,
                 image_approved: response.objects.image_approved,
@@ -83,7 +67,11 @@ const ViewUser = () => {
         }
         setDataPulled(true);
     }
-    if (!dataPulled) getUserData();
+    console.log(userId);
+    if (!dataPulled) {
+        if (userId) getUserData();
+        else return <>Not found</>
+    }
     if (!signedIn()) window.location.href = "/account";
 
 

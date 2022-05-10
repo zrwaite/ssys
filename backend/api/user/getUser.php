@@ -21,12 +21,18 @@ $res->request_type = "GET";
 $user = new GetUser();
 
 $username = getQuery("username");
-if (is_null($username)) array_push($res->errors, "Missing username query, or did you mean for a non-GET request?");
+$id = getQuery("id");
+if (is_null($username) && is_null($id)) array_push($res->errors, "Missing username and id query, or did you mean for a non-GET request?");
 
 if (count($res->errors) == 0) {
-    $tokenData = validateToken($username);
     $query = "id, fname, lname, username, grade, image_link, image_approved ,school ,city ,workshop_choices ,instagram ,diet ,workshop_order ,bio ,additional_info ,emergency_contact ,account_enabled, public, teacher";
-    $result = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_users WHERE username=%s", $username);
+    if (!is_null($username)) {
+        $result = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_users WHERE username=%s", $username);
+        $tokenData = validateToken($username);
+    } else {
+        $result = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_users WHERE id=%s", $id);
+        $tokenData = new ErrorsBool(false, ["Can't be authorized on id query"]);
+    }
     $parsedResult = $user->getParseResult($result);
 //    var_dump($parsedResult);
     if ($parsedResult) {

@@ -123,11 +123,7 @@ class PutUser
                 case "grade":
                 case "additional_info":
                 case "emergency_contact":
-                    break;
                 case "public":
-                    $error = true;
-                    if ($param=="public") $puts[$current_param] = true;
-                    else if ($param=="private") $puts[$current_param] = false;
                     break;
                 case "workshop_choices":
                     $ids = WORKSHOP_IDS;

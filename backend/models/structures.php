@@ -16,4 +16,10 @@ class ErrorsBool
 {
     public array $errors = array();
     public bool $success = false;
+
+    public function __construct(bool $success = false, array $errors = array())
+    {
+        $this->success = $success;
+        $this->errors = $errors;
+    }
 }

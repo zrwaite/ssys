@@ -54,7 +54,8 @@ function App() {
 					<Route path="/user" element={<User/>}/>
 					<Route path="/Workshop" element={<Workshop/>}/>
 					<Route path="/TeacherCode" element={<TeacherCode/>}/>
-					<Route path="/ViewUser" element={<ViewUser/>}/>
+					<Route path="/ViewUser/:userId" element={<ViewUser/>}/>
+					<Route path="*" element={<>Page Not found</>}/>
 				</Routes>
 			</Router>
 		</MobileContext.Provider>
