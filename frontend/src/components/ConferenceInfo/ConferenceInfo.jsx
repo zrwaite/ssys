@@ -54,7 +54,6 @@ const ConferenceInfo = (props) => {
         editDisplay.display = "grid";
         viewDisplay.display = "none";
     }
-    console.log(props.teacher);
     return (
         <div className={"conferenceInfoPanel userPagePanel"}>
             <div className={"infoHeader"}>

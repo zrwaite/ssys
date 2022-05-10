@@ -11,9 +11,9 @@ const getImageLink = (imageLink) => {
 }
 
 const ViewUser = () => {
-    console.log(useParams());
     const {userId} = useParams();
     const [dataPulled, setDataPulled] = useState(false);
+    const [notFound, setNotFound] = useState(false);
     const [userData, setUserData] = useState({
         email: "",
         fname: "",
@@ -62,19 +62,26 @@ const ViewUser = () => {
                 workshop_choices: response.objects.workshop_choices,
                 teacher: response.objects.teacher
             })
+        } else if (response.status === 404) {
+            setNotFound(true);
+        } else if (response.status === 403) {
+            alert("Private account");
         } else if (response.errors.length > 0) {
             alert(response.errors)
         }
-        setDataPulled(true);
     }
-    console.log(userId);
-    if (!dataPulled) {
-        if (userId) getUserData();
-        else return <>Not found</>
+    if (notFound) {
+        return <h1>User Not Found</h1>
+    } else {
+        if (!dataPulled) {
+            if (userId) getUserData();
+            else setNotFound(true);
+            setDataPulled(true);
+        }
     }
     if (!signedIn()) window.location.href = "/account";
 
-
+    console.log(userData);
     return (
         <main>
             <div className="userTop">

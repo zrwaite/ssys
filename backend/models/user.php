@@ -124,10 +124,13 @@ class PutUser
                 case "additional_info":
                 case "emergency_contact":
                 case "public":
+                    $error = true;
+                    if ($param == "private") $puts[$current_param] = false;
+                    else $puts[$current_param] = $param;
                     break;
                 case "workshop_choices":
                     $ids = WORKSHOP_IDS;
-                    $input_ids = explode(" ",$param);
+                    $input_ids = explode(" ", $param);
                     sort($ids);
                     sort($input_ids);
                     if ($ids != $input_ids) {

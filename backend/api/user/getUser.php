@@ -42,6 +42,7 @@ if (count($res->errors) == 0) {
             $res->objects = $parsedResult;
         } else {
             $res->errors = array_merge($res->errors, $tokenData->errors);
+            $res->status = 403;
         }
     } else {
         $res->status = 404;

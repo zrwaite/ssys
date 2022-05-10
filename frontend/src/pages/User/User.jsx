@@ -33,7 +33,7 @@ const User = () => {
         diet: "",
         emergency_contact: "",
         additional_info: "",
-        public: "",
+        public: false,
         password_set: "",
         email_confirmed: "",
         workshop_choices: "",
@@ -42,6 +42,7 @@ const User = () => {
     const handleInputChange = (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
+        console.log(value)
         const name = target.name;
         let partialState = {...userData};
         partialState[name] = value;
@@ -72,7 +73,7 @@ const User = () => {
                 emergency_contact: response.objects.emergency_contact || "",
                 additional_info: response.objects.additional_info || "",
                 image_link: response.objects.image_link ? getImageLink(response.objects.image_link) : AccountIcon,
-                public: response.objects.public,
+                public: response.objects.public ? "1" : "0",
                 password_set: response.objects.password_set,
                 email_confirmed: response.objects.email_confirmed,
                 workshop_choices: response.objects.workshop_choices,

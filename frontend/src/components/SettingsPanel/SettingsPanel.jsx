@@ -21,36 +21,18 @@ const SettingsPanel = (props) => {
     let settingsDisplay = {display: "none"};
     if (state.display) settingsDisplay.display = "block";
 
-//todo reduce to one form sfunction
-    const sendStudentForm = async () => {
+
+    console.log(props.public);
+    const sendPutForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
             username: getCookie("username"),
             fname: props.fname,
             lname: props.lname,
-            public: props.public_view
+            public: props.public === "1" ? 1 : "private"
         })
         let response = JSON.parse(json);
         if (response.success && response.objects) {
-            return {
-                success: true,
-                fname: response.objects.fname,
-                lname: response.objects.lname
-            }
-        } else return {
-            success: false,
-            fname: props.fname,
-            lname: props.lname
-        }
-    }
-
-    const sendTeacherForm = async () => {
-        let json = await httpReq("/api/user/", "PUT", {
-            username: getCookie("username"),
-            fname: props.fname,
-            lname: props.lname
-        })
-        let response = JSON.parse(json);
-        if (response.success && response.objects) {
+            console.log(response);
             return {
                 success: true,
                 fname: response.objects.fname,
@@ -64,11 +46,9 @@ const SettingsPanel = (props) => {
     }
 
     const sendForm = async () => {
-        let user_type = getCookie("user_type");
         let formResponse;
         let imageResponse = props.image_link;
-        if (user_type === "student" || user_type === "individual") formResponse = await sendStudentForm();
-        else if (user_type === "teacher") formResponse = await sendTeacherForm();
+        formResponse = await sendPutForm();
         if (inputImage) {
             let json = await imagePostReq("/api/image/", inputImage, getCookie("username"));
             let response = JSON.parse(json);
@@ -134,17 +114,17 @@ const SettingsPanel = (props) => {
                                    onChange={props.parentHandleInputChange}/>
                         </div>
                     </div>
-                    {/*<div className={"infoRow"}>*/}
-                    {/*    <h4>Public:</h4>*/}
-                    {/*    <div>*/}
-                    {/*        <p style={viewDisplay}>{props.public_view ? "Public" : "Private"}</p>*/}
-                    {/*        <select className="settingsYellow" style={editDisplay} name={"public_view"} value={props.public_view}*/}
-                    {/*                onChange={props.parentHandleInputChange}>*/}
-                    {/*            <option value={true}>Public</option>*/}
-                    {/*            <option value={false}>Private</option>*/}
-                    {/*        </select>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
+                    <div className={"infoRow"}>
+                        <h4>Public:</h4>
+                        <div>
+                            <p style={viewDisplay}>{props.public === "1" ? "Yes, Public" : "No, Private"}</p>
+                            <select className="settingsYellow" style={editDisplay} name={"public"} value={props.public}
+                                    onChange={props.parentHandleInputChange}>
+                                <option value={1}>Public</option>
+                                <option value={0}>Private</option>
+                            </select>
+                        </div>
+                    </div>
                     {/*<div className={"infoRow"}>*/}
                     {/*    <h4>Image:</h4>*/}
                     {/*    <div>*/}
