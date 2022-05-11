@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar";
 import Workshop from "./pages/Workshop";
 import TeacherCode from "./pages/TeacherCode";
 import ViewUser from "./pages/ViewUser";
+import NotFound from "./pages/NotFound";
 import {mobileWidth} from "./constants";
 
 const MobileContext = React.createContext({
@@ -55,7 +56,7 @@ function App() {
 					<Route path="/Workshop" element={<Workshop/>}/>
 					<Route path="/TeacherCode" element={<TeacherCode/>}/>
 					<Route path="/ViewUser/:userId" element={<ViewUser/>}/>
-					<Route path="*" element={<>Page Not found</>}/>
+					<Route path="*" element={<NotFound/>}/>
 				</Routes>
 			</Router>
 		</MobileContext.Provider>

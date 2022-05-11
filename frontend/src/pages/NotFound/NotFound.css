@@ -1,0 +1,11 @@
+.notFound{
+    color:#FEF363;
+    font-size: 2rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    background-color: #002a4a;
+    height:100vh;
+    text-align:center;
+    padding-left:1rem;
+    padding-right:1rem;
+}
