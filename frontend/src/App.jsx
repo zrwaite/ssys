@@ -13,6 +13,7 @@ import Workshop from "./pages/Workshop";
 import TeacherCode from "./pages/TeacherCode";
 import ViewUser from "./pages/ViewUser";
 import NotFound from "./pages/NotFound";
+import UserNotFound from "./pages/UserNotFound"
 import {mobileWidth} from "./constants";
 
 const MobileContext = React.createContext({
@@ -56,6 +57,7 @@ function App() {
 					<Route path="/Workshop" element={<Workshop/>}/>
 					<Route path="/TeacherCode" element={<TeacherCode/>}/>
 					<Route path="/ViewUser/:userId" element={<ViewUser/>}/>
+					<Route path="/UserNotFound" element={<UserNotFound/>}/>
 					<Route path="*" element={<NotFound/>}/>
 				</Routes>
 			</Router>

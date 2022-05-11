@@ -71,7 +71,7 @@ const ViewUser = () => {
         }
     }
     if (notFound) {
-        return <h1>User Not Found</h1>
+        window.location.href="/UserNotFound";
     } else {
         if (!dataPulled) {
             if (userId) getUserData();
