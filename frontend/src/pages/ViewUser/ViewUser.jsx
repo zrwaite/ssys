@@ -93,7 +93,7 @@ const ViewUser = () => {
                 Bio: {userData.bio} <br/><br/>
                 Name: {userData.fname} {userData.lname}<br/><br/>
                 School: {userData.school} <br/><br/>
-                Instagram: {userData.instagram}
+                {userData.teacher?<p></p>:<p>Instagram: {userData.instagram}</p>}
                 </p>            
                 </div>
             </div>
