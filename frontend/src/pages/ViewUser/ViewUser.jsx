@@ -85,7 +85,7 @@ const ViewUser = () => {
     return (
         <main>
             <div className="viewUserTop">
-                <h1>Welcome to {userData.fname}'s page!</h1>
+                {userData.teacher?<h1>Welcome to {userData.fname} {userData.lname}'s page!</h1>:<h1>Welcome to {userData.fname}'s page!</h1>}
             </div>
             <div className="userGreen">
                 <div className="viewUserTopBlurb">
