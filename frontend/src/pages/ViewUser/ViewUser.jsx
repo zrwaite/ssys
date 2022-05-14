@@ -84,13 +84,14 @@ const ViewUser = () => {
     console.log(userData);
     return (
         <main>
-            <div className="userTop">
+            <div className="viewUserTop">
                 <h1>Welcome to {userData.fname}'s page!</h1>
             </div>
             <div className="userGreen">
                 <div className="viewUserTopBlurb">
                 <p>
-                {userData.bio} <br/><br/>
+                Bio: {userData.bio} <br/><br/>
+                Name: {userData.fname} {userData.lname}<br/><br/>
                 School: {userData.school} <br/><br/>
                 Instagram: {userData.instagram}
                 </p>            
