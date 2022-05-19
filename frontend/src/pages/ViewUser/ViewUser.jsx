@@ -26,13 +26,8 @@ const ViewUser = () => {
         grade: "",
         instagram: "",
         bio: "",
-        diet: "",
-        emergency_contact: "",
         additional_info: "",
         public: "",
-        password_set: "",
-        email_confirmed: "",
-        workshop_choices: "",
         teacher: false
     });
 
@@ -80,22 +75,23 @@ const ViewUser = () => {
         }
     }
     if (!signedIn()) window.location.href = "/account";
-
+    const viewUserBox = {
+        padding: "0.5rem",
+    }
+    const whiteText = {color: "white"}
     console.log(userData);
     return (
         <main>
             <div className="viewUserTop">
-                {userData.teacher?<h1>Welcome to {userData.fname} {userData.lname}'s page!</h1>:<h1>Welcome to {userData.fname}'s page!</h1>}
+                <h1>{userData.fname} {userData.lname}</h1>
             </div>
             <div className="userGreen">
                 <div className="viewUserTopBlurb">
-                <p>
-                Bio: {userData.bio} <br/><br/>
-                Name: {userData.fname} {userData.lname}<br/><br/>
-                School: {userData.school} <br/><br/>
-                {userData.teacher?<p></p>:<p>Grade: {userData.grade}</p>} <br/>
-                {userData.teacher?<p></p>:<p>Instagram: {userData.instagram}</p>}
-                </p>            
+                {userData.school&&userData.school.length && <h3><span style={whiteText}>Goes to: </span>{userData.school}</h3>}
+                {!userData.teacher&&userData.grade&&<h3 style={viewUserBox}><span style={whiteText}>Grade: </span> {userData.grade}</h3>}
+                {!userData.teacher&&userData.instagram&&userData.instagram.length&&<h3 style={viewUserBox}><span style={whiteText}>Insta:</span> {userData.instagram}</h3>}
+                <h3 style={viewUserBox}><span style={whiteText}>User Bio:</span></h3>
+                <p style={viewUserBox}>{userData.bio}</p>
                 </div>
             </div>
         </main>

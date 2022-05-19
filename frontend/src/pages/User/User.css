@@ -73,12 +73,14 @@
 }
 
 .userGridItem1{
+    width: min(100%, 30rem);
     margin:auto;
     margin-right:3rem;
     padding-bottom:2rem;
 }
 
 .userGridItem2{
+    width: min(100%, 30rem);
     margin:auto;
     margin-left:3rem;
 }

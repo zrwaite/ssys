@@ -21,8 +21,6 @@ const SettingsPanel = (props) => {
     let settingsDisplay = {display: "none"};
     if (state.display) settingsDisplay.display = "block";
 
-
-    console.log(props.public);
     const sendPutForm = async () => {
         let json = await httpReq("/api/user/", "PUT", {
             username: getCookie("username"),
