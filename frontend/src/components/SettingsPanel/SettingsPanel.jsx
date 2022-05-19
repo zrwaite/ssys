@@ -82,6 +82,8 @@ const SettingsPanel = (props) => {
         window.location.assign("/account");
     }
 
+    console.log(props.public);
+
     return (
         <div>
             <img className={"icon"} src={settingsIcon} alt={"settings icon"}

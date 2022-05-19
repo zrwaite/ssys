@@ -89,7 +89,6 @@ const User = () => {
     if (!dataPulled) getUserData();
     if (!signedIn()) window.location.href = "/account";
 
-
     return (
         <main>
             <header className={"userHeader"}>
@@ -107,7 +106,8 @@ const User = () => {
                 {userData.teacher ? <p>Here, you can edit information about yourself, and generate codes for your students. Just enter the amount of codes you would like, and then press submit! Also, since you are a teacher, you won't be able to edit your grade or instagram or add an emergency contact.</p> :
                         <p>Here, you can edit information about yourself, edit your profile (make sure to toggle the settings icon also), and choose your workshops!</p>}
                         <hr style={{ borderColor: "black", width: "50%", margin: "0.5rem auto" }}></hr>
-                        <p>View your user page <a href={`http://localhost:3000/viewuser/${userData.id}`}>here</a></p>
+                        <p>View your user page <a href={`http://localhost:3000/viewuser/${userData.id}`}>here</a>{userData.public==="0"&&"*"}</p>
+                        {userData.public==="0"&&<p>*(Your account is private, so others can't see your user page. You can change this in the settings panel.)</p>}
                 </div>
                 <div className={"userGrid"}>
                     <div className="userGridItem1">

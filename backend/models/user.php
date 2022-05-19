@@ -111,7 +111,7 @@ class PutUser
             $current_param = $this->params[$i];
             $error = false;
             $param = getBody($current_param);
-            if (is_null($param) || $param == "") continue; //If the parameter isn't defined continue, otherwise check the switch for special cases
+            if (is_null($param)) continue; //If the parameter isn't defined continue, otherwise check the switch for special cases
             switch ($current_param) {
                 case "fname":
                 case "lname": //These do not have a special case right now.c
