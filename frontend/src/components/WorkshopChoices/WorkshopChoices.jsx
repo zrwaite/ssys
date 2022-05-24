@@ -30,12 +30,13 @@ const WorkshopChoices = (props) => {
 		<div className={"workshopChoicesPanel userPagePanel"}>
 			<div className={"infoHeader"}>
 				<h2>Workshop Choices</h2>
+				<p>Your workshop choices have been made - see you at the summit!</p>
 				{/* <img style={viewDisplay} src={editIcon} onClick={() => setState({...state, editMode: true})}
                      alt={"edit icon"}/>
                 <img style={editDisplay} src={closeIcon} onClick={() => setState({...state, editMode: false})}
                      alt={"close icon"}/> */}
 			</div>
-			{props.workshop_choices.split(" ").map((id, i) => {
+			{/* {props.workshop_choices.split(" ").map((id, i) => {
 				const workshop = workshopsData.find(item => item.code === id);
 				return !workshop ? null :
 				<div className={"workshopChoice"} key={i}>
@@ -56,7 +57,7 @@ const WorkshopChoices = (props) => {
 						</div>
 					</div>
 				</div>
-			})}
+			})} */}
 		</div>
 	)
 }

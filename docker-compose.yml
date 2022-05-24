@@ -1,7 +1,7 @@
-version: '3.2'
+version: '3.5'
 services:
   client:
     build: ./
-    image: "zrwaite/ssysfrontend:3.2"
+    image: "zrwaite/ssysfrontend:3.5"
     ports:
       - "80:80"
